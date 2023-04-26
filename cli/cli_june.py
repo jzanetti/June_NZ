@@ -3,15 +3,21 @@ Usage: cli_train --workdir /tmp/rfm --cfg train.cfg
 Author: Sijin Zhang
 Description: 
     This is a wrapper to get trained model for road_fatalities_model
+
+
+export PYTHONPATH=/Users/sijinzhang/Github/June_NZ
+
 """
 
 import argparse
 from os.path import exists
 from os import makedirs
+from process.utils import setup_logging
+from process.june_model import check_availability_for_june_model
 
 def get_example_usage():
     example_text = """example:
-        * cli_june --workdir /tmp/june
+        * cli_june --workdir /tmp/june_nz
                     --cfg train.cfg
         """
     return example_text
@@ -28,10 +34,10 @@ def setup_parser():
     parser.add_argument("--cfg", required=True, help="configuration path")
 
     return parser.parse_args(
-        # [
-        #    "--workdir", "rfm",
-        #    "--cfg", "etc/cfg/train/model_stack.yml"
-        # ]
+        [
+            "--workdir", "/tmp/june_nz",
+            "--cfg", "etc/june.yml"
+        ]
     )
 
 
@@ -41,6 +47,12 @@ def get_data():
     if not exists(args.workdir):
         makedirs(args.workdir)
 
+    logger = setup_logging(args.workdir)
+
+    logger.info("checkout the JUNE model ...")
+    june_model_dir = check_availability_for_june_model(checkout_repo = False)
+
+    from june import world
     print("done")
 
 
