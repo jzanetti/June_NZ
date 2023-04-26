@@ -1,0 +1,8 @@
+{
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "aws.telemetry": false,
+    "git.autofetch": true,
+    "python.analysis.extraPaths": ["/Users/sijinzhang/Github/June_NZ/lib/JUNE_v1.2.0"]
+}

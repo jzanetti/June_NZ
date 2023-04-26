@@ -1,0 +1,12 @@
+
+
+exp_name: singleobs
+
+input:
+  base_input: etc/data/singleobs
+  population:
+    geography:
+        geography_hierarchy: "population/geography/geography_hierarchy_definition.csv"
+        super_area_location: "population/geography/super_area_location.csv"
+        area_location: "population/geography/area_location.csv"
+        area_socialeconomic_index: "population/geography/area_socialeconomic_index.csv"

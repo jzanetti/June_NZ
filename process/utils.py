@@ -2,7 +2,7 @@
 from os.path import join
 from logging import INFO, Formatter, StreamHandler, basicConfig, getLogger
 from datetime import datetime
-
+from yaml import safe_load as yaml_load
 
 def setup_logging(workdir: str = "/tmp", start_utc: datetime = datetime.utcnow()):
     """set up logging system for tasks
@@ -21,4 +21,19 @@ def setup_logging(workdir: str = "/tmp", start_utc: datetime = datetime.utcnow()
     logger.addHandler(ch)
 
     return logger
+
+
+def read_cfg(cfg_path: str) -> dict:
+    """Read configuration file
+
+    Args:
+        cfg_path (str): configuration path
+
+    Returns:
+        dict: configuration
+    """
+    with open(cfg_path, "r") as fid:
+        cfg = yaml_load(fid)
+
+    return cfg
 
