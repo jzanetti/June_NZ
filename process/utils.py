@@ -36,4 +36,3 @@ def read_cfg(cfg_path: str) -> dict:
         cfg = yaml_load(fid)
 
     return cfg
-

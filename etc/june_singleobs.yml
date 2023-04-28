@@ -2,11 +2,35 @@
 
 exp_name: singleobs
 
+
 input:
   base_input: etc/data/singleobs
+
   population:
     geography:
-        geography_hierarchy: "population/geography/geography_hierarchy_definition.csv"
-        super_area_location: "population/geography/super_area_location.csv"
-        area_location: "population/geography/area_location.csv"
-        area_socialeconomic_index: "population/geography/area_socialeconomic_index.csv"
+      geography_hierarchy: population/geography/geography_hierarchy_definition.csv
+      super_area_location: population/geography/super_area_location.csv
+      area_location: population/geography/area_location.csv
+      area_socialeconomic_index: population/geography/area_socialeconomic_index.csv
+    
+    demography:
+      individual:
+        age: population/demography/age_profile.csv
+        gender: population/demography/gender_profile_female_ratio.csv
+        ethnicity: population/demography/ethnicity_profile.csv
+        comorbidity:
+          female: population/demography/comorbidities_female.csv
+          male: population/demography/comorbidities_male.csv
+
+  group_and_interaction:
+    hospital:
+      cfg:
+        neighbour_hospitals: group/cfg/hospital/neighbour_hospitals.yaml
+      data:
+        location: group/data/hospital/hospital_locations.csv
+      interaction: interaction/hospital.yaml
+    company:
+      data:
+        employees_by_super_area: group/data/company/employees_by_super_area.csv
+        sectors_by_super_area: group/data/company/sectors_by_super_area.csv
+      interaction: interaction/company.yaml

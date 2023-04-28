@@ -15,6 +15,10 @@ from os import makedirs
 from process.utils import setup_logging, read_cfg
 from process.june_model import check_availability_for_june_model
 from process.geography import create_geography
+from process.interaction import init_interaction
+from process.demography import create_person
+from process.groups import create_groups
+from process.world import init_world
 
 
 def get_example_usage():
@@ -61,6 +65,30 @@ def run_june():
     geography_object = create_geography(
         cfg["input"]["base_input"], 
         cfg["input"]["population"]["geography"])
+    
+    logger.info("Initiating the interaction ...")
+    init_interaction(
+        cfg["input"]["base_input"], 
+        cfg["input"]["group_and_interaction"])
+
+    logger.info("Creating groups (companies, hospitals etc.)...")
+    group_object = create_groups(
+        geography_object["data"], 
+        cfg["input"]["base_input"], 
+        cfg["input"]["group_and_interaction"])
+    geography_object["data"] = group_object["data"]
+
+    logger.info("Creating demography ...")
+    person = create_person(
+        geography_object["data"],
+        cfg["input"]["base_input"], 
+        cfg["input"]["population"]["demography"]["individual"])
+    
+
+    logger.info("Initiating the world ...")
+    init_world(geography_object["data"], person["data"])    
+
+    logger.info("Job done ...")
 
 
 if __name__ == "__main__":
