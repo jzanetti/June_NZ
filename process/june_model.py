@@ -1,63 +1,19 @@
-from process import JUNE_MODEL
+from process import JUNE_MODEL, MODEL_PATH
 from git import Repo
 from os.path import exists, join
 from os import makedirs
-from shutil import copyfile, rmtree, move
-from copy import deepcopy
+from shutil import rmtree, move
 from subprocess import call
-import sys
+from sys import path as sys_path
 
-def update_codes_in_june():
-    """Update codes in the JUNE model
-
-    Raises:
-        Exception: Obtained more than one line with the same target to be replaced
-    """
-    for src_file in JUNE_MODEL["code_replacement"]:
-        
-        all_codes_to_be_processed = JUNE_MODEL["code_replacement"][src_file]
-
-        src_file_template = deepcopy(src_file)
-
-        for proc_code in all_codes_to_be_processed:
-
-            id = proc_code["id"]
-
-            src_file_template = src_file_template + f".{id}"
-
-            src_file_path = join("lib", JUNE_MODEL["model_name"], src_file)
-
-            src_file_template_path = join("lib", JUNE_MODEL["model_name"], src_file_template)
-
-            copyfile(src_file_path, src_file_template_path)
-
-            replaced = False
-            with open(src_file_template_path, "rt") as fin:
-
-                with open(src_file_path, "wt") as fout:
-                    for line in fin:
-
-                        if proc_code["src"] in line:
-
-                            if replaced:
-                                raise Exception(f"Got two lines with the same input: {proc_code['src']} ...")
-
-                            fout.write(line.replace(proc_code["src"], proc_code["dest"]))
-                            replaced = True
-                        else:
-                            fout.write(line)
-
-
-def download_june_data(june_model_dir, empty_data: bool = False):
+def download_june_data(june_model_dir, enable: bool = False):
     """Download the required JUNE data directory
 
     Args:
         june_model_dir (str): JUNE model directory
         empty_data (bool): if only create an empty data directory
     """
-    if empty_data:
-        makedirs(join(june_model_dir, "data"))
-    else:
+    if enable:
         script_path = join(june_model_dir, "scripts", "get_june_data.sh")
         with open(script_path, "rb") as file:
             script = file.read()
@@ -78,11 +34,20 @@ def check_availability_for_june_model(checkout_repo: bool = False) -> str:
 
     if checkout_repo or (not exists(june_model_dir)):
 
-        rmtree(june_model_dir)
-        Repo.clone_from(JUNE_MODEL["link"], june_model_dir)
-        update_codes_in_june()
-        download_june_data(june_model_dir, empty_data=True)
+        if exists(june_model_dir):
+            rmtree(june_model_dir)
+        Repo.clone_from(JUNE_MODEL["link"], june_model_dir,  branch=JUNE_MODEL["branch"])
+        download_june_data(june_model_dir)
 
-    # sys.path.append(june_model_dir)
+    sys_path.append(june_model_dir)
 
     return june_model_dir
+
+
+def create_pseudo_data_folder():
+    """Create pseudo data folder is requred for 
+    importing or running any JUNE model modules
+    """
+    pseudo_data_path = join(MODEL_PATH, "data")
+    if not exists(pseudo_data_path):
+        makedirs(pseudo_data_path)

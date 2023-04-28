@@ -30,7 +30,15 @@ input:
         location: group/data/hospital/hospital_locations.csv
       interaction: interaction/hospital.yaml
     company:
+      cfg:
+        company_closure: group/cfg/company/company_closure.yaml
       data:
         employees_by_super_area: group/data/company/employees_by_super_area.csv
         sectors_by_super_area: group/data/company/sectors_by_super_area.csv
+        sectors_employee_genders: group/data/company/sectors_employee_genders.csv
       interaction: interaction/company.yaml
+
+  distribution:
+    work_and_home:
+      data: distribution/data/work_and_home/workplace_and_home.csv
+      cfg: distribution/cfg/work_and_home/worker_distributor.yaml
