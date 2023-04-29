@@ -22,7 +22,7 @@ input:
           female: population/demography/comorbidities_female.csv
           male: population/demography/comorbidities_male.csv
 
-  group_and_interaction:
+  interaction:
     hospital:
       cfg:
         neighbour_hospitals: group/cfg/hospital/neighbour_hospitals.yaml
@@ -37,11 +37,6 @@ input:
         sectors_by_super_area: group/data/company/sectors_by_super_area.csv
         sectors_employee_genders: group/data/company/sectors_employee_genders.csv
       interaction: interaction/company.yaml
-
-  distribution:
-    work_and_home:
-      data: distribution/data/work_and_home/workplace_and_home.csv
-      cfg: distribution/cfg/work_and_home/worker_distributor.yaml
     household:
       data:
         age_difference_couple: distribution/data/household/age_difference_couple.csv
@@ -51,11 +46,18 @@ input:
         household_commual: distribution/data/household/household_commual.csv
       cfg:
         household_structure: distribution/cfg/household/household_structure.yaml
+      interaction: interaction/household.yaml
+    commute:
+      data:
+        super_area_name: commute/data/super_area_name.csv
+        transport_mode: commute/data/transport_mode.csv
+      cfg:
+        stations: commute/cfg/stations.yaml
+        passage_seats_ratio: commute/cfg/passage_seats_ratio.yaml
+        public_or_private_transport: commute/cfg/mode_of_transport.yaml
+      interaction: interaction/commute.yaml
 
-  commute:
-    data:
-      super_area_name: commute/data/super_area_name.csv
-      transport_mode: commute/data/transport_mode.csv
-    cfg:
-      stations: commute/cfg/stations.yaml
-      passage_seats_ratio: commute/cfg/passage_seats_ratio.yaml
+  distribution:
+    work_and_home:
+      data: distribution/data/work_and_home/workplace_and_home.csv
+      cfg: distribution/cfg/work_and_home/worker_distributor.yaml

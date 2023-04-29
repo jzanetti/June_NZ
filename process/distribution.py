@@ -54,6 +54,8 @@ def household_distribution(world: World_class, base_dir: str, distribution_cfg: 
         number_of_random_numbers=int(1e3)
     )
 
+    household_distributor.household_interaction_filename = join(base_dir, distribution_cfg["household"]["interaction"])
+    
     world.households = (
         household_distributor.distribute_people_and_households_to_areas(
             world.areas,

@@ -1,7 +1,7 @@
 from process import JUNE_MODEL, MODEL_PATH
 from git import Repo
 from os.path import exists, join
-from os import makedirs
+from os import makedirs, rename
 from shutil import rmtree, move
 from subprocess import call
 from sys import path as sys_path
@@ -38,9 +38,12 @@ def check_availability_for_june_model(checkout_repo: bool = False) -> str:
             rmtree(june_model_dir)
         Repo.clone_from(JUNE_MODEL["link"], june_model_dir,  branch=JUNE_MODEL["branch"])
         download_june_data(june_model_dir)
+        rename(
+            join(june_model_dir, "june", "configs", "defaults"),
+            join(june_model_dir, "june", "configs", "defaults_backup"),
+        )
 
     sys_path.append(june_model_dir)
-
     return june_model_dir
 
 

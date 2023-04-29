@@ -17,13 +17,13 @@ import argparse
 from os.path import exists
 from os import makedirs
 from process.utils import setup_logging, read_cfg
-from process.geography import create_geography
-from process.interaction import init_interaction
+from process.geography import create_geography_wrapper
+from process.interaction import create_interaction_wrapper
 from process.demography import create_person
-from process.groups import create_groups
-from process.world import create_world, world2df
+from process.groups import create_geography_dependant_groups
+from process.world import create_world_wrapper, world2df
 from process.distribution import work_and_home_distribution, household_distribution
-from process.commute import create_commute
+from process.commute import create_commute_wrapper
 from logging import RootLogger
 from june.world import World as World_class
 
@@ -53,98 +53,6 @@ def setup_parser():
     )
 
 
-def world_init(logger: RootLogger, cfg: dict) -> World_class:
-    """Initialiate a world object
-
-    Args:
-        logger (RootLogger): logger object
-        cfg (dict): configuration
-
-    Returns:
-        World: a World object
-    """
-    logger.info("Creating geography object ...")
-    geography_object = create_geography(
-        cfg["input"]["base_input"], 
-        cfg["input"]["population"]["geography"])
-    
-    logger.info("Initiating the interaction ...")
-    init_interaction(
-        cfg["input"]["base_input"], 
-        cfg["input"]["group_and_interaction"])
-
-    logger.info("Creating groups (companies, hospitals etc.)...")
-    group_object = create_groups(
-        geography_object["data"], 
-        cfg["input"]["base_input"], 
-        cfg["input"]["group_and_interaction"])
-    geography_object["data"] = group_object["data"]
-
-    logger.info("Creating demography ...")
-    person = create_person(
-        geography_object["data"],
-        cfg["input"]["base_input"], 
-        cfg["input"]["population"]["demography"]["individual"])
-    
-    logger.info("Creating the world ...")
-    return create_world(geography_object["data"], person["data"])
-
-
-def world_distribution(world: World_class, logger: RootLogger, cfg: dict, workdir: str):
-    """Population distribution, e.g., distribute people to 
-          - Workplace and home
-          - Household
-
-    Args:
-        world (World): World object
-        logger (RootLogger): Logger object
-        cfg (dict): Configuration
-        workdir (str): Working directory
-    """
-    logger.info("Distributing individuals to work/home areas...")
-    work_and_home_distribution(
-        world,
-        cfg["input"]["base_input"], 
-        cfg["input"]["distribution"], 
-        cfg["input"]["group_and_interaction"], 
-        cfg["input"]["population"])
-
-    logger.info("Distributing individuals to household ...")
-    household_distribution(
-        world, 
-        cfg["input"]["base_input"], 
-        cfg["input"]["distribution"])
-
-    return {
-        "data": world,
-        "df": world2df(world, write_csv = True, workdir=workdir, tag="after_init")
-    }
-
-
-def commute_init(world: World_class, logger: RootLogger, cfg: dict, workdir: str):
-    """Creating the commuting object
-
-    Args:
-        world (World_class): A world object
-        cfg (str): Configuration
-        logger (RootLogger): Logger object
-        workdir (str): Working directory
-
-    Returns:
-        _type_: _description_
-    """
-    logger.info("Creating a commute ...")
-
-    commute = create_commute(
-        world, 
-        cfg["input"]["base_input"], 
-        cfg["input"]["commute"])
-    
-    world2df(world, write_csv = True, workdir=workdir, tag="after_commute")
-
-    return commute
-
-
 def main():
     """Run June model
     """
@@ -155,19 +63,34 @@ def main():
 
     logger = setup_logging(args.workdir)
 
-    logger.info("Checking out the JUNE model ...")
-
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
 
-    logger.info("Initiating the world object ...")
-    world = world_init(logger, cfg)
+    logger.info("Creating geography object ...")
+    geography_object = create_geography_wrapper(
+        cfg["input"]["base_input"], 
+        cfg["input"]["population"]["geography"])
 
-    logger.info("Population distribution ...")
-    world = world_distribution(world, logger, cfg, args.workdir)
+    logger.info("Initiating the interaction ...")
+    create_interaction_wrapper(
+        cfg["input"]["base_input"], 
+        cfg["input"]["interaction"])
+
+    logger.info("Creating the world object ...")
+    world = create_world_wrapper(
+        geography_object, 
+        cfg["input"]["base_input"],
+        cfg["input"]["population"],
+        cfg["input"]["distribution"],
+        cfg["input"]["interaction"],
+        args.workdir)
 
     logger.info("Creating commuting object ...")
-    commute = commute_init(world["data"], logger, cfg, args.workdir)
+    commute = create_commute_wrapper(
+        world["data"],
+        cfg["input"]["base_input"], 
+        cfg["input"]["interaction"]["commute"], 
+        args.workdir)
 
     logger.info("Job done ...")
 

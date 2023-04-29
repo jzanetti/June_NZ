@@ -1,0 +1,16 @@
+contact_matrices:
+  city_transport:
+    contacts: [[6]]
+    proportion_physical: [[0.07]]
+    characteristic_time: 2
+    type: Age
+    bins: [0,100]
+
+  inter_city_transport:
+    contacts: [[4]]
+    proportion_physical: [[0.05]]
+    characteristic_time: 2
+    type: Age
+    bins: [0,100]
+
+
