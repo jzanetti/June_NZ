@@ -1,0 +1,3 @@
+number_of_inter_city_stations: # each city also acts like an station for internal commuters.
+  "Wellington": 2
+  "Upper Hutt": 1

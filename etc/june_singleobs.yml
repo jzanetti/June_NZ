@@ -42,3 +42,20 @@ input:
     work_and_home:
       data: distribution/data/work_and_home/workplace_and_home.csv
       cfg: distribution/cfg/work_and_home/worker_distributor.yaml
+    household:
+      data:
+        age_difference_couple: distribution/data/household/age_difference_couple.csv
+        age_difference_parent_child: distribution/data/household/age_difference_parent_child.csv
+        household_number: distribution/data/household/household_number.csv
+        household_student: distribution/data/household/household_student.csv
+        household_commual: distribution/data/household/household_commual.csv
+      cfg:
+        household_structure: distribution/cfg/household/household_structure.yaml
+
+  commute:
+    data:
+      super_area_name: commute/data/super_area_name.csv
+      transport_mode: commute/data/transport_mode.csv
+    cfg:
+      stations: commute/cfg/stations.yaml
+      passage_seats_ratio: commute/cfg/passage_seats_ratio.yaml

@@ -21,8 +21,9 @@ from process.geography import create_geography
 from process.interaction import init_interaction
 from process.demography import create_person
 from process.groups import create_groups
-from process.world import create_world
-from process.distribution import init_worker_distribution
+from process.world import create_world, world2df
+from process.distribution import work_and_home_distribution, household_distribution
+from process.commute import create_commute
 from logging import RootLogger
 from june.world import World as World_class
 
@@ -89,7 +90,7 @@ def world_init(logger: RootLogger, cfg: dict) -> World_class:
     return create_world(geography_object["data"], person["data"])
 
 
-def world_distribution(world, logger: RootLogger, cfg: dict):
+def world_distribution(world: World_class, logger: RootLogger, cfg: dict, workdir: str):
     """Population distribution, e.g., distribute people to 
           - Workplace and home
           - Household
@@ -98,16 +99,50 @@ def world_distribution(world, logger: RootLogger, cfg: dict):
         world (World): World object
         logger (RootLogger): Logger object
         cfg (dict): Configuration
+        workdir (str): Working directory
     """
-    logger.info("Initiating workplace and home distribution ...")
-    init_worker_distribution(
-        world, 
+    logger.info("Distributing individuals to work/home areas...")
+    work_and_home_distribution(
+        world,
         cfg["input"]["base_input"], 
         cfg["input"]["distribution"], 
         cfg["input"]["group_and_interaction"], 
         cfg["input"]["population"])
 
+    logger.info("Distributing individuals to household ...")
+    household_distribution(
+        world, 
+        cfg["input"]["base_input"], 
+        cfg["input"]["distribution"])
 
+    return {
+        "data": world,
+        "df": world2df(world, write_csv = True, workdir=workdir, tag="after_init")
+    }
+
+
+def commute_init(world: World_class, logger: RootLogger, cfg: dict, workdir: str):
+    """Creating the commuting object
+
+    Args:
+        world (World_class): A world object
+        cfg (str): Configuration
+        logger (RootLogger): Logger object
+        workdir (str): Working directory
+
+    Returns:
+        _type_: _description_
+    """
+    logger.info("Creating a commute ...")
+
+    commute = create_commute(
+        world, 
+        cfg["input"]["base_input"], 
+        cfg["input"]["commute"])
+    
+    world2df(world, write_csv = True, workdir=workdir, tag="after_commute")
+
+    return commute
 
 
 def main():
@@ -129,7 +164,10 @@ def main():
     world = world_init(logger, cfg)
 
     logger.info("Population distribution ...")
-    world_distribution(world, logger, cfg)
+    world = world_distribution(world, logger, cfg, args.workdir)
+
+    logger.info("Creating commuting object ...")
+    commute = commute_init(world["data"], logger, cfg, args.workdir)
 
     logger.info("Job done ...")
 
