@@ -5,6 +5,8 @@ exp_name: singleobs
 
 input:
   base_input: etc/data/singleobs
+  simulation: simulation/simulation_cfg.yml
+
 
   population:
     geography:
@@ -23,9 +25,11 @@ input:
           male: population/demography/comorbidities_male.csv
 
   interaction:
+    general: interaction/general.yaml
     hospital:
       cfg:
         neighbour_hospitals: group/cfg/hospital/neighbour_hospitals.yaml
+        configs: distribution/cfg/hospital/hospital_config.yaml
       data:
         location: group/data/hospital/hospital_locations.csv
       interaction: interaction/hospital.yaml
@@ -61,3 +65,14 @@ input:
     work_and_home:
       data: distribution/data/work_and_home/workplace_and_home.csv
       cfg: distribution/cfg/work_and_home/worker_distributor.yaml
+
+  disease:
+    cfg:
+      transmission_profile: diesease/cfg/covid19.yaml
+      sympton_trajectories: diesease/cfg/symptom_trajectories.yaml
+    data:
+      infection_outcome: diesease/data/infection_outcome_ratio.csv
+
+  policy:
+    cfg: policy/cfg/policy.yaml
+    

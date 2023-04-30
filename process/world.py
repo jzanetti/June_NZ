@@ -3,8 +3,8 @@ from june.geography.geography import Geography as Geography_class
 from june.demography.demography import Demography as Demography_class
 from june.world import World as World_class
 from process.demography import create_person
-from process.groups import create_geography_dependant_groups
-from process.distribution import work_and_home_distribution, household_distribution
+from process.groups import create_group_locations
+from process.distribution import work_and_home_distribution, household_distribution, hospital_distribution, company_distribution
 from process.diags import world2df
 
 from logging import getLogger
@@ -33,7 +33,7 @@ def create_world_wrapper(
     # (e.g., venues such as companies, hospitals ...)
     # -----------------------------
     logger.info("Creating groups (companies, hospitals etc.)...")
-    group_object = create_geography_dependant_groups(
+    group_object = create_group_locations(
         geography_object["data"], 
         base_input, 
         interaction_cfg)
@@ -60,13 +60,27 @@ def create_world_wrapper(
         population_cfg)
 
     # -----------------------------
-    # 3. Assign people to households
+    # 3. Assign people to fixed interaction objects
     # -----------------------------
-    logger.info("Distributing individuals to household ...")
-    household_distribution(
-        world, 
-        base_input, 
-        interaction_cfg)
+    for interaction_obj in interaction_cfg:
+        
+        if interaction_obj in ["genneral", "commute"]:
+            continue
+
+        logger.info(f"Distributing individuals to {interaction_obj} ...")
+
+        if interaction_obj == "household":
+            household_distribution(
+                world, 
+                base_input, 
+                interaction_cfg["household"])
+        elif interaction_obj == "hospital":
+            hospital_distribution(
+                world,
+                base_input,
+                interaction_cfg["hospital"])
+        elif interaction_obj == "hospital":
+            company_distribution(world)
 
     return {
         "data": world,

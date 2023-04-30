@@ -18,14 +18,13 @@ from os.path import exists
 from os import makedirs
 from process.utils import setup_logging, read_cfg
 from process.geography import create_geography_wrapper
-from process.interaction import create_interaction_wrapper
-from process.demography import create_person
-from process.groups import create_geography_dependant_groups
-from process.world import create_world_wrapper, world2df
-from process.distribution import work_and_home_distribution, household_distribution
+from process.interaction import initiate_interaction, create_interaction_wrapper
+from process.world import create_world_wrapper
 from process.commute import create_commute_wrapper
-from logging import RootLogger
-from june.world import World as World_class
+from process.disease import create_disease_wrapper
+from process.tracker import create_tracker_wrapper
+from process.policy import create_policy_wrapper
+from process.simulation import start_simulation
 
 def get_example_usage():
     example_text = """example:
@@ -72,7 +71,7 @@ def main():
         cfg["input"]["population"]["geography"])
 
     logger.info("Initiating the interaction ...")
-    create_interaction_wrapper(
+    initiate_interaction(
         cfg["input"]["base_input"], 
         cfg["input"]["interaction"])
 
@@ -91,6 +90,43 @@ def main():
         cfg["input"]["base_input"], 
         cfg["input"]["interaction"]["commute"], 
         args.workdir)
+
+    logger.info("Creating disease object ...")
+    disease = create_disease_wrapper(
+        world["data"], 
+        cfg["input"]["base_input"], 
+        cfg["input"]["disease"])
+
+    logger.info("Creating interaction object ...")
+    interaction = create_interaction_wrapper(
+        cfg["input"]["base_input"], 
+        cfg["input"]["interaction"], 
+        args.workdir)
+
+    logger.info("Creating policy object ...")
+    policy = create_policy_wrapper(cfg["input"]["base_input"], cfg["input"]["policy"],)
+
+    logger.info("Creating tracker ...")
+    tracker = create_tracker_wrapper(
+        args.workdir,
+        world["data"], 
+        list(cfg["input"]["interaction"].keys()),
+        interaction["path"]
+    )
+
+    logger.info("Starting simulation ...")
+    start_simulation(
+        world["data"],
+        disease_obj = disease,
+        interaction_obj = interaction["data"],
+        travel_obj = commute,
+        policy_obj = policy,
+        tracker_obj = tracker,
+        simulation_cfg = cfg["input"]["simulation"],
+        disease_cfg = cfg["input"]["disease"],
+        base_dir = cfg["input"]["base_input"],
+        workdir = args.workdir
+    )
 
     logger.info("Job done ...")
 

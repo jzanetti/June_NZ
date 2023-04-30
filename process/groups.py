@@ -3,7 +3,7 @@ from june.geography.geography import Geography as Geography_class
 from os.path import join
 from pandas import DataFrame
 
-def create_geography_dependant_groups(geography: Geography_class, base_dir: str, group_and_interaction_cfg: dict) -> Geography_class:
+def create_group_locations(geography: Geography_class, base_dir: str, group_and_interaction_cfg: dict) -> Geography_class:
     """Create groups and attach the groups to geography
 
     Args:
