@@ -25,6 +25,7 @@ from process.disease import create_disease_wrapper
 from process.tracker import create_tracker_wrapper
 from process.policy import create_policy_wrapper
 from process.simulation import start_simulation
+from process.output import output2csv
 
 def get_example_usage():
     example_text = """example:
@@ -115,7 +116,7 @@ def main():
     )
 
     logger.info("Starting simulation ...")
-    start_simulation(
+    output = start_simulation(
         world["data"],
         disease_obj = disease,
         interaction_obj = interaction["data"],
@@ -127,6 +128,10 @@ def main():
         base_dir = cfg["input"]["base_input"],
         workdir = args.workdir
     )
+
+    output2csv(args.workdir, output)
+
+
 
     logger.info("Job done ...")
 

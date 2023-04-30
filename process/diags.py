@@ -5,6 +5,148 @@ from os.path import join
 from june.world import World as World_class
 from june.geography.geography import Geography as Geography_class
 
+
+def world_person2df(world_input2, time=None):
+    world_input = deepcopy(world_input2)
+
+
+    person_info = {
+        "id": [],
+        "time": [],
+        "super_area_name": [],
+        "area_name": [],
+        # "household_id": [],
+        "sex": [],
+        "age": [],
+        "ethnicity": [],
+        "work_sector": [],
+        "sub_sector": [],
+        "lockdown_status": [],
+        "comorbidity": [],
+        "busy": [],
+        "work_super_area": [],
+        "residence_super_area": [],
+        "housemates": [],
+        "num_housemates": [],
+        "work_city": [],
+        "home_city": [],
+        "transport_method": [],
+        "transport_public": [],
+        "commute": [],
+        "residence_group_type": [],
+        "residence_subgroup_type": [],
+        "residence_external": [],
+        "infected": [],
+        "infection": [],
+        "infection_probability": [],
+        "time_of_infection": [],
+        "intensive_care": [],
+        "symptoms": [],
+        "dead": []
+
+    }
+
+    for proc_person in world_input.people:
+
+        if time is not None:
+            person_info["time"].append(time)
+        else:
+            person_info["time"].append(None)
+
+        person_info["id"].append(proc_person.id)
+        person_info["super_area_name"].append(proc_person.super_area.name)
+        person_info["area_name"].append(proc_person.area.name)
+        
+        try:
+            housemates = [person.id for person in proc_person.housemates]
+        except AttributeError:
+            housemates = None
+
+        person_info["housemates"].append(housemates)
+        person_info["sex"].append(proc_person.sex)
+        person_info["age"].append(proc_person.age)
+        person_info["ethnicity"].append(proc_person.ethnicity)
+        person_info["work_sector"].append(proc_person.sector)
+        person_info["sub_sector"].append(proc_person.sub_sector)
+        person_info["lockdown_status"].append(proc_person.lockdown_status)
+        person_info["comorbidity"].append(proc_person.comorbidity)
+        person_info["busy"].append(proc_person.busy)
+
+        try:
+            residence_group_type = proc_person.residence.group.type
+        except AttributeError:
+            residence_group_type = None
+
+        try:
+            residence_subgroup_type = proc_person.residence.group.subgroup_type
+        except AttributeError:
+            residence_subgroup_type = None
+
+        try:
+            residence_external = proc_person.residence.residence
+        except AttributeError:
+            residence_external = None
+
+        person_info["residence_group_type"].append(residence_group_type)
+        person_info["residence_subgroup_type"].append(residence_subgroup_type)
+        person_info["residence_external"].append(residence_external)
+        person_info["infected"].append(proc_person.infected)
+
+        if proc_person.infection is not None:
+            person_info["infection"].append(proc_person.infection)
+            person_info["infection_probability"].append(proc_person.infection.infection_probability)
+            person_info["time_of_infection"].append(proc_person.infection.time_of_infection)
+        else:
+            person_info["infection"].append(None)
+            person_info["infection_probability"].append(None)
+            person_info["time_of_infection"].append(None)
+
+        person_info["intensive_care"].append(proc_person.intensive_care)
+
+        person_info["dead"].append(proc_person.dead)
+        if proc_person.symptoms is not None:
+            person_info["symptoms"].append(proc_person.symptoms.trajectory)
+        else:
+            person_info["symptoms"].append(None)
+
+        if proc_person.work_super_area is not None:
+            person_info["work_super_area"].append(proc_person.work_super_area.name)
+        else:
+            person_info["work_super_area"].append(None)
+        person_info["residence_super_area"].append(proc_person.super_area.name)
+
+
+        try:
+            num_housemates = len(proc_person.housemates)
+        except AttributeError:
+            num_housemates = None
+        person_info["num_housemates"].append(num_housemates)
+
+
+        if proc_person.work_city is not None:
+            person_info["work_city"].append(proc_person.work_city.name)
+        else:
+            person_info["work_city"].append(None)
+
+
+        if proc_person.home_city is not None:
+            person_info["home_city"].append(proc_person.home_city.name)
+        else:
+            person_info["home_city"].append(None)
+
+        if proc_person.mode_of_transport is not None:
+            person_info["transport_method"].append(proc_person.mode_of_transport.description)
+            person_info["transport_public"].append(proc_person.mode_of_transport.is_public)
+        else:
+            person_info["transport_method"].append(None)
+            person_info["transport_public"].append(None)
+
+        person_info["commute"].append(proc_person.commute)
+
+    return DataFrame.from_dict(person_info)
+
+
+
 def world2df(world_input: World_class, time: datetime = None, write_csv: bool = False, workdir: str = None, tag: str = ""):
     """Convert the world object to a dataframe
 
@@ -183,9 +325,6 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
             output[output_key].to_csv(join(workdir, f"{output_key}_{tag}.csv"))
 
     return output
-
-
-
 
 def geography2df(geography: Geography_class) -> DataFrame:
     """Convert geography to DataFrame

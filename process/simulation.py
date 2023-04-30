@@ -45,4 +45,4 @@ def start_simulation(
         tracker=tracker_obj,
     )
 
-    simulator.run()
+    return simulator.run()
