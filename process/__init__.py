@@ -5,3 +5,9 @@ JUNE_MODEL = {
     "branch": "sijin_dev",
     "model_name": "JUNE_v1.2.0",
 }
+
+SECTOR_CODES = {
+    "A": "Agriculture, forestry and fishing",
+    "Q": "Human health and social work activities",
+    "P": "Education"
+}

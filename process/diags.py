@@ -4,35 +4,40 @@ from datetime import datetime
 from os.path import join
 from june.world import World as World_class
 from june.geography.geography import Geography as Geography_class
-
+from process import SECTOR_CODES
 
 def world_person2df(world_input2, time=None):
     world_input = deepcopy(world_input2)
 
 
     person_info = {
-        "id": [],
         "time": [],
         "super_area_name": [],
         "area_name": [],
-        # "household_id": [],
+        "id": [],
         "sex": [],
         "age": [],
         "ethnicity": [],
+        "comorbidity": [],
         "work_sector": [],
         "sub_sector": [],
+        "subgroup_or_activity": [],
         "lockdown_status": [],
-        "comorbidity": [],
-        "busy": [],
+
         "work_super_area": [],
-        "residence_super_area": [],
-        "housemates": [],
-        "num_housemates": [],
+        "home_super_area": [],
         "work_city": [],
         "home_city": [],
         "transport_method": [],
         "transport_public": [],
-        "commute": [],
+        "commute_station_type": [],
+        "commute_station_city": [],
+        "commute_group_name": [],
+        "busy": [],
+
+        "housemates": [],
+        "num_housemates": [],
+
         "residence_group_type": [],
         "residence_subgroup_type": [],
         "residence_external": [],
@@ -41,7 +46,7 @@ def world_person2df(world_input2, time=None):
         "infection_probability": [],
         "time_of_infection": [],
         "intensive_care": [],
-        "symptoms": [],
+        "symptoms_trajectory": [],
         "dead": []
 
     }
@@ -55,6 +60,7 @@ def world_person2df(world_input2, time=None):
 
         person_info["id"].append(proc_person.id)
         person_info["super_area_name"].append(proc_person.super_area.name)
+
         person_info["area_name"].append(proc_person.area.name)
         
         try:
@@ -66,12 +72,26 @@ def world_person2df(world_input2, time=None):
         person_info["sex"].append(proc_person.sex)
         person_info["age"].append(proc_person.age)
         person_info["ethnicity"].append(proc_person.ethnicity)
-        person_info["work_sector"].append(proc_person.sector)
+        if proc_person.sector is not None:
+            person_info["work_sector"].append(SECTOR_CODES[proc_person.sector])
+        else:
+            person_info["work_sector"].append(None)
         person_info["sub_sector"].append(proc_person.sub_sector)
         person_info["lockdown_status"].append(proc_person.lockdown_status)
         person_info["comorbidity"].append(proc_person.comorbidity)
         person_info["busy"].append(proc_person.busy)
 
+        subgroup_name = []
+        for subgroup_key in dir(proc_person.subgroups):
+            if subgroup_key.startswith("__") or subgroup_key == "iter":
+                continue
+
+            if getattr(proc_person.subgroups, subgroup_key) is not None:
+                subgroup_name.append(subgroup_key)
+        if len(subgroup_name) == 0:
+            subgroup_name = None
+        person_info["subgroup_or_activity"].append(subgroup_name)
+            
         try:
             residence_group_type = proc_person.residence.group.type
         except AttributeError:
@@ -93,9 +113,11 @@ def world_person2df(world_input2, time=None):
         person_info["infected"].append(proc_person.infected)
 
         if proc_person.infection is not None:
-            person_info["infection"].append(proc_person.infection)
-            person_info["infection_probability"].append(proc_person.infection.infection_probability)
-            person_info["time_of_infection"].append(proc_person.infection.time_of_infection)
+            person_info["infection"].append(
+                # proc_person.infection
+                proc_person.infection.tag.name)
+            person_info["infection_probability"].append(round(proc_person.infection.infection_probability, 5))
+            person_info["time_of_infection"].append(round(proc_person.infection.time_of_infection, 5))
         else:
             person_info["infection"].append(None)
             person_info["infection_probability"].append(None)
@@ -105,15 +127,27 @@ def world_person2df(world_input2, time=None):
 
         person_info["dead"].append(proc_person.dead)
         if proc_person.symptoms is not None:
-            person_info["symptoms"].append(proc_person.symptoms.trajectory)
+
+            symptoms_trajectory = []
+            for proc_traj in proc_person.symptoms.trajectory:
+                symptoms_trajectory.append(
+                    (
+                        proc_traj[0],
+                        proc_traj[1].name
+                    )
+                )
+
+            person_info["symptoms_trajectory"].append(
+                # proc_person.symptoms.trajectory
+                symptoms_trajectory)
         else:
-            person_info["symptoms"].append(None)
+            person_info["symptoms_trajectory"].append(None)
 
         if proc_person.work_super_area is not None:
             person_info["work_super_area"].append(proc_person.work_super_area.name)
         else:
             person_info["work_super_area"].append(None)
-        person_info["residence_super_area"].append(proc_person.super_area.name)
+        person_info["home_super_area"].append(proc_person.super_area.name)
 
 
         try:
@@ -141,7 +175,22 @@ def world_person2df(world_input2, time=None):
             person_info["transport_method"].append(None)
             person_info["transport_public"].append(None)
 
-        person_info["commute"].append(proc_person.commute)
+        if proc_person.commute is not None:
+            person_info["commute_station_type"].append(
+                proc_person.commute.group.station.station_type
+            )
+            person_info["commute_station_city"].append(
+                proc_person.commute.group.station.city
+            )
+            person_info["commute_group_name"].append(
+                proc_person.commute.group.name
+            )
+
+            # person_info["commute"].append(proc_person.commute)
+        else:
+            person_info["commute_station_type"].append(None)
+            person_info["commute_station_city"].append(None)
+            person_info["commute_group_name"].append(None)
 
     return DataFrame.from_dict(person_info)
 

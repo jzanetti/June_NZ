@@ -20,8 +20,6 @@ trajectories:
           loc: 0.0
           scale: 5.
 
- 
-      
       - symptom_tag: hospitalised
         completion_time:
           type: beta
