@@ -1,38 +1,47 @@
 from pandas import concat
-from process.diags import world_person2df
+from process.diags import world_person2df, get_total_people
 from os.path import join, exists
 from pandas import DataFrame
 from os import makedirs
 import matplotlib.pyplot as plt
 
-def output2csv(workdir: str, simulation_output: list) -> DataFrame:
+def output_postprocess(workdir: str, simulation_output: list) -> DataFrame:
     """Write output (world object) to a csv
 
     Args:
         workdir (str): Working directory
         simulation_output (list): A list of simulation outputs
     """
-    output = []
+    output_people = []
+    output_location = []
     for proc_simulation in simulation_output:
         proc_simulation_time = list(proc_simulation.keys())[0]
-        output.append(
+        # print(proc_simulation[proc_simulation_time].companies.group_subgroups_size)
+        output_people.append(
             world_person2df(
                 proc_simulation[proc_simulation_time], 
                 time=proc_simulation_time)
             )
+        
+        output_location.append(get_total_people(
+            proc_simulation[proc_simulation_time], 
+            time=proc_simulation_time))
 
-    df = concat(output)
+    output_people = concat(output_people)
     
-    df.to_csv(join(
+    output_people.to_csv(join(
         workdir,
-        "output.csv"
+        "output_people.csv"
     ))
 
-    return df
+    return {
+        "output_people": output_people,
+        "output_location": output_location
+    }
 
 
 
-def output2figure(workdir: str, df: DataFrame):
+def output_people_to_figure(workdir: str, df: DataFrame):
     """Convert output dataframe to figures
 
     Args:

@@ -2,14 +2,20 @@ from june.records import Record
 from june.simulator import Simulator
 from june.world import World as World_class
 from os.path import join
+from june.epidemiology.epidemiology import Epidemiology as Epidemiology_class
+from june.interaction.interaction import Interaction as Interaction_class
+from june.groups.travel.travel import Travel as Travel_class
+from june.tracker.tracker import Tracker as Tracker_class
+from june.policy.policy import Policies as Policies_class
+
 
 def start_simulation(
     world: World_class,
-    disease_obj = None,
-    interaction_obj = None,
-    travel_obj = None,
-    policy_obj = None,
-    tracker_obj = None,
+    disease_obj: Epidemiology_class = None,
+    interaction_obj: Interaction_class = None,
+    travel_obj: Travel_class = None,
+    policy_obj: Policies_class = None,
+    tracker_obj: Tracker_class = None,
     simulation_cfg: dict = None,
     disease_cfg: dict = None,
     base_dir: str = None,
@@ -19,11 +25,11 @@ def start_simulation(
 
     Args:
         world (World_class): The world object
-        disease_obj (_type_, optional): Disease/epidemiology object. Defaults to None.
-        interaction_obj (_type_, optional): Interaction object. Defaults to None.
-        travel_obj (_type_, optional): Travel/commute object. Defaults to None.
-        policy_obj (_type_, optional): Policy object. Defaults to None.
-        tracker_obj (_type_, optional): Track object. Defaults to None.
+        disease_obj (Epidemiology_class, optional): Disease/epidemiology object. Defaults to None.
+        interaction_obj (Interaction_class, optional): Interaction object. Defaults to None.
+        travel_obj (Travel_class, optional): Travel/commute object. Defaults to None.
+        policy_obj (Policies_class, optional): Policy object. Defaults to None.
+        tracker_obj (Tracker_class, optional): Track object. Defaults to None.
         simulation_cfg (dict, optional): Simulation configuration. Defaults to None.
         disease_cfg (dict, optional): Disease configuration. Defaults to None.
         base_dir (str): Base directory

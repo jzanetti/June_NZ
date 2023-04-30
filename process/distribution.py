@@ -7,7 +7,6 @@ from june.distributors import (
     CompanyDistributor
 )
 
-
 def work_and_home_distribution(
         world: World_class,
         base_dir: str, 
@@ -90,7 +89,7 @@ def hospital_distribution(world: World_class, base_dir: str, distribution_hospit
     )
 
 
-def company_distribution(world: World_class):
+def company_distribution(world: World_class,):
 
     company_distributor = CompanyDistributor()
     company_distributor.distribute_adults_to_companies_in_super_areas(

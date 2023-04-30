@@ -6,6 +6,49 @@ from june.world import World as World_class
 from june.geography.geography import Geography as Geography_class
 from process import SECTOR_CODES
 
+def get_total_people(
+        world_input2: World_class, 
+        time=None, 
+        groups: list = [
+            "care_homes", 
+            "cemeteries", 
+            "cinemas", 
+            "city_transports", 
+            "companies", 
+            "groceries", 
+            "hospitals", 
+            "inter_city_transports", 
+            "households", 
+            "pubs", 
+            "schools", 
+            "universities"
+    ]):
+    world_input = deepcopy(world_input2)
+
+    total_people = {}
+    for proc_member in world_input.areas.members:
+        total_people[proc_member.name] = {}
+
+    for proc_group in groups:
+
+        if proc_group == "cemeteries":
+            continue
+
+        proc_data = getattr(world_input, proc_group)
+        if proc_data is not None:
+            for proc_member in proc_data:
+                proc_area = proc_member.area.name
+                if proc_group not in total_people[proc_area]:
+                    total_people[proc_area][proc_group] = 0
+                total_people[proc_area][proc_group] += proc_member.size
+
+    if time is not None:
+        total_people["time"] = [time]
+
+    return total_people
+
+
+
 def world_person2df(world_input2, time=None):
     world_input = deepcopy(world_input2)
 

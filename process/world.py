@@ -79,7 +79,7 @@ def create_world_wrapper(
                 world,
                 base_input,
                 interaction_cfg["hospital"])
-        elif interaction_obj == "hospital":
+        elif interaction_obj == "company":
             company_distribution(world)
 
     return {

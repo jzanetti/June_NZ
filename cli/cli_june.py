@@ -25,7 +25,7 @@ from process.disease import create_disease_wrapper
 from process.tracker import create_tracker_wrapper
 from process.policy import create_policy_wrapper
 from process.simulation import start_simulation
-from process.output import output2csv, output2figure
+from process.output import output_postprocess, output_people_to_figure
 
 def get_example_usage():
     example_text = """example:
@@ -129,9 +129,9 @@ def main():
         workdir = args.workdir
     )
 
-    df = output2csv(args.workdir, output)
+    output = output_postprocess(args.workdir, output)
 
-    output2figure(args.workdir, df)
+    output_people_to_figure(args.workdir, output)
 
     logger.info("Job done ...")
 

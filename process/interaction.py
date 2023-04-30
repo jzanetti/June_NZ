@@ -6,7 +6,7 @@ from june.groups import Household
 from yaml import dump as yaml_dump
 from yaml import safe_load as yaml_load
 from june.interaction import Interaction
-from june.groups import Cemeteries
+from june.groups.group.group import InteractiveGroup
 
 def create_interaction_wrapper(base_dir: str, interaction_cfg: dict, workdir: str):
     """Create interaction object
@@ -95,6 +95,10 @@ def initiate_interaction(base_dir: str, interaction_cfg: dict):
                     base_dir,
                     interaction_cfg["company"]["interaction"])
                 )
+            InteractiveGroup.interaction_path= join(
+                    base_dir,
+                    interaction_cfg["general"])
+
         elif group_name == "commute":
             mytransport = Transport
             mytransport.subgroup_params = SubgroupParams.from_file(
