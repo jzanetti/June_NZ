@@ -11,7 +11,12 @@ def output2csv(workdir: str, simulation_output: list):
     """
     output = []
     for proc_simulation in simulation_output:
-        output.append(world_person2df(proc_simulation))
+        proc_simulation_time = list(proc_simulation.keys())[0]
+        output.append(
+            world_person2df(
+                proc_simulation[proc_simulation_time], 
+                time=proc_simulation_time)
+            )
 
     concat(output).to_csv(join(
         workdir,
