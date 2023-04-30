@@ -131,7 +131,7 @@ def main():
 
     output = output_postprocess(args.workdir, output)
 
-    output_people_to_figure(args.workdir, output)
+    output_people_to_figure(args.workdir, output["output_people"])
 
     logger.info("Job done ...")
 
