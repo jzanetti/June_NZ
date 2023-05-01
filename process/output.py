@@ -1,19 +1,20 @@
 from pandas import concat
-from process.diags import world_person2df, get_total_people
+from process.diags import world_person2df, get_people_for_groups_df
 from os.path import join, exists
 from pandas import DataFrame
 from os import makedirs
 import matplotlib.pyplot as plt
 
-def output_postprocess(workdir: str, simulation_output: list) -> DataFrame:
+def output_postprocess(workdir: str, simulation_output: list, write_csv: bool = True) -> DataFrame:
     """Write output (world object) to a csv
 
     Args:
         workdir (str): Working directory
         simulation_output (list): A list of simulation outputs
+        write_csv (bool): Write output to a CSV
     """
     output_people = []
-    output_location = []
+    output_groups = []
     for proc_simulation in simulation_output:
         proc_simulation_time = list(proc_simulation.keys())[0]
         # print(proc_simulation[proc_simulation_time].companies.group_subgroups_size)
@@ -23,23 +24,51 @@ def output_postprocess(workdir: str, simulation_output: list) -> DataFrame:
                 time=proc_simulation_time)
             )
         
-        output_location.append(get_total_people(
-            proc_simulation[proc_simulation_time], 
+        output_groups.append(get_people_for_groups_df(
+            proc_simulation[proc_simulation_time],
             time=proc_simulation_time))
 
     output_people = concat(output_people)
+    output_groups = concat(output_groups)
     
-    output_people.to_csv(join(
-        workdir,
-        "output_people.csv"
-    ))
+    if write_csv:
+        output_people.to_csv(join(
+            workdir,
+            "output_people.csv"
+        ))
+        output_groups.to_csv(join(
+            workdir,
+            "output_groups.csv"
+        ))
 
     return {
         "output_people": output_people,
-        "output_location": output_location
+        "output_groups": output_groups
     }
 
 
+
+def output_group_to_figure(workdir: str, df: DataFrame):
+    """Convert output groups to figures
+
+    Args:
+        workdir (str): Working directory
+        df (DataFrame): Dataframe output
+    """
+    fig_dir = join(workdir, "fig")
+    if not exists(fig_dir):
+        makedirs(fig_dir)
+
+    # plot Area total people
+    result = df.groupby(["area", "time"])["people"].sum()
+    result_df = result.unstack(level="area")
+    result_df["total"] = result_df.sum(axis=1)
+    result_df.plot.line()
+    plt.xlabel("Time")
+    plt.ylabel("Total People")
+    plt.title("Total people for different areas")
+    plt.savefig(join(fig_dir, f"total_people.png"), bbox_inches = "tight")
+    plt.close()
 
 def output_people_to_figure(workdir: str, df: DataFrame):
     """Convert output dataframe to figures
@@ -55,10 +84,12 @@ def output_people_to_figure(workdir: str, df: DataFrame):
     # plot demography
     for proc_area in df.area_name.unique():
         proc_area_data = df.loc[df["area_name"] == proc_area][
-            ["sex", "age", "ethnicity", "comorbidity", "work_sector", "work_super_area", "home_super_area"]]
+            ["sex", "age", "ethnicity", "comorbidity", "work_sector", "work_super_area", "home_super_area", "time"]]
+        proc_area_data = proc_area_data[proc_area_data["time"] == min(proc_area_data["time"])]
+        
         proc_area_data.fillna("",inplace=True)
         proc_area_data['work_to_home'] = proc_area_data[['work_super_area', 'home_super_area']].agg('-'.join, axis=1)
-        proc_area_data = proc_area_data.drop(columns=["work_super_area", "home_super_area"])
+        proc_area_data = proc_area_data.drop(columns=["work_super_area", "home_super_area", "time"])
         data = proc_area_data.apply(proc_area_data.value_counts)
         data.plot(kind="pie", subplots=True, layout=(2,3),figsize=(15, 9), title=f"Area: {proc_area}")
         plt.savefig(join(fig_dir, f"{proc_area}_demography.png"), bbox_inches = "tight")
