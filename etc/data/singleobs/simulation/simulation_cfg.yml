@@ -7,6 +7,9 @@ activity_to_super_groups:
   residence: ["households"]
   commute: ['city_transports', 'inter_city_transports']
 
+seed:
+    cases_per_capita: 0.5
+
 time:
   total_days: 30
   initial_day: "2020-03-01 9:00" 

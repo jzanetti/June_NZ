@@ -3,7 +3,7 @@
 exp_name: singleobs
 
 
-simulation_cfg: etc/data/singleobs2/simulation/simulation_cfg.yml
+simulation_cfg: etc/data/singleobs/simulation/simulation_cfg.yml
 
 output:
   demography: true
@@ -13,7 +13,7 @@ output:
 
 
 data:
-  base_dir: etc/data/singleobs2
+  base_dir: etc/data/singleobs
   geography:
     geography_hierarchy: geography/geography_hierarchy_definition.csv
     super_area_location: geography/super_area_location.csv

@@ -4,7 +4,7 @@
 The base model of **JUNE** ([link](https://github.com/jzanetti/JUNE/tree/sijin_dev)) is forked from [link](https://github.com/IDAS-Durham/JUNE).
 This repository provides a wrapper to run it for New Zealand.
 
-### Installation
+## Installation
 The package can be installed using:
 
 ```
@@ -12,8 +12,13 @@ export CONDA_BASE=~/miniconda3
 make create_env
 ```
 
+## Data description:
 
-### Required data:
+There are three levels of data used for New Zealand:
+
+`North/South Island` -> `Regional council` (REGC2023_code) -> `Statistical Area 2` (SA12023_code)
+
+## Required data:
 
 #### Disease:
 - `covid19.yaml`: infection transmission profile defination (geography independant)
@@ -64,8 +69,10 @@ make create_env
 - `gender_profile_female_ratio.csv`: gender ratio ~ age profile (area level)
 - `comorbidities_<csv>.csv`: comorbidities ~ age profile (geography independant)
 
-#### geography:
+#### geography [link](etc/doc/README.geography.md):
 - `area_location.csv`: area location (area level)
 - `super_area_location.csv`: super area location (super area level)
 - `area_socialeconomic_index.csv`: social economic index (area level)
 - `geography_hierarchy_definition.csv`: geography hierarchy (geography independant)
+
+
