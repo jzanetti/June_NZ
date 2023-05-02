@@ -10,9 +10,8 @@ from june.distributors import (
 def work_and_home_distribution(
         world: World_class,
         base_dir: str, 
-        distribution_cfg: dict,
         group_and_interaction_cfg: dict, 
-        population_cfg: dict):
+        geography_cfg: dict):
     """Distribute people to different areas using their work and home areas
 
     Args:
@@ -20,15 +19,15 @@ def work_and_home_distribution(
         base_dir (str): The base configuration directory
         distribution_cfg (dict): Distribution configuration
         group_and_interaction_cfg (dict): Group and interaction configuration
-        population_cfg (dict): Population configuration
+        geography_cfg (dict): Geography configuration
     """
     worker_distr = WorkerDistributor.for_super_areas(
         area_names=[super_area.name for super_area in world.super_areas],
-        workflow_file = join(base_dir, distribution_cfg["work_and_home"]["data"]),
-        sex_per_sector_file = join(base_dir, group_and_interaction_cfg["company"]["data"]["sectors_employee_genders"]),
-        config_file = join(base_dir, distribution_cfg["work_and_home"]["cfg"]),
-        policy_config_file = join(base_dir, group_and_interaction_cfg["company"]["cfg"]["company_closure"]),
-        areas_map_path = join(base_dir, population_cfg["geography"]["geography_hierarchy"])
+        workflow_file = join(base_dir, group_and_interaction_cfg["others"]["workplace_and_home"]),
+        sex_per_sector_file = join(base_dir, group_and_interaction_cfg["company"]["defination"]["sectors_employee_genders"]),
+        config_file = join(base_dir, group_and_interaction_cfg["company"]["defination"]["subsector_cfg"]),
+        policy_config_file = join(base_dir, group_and_interaction_cfg["company"]["defination"]["company_closure"]),
+        areas_map_path = join(base_dir, geography_cfg["geography_hierarchy"])
         )
         
     worker_distr.distribute(
@@ -47,11 +46,11 @@ def household_distribution(world: World_class, base_dir: str, distribution_house
     """
     household_distributor = HouseholdDistributor.from_file(
         husband_wife_filename = join(
-            base_dir, distribution_household_cfg["data"]["age_difference_couple"]),
+            base_dir, distribution_household_cfg["defination"]["age_difference_couple"]),
         parent_child_filename = join(
-            base_dir, distribution_household_cfg["data"]["age_difference_parent_child"]),
+            base_dir, distribution_household_cfg["defination"]["age_difference_parent_child"]),
         config_filename = join(
-            base_dir, distribution_household_cfg["cfg"]["household_structure"]),
+            base_dir, distribution_household_cfg["defination"]["household_structure"]),
         number_of_random_numbers=int(1e3)
     )
 
@@ -61,11 +60,11 @@ def household_distribution(world: World_class, base_dir: str, distribution_house
         household_distributor.distribute_people_and_households_to_areas(
             world.areas,
             number_households_per_composition_filename = join(
-                base_dir, distribution_household_cfg["data"]["household_number"]),
+                base_dir, distribution_household_cfg["defination"]["household_number"]),
             n_students_filename = join(
-                base_dir, distribution_household_cfg["data"]["household_student"]),
+                base_dir, distribution_household_cfg["defination"]["household_student"]),
             n_people_in_communal_filename = join(
-                base_dir, distribution_household_cfg["data"]["household_commual"])
+                base_dir, distribution_household_cfg["defination"]["household_commual"])
         )
     )
 
@@ -82,7 +81,7 @@ def hospital_distribution(world: World_class, base_dir: str, distribution_hospit
 
     hospital_distributor = HospitalDistributor.from_file(
         world.hospitals,
-        config_filename=join(base_dir, distribution_hospital_cfg["cfg"]["configs"]))
+        config_filename=join(base_dir, distribution_hospital_cfg["defination"]["configs"]))
     hospital_distributor.distribute_medics_to_super_areas(world.super_areas)
     hospital_distributor.assign_closest_hospitals_to_super_areas(
         world.super_areas

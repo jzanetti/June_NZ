@@ -40,8 +40,8 @@ def start_simulation(
         world=world,
         epidemiology=disease_obj,
         interaction=interaction_obj, 
-        config_filename = join(base_dir, simulation_cfg),
-        trajectory_filename = join(base_dir, disease_cfg["cfg"]["sympton_trajectories"]),
+        config_filename = simulation_cfg,
+        trajectory_filename = join(base_dir, disease_cfg["sympton_trajectories"]),
         travel = travel_obj,
         record = Record(    
             record_path = join(workdir, "output"),    

@@ -1,0 +1,5 @@
+# seats per passenger
+# data from TAble RAI0201 of the Depatment of Transport statistics (2018)
+seats_per_passenger:
+  London: 1.01
+

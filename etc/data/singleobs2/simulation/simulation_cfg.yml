@@ -1,0 +1,36 @@
+title: Covid configuration example
+
+activity_to_super_groups:
+  medical_facility: ["hospitals"]
+  primary_activity: ["companies"]
+  leisure: [] 
+  residence: ["households"]
+  commute: ['city_transports', 'inter_city_transports']
+
+seed:
+    cases_per_capita: 0.5
+
+time:
+  total_days: 30
+  initial_day: "2020-03-01 9:00" 
+  step_duration: 
+      weekday:
+          0: 8
+          1: 8
+          2: 8
+      weekend:
+          0: 8
+          1: 8
+          2: 8
+  step_activities:
+      weekday:
+          0: ['residence', 'primary_activity', 'medical_facility', 'commute']
+          1: ['residence', 'primary_activity', 'medical_facility', 'commute']
+          2: ['residence', 'primary_activity', 'medical_facility', 'commute']
+      weekend:
+          0: ['residence', 'primary_activity', 'medical_facility', 'commute']
+          1: ['residence', 'primary_activity', 'medical_facility', 'commute']
+          2: ['residence', 'primary_activity', 'medical_facility', 'commute']
+
+checkpoint_save_dates:
+

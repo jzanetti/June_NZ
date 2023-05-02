@@ -16,7 +16,7 @@ create_pseudo_data_folder()
 import argparse
 from os.path import exists
 from os import makedirs
-from process.utils import setup_logging, read_cfg
+from process.utils import setup_logging, read_cfg, check_data_availability
 from process.geography import create_geography_wrapper
 from process.interaction import initiate_interaction, create_interaction_wrapper
 from process.world import create_world_wrapper
@@ -25,7 +25,7 @@ from process.disease import create_disease_wrapper
 from process.tracker import create_tracker_wrapper
 from process.policy import create_policy_wrapper
 from process.simulation import start_simulation
-from process.output import output_postprocess, output_people_to_figure, output_group_to_figure
+from process.output import output_postprocess, output_to_figure
 
 def get_example_usage():
     example_text = """example:
@@ -66,52 +66,56 @@ def main():
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
 
+    logger.info("Checking data ...")
+    check_data_availability(cfg["data"])
+
     logger.info("Creating geography object ...")
     geography_object = create_geography_wrapper(
-        cfg["input"]["base_input"], 
-        cfg["input"]["population"]["geography"])
+        cfg["data"]["base_dir"], 
+        cfg["data"]["geography"])
 
     logger.info("Initiating the interaction ...")
     initiate_interaction(
-        cfg["input"]["base_input"], 
-        cfg["input"]["interaction"])
+        cfg["data"]["base_dir"], 
+        cfg["data"]["group_and_interaction"])
 
     logger.info("Creating the world object ...")
     world = create_world_wrapper(
         geography_object, 
-        cfg["input"]["base_input"],
-        cfg["input"]["population"],
-        cfg["input"]["distribution"],
-        cfg["input"]["interaction"],
+        cfg["data"]["base_dir"],
+        cfg["data"]["demography"],
+        cfg["data"]["geography"],
+        cfg["data"]["group_and_interaction"],
         args.workdir)
 
     logger.info("Creating commuting object ...")
     commute = create_commute_wrapper(
         world["data"],
-        cfg["input"]["base_input"], 
-        cfg["input"]["interaction"]["commute"], 
+        cfg["data"]["base_dir"], 
+        cfg["data"]["group_and_interaction"]["commute"], 
         args.workdir)
 
     logger.info("Creating disease object ...")
     disease = create_disease_wrapper(
         world["data"], 
-        cfg["input"]["base_input"], 
-        cfg["input"]["disease"])
+        cfg["data"]["base_dir"], 
+        cfg["data"]["disease"],
+        cfg["simulation_cfg"])
 
     logger.info("Creating interaction object ...")
     interaction = create_interaction_wrapper(
-        cfg["input"]["base_input"], 
-        cfg["input"]["interaction"], 
+        cfg["data"]["base_dir"], 
+        cfg["data"]["group_and_interaction"], 
         args.workdir)
 
     logger.info("Creating policy object ...")
-    policy = create_policy_wrapper(cfg["input"]["base_input"], cfg["input"]["policy"],)
+    policy = create_policy_wrapper(cfg["data"]["base_dir"], cfg["data"]["policy"])
 
     logger.info("Creating tracker ...")
     tracker = create_tracker_wrapper(
         args.workdir,
         world["data"], 
-        list(cfg["input"]["interaction"].keys()),
+        list(cfg["data"]["group_and_interaction"].keys()),
         interaction["path"]
     )
 
@@ -123,17 +127,15 @@ def main():
         travel_obj = commute,
         policy_obj = policy,
         tracker_obj = tracker,
-        simulation_cfg = cfg["input"]["simulation"],
-        disease_cfg = cfg["input"]["disease"],
-        base_dir = cfg["input"]["base_input"],
+        simulation_cfg = cfg["simulation_cfg"],
+        disease_cfg = cfg["data"]["disease"],
+        base_dir = cfg["data"]["base_dir"],
         workdir = args.workdir
     )
 
+    logger.info("Producing outputs ...")
     output = output_postprocess(args.workdir, output)
-
-    output_people_to_figure(args.workdir, output["output_people"])
-
-    output_group_to_figure(args.workdir, output["output_groups"])
+    output_to_figure(args.workdir, output, cfg["output"])
 
     logger.info("Job done ...")
 

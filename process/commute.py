@@ -34,15 +34,15 @@ def create_commute(world, base_dir: str, commute_cfg: dict):
 
     travel = Travel(
         city_super_areas_filename = join(
-            base_dir, commute_cfg["data"]["super_area_name"]),
+            base_dir, commute_cfg["defination"]["super_area_name"]),
         city_stations_filename = join(
-            base_dir, commute_cfg["cfg"]["stations"]),
+            base_dir, commute_cfg["defination"]["stations"]),
         commute_config_filename = join(
-            base_dir, commute_cfg["cfg"]["passage_seats_ratio"]),
+            base_dir, commute_cfg["defination"]["passage_seats_ratio"]),
         travel_mode_filename = join(
-            base_dir, commute_cfg["data"]["transport_mode"]),
+            base_dir, commute_cfg["defination"]["transport_mode"]),
         public_or_private_transport = join(
-            base_dir, commute_cfg["cfg"]["public_or_private_transport"]),
+            base_dir, commute_cfg["defination"]["public_or_private_transport"]),
     )
 
     travel.initialise_commute(world)

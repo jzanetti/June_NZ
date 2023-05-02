@@ -43,7 +43,7 @@ def combine_interaction_cfg(workdir: str, base_dir: str, interaction_cfg: dict) 
 
     for proc_group in interaction_cfg:
 
-        if proc_group == "general":
+        if proc_group == "others":
             continue
 
         proc_cfg = join(base_dir, interaction_cfg[proc_group]["interaction"])
@@ -53,7 +53,7 @@ def combine_interaction_cfg(workdir: str, base_dir: str, interaction_cfg: dict) 
 
         all_cfg.append(cfg["contact_matrices"])
 
-    with open(join(base_dir, interaction_cfg["general"]), "r") as fid:
+    with open(join(base_dir, interaction_cfg["others"]["general_interaction"]), "r") as fid:
         general_cfg = yaml_load(fid)
 
     general_cfg["contact_matrices"] = {}
@@ -69,48 +69,53 @@ def combine_interaction_cfg(workdir: str, base_dir: str, interaction_cfg: dict) 
     return combined_interaction_cfg_path
 
 
-def initiate_interaction(base_dir: str, interaction_cfg: dict):
+def initiate_interaction(base_dir: str, group_and_interaction: dict):
     """Interaction initiation for different groups
 
     Args:
         base_dir (list): base directory
-        interaction (dict): Interaction (for different groups) configuration
+        group_and_interaction (dict): Group_and_interaction (for different groups) configuration
 
     Raises:
         Exception: If the group is not implemented
     """
-    for group_name in interaction_cfg:
+    for group_name in group_and_interaction:
 
-        if group_name == "general":
+        if group_name == "others":
             continue
+
         if group_name == "hospital":
             Hospitals.get_interaction(
                 join(
                     base_dir,
-                    interaction_cfg["hospital"]["interaction"])
+                    group_and_interaction["hospital"]["interaction"])
                 )
         elif group_name == "company":
             Companies.get_interaction(
                 join(
                     base_dir,
-                    interaction_cfg["company"]["interaction"])
+                    group_and_interaction["company"]["interaction"])
                 )
             InteractiveGroup.interaction_path= join(
                     base_dir,
-                    interaction_cfg["general"])
+                    group_and_interaction[
+                        "others"]["general_interaction"])
 
         elif group_name == "commute":
             mytransport = Transport
             mytransport.subgroup_params = SubgroupParams.from_file(
                 config_filename=join(
-                    base_dir, interaction_cfg["commute"]["interaction"])
+                    base_dir, 
+                    group_and_interaction["commute"]["interaction"])
             )
 
         elif group_name == "household":
             my_household= Household
             my_household.subgroup_params = SubgroupParams.from_file(
                 config_filename=join(
-                    base_dir, interaction_cfg["household"]["interaction"])
+                    base_dir, 
+                    group_and_interaction["household"]["interaction"])
             )
         else:
-            raise Exception(f"{group_name} has not been implemented in init_interaction ...")
+            raise Exception(f"{group_name} has not been implemented "
+                            "in init_interaction ...")

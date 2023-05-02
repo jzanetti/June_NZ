@@ -14,5 +14,5 @@ def create_policy_wrapper(base_dir: str, policy_cfg: dict):
     return Policies.from_file(
         config_file=join(
             base_dir,
-            policy_cfg["cfg"]
+            policy_cfg
         ))

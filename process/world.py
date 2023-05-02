@@ -12,18 +12,18 @@ from logging import getLogger
 logger = getLogger()
 
 def create_world_wrapper(
-        geography_object, 
-        base_input: str,
-        population_cfg: dict,
-        distribution_cfg: dict,
-        interaction_cfg: dict,
-        workdir: str) -> World_class:
+    geography_object, 
+    base_input: str,
+    demography_cfg: dict,
+    geography_cfg: dict,
+    group_and_interaction_cfg: dict,
+    workdir: str) -> World_class:
     """Initialiate a world object
 
     Args:
         geography_object: Geography object
         workdir (str): working directory
-        cfg (dict): configuration
+        demography_cfg (dict): Demography configuration
 
     Returns:
         World: a World object
@@ -36,14 +36,14 @@ def create_world_wrapper(
     group_object = create_group_locations(
         geography_object["data"], 
         base_input, 
-        interaction_cfg)
+        group_and_interaction_cfg)
     geography_object["data"] = group_object["data"]
 
     logger.info("Creating demography ...")
     person = create_person(
         geography_object["data"],
         base_input, 
-        population_cfg["demography"]["individual"])
+        demography_cfg)
     
     logger.info("Creating the world ...")
     world = create_world(geography_object["data"], person["data"])
@@ -55,16 +55,15 @@ def create_world_wrapper(
     work_and_home_distribution(
         world,
         base_input, 
-        distribution_cfg, 
-        interaction_cfg, 
-        population_cfg)
+        group_and_interaction_cfg, 
+        geography_cfg)
 
     # -----------------------------
     # 3. Assign people to fixed interaction objects
     # -----------------------------
-    for interaction_obj in interaction_cfg:
+    for interaction_obj in group_and_interaction_cfg:
         
-        if interaction_obj in ["genneral", "commute"]:
+        if interaction_obj in ["others", "commute"]:
             continue
 
         logger.info(f"Distributing individuals to {interaction_obj} ...")
@@ -73,12 +72,12 @@ def create_world_wrapper(
             household_distribution(
                 world, 
                 base_input, 
-                interaction_cfg["household"])
+                group_and_interaction_cfg["household"])
         elif interaction_obj == "hospital":
             hospital_distribution(
                 world,
                 base_input,
-                interaction_cfg["hospital"])
+                group_and_interaction_cfg["hospital"])
         elif interaction_obj == "company":
             company_distribution(world)
 

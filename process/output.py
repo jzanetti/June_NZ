@@ -47,68 +47,59 @@ def output_postprocess(workdir: str, simulation_output: list, write_csv: bool = 
     }
 
 
-
-def output_group_to_figure(workdir: str, df: DataFrame):
-    """Convert output groups to figures
-
-    Args:
-        workdir (str): Working directory
-        df (DataFrame): Dataframe output
-    """
-    fig_dir = join(workdir, "fig")
-    if not exists(fig_dir):
-        makedirs(fig_dir)
-
-    # plot Area total people
-    result = df.groupby(["area", "time"])["people"].sum()
-    result_df = result.unstack(level="area")
-    result_df["total"] = result_df.sum(axis=1)
-    result_df.plot.line()
-    plt.xlabel("Time")
-    plt.ylabel("Total People")
-    plt.title("Total people for different areas")
-    plt.savefig(join(fig_dir, f"total_people.png"), bbox_inches = "tight")
-    plt.close()
-
-def output_people_to_figure(workdir: str, df: DataFrame):
+def output_to_figure(workdir: str, output: dict, output_cfg: dict):
     """Convert output dataframe to figures
 
     Args:
         workdir (str): Working directory
-        df (DataFrame): Dataframe output
+        output (DataFrame): Processed output
     """
     fig_dir = join(workdir, "fig")
     if not exists(fig_dir):
         makedirs(fig_dir)
 
-    # plot demography
-    for proc_area in df.area_name.unique():
-        proc_area_data = df.loc[df["area_name"] == proc_area][
-            ["sex", "age", "ethnicity", "comorbidity", "work_sector", "work_super_area", "home_super_area", "time"]]
-        proc_area_data = proc_area_data[proc_area_data["time"] == min(proc_area_data["time"])]
-        
-        proc_area_data.fillna("",inplace=True)
-        proc_area_data['work_to_home'] = proc_area_data[['work_super_area', 'home_super_area']].agg('-'.join, axis=1)
-        proc_area_data = proc_area_data.drop(columns=["work_super_area", "home_super_area", "time"])
-        data = proc_area_data.apply(proc_area_data.value_counts)
-        data.plot(kind="pie", subplots=True, layout=(2,3),figsize=(15, 9), title=f"Area: {proc_area}")
-        plt.savefig(join(fig_dir, f"{proc_area}_demography.png"), bbox_inches = "tight")
+    df_people = output["output_people"]
+    df_group = output["output_groups"]
+
+    if output_cfg["demography"]:
+        for proc_area in df_people.area_name.unique():
+            proc_area_data = df_people.loc[df_people["area_name"] == proc_area][
+                ["sex", "age", "ethnicity", "comorbidity", "work_sector", "work_super_area", "home_super_area", "time"]]
+            proc_area_data = proc_area_data[proc_area_data["time"] == min(proc_area_data["time"])]
+            
+            proc_area_data.fillna("",inplace=True)
+            proc_area_data['work_to_home'] = proc_area_data[['work_super_area', 'home_super_area']].agg('-'.join, axis=1)
+            proc_area_data = proc_area_data.drop(columns=["work_super_area", "home_super_area", "time"])
+            data = proc_area_data.apply(proc_area_data.value_counts)
+            data.plot(kind="pie", subplots=True, layout=(2,3),figsize=(15, 9), title=f"Area: {proc_area}")
+            plt.savefig(join(fig_dir, f"{proc_area}_demography.png"), bbox_inches = "tight")
+            plt.close()
+
+    if output_cfg["timeseries"]["total_people"]:
+        result = df_group.groupby(["area", "time"])["people"].sum()
+        result_df = result.unstack(level="area")
+        result_df["total"] = result_df.sum(axis=1)
+        result_df.plot.line()
+        plt.xlabel("Time")
+        plt.ylabel("Total People")
+        plt.title("Total people for different areas")
+        plt.savefig(join(fig_dir, f"total_people.png"), bbox_inches = "tight")
         plt.close()
 
-    # plot infection
-    for proc_area in df.area_name.unique():
-        proc_area_data = df.loc[df["area_name"] == proc_area][
-            ["time", "infection", "dead"]]
-        proc_area_data["infection"].fillna("Not infected",inplace=True)
-        proc_area_data.loc[proc_area_data['dead'] == True, "infection"] = "dead"
-        proc_area_data = proc_area_data.drop(columns=["dead"])
-        grouped = proc_area_data.groupby(["time", "infection"]).size().reset_index(name="count")
-        pivoted = grouped.pivot(index="time", columns="infection", values="count")
-        probabilities = pivoted.div(pivoted.sum(axis=1), axis=0)
-        probabilities.fillna(0.0,inplace=True)
-        probabilities.plot(kind="line",figsize=(14, 7), title=f"Area: {proc_area}")
-        plt.savefig(join(fig_dir, f"{proc_area}_infection.png"), bbox_inches = "tight")
-        plt.close()
+    if output_cfg["timeseries"]["infection"]:
+        for proc_area in df_people.area_name.unique():
+            proc_area_data = df_people.loc[df_people["area_name"] == proc_area][
+                ["time", "infection", "dead"]]
+            proc_area_data["infection"].fillna("Not infected",inplace=True)
+            proc_area_data.loc[proc_area_data['dead'] == True, "infection"] = "dead"
+            proc_area_data = proc_area_data.drop(columns=["dead"])
+            grouped = proc_area_data.groupby(["time", "infection"]).size().reset_index(name="count")
+            pivoted = grouped.pivot(index="time", columns="infection", values="count")
+            probabilities = pivoted.div(pivoted.sum(axis=1), axis=0)
+            probabilities.fillna(0.0,inplace=True)
+            probabilities.plot(kind="line",figsize=(14, 7), title=f"Area: {proc_area}")
+            plt.savefig(join(fig_dir, f"{proc_area}_infection.png"), bbox_inches = "tight")
+            plt.close()
 
 
 

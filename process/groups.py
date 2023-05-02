@@ -20,8 +20,10 @@ def create_group_locations(geography: Geography_class, base_dir: str, group_and_
                 geography,
                 config_filename=join(
                     base_dir, 
-                    group_and_interaction_cfg[group_name]["cfg"]["neighbour_hospitals"]),
-                filename=join(base_dir, group_and_interaction_cfg[group_name]["data"]["location"]))
+                    group_and_interaction_cfg[group_name]["defination"]["neighbour_hospitals"]),
+                filename=join(
+                    base_dir, 
+                    group_and_interaction_cfg[group_name]["defination"]["location"]))
             output["df"]["hospital"] = hospital2df(geography)
 
         elif group_name == "company":
@@ -29,10 +31,10 @@ def create_group_locations(geography: Geography_class, base_dir: str, group_and_
                 geography,
                 size_nr_file = join(
                     base_dir, 
-                    group_and_interaction_cfg[group_name]["data"]["employees_by_super_area"]),
+                    group_and_interaction_cfg[group_name]["defination"]["employees_by_super_area"]),
                 sector_nr_per_msoa_file = join(
                     base_dir, 
-                    group_and_interaction_cfg[group_name]["data"]["sectors_by_super_area"])
+                    group_and_interaction_cfg[group_name]["defination"]["sectors_by_super_area"])
             )
             output["df"]["company"] = company2df(geography)
     
