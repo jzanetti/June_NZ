@@ -1,6 +1,9 @@
 
 # JUNE model for New Zealand
 
+The base model of **JUNE** ([link](https://github.com/jzanetti/JUNE/tree/sijin_dev)) is forked from [link](https://github.com/IDAS-Durham/JUNE).
+This repository provides a wrapper to run it for New Zealand.
+
 ### Installation
 The package can be installed using:
 
