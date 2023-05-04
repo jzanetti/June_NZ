@@ -63,7 +63,7 @@ There are three levels of data used for New Zealand:
 #### policy:
 - `policy.yaml`: Policy setups (e.g., lockdown etc.) (geography independant)
 
-#### demography:
+#### demography [link](etc/doc/README.demography.md):
 - `age_profile.csv`: people number ~ age profile (area level)
 - `ethnicity_profile.csv`: ethnicity ~ age profile (area level)
 - `gender_profile_female_ratio.csv`: gender ratio ~ age profile (area level)
