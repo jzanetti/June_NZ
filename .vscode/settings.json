@@ -4,5 +4,7 @@
     },
     "aws.telemetry": false,
     "git.autofetch": true,
-    "python.analysis.extraPaths": ["/Users/sijinzhang/Github/June_NZ/lib/JUNE_v1.2.0"]
+    "python.analysis.extraPaths": [
+        "/home/zhangs/Github/June_NZ", 
+        "/Users/sijinzhang/Github/June_NZ/lib/JUNE_v1.2.0"]
 }

@@ -9,7 +9,7 @@
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "env": {
-                "PYTHONPATH": "/Users/sijinzhang/Github/June_NZ:/Users/sijinzhang/Github/June_NZ/lib/JUNE_v1.2.0"
+                "PYTHONPATH": "/home/zhangs/Github/June_NZ:/Users/sijinzhang/Github/June_NZ/lib/JUNE_v1.2.0"
               }
         }
     ]
