@@ -1,10 +1,26 @@
 {
-    "[python]": {
-        "editor.formatOnType": true
-    },
-    "aws.telemetry": false,
+    "editor.formatOnSave": true,
+    "python.pythonPath": [
+        "/home/zhangs/Github/June_NZ",
+    ],
     "git.autofetch": true,
+    "python.formatting.provider": "none",
+    "python.formatting.blackArgs": [
+        "--line-length=99"
+    ],
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
     "python.analysis.extraPaths": [
-        "/home/zhangs/Github/June_NZ", 
-        "/Users/sijinzhang/Github/June_NZ/lib/JUNE_v1.2.0"]
+        "/home/zhangs/Github/June_NZ",
+        "/Users/sijinzhang/Github/June_NZ/lib/JUNE_v1.2.0"
+    ]
 }

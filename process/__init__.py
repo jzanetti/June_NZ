@@ -9,5 +9,11 @@ JUNE_MODEL = {
 SECTOR_CODES = {
     "A": "Agriculture, forestry and fishing",
     "Q": "Human health and social work activities",
-    "P": "Education"
+    "P": "Education",
+}
+
+NORTH_SOUTH_ISLAND_CODES = {
+    "North Island": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "South Island": [12, 13, 14, 15, 16, 17, 18],
+    "Others": [99],
 }
