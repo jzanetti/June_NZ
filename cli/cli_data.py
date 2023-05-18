@@ -8,7 +8,7 @@ import argparse
 from os import makedirs
 from os.path import exists
 
-from process.data import write_geography_hierarchy_definition
+from process.data import write_geography_hierarchy_definition, write_super_area_location
 from process.utils import read_cfg, setup_logging
 
 
@@ -30,7 +30,7 @@ def setup_parser():
     parser.add_argument("--workdir", required=True, help="working directory")
     parser.add_argument("--cfg", required=True, help="configuration path, e.g., data.cfg")
 
-    return parser.parse_args(["--workdir", "/tmp/june_data_nz", "--cfg", "etc/june_data.yml"])
+    return parser.parse_args(["--workdir", "etc/data/realworld", "--cfg", "etc/june_data.yml"])
 
 
 def main():
@@ -45,9 +45,13 @@ def main():
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
 
+    logger.info("Processing geography_hierarchy_definition ...")
     write_geography_hierarchy_definition(
         args.workdir, cfg["geography"]["geography_hierarchy_definition"]
     )
+
+    logger.info("Processing super area location ...")
+    write_super_area_location(args.workdir, cfg["geography"]["super_area_location"])
 
     logger.info("Job done ...")
 

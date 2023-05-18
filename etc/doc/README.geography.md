@@ -14,5 +14,5 @@
   
 - `geography_hierarchy_definition.csv`: geography hierarchy (geography independant):
   
-    There are three levels of data used for New Zealand: `North/South Island` -> `Regional council` (REGC2023_code) -> `Statistical Area 2` (SA12023_code).
+    There are three levels of data used for New Zealand: `North/South Island` -> `Regional council` (REGC2023_name) -> `Statistical Area 2` (SA22023_name).
     The data can be obtained at [here](https://datafinder.stats.govt.nz/table/111243-geographic-areas-table-2023/). 

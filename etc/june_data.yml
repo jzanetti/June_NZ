@@ -2,7 +2,7 @@
 geography:
   geography_hierarchy_definition:
     run: true
-    path: etc/data/realworld/raw/geographic-areas-table-2023.csv
+    path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/geographic-areas-table-2023.csv
   super_area_location:
     run: true
-    path: 
+    path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/super_area_location.csv
