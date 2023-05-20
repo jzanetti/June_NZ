@@ -22,14 +22,15 @@ def read_leed(leed_path: str, anzsic_code: DataFrame, if_rate: bool = False) -> 
     df = read_excel(leed_path)
     industrial_row = df.iloc[0].fillna(method="ffill")
 
-    for i, row in enumerate(industrial_row):
-        row = row.strip()
+    if anzsic_code is not None:
+        for i, row in enumerate(industrial_row):
+            row = row.strip()
 
-        if row in ["Industry", "Total people"]:
-            continue
+            if row in ["Industry", "Total people"]:
+                continue
 
-        code = anzsic_code[anzsic_code["Description"] == row]["Anzsic06"].values[0]
-        industrial_row[i] = code
+            code = anzsic_code[anzsic_code["Description"] == row]["Anzsic06"].values[0]
+            industrial_row[i] = code
 
     # x = anzsic_code.set_index("Description")
     sec_row = df.iloc[1].fillna(method="ffill")
@@ -49,35 +50,36 @@ def read_leed(leed_path: str, anzsic_code: DataFrame, if_rate: bool = False) -> 
 
     df["Area"] = df["Area"].replace("Manawatu-Wanganui Region", "Manawatu-Whanganui Region")
 
-    character_indices = set(
-        [
-            col.split(",")[0][0]
-            for col in df.columns
-            if col not in ["Area", "Age", "Total people,Male", "Total people, Female"]
-        ]
-    )
+    if anzsic_code is not None:
+        character_indices = set(
+            [
+                col.split(",")[0][0]
+                for col in df.columns
+                if col not in ["Area", "Age", "Total people,Male", "Total people, Female"]
+            ]
+        )
 
-    # Iterate over the unique character indices to sum the corresponding columns
-    for char_index in character_indices:
-        subset_cols_male = [
-            col
-            for col in df.columns
-            if col.startswith(char_index)
-            and col.endswith("Male")
-            and col not in ["Area", "Age", "Total people,Male", "Total people,Female"]
-        ]
-        subset_cols_female = [
-            col
-            for col in df.columns
-            if col.startswith(char_index)
-            and col.endswith("Female")
-            and col not in ["Area", "Age", "Total people,Male", "Total people,Female"]
-        ]
-        summed_col_male = f"{char_index},Male"
-        summed_col_female = f"{char_index},Female"
-        df[summed_col_male] = df[subset_cols_male].sum(axis=1)
-        df[summed_col_female] = df[subset_cols_female].sum(axis=1)
-        df = df.drop(subset_cols_male + subset_cols_female, axis=1)
+        # Iterate over the unique character indices to sum the corresponding columns
+        for char_index in character_indices:
+            subset_cols_male = [
+                col
+                for col in df.columns
+                if col.startswith(char_index)
+                and col.endswith("Male")
+                and col not in ["Area", "Age", "Total people,Male", "Total people,Female"]
+            ]
+            subset_cols_female = [
+                col
+                for col in df.columns
+                if col.startswith(char_index)
+                and col.endswith("Female")
+                and col not in ["Area", "Age", "Total people,Male", "Total people,Female"]
+            ]
+            summed_col_male = f"{char_index},Male"
+            summed_col_female = f"{char_index},Female"
+            df[summed_col_male] = df[subset_cols_male].sum(axis=1)
+            df[summed_col_female] = df[subset_cols_female].sum(axis=1)
+            df = df.drop(subset_cols_male + subset_cols_female, axis=1)
 
     df["Area"] = df["Area"].str.replace(" Region", "")
 
@@ -118,15 +120,97 @@ def read_anzsic_code(anzsic06_code_path: str) -> DataFrame:
     """
     anzsic_code = read_csv(anzsic06_code_path)
 
-    for index, row in anzsic_code.iterrows():
-        # Iterate column by column within the current row
+    for _, row in anzsic_code.iterrows():
         row["Description"] = " ".join(row["Description"].split()[1:])
 
     return anzsic_code
 
 
+def write_sectors_by_super_area(workdir: str, sectors_by_super_area_cfg: dict):
+    """Write number of employers by sectors for super area
+
+    Args:
+        workdir (str): _description_
+        sectors_by_super_area_cfg (dict): Configuration
+    """
+    data_path = get_raw_data(
+        workdir,
+        sectors_by_super_area_cfg,
+        "sectors_by_super_area",
+        "group/company",
+        force=True,
+    )
+
+    data = read_csv(data_path["raw"])[["Area", "ANZSIC06", "Value"]]
+
+    data["Area"] = data["Area"].str.replace(" Region", "")
+    data["Area"] = data["Area"].replace("Manawatu-Wanganui", "Manawatu-Whanganui")
+    data["Area"] = data["Area"].map({v: k for k, v in REGION_NAMES_CONVERSIONS.items()})
+
+    data["ANZSIC06"] = data["ANZSIC06"].str[0]
+
+    df_pivot = (
+        pivot_table(data, values="Value", index="Area", columns="ANZSIC06").dropna().astype(int)
+    ).reset_index()
+
+    df_pivot = df_pivot.rename(columns={"Area": "MSOA"})
+    df_pivot.to_csv(data_path["output"], index=False)
+
+
+def write_employees_by_super_area(workdir: str, employees_by_super_area_cfg: dict):
+    """Write number of employees by age for super area
+
+    Args:
+        workdir (str): _description_
+        employees_by_super_area_cfg (dict): _description_
+    """
+    data_path = get_raw_data(
+        workdir,
+        employees_by_super_area_cfg,
+        "employees_by_super_area",
+        "group/company",
+        force=True,
+    )
+
+    data = read_csv(data_path["raw"])[
+        ["Area", "Measure", "Enterprise employee count size group", "Value"]
+    ]
+    data["Area"] = data["Area"].str.replace(" Region", "")
+
+    data = data.drop(data[data["Enterprise employee count size group"] == "Total"].index)
+    data = data[data["Measure"] == "Geographic Units"]
+
+    data = data[["Area", "Enterprise employee count size group", "Value"]]
+
+    data["Area"] = data["Area"].replace("Manawatu-Wanganui", "Manawatu-Whanganui")
+
+    data["Area"] = data["Area"].map({v: k for k, v in REGION_NAMES_CONVERSIONS.items()})
+
+    data["Enterprise employee count size group"] = (
+        data["Enterprise employee count size group"]
+        .replace("1 to 19", "1-19")
+        .replace("20 to 49", "20-49")
+        .replace("50+", "50-xxx")
+    )
+
+    df_pivot = pivot_table(
+        data, values="Value", index="Area", columns="Enterprise employee count size group"
+    ).reset_index()
+    df_pivot = df_pivot[["Area", "1-19", "20-49", "50-xxx"]]
+
+    df_pivot = df_pivot.rename(columns={"Area": "MSOA"})
+
+    df_pivot.to_csv(data_path["output"], index=False)
+
+
 def write_sectors_employee_genders(workdir: str, sectors_employee_genders_cfg: dict):
-    # Define a function to generate the new column name
+    """Write the number of employees by gender for different area
+
+    Args:
+        workdir (str): Working directory
+        sectors_employee_genders_cfg (dict): Configuration
+    """
+
     def _rename_column(column_name):
         # Define a regular expression pattern to match the column names
         pattern = r"([a-zA-Z]+) ([a-zA-Z]+)"

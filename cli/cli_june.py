@@ -8,24 +8,29 @@ Description:
 export PYTHONPATH=/Users/sijinzhang/Github/June_NZ
 
 """
-from process.june_model import (check_availability_for_june_model, 
-                                create_pseudo_data_folder)
-check_availability_for_june_model(checkout_repo = False)
+from process.june_model import (
+    check_availability_for_june_model,
+    create_pseudo_data_folder,
+)
+
+check_availability_for_june_model(checkout_repo=False)
 create_pseudo_data_folder()
 
 import argparse
-from os.path import exists
 from os import makedirs
-from process.utils import setup_logging, read_cfg, check_data_availability
-from process.geography import create_geography_wrapper
-from process.interaction import initiate_interaction, create_interaction_wrapper
-from process.world import create_world_wrapper
+from os.path import exists
+
 from process.commute import create_commute_wrapper
 from process.disease import create_disease_wrapper
-from process.tracker import create_tracker_wrapper
+from process.geography import create_geography_wrapper
+from process.interaction import create_interaction_wrapper, initiate_interaction
+from process.output import output_postprocess, output_to_figure
 from process.policy import create_policy_wrapper
 from process.simulation import start_simulation
-from process.output import output_postprocess, output_to_figure
+from process.tracker import create_tracker_wrapper
+from process.utils import check_data_availability, read_cfg, setup_logging
+from process.world import create_world_wrapper
+
 
 def get_example_usage():
     example_text = """example:
@@ -45,17 +50,11 @@ def setup_parser():
     parser.add_argument("--workdir", required=True, help="working directory")
     parser.add_argument("--cfg", required=True, help="configuration path, e.g., june.cfg")
 
-    return parser.parse_args(
-        [
-            "--workdir", "/tmp/june_nz",
-            "--cfg", "etc/june_singleobs.yml"
-        ]
-    )
+    return parser.parse_args(["--workdir", "/tmp/june_nz", "--cfg", "etc/june_singleobs.yml"])
 
 
 def main():
-    """Run June model
-    """
+    """Run June model"""
     args = setup_parser()
 
     if not exists(args.workdir):
@@ -70,43 +69,38 @@ def main():
     check_data_availability(cfg["data"])
 
     logger.info("Creating geography object ...")
-    geography_object = create_geography_wrapper(
-        cfg["data"]["base_dir"], 
-        cfg["data"]["geography"])
+    geography_object = create_geography_wrapper(cfg["data"]["base_dir"], cfg["data"]["geography"])
 
     logger.info("Initiating the interaction ...")
-    initiate_interaction(
-        cfg["data"]["base_dir"], 
-        cfg["data"]["group_and_interaction"])
+    initiate_interaction(cfg["data"]["base_dir"], cfg["data"]["group_and_interaction"])
 
     logger.info("Creating the world object ...")
     world = create_world_wrapper(
-        geography_object, 
+        geography_object,
         cfg["data"]["base_dir"],
         cfg["data"]["demography"],
         cfg["data"]["geography"],
         cfg["data"]["group_and_interaction"],
-        args.workdir)
+        args.workdir,
+    )
 
     logger.info("Creating commuting object ...")
     commute = create_commute_wrapper(
         world["data"],
-        cfg["data"]["base_dir"], 
-        cfg["data"]["group_and_interaction"]["commute"], 
-        args.workdir)
+        cfg["data"]["base_dir"],
+        cfg["data"]["group_and_interaction"]["commute"],
+        args.workdir,
+    )
 
     logger.info("Creating disease object ...")
     disease = create_disease_wrapper(
-        world["data"], 
-        cfg["data"]["base_dir"], 
-        cfg["data"]["disease"],
-        cfg["simulation_cfg"])
+        world["data"], cfg["data"]["base_dir"], cfg["data"]["disease"], cfg["simulation_cfg"]
+    )
 
     logger.info("Creating interaction object ...")
     interaction = create_interaction_wrapper(
-        cfg["data"]["base_dir"], 
-        cfg["data"]["group_and_interaction"], 
-        args.workdir)
+        cfg["data"]["base_dir"], cfg["data"]["group_and_interaction"], args.workdir
+    )
 
     logger.info("Creating policy object ...")
     policy = create_policy_wrapper(cfg["data"]["base_dir"], cfg["data"]["policy"])
@@ -114,23 +108,23 @@ def main():
     logger.info("Creating tracker ...")
     tracker = create_tracker_wrapper(
         args.workdir,
-        world["data"], 
+        world["data"],
         list(cfg["data"]["group_and_interaction"].keys()),
-        interaction["path"]
+        interaction["path"],
     )
 
     logger.info("Starting simulation ...")
     output = start_simulation(
         world["data"],
-        disease_obj = disease,
-        interaction_obj = interaction["data"],
-        travel_obj = commute,
-        policy_obj = policy,
-        tracker_obj = tracker,
-        simulation_cfg = cfg["simulation_cfg"],
-        disease_cfg = cfg["data"]["disease"],
-        base_dir = cfg["data"]["base_dir"],
-        workdir = args.workdir
+        disease_obj=disease,
+        interaction_obj=interaction["data"],
+        travel_obj=commute,
+        policy_obj=policy,
+        tracker_obj=tracker,
+        simulation_cfg=cfg["simulation_cfg"],
+        disease_cfg=cfg["data"]["disease"],
+        base_dir=cfg["data"]["base_dir"],
+        workdir=args.workdir,
     )
 
     logger.info("Producing outputs ...")

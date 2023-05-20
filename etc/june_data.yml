@@ -27,3 +27,11 @@ group:
         leed: https://github.com/jzanetti/JUNE_NZ_data/raw/main/group/Number%20of%20Employees%20by%20Industry%2C%20Age%20Group%2C%20Sex%2C%20and%20Region%20(derived%20from%202018%20Census).xlsx
         anzsic06_code: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/anzsic06_code.csv
         geography_hierarchy_definition: geography/geography_hierarchy_definition
+    employees_by_super_area:
+      run: true
+      path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/TABLECODE7613_Data_5b700e5e-c568-496c-9119-dcf0e9f927b2.csv
+      deps: null
+    sectors_by_super_area:
+      run: true
+      path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/TABLECODE7601_Data_4a2755a3-588e-4daa-9e76-90a500614df0.csv
+      deps: null

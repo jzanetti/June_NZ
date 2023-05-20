@@ -16,3 +16,15 @@ https://nzdotstat.stats.govt.nz/wbos/Index.aspx?DataSetCode=TABLECODE7018#
 
 List of hospitals: https://en.wikipedia.org/wiki/List_of_hospitals_in_New_Zealand
                    https://catalogue.data.govt.nz/dataset/certified-health-care-providers/resource/dccdddd8-708d-4798-adaf-609c31f93414
+
+
+## Commute:
+
+2018 Census Main means of travel to work by Statistical Area 2: https://datafinder.stats.govt.nz/table/104720-2018-census-main-means-of-travel-to-work-by-statistical-area-2/
+
+## Household:
+
+
+Age group of youngest dependent child in family by family type: age_difference_parent_child.csv
+
+2018 Census individual: https://datafinder.stats.govt.nz/layer/104612-2018-census-individual-part-1-total-new-zealand-by-statistical-area-1/

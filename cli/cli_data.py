@@ -14,7 +14,11 @@ from process.data.geography import (
     write_geography_hierarchy_definition,
     write_super_area_location,
 )
-from process.data.group import write_sectors_employee_genders
+from process.data.group import (
+    write_employees_by_super_area,
+    write_sectors_by_super_area,
+    write_sectors_employee_genders,
+)
 from process.utils import read_cfg, setup_logging
 
 
@@ -69,6 +73,12 @@ def main():
     write_sectors_employee_genders(
         args.workdir, cfg["group"]["company"]["sectors_employee_genders"]
     )
+
+    logger.info("Processing employees_by_super_area")
+    write_employees_by_super_area(args.workdir, cfg["group"]["company"]["employees_by_super_area"])
+
+    logger.info("Processing sectors_by_super_area")
+    write_sectors_by_super_area(args.workdir, cfg["group"]["company"]["sectors_by_super_area"])
 
     logger.info("Job done ...")
 
