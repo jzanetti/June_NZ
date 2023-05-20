@@ -9,8 +9,7 @@
 
 - `area_socialeconomic_index.csv`: social economic index (area level):
 
-    The `SA2` based social economic index can be obtained at the page [link](https://www.otago.ac.nz/wellington/departments/publichealth/research/hirp/otago020194.html). The data
-    can be obtained at [here](https://www.otago.ac.nz/wellington/otago730397.xlsx)
+    The `SA2` based social economic index can be obtained at the page [link](https://www.otago.ac.nz/wellington/departments/publichealth/research/hirp/otago020194.html). The data can be obtained at [here](https://www.otago.ac.nz/wellington/otago730397.xlsx)
   
 - `geography_hierarchy_definition.csv`: geography hierarchy (geography independant):
   

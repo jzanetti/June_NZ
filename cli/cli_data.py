@@ -8,7 +8,13 @@ import argparse
 from os import makedirs
 from os.path import exists
 
-from process.data import write_geography_hierarchy_definition, write_super_area_location
+from process.data.geography import (
+    write_area_location,
+    write_area_socialeconomic_index,
+    write_geography_hierarchy_definition,
+    write_super_area_location,
+)
+from process.data.group import write_sectors_employee_genders
 from process.utils import read_cfg, setup_logging
 
 
@@ -52,6 +58,17 @@ def main():
 
     logger.info("Processing super area location ...")
     write_super_area_location(args.workdir, cfg["geography"]["super_area_location"])
+
+    logger.info("Processing area location ... ")
+    write_area_location(args.workdir, cfg["geography"]["area_location"])
+
+    logger.info("Processing area socialeconomic index")
+    write_area_socialeconomic_index(args.workdir, cfg["geography"]["area_socialeconomic_index"])
+
+    logger.info("Processing sectors_employee_genders and employees_by_super_area")
+    write_sectors_employee_genders(
+        args.workdir, cfg["group"]["company"]["sectors_employee_genders"]
+    )
 
     logger.info("Job done ...")
 

@@ -3,6 +3,27 @@ geography:
   geography_hierarchy_definition:
     run: true
     path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/geographic-areas-table-2023.csv
+    deps: null
   super_area_location:
     run: true
     path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/super_area_location.csv
+    deps: null
+  area_location:
+    run: true
+    path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/statistical-area-2-2018-centroid-inside.csv
+    deps: null
+  area_socialeconomic_index:
+    run: true
+    path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/otago730397.csv
+    deps:
+      geography_hierarchy_definition: geography/geography_hierarchy_definition
+
+group:
+  company:
+    sectors_employee_genders:
+      run: true
+      path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/Data7602DescendingYearOrder2022.csv
+      deps:
+        leed: https://github.com/jzanetti/JUNE_NZ_data/raw/main/group/Number%20of%20Employees%20by%20Industry%2C%20Age%20Group%2C%20Sex%2C%20and%20Region%20(derived%20from%202018%20Census).xlsx
+        anzsic06_code: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/anzsic06_code.csv
+        geography_hierarchy_definition: geography/geography_hierarchy_definition
