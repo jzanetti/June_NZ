@@ -60,3 +60,22 @@ REGION_NAMES_CONVERSIONS = {
     16: "Tasman",
     12: "West Coast",
 }
+
+FIXED_DATA = {
+    "group": {
+        "household": {
+            "age_difference_couple": {
+                "age_difference": [-5, 0, 5, 10],
+                "frequency": [0.1, 0.7, 0.1, 0.1],
+            },
+            "age_difference_parent_child": {
+                "age_difference": [25, 50],
+                "0": [0.1, 0.9],
+                "1": [0.1, 0.9],
+                "2": [0.2, 0.8],
+                "3": [0.3, 0.7],
+                "4 or more": [0.3, 0.7],
+            },
+        }
+    }
+}

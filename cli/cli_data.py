@@ -16,8 +16,12 @@ from process.data.geography import (
 )
 from process.data.group import (
     write_employees_by_super_area,
+    write_household_age_difference,
+    write_household_number,
     write_sectors_by_super_area,
     write_sectors_employee_genders,
+    write_super_area_name,
+    write_transport_mode,
 )
 from process.utils import read_cfg, setup_logging
 
@@ -55,6 +59,9 @@ def main():
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
 
+    # -----------------------------
+    # Get geography data
+    # -----------------------------
     logger.info("Processing geography_hierarchy_definition ...")
     write_geography_hierarchy_definition(
         args.workdir, cfg["geography"]["geography_hierarchy_definition"]
@@ -69,6 +76,9 @@ def main():
     logger.info("Processing area socialeconomic index")
     write_area_socialeconomic_index(args.workdir, cfg["geography"]["area_socialeconomic_index"])
 
+    # -----------------------------
+    # Get group data
+    # -----------------------------
     logger.info("Processing sectors_employee_genders and employees_by_super_area")
     write_sectors_employee_genders(
         args.workdir, cfg["group"]["company"]["sectors_employee_genders"]
@@ -79,6 +89,21 @@ def main():
 
     logger.info("Processing sectors_by_super_area")
     write_sectors_by_super_area(args.workdir, cfg["group"]["company"]["sectors_by_super_area"])
+
+    # -----------------------------
+    # Get commute data
+    # -----------------------------
+    write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
+    write_super_area_name(args.workdir, cfg["group"]["commute"]["super_area_name"])
+
+    # -----------------------------
+    # Get Household data
+    # -----------------------------
+    logger.info("Processing household age difference ...")
+    write_household_age_difference(args.workdir)
+
+    logger.info("Processing household_number ...")
+    write_household_number(args.workdir, cfg["group"]["household"]["household_number"])
 
     logger.info("Job done ...")
 

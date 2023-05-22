@@ -1,11 +1,133 @@
 from copy import deepcopy
+from os.path import join
 from re import match as re_match
 
 from numpy import nan as numpy_nan
 from pandas import DataFrame, pivot_table, read_csv, read_excel
 
-from process import REGION_NAMES_CONVERSIONS
+from process import FIXED_DATA, REGION_NAMES_CONVERSIONS
 from process.data.utils import get_raw_data
+
+
+def write_household_age_difference(workdir: str):
+    """Write household age difference for couple and parent-children
+
+    Args:
+        workdir (str): Working directory
+    """
+    for proc_file_key in FIXED_DATA["group"]["household"]:
+        proc_data = FIXED_DATA["group"]["household"][proc_file_key]
+        data = DataFrame.from_dict(proc_data)
+        data.to_csv(join(workdir, "group/household", f"{proc_file_key}.csv"), index=False)
+
+
+def write_household_number(workdir: str, household_number_cfg: dict):
+    """Write household number
+
+    Args:
+        workdir (str): Working directory
+        household_number_cfg (dict): Household number configuration
+    """
+    data_path = get_raw_data(
+        workdir,
+        household_number_cfg,
+        "household_number",
+        "group/household",
+        force=True,
+    )
+
+    data = read_csv(data_path["raw"])
+
+    data = data[data["Household composition"] >= 10000]
+
+    data = data.rename(
+        columns={
+            "Household composition": "output_area",
+            "Total households - household composition": ">=0 >=0 >=0 >=0 >=0",
+        }
+    )
+
+    data.to_csv(data_path["output"], index=False)
+
+
+def write_transport_mode(workdir: str, transport_mode_cfg: dict):
+    """Write Transport Model file
+
+    Args:
+        workdir (str): Working directory
+        transport_mode_cfg (dict): Transport model configuration
+    """
+    data_path = get_raw_data(
+        workdir,
+        transport_mode_cfg,
+        "transport_mode",
+        "group/commute",
+        force=True,
+    )
+
+    data = read_csv(data_path["raw"])
+
+    # work_from_home_ratio = 0.1
+
+    data = data[
+        [
+            "SA2_code_usual_residence_address",
+            # "SA2_code_workplace_address",
+            "Drive_a_private_car_truck_or_van",
+            "Drive_a_company_car_truck_or_van",
+            "Passenger_in_a_car_truck_van_or_company_bus",
+            "Public_bus",
+            "Train",
+            "Bicycle",
+            "Ferry",
+            "Other",
+            "Total",
+        ]
+    ]
+
+    data = data.rename(columns={"SA2_code_usual_residence_address": "geography"})
+
+    for data_key in data.columns:
+        if data_key != "geography":
+            data = data.rename(
+                columns={data_key: f"Method of Travel to Work: {data_key}; measures: Value"}
+            )
+
+    data["date"] = 2018
+    data["geography code"] = data["geography"]
+    data["Rural Urban"] = "Total"
+
+    data = data.replace(-999.0, 0)
+
+    data.to_csv(data_path["output"], index=False)
+
+
+def write_super_area_name(workdir: str, super_area_name_cfg: dict):
+    """Write Super Area name file
+
+    Args:
+        workdir (str): Working directory
+        super_area_name_cfg (dict): Super area name configuration
+    """
+    data_path = get_raw_data(
+        workdir,
+        super_area_name_cfg,
+        "super_area_name",
+        "group/commute",
+        force=True,
+    )
+
+    data = read_csv(data_path["raw"])
+
+    data = data[["REGC2023_code", "REGC2023_name"]]
+
+    data["REGC2023_name"] = data["REGC2023_name"].str.replace(" Region", "")
+
+    data = data.rename(columns={"REGC2023_code": "super_area", "REGC2023_name": "city"})
+
+    data = data.drop_duplicates()
+
+    data.to_csv(data_path["output"], index=False)
 
 
 def read_leed(leed_path: str, anzsic_code: DataFrame, if_rate: bool = False) -> DataFrame:

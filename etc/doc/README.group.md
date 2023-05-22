@@ -22,9 +22,13 @@ List of hospitals: https://en.wikipedia.org/wiki/List_of_hospitals_in_New_Zealan
 
 2018 Census Main means of travel to work by Statistical Area 2: https://datafinder.stats.govt.nz/table/104720-2018-census-main-means-of-travel-to-work-by-statistical-area-2/
 
+https://datafinder.stats.govt.nz/data/category/census/2018/commuter-view/
+
 ## Household:
 
 
 Age group of youngest dependent child in family by family type: age_difference_parent_child.csv
 
 2018 Census individual: https://datafinder.stats.govt.nz/layer/104612-2018-census-individual-part-1-total-new-zealand-by-statistical-area-1/
+
+https://datafinder.stats.govt.nz/table/104570-2018-census-individual-part-2-total-nz-by-statistical-area-1-2018-census-only-look-up-table/
