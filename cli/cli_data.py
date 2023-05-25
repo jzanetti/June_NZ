@@ -67,8 +67,6 @@ def main():
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
 
-    write_hospital_locations(args.workdir, cfg["group"]["hospital"]["hospital_locations"])
-
     # -----------------------------
     # Get demography data
     # -----------------------------
@@ -116,6 +114,9 @@ def main():
 
     logger.info("Processing sectors_by_super_area")
     write_sectors_by_super_area(args.workdir, cfg["group"]["company"]["sectors_by_super_area"])
+
+    logger.info("Processing hospital_locations")
+    write_hospital_locations(args.workdir, cfg["group"]["hospital"]["hospital_locations"])
 
     # -----------------------------
     # Get commute data
