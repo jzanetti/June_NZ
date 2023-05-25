@@ -77,5 +77,25 @@ FIXED_DATA = {
                 "4 or more": [0.3, 0.7],
             },
         }
-    }
+    },
+    "demography": {
+        "comorbidities_female": {
+            "comorbidity": ["disease1", "disease2", "no_condition"],
+            5: [0, 0, 1.0],
+            10: [0, 0, 1.0],
+            20: [0, 0, 1.0],
+            50: [0, 0.1, 0.9],
+            75: [0, 0.2, 0.8],
+            100: [0.9, 0.0, 0.1],
+        },
+        "comorbidities_male": {
+            "comorbidity": ["disease1", "disease2", "no_condition"],
+            5: [0, 0, 1.0],
+            10: [0, 0, 1.0],
+            20: [0, 0, 1.0],
+            50: [0, 0.1, 0.9],
+            75: [0, 0.2, 0.8],
+            100: [0.9, 0.0, 0.1],
+        },
+    },
 }

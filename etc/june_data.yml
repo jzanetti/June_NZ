@@ -51,3 +51,30 @@ group:
       run: true
       path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/household_composition_total.csv
       deps: null
+  
+  others:
+    workplace_and_home:
+      run: true
+      path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/2018-census-main-means-of-travel-to-work-by-statistical-area.csv
+      deps:
+        gender_profile: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/gender.csv
+        geography_hierarchy_definition: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/geographic-areas-table-2023.csv
+
+demography:
+  age_profile:
+    run: true
+    path: https://github.com/jzanetti/JUNE_NZ_data/raw/main/demography/71dfdc5e-e22f-435e-adca-60ed655b07d1.xlsx
+    deps: null
+  ethnicity_profile:
+    run: true
+    path: https://github.com/jzanetti/JUNE_NZ_data/raw/main/demography/ethnicity_14years.xlsx
+    deps:
+      15_29: https://github.com/jzanetti/JUNE_NZ_data/raw/main/demography/ethnicity_15_29years.xlsx
+      30_64: https://github.com/jzanetti/JUNE_NZ_data/raw/main/demography/ethncity_30_64years.xlsx
+      65_100: https://github.com/jzanetti/JUNE_NZ_data/raw/main/demography/ethnicity_65years.xlsx
+  gender_profile_female_ratio:
+    run: true
+    path: https://github.com/jzanetti/JUNE_NZ_data/raw/main/demography/d182c4f9-4750-48bf-8792-804ce9bb4f93.xlsx
+    deps: null
+
+    

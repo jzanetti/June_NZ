@@ -1,12 +1,94 @@
 from copy import deepcopy
 from os.path import join
+from re import findall as re_findall
 from re import match as re_match
 
 from numpy import nan as numpy_nan
-from pandas import DataFrame, pivot_table, read_csv, read_excel
+from pandas import DataFrame, merge, pivot_table, read_csv, read_excel
 
 from process import FIXED_DATA, REGION_NAMES_CONVERSIONS
 from process.data.utils import get_raw_data
+
+
+def write_workplace_and_home(workdir: str, workplace_and_home_cfg: dict):
+    """Write workplace and home commute file
+
+    Args:
+        workdir (str): Working directory
+        workplace_and_home_cfg (dict): Workplace and home commute configuration
+    """
+
+    def _get_required_gender_data(gender_data_path: str) -> DataFrame:
+        """Get requred gender data
+
+        Args:
+            gender_data_path (str): Gender data path
+
+        Returns:
+            DataFrame: Dataframe to be exported
+        """
+        gender_profile = read_csv(data_path["deps"]["gender_profile"])
+
+        gender_profile = gender_profile[
+            ~gender_profile["Area"].str.endswith(("region", "regions", "region/SA2"))
+        ]
+        gender_profile["Area"] = gender_profile["Area"].apply(
+            lambda x: re_findall("\d+", str(x))[0] if re_findall("\d+", str(x)) else None
+        )
+
+        gender_profile["Percentage_Male"] = gender_profile["Male"] / (
+            gender_profile["Male"] + gender_profile["Female"]
+        )
+
+        gender_profile["Percentage_Female"] = gender_profile["Female"] / (
+            gender_profile["Male"] + gender_profile["Female"]
+        )
+
+        gender_profile = gender_profile[["Area", "Percentage_Male", "Percentage_Female"]]
+
+        return gender_profile
+
+    data_path = get_raw_data(
+        workdir,
+        workplace_and_home_cfg,
+        "workplace_and_home",
+        "group/others",
+        force=True,
+    )
+
+    commute_data = read_csv(data_path["raw"])[
+        ["SA2_code_usual_residence_address", "SA2_code_workplace_address", "Total"]
+    ]
+
+    gender_profile = _get_required_gender_data(data_path["deps"]["gender_profile"])
+    commute_data = commute_data.rename(columns={"SA2_code_usual_residence_address": "Area"})
+
+    gender_profile["Area"] = gender_profile["Area"].astype(str)
+    commute_data["Area"] = commute_data["Area"].astype(str)
+
+    merged_df = merge(gender_profile, commute_data, on="Area")
+
+    # Perform the calculations and create new columns
+    merged_df["Male"] = merged_df["Percentage_Male"] * merged_df["Total"]
+    merged_df["Female"] = merged_df["Percentage_Female"] * merged_df["Total"]
+
+    merged_df["Male"] = merged_df["Male"].astype(int)
+    merged_df["Female"] = merged_df["Female"].astype(int)
+
+    # "Area of residence","Area of workplace","All categories: Sex","Male","Female"
+    merged_df = merged_df[["Area", "SA2_code_workplace_address", "Total", "Male", "Female"]]
+
+    merged_df = merged_df.rename(
+        {
+            "Area": "Area of residence",
+            "SA2_code_workplace_address": "Area of workplace",
+            "Total": "All categories: Sex",
+            "Male": "Male",
+            "Female": "Female",
+        }
+    )
+
+    merged_df.to_csv(join(workdir, "group/others", "workplace_and_home.csv"), index=False)
 
 
 def write_household_age_difference(workdir: str):

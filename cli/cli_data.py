@@ -8,6 +8,12 @@ import argparse
 from os import makedirs
 from os.path import exists
 
+from process.data.demography import (
+    write_age_profile,
+    write_commorbidity,
+    write_ethnicity_profile,
+    write_gender_profile_female_ratio,
+)
 from process.data.geography import (
     write_area_location,
     write_area_socialeconomic_index,
@@ -22,6 +28,7 @@ from process.data.group import (
     write_sectors_employee_genders,
     write_super_area_name,
     write_transport_mode,
+    write_workplace_and_home,
 )
 from process.utils import read_cfg, setup_logging
 
@@ -58,6 +65,23 @@ def main():
 
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
+
+    # -----------------------------
+    # Get demography data
+    # -----------------------------
+    logger.info("Processing gender_profile_female_ratio ...")
+    write_gender_profile_female_ratio(
+        args.workdir, cfg["demography"]["gender_profile_female_ratio"]
+    )
+
+    logger.info("Processing ethnicity profile ...")
+    write_ethnicity_profile(args.workdir, cfg["demography"]["ethnicity_profile"])
+
+    logger.info("Processing age profile ...")
+    write_age_profile(args.workdir, cfg["demography"]["age_profile"])
+
+    logger.info("Processing age profile ...")
+    write_commorbidity(args.workdir)
 
     # -----------------------------
     # Get geography data
@@ -97,13 +121,16 @@ def main():
     write_super_area_name(args.workdir, cfg["group"]["commute"]["super_area_name"])
 
     # -----------------------------
-    # Get Household data
+    # Get group data
     # -----------------------------
     logger.info("Processing household age difference ...")
     write_household_age_difference(args.workdir)
 
     logger.info("Processing household_number ...")
     write_household_number(args.workdir, cfg["group"]["household"]["household_number"])
+
+    logger.info("Processing workplace_and_home ...")
+    write_workplace_and_home(args.workdir, cfg["group"]["others"]["workplace_and_home"])
 
     logger.info("Job done ...")
 
