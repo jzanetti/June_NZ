@@ -31,6 +31,7 @@ from process.data.group import (
     write_transport_mode,
     write_workplace_and_home,
 )
+from process.data.utils import housekeeping
 from process.utils import read_cfg, setup_logging
 
 
@@ -135,6 +136,12 @@ def main():
 
     logger.info("Processing workplace_and_home ...")
     write_workplace_and_home(args.workdir, cfg["group"]["others"]["workplace_and_home"])
+
+    # -----------------------------
+    # Housekeep
+    # -----------------------------
+    logger.info("Processing house keeping ...")
+    housekeeping(args.workdir)
 
     logger.info("Job done ...")
 

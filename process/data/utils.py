@@ -1,10 +1,23 @@
 from logging import getLogger
-from os import makedirs
-from os.path import exists, join
+from os import listdir, makedirs, remove
+from os.path import exists, isfile, join
 
 from process.utils import download_file
 
 logger = getLogger()
+
+
+def housekeeping(dir_path: str, extensions_to_delete: list = [".xls", ".csv", ".xlsx"]):
+    """Remove downloaded raw files
+
+    Args:
+        dir_path (str): Working directories
+        extensions_to_delete (list, optional): Extensions to be deleted. Defaults to [".xls", ".csv", ".xlsx"].
+    """
+    for file in listdir(dir_path):
+        if isfile(join(dir_path, file)) and file.endswith(tuple(extensions_to_delete)):
+            file_path = join(dir_path, file)
+            remove(file_path)
 
 
 def get_raw_data(

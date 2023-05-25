@@ -113,11 +113,11 @@ def write_hospital_locations(workdir: str, hospital_locations_cfg: dict):
         }
     )
 
-    merged_df = merged_df.dropna(subset=['beds'], axis=0, how='any', inplace=False)
+    merged_df = merged_df.dropna(subset=["beds"], axis=0, how="any", inplace=False)
 
-    merged_df["ice_beds"] = merged_df["beds"] * FIXED_DATA["group"]["hospital"]["icu_beds_ratio"]
+    merged_df["icu_beds"] = merged_df["beds"] * FIXED_DATA["group"]["hospital"]["icu_beds_ratio"]
 
-    merged_df["ice_beds"] = merged_df["ice_beds"].astype(int)
+    merged_df["icu_beds"] = merged_df["icu_beds"].astype(int)
     merged_df["beds"] = merged_df["beds"].astype(int)
 
     merged_df.to_csv(data_path["output"], index=False)
