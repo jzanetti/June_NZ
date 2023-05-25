@@ -76,7 +76,8 @@ FIXED_DATA = {
                 "3": [0.3, 0.7],
                 "4 or more": [0.3, 0.7],
             },
-        }
+        },
+        "hospital": {"icu_beds_ratio": 0.1},
     },
     "demography": {
         "comorbidities_female": {

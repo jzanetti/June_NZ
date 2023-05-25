@@ -3,11 +3,124 @@ from os.path import join
 from re import findall as re_findall
 from re import match as re_match
 
+from numpy import arctan2, argmin, cos
 from numpy import nan as numpy_nan
+from numpy import radians, sin, sqrt
 from pandas import DataFrame, merge, pivot_table, read_csv, read_excel
+from scipy.spatial.distance import cdist
+from shapely.wkt import loads as wkt_loads
 
 from process import FIXED_DATA, REGION_NAMES_CONVERSIONS
 from process.data.utils import get_raw_data
+
+
+def write_hospital_locations(workdir: str, hospital_locations_cfg: dict):
+    """Write hospital locations
+
+    Args:
+        workdir (str): Working directory
+        hospital_locations_cfg (dict): Hospital location configuration
+    """
+
+    def _get_central_point(wkt_string: str):
+        """Get central point from MultiPolygon
+
+        Args:
+            wkt (str): WKT description
+
+        Returns:
+            _type_: _description_
+        """
+        polygon = wkt_loads(wkt_string)
+        central_point = polygon.centroid
+        return central_point
+
+    def _haversine_distance(lat1, lon1, lat2, lon2):
+        """Function to calculate the Haversine distance between two points
+
+        Args:
+            lat1 (float): Latitude 1
+            lon1 (float): Longitude 1
+            lat2 (float): Latitude 1
+            lon2 (float): Longitude 2
+
+        Returns:
+            _type_: _description_
+        """
+        r = 6371  # Earth's radius in kilometers
+        phi1 = radians(lat1)
+        phi2 = radians(lat2)
+        delta_phi = radians(lat2 - lat1)
+        delta_lambda = radians(lon2 - lon1)
+        a = sin(delta_phi / 2) ** 2 + cos(phi1) * cos(phi2) * sin(delta_lambda / 2) ** 2
+        c = 2 * arctan2(sqrt(a), sqrt(1 - a))
+        distance = r * c
+        return distance
+
+    data_path = get_raw_data(
+        workdir,
+        hospital_locations_cfg,
+        "hospital_locations",
+        "group/hospital",
+        force=True,
+    )
+
+    data = read_csv(data_path["raw"])
+
+    data = data[data["use"] == "Hospital"]
+
+    data["Central Point"] = data["WKT"].apply(_get_central_point)
+
+    data["latitude"] = data["Central Point"].apply(lambda point: point.y)
+    data["longitude"] = data["Central Point"].apply(lambda point: point.x)
+
+    data = data[["latitude", "longitude", "estimated_occupancy", "source_facility_id"]]
+
+    sa2_loc = read_csv(data_path["deps"]["sa2_loc"])
+
+    sa2_loc = sa2_loc[["SA22018_V1_00", "LATITUDE", "LONGITUDE"]]
+
+    sa2_loc = sa2_loc.rename(
+        columns={"LATITUDE": "latitude", "LONGITUDE": "longitude", "SA22018_V1_00": "sa2"}
+    )
+
+    distances = cdist(
+        data[["latitude", "longitude"]],
+        sa2_loc[["latitude", "longitude"]],
+        lambda x, y: _haversine_distance(x[0], x[1], y[0], y[1]),
+    )
+
+    # Find the nearest location in A for each point in B
+    nearest_indices = argmin(distances, axis=1)
+    data["sa2"] = sa2_loc["sa2"].iloc[nearest_indices].values
+
+    geography_hierarchy_definition = read_csv(data_path["deps"]["geography_hierarchy_definition"])
+
+    geography_hierarchy_definition = (
+        geography_hierarchy_definition[["SA22018_code", "REGC2023_code"]]
+        .drop_duplicates()
+        .rename(columns={"SA22018_code": "sa2", "REGC2023_code": "region"})
+    )
+
+    merged_df = merge(data, geography_hierarchy_definition, on="sa2", how="left")
+
+    merged_df = merged_df.rename(
+        columns={
+            "region": "super_area",
+            "sa2": "area",
+            "source_facility_id": "code",
+            "estimated_occupancy": "beds",
+        }
+    )
+
+    merged_df = merged_df.dropna(subset=['beds'], axis=0, how='any', inplace=False)
+
+    merged_df["ice_beds"] = merged_df["beds"] * FIXED_DATA["group"]["hospital"]["icu_beds_ratio"]
+
+    merged_df["ice_beds"] = merged_df["ice_beds"].astype(int)
+    merged_df["beds"] = merged_df["beds"].astype(int)
+
+    merged_df.to_csv(data_path["output"], index=False)
 
 
 def write_workplace_and_home(workdir: str, workplace_and_home_cfg: dict):

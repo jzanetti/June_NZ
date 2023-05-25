@@ -22,6 +22,7 @@ from process.data.geography import (
 )
 from process.data.group import (
     write_employees_by_super_area,
+    write_hospital_locations,
     write_household_age_difference,
     write_household_number,
     write_sectors_by_super_area,
@@ -65,6 +66,8 @@ def main():
 
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
+
+    write_hospital_locations(args.workdir, cfg["group"]["hospital"]["hospital_locations"])
 
     # -----------------------------
     # Get demography data
