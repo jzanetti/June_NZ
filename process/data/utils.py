@@ -2,9 +2,92 @@ from logging import getLogger
 from os import listdir, makedirs, remove
 from os.path import exists, isfile, join
 
+from numpy import unique
+
+from process import AREAS_CONSISTENCY_CHECK
 from process.utils import download_file
 
 logger = getLogger()
+
+
+def postproc(data_list: list):
+    """Postprocessing the dataset, e.g., match the number of SA2 etc.
+
+    Args:
+        data_list (list): data to be checked
+    """
+
+    def _find_common_values(sublists):
+        # Initialize with the first sublist
+        common_values = set(sublists[0])
+
+        # Iterate over the remaining sublists
+        for sublist in sublists[1:]:
+            common_values = common_values.intersection(sublist)
+
+        return common_values
+
+    # get all super_areas/areas:
+    all_geo = {"super_area": [], "area": []}
+    for data_name in data_list:
+        if AREAS_CONSISTENCY_CHECK[data_name] is None:
+            continue
+
+        proc_data = data_list[data_name]["data"]
+
+        for area_key in all_geo:
+            if area_key in AREAS_CONSISTENCY_CHECK[data_name]:
+                all_geo[area_key].append(
+                    [
+                        int(item)
+                        for item in list(
+                            unique(proc_data[AREAS_CONSISTENCY_CHECK[data_name][area_key]].values)
+                        )
+                    ]
+                )
+
+    for area_key in all_geo:
+        all_geo[area_key] = _find_common_values(all_geo[area_key])
+
+    # extract data with overlapped areas
+    for data_name in data_list:
+        if AREAS_CONSISTENCY_CHECK[data_name] is None:
+            continue
+
+        proc_data = data_list[data_name]["data"]
+
+        for area_key in ["super_area", "area"]:
+            if area_key in AREAS_CONSISTENCY_CHECK[data_name]:
+                proc_data[AREAS_CONSISTENCY_CHECK[data_name][area_key]] = proc_data[
+                    AREAS_CONSISTENCY_CHECK[data_name][area_key]
+                ].astype(int)
+
+                proc_data = proc_data[
+                    proc_data[AREAS_CONSISTENCY_CHECK[data_name][area_key]].isin(all_geo[area_key])
+                ]
+
+        data_list[data_name]["data"] = proc_data
+
+    # write data out
+    for data_name in data_list:
+        if AREAS_CONSISTENCY_CHECK[data_name] is None:
+            continue
+        logger.info(f"Updating {data_name} ...")
+        data_list[data_name]["data"].to_csv(data_list[data_name]["output"], index=False)
+
+
+def check_list(list1: list, list2: list) -> list:
+    """Check if two lists are identical
+
+    Args:
+        list1 (list): _description_
+        list2 (list): _description_
+
+    Returns:
+        bool: _description_
+    """
+
+    return list(set(list1) - set(list2))
 
 
 def housekeeping(dir_path: str, extensions_to_delete: list = [".xls", ".csv", ".xlsx"]):

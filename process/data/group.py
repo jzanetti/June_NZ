@@ -122,6 +122,8 @@ def write_hospital_locations(workdir: str, hospital_locations_cfg: dict):
 
     merged_df.to_csv(data_path["output"], index=False)
 
+    return {"data": merged_df, "output": data_path["output"]}
+
 
 def write_workplace_and_home(workdir: str, workplace_and_home_cfg: dict):
     """Write workplace and home commute file
@@ -201,8 +203,9 @@ def write_workplace_and_home(workdir: str, workplace_and_home_cfg: dict):
         }
     )
 
-    merged_df.to_csv(join(workdir, "group/others", "workplace_and_home.csv"), index=False)
+    merged_df.to_csv(data_path["output"], index=False)
 
+    return {"data": merged_df, "output": data_path["output"]}
 
 def write_household_age_difference(workdir: str):
     """Write household age difference for couple and parent-children
@@ -243,6 +246,8 @@ def write_household_number(workdir: str, household_number_cfg: dict):
     )
 
     data.to_csv(data_path["output"], index=False)
+
+    return {"data": data, "output": data_path["output"]}
 
 
 def write_transport_mode(workdir: str, transport_mode_cfg: dict):
@@ -296,6 +301,8 @@ def write_transport_mode(workdir: str, transport_mode_cfg: dict):
 
     data.to_csv(data_path["output"], index=False)
 
+    return {"data": data, "output": data_path["output"]}
+
 
 def write_super_area_name(workdir: str, super_area_name_cfg: dict):
     """Write Super Area name file
@@ -323,6 +330,8 @@ def write_super_area_name(workdir: str, super_area_name_cfg: dict):
     data = data.drop_duplicates()
 
     data.to_csv(data_path["output"], index=False)
+
+    return {"data": data, "output": data_path["output"]}
 
 
 def read_leed(leed_path: str, anzsic_code: DataFrame, if_rate: bool = False) -> DataFrame:
@@ -473,6 +482,8 @@ def write_sectors_by_super_area(workdir: str, sectors_by_super_area_cfg: dict):
     df_pivot = df_pivot.rename(columns={"Area": "MSOA"})
     df_pivot.to_csv(data_path["output"], index=False)
 
+    return {"data": df_pivot, "output": data_path["output"]}
+
 
 def write_employees_by_super_area(workdir: str, employees_by_super_area_cfg: dict):
     """Write number of employees by age for super area
@@ -518,6 +529,8 @@ def write_employees_by_super_area(workdir: str, employees_by_super_area_cfg: dic
     df_pivot = df_pivot.rename(columns={"Area": "MSOA"})
 
     df_pivot.to_csv(data_path["output"], index=False)
+
+    return {"data": df_pivot, "output": data_path["output"]}
 
 
 def write_sectors_employee_genders(workdir: str, sectors_employee_genders_cfg: dict):
@@ -621,6 +634,8 @@ def write_sectors_employee_genders(workdir: str, sectors_employee_genders_cfg: d
     )
 
     df_pivot.to_csv(data_path["output"], index=False)
+
+    return {"data": df_pivot, "output": data_path["output"]}
 
 
 def write_company_info(

@@ -31,7 +31,7 @@ from process.data.group import (
     write_transport_mode,
     write_workplace_and_home,
 )
-from process.data.utils import housekeeping
+from process.data.utils import housekeeping, postproc
 from process.utils import read_cfg, setup_logging
 
 
@@ -52,8 +52,11 @@ def setup_parser():
 
     parser.add_argument("--workdir", required=True, help="working directory")
     parser.add_argument("--cfg", required=True, help="configuration path, e.g., data.cfg")
+    parser.add_argument("--postp", help="If run postprocessing", action="store_true")
 
-    return parser.parse_args(["--workdir", "etc/data/realworld", "--cfg", "etc/june_data.yml"])
+    return parser.parse_args(
+        ["--workdir", "etc/data/realworld", "--cfg", "etc/june_data.yml", "--postp"]
+    )
 
 
 def main():
@@ -69,61 +72,75 @@ def main():
     cfg = read_cfg(args.cfg)
 
     # -----------------------------
+    # Get geography data
+    # -----------------------------
+    logger.info("Processing geography_hierarchy_definition ...")
+    geography_hierarchy_definition = write_geography_hierarchy_definition(
+        args.workdir, cfg["geography"]["geography_hierarchy_definition"]
+    )
+
+    logger.info("Processing super area location ...")
+    super_area_location = write_super_area_location(
+        args.workdir, cfg["geography"]["super_area_location"]
+    )
+
+    logger.info("Processing area location ... ")
+    area_location = write_area_location(args.workdir, cfg["geography"]["area_location"])
+
+    logger.info("Processing area socialeconomic index")
+    area_socialeconomic_index = write_area_socialeconomic_index(
+        args.workdir, cfg["geography"]["area_socialeconomic_index"]
+    )
+
+    # -----------------------------
     # Get demography data
     # -----------------------------
     logger.info("Processing gender_profile_female_ratio ...")
-    write_gender_profile_female_ratio(
+    gender_profile_female_ratio = write_gender_profile_female_ratio(
         args.workdir, cfg["demography"]["gender_profile_female_ratio"]
     )
 
     logger.info("Processing ethnicity profile ...")
-    write_ethnicity_profile(args.workdir, cfg["demography"]["ethnicity_profile"])
+    ethnicity_profile = write_ethnicity_profile(
+        args.workdir, cfg["demography"]["ethnicity_profile"]
+    )
 
     logger.info("Processing age profile ...")
-    write_age_profile(args.workdir, cfg["demography"]["age_profile"])
+    age_profile = write_age_profile(args.workdir, cfg["demography"]["age_profile"])
 
     logger.info("Processing age profile ...")
     write_commorbidity(args.workdir)
 
     # -----------------------------
-    # Get geography data
-    # -----------------------------
-    logger.info("Processing geography_hierarchy_definition ...")
-    write_geography_hierarchy_definition(
-        args.workdir, cfg["geography"]["geography_hierarchy_definition"]
-    )
-
-    logger.info("Processing super area location ...")
-    write_super_area_location(args.workdir, cfg["geography"]["super_area_location"])
-
-    logger.info("Processing area location ... ")
-    write_area_location(args.workdir, cfg["geography"]["area_location"])
-
-    logger.info("Processing area socialeconomic index")
-    write_area_socialeconomic_index(args.workdir, cfg["geography"]["area_socialeconomic_index"])
-
-    # -----------------------------
     # Get group data
     # -----------------------------
     logger.info("Processing sectors_employee_genders and employees_by_super_area")
-    write_sectors_employee_genders(
+    sectors_employee_genders = write_sectors_employee_genders(
         args.workdir, cfg["group"]["company"]["sectors_employee_genders"]
     )
 
     logger.info("Processing employees_by_super_area")
-    write_employees_by_super_area(args.workdir, cfg["group"]["company"]["employees_by_super_area"])
+    employees_by_super_area = write_employees_by_super_area(
+        args.workdir, cfg["group"]["company"]["employees_by_super_area"]
+    )
 
     logger.info("Processing sectors_by_super_area")
-    write_sectors_by_super_area(args.workdir, cfg["group"]["company"]["sectors_by_super_area"])
+    sectors_by_super_area = write_sectors_by_super_area(
+        args.workdir, cfg["group"]["company"]["sectors_by_super_area"]
+    )
 
     logger.info("Processing hospital_locations")
-    write_hospital_locations(args.workdir, cfg["group"]["hospital"]["hospital_locations"])
+    hospital_locations = write_hospital_locations(
+        args.workdir, cfg["group"]["hospital"]["hospital_locations"]
+    )
 
     # -----------------------------
     # Get commute data
     # -----------------------------
-    write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
-    write_super_area_name(args.workdir, cfg["group"]["commute"]["super_area_name"])
+    transport_mode = write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
+    super_area_name = write_super_area_name(
+        args.workdir, cfg["group"]["commute"]["super_area_name"]
+    )
 
     # -----------------------------
     # Get group data
@@ -132,14 +149,40 @@ def main():
     write_household_age_difference(args.workdir)
 
     logger.info("Processing household_number ...")
-    write_household_number(args.workdir, cfg["group"]["household"]["household_number"])
+    household_number = write_household_number(
+        args.workdir, cfg["group"]["household"]["household_number"]
+    )
 
     logger.info("Processing workplace_and_home ...")
-    write_workplace_and_home(args.workdir, cfg["group"]["others"]["workplace_and_home"])
+    workplace_and_home = write_workplace_and_home(
+        args.workdir, cfg["group"]["others"]["workplace_and_home"]
+    )
 
     # -----------------------------
     # Housekeep
     # -----------------------------
+    if args.postp:
+        logger.info("Running postprocessing ...")
+        postproc(
+            {
+                "geography_hierarchy_definition": geography_hierarchy_definition,
+                "super_area_location": super_area_location,
+                "area_location": area_location,
+                "area_socialeconomic_index": area_socialeconomic_index,
+                "gender_profile_female_ratio": gender_profile_female_ratio,
+                "ethnicity_profile": ethnicity_profile,
+                "age_profile": age_profile,
+                "sectors_employee_genders": sectors_employee_genders,
+                "employees_by_super_area": employees_by_super_area,
+                "sectors_by_super_area": sectors_by_super_area,
+                "hospital_locations": hospital_locations,
+                "transport_mode": transport_mode,
+                "super_area_name": super_area_name,
+                "household_number": household_number,
+                "workplace_and_home": workplace_and_home,
+            }
+        )
+
     logger.info("Processing house keeping ...")
     housekeeping(args.workdir)
 

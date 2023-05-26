@@ -51,6 +51,8 @@ def write_gender_profile_female_ratio(workdir: str, gender_profile_female_ratio_
 
     df.to_csv(data_path["output"], index=False)
 
+    return {"data": df, "output": data_path["output"]}
+
 
 def write_ethnicity_profile(workdir: str, ethnicity_cfg: dict):
     """Write ethnicity profile
@@ -125,6 +127,8 @@ def write_ethnicity_profile(workdir: str, ethnicity_cfg: dict):
         combined_df = merge(combined_df, dfs[i], on=["output_area", "ethnicity"])
 
     combined_df.to_csv(data_path["output"], index=False)
+
+    return {"data": combined_df, "output": data_path["output"]}
 
 
 def write_commorbidity(workdir: str):
@@ -221,6 +225,8 @@ def write_age_profile(workdir: str, age_profile_cfg: dict):
 
     new_df = new_df.applymap(math_ceil)
 
-    new_df = new_df.rename({"Region": "output_area"})
+    new_df = new_df.rename(columns={"Region": "output_area"})
 
     new_df.to_csv(data_path["output"], index=False)
+
+    return {"data": new_df, "output": data_path["output"]}

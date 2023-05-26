@@ -100,3 +100,25 @@ FIXED_DATA = {
         },
     },
 }
+
+
+EXCLUDED_AREAS = [258000, 258100]
+
+AREAS_CONSISTENCY_CHECK = {
+    "geography_hierarchy_definition": {"super_area": "super_area", "area": "area"},
+    "super_area_location": {"super_area": "super_area"},
+    "area_location": {"area": "area"},
+    "area_socialeconomic_index": {"area": "area"},
+    "gender_profile_female_ratio": {"area": "output_area"},
+    "ethnicity_profile": {"area": "output_area"},
+    "age_profile": {"area": "output_area"},
+    "sectors_employee_genders": {"area": "oareas"},
+    "employees_by_super_area": {"super_area": "MSOA"},
+    "sectors_by_super_area": {"super_area": "MSOA"},
+    "hospital_locations": None,
+    # "hospital_locations": {"super_area": "super_area", "area": "area"},
+    "transport_mode": {"area": "geography"},
+    "super_area_name": {"super_area": "super_area"},
+    "household_number": {"area": "output_area"},
+    "workplace_and_home": None,
+}

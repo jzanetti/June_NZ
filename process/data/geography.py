@@ -4,8 +4,8 @@ from os.path import join
 
 from pandas import merge, read_csv
 
-from process import REGION_CODES, REGION_NAMES_CONVERSIONS
-from process.data.utils import get_raw_data
+from process import EXCLUDED_AREAS, REGION_CODES, REGION_NAMES_CONVERSIONS
+from process.data.utils import check_list, get_raw_data
 
 logger = getLogger()
 
@@ -51,6 +51,8 @@ def write_area_socialeconomic_index(workdir: str, area_socialeconomic_index_cfg:
 
     logger.info("area_socialeconomic_index is created ...")
 
+    return {"data": merged_df, "output": data_path["output"]}
+
 
 def write_area_location(workdir: str, area_location_cfg: dict):
     """Write area location data
@@ -73,9 +75,9 @@ def write_area_location(workdir: str, area_location_cfg: dict):
 
     data.to_csv(data_path["output"], index=False)
 
-    remove(data_path["raw"])
-
     logger.info("area_location is created ...")
+
+    return {"data": data, "output": data_path["output"]}
 
 
 def write_super_area_location(workdir: str, super_area_location_cfg: dict):
@@ -104,12 +106,14 @@ def write_super_area_location(workdir: str, super_area_location_cfg: dict):
 
     data.to_csv(data_path["output"], index=False)
 
-    remove(data_path["raw"])
-
     logger.info("Super_area_location is created ...")
 
+    return {"data": data, "output": data_path["output"]}
 
-def write_geography_hierarchy_definition(workdir: str, geography_hierarchy_definition_cfg: dict):
+
+def write_geography_hierarchy_definition(
+    workdir: str, geography_hierarchy_definition_cfg: dict
+) -> dict:
     """Write geography_hierarchy_definition
 
     Args:
@@ -156,6 +160,6 @@ def write_geography_hierarchy_definition(workdir: str, geography_hierarchy_defin
 
     data.to_csv(data_path["output"], index=False)
 
-    remove(data_path["raw"])
-
     logger.info("Geography_hierarchy_definition is created ...")
+
+    return {"data": data, "output": data_path["output"]}
