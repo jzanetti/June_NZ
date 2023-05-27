@@ -1,23 +1,31 @@
-from june.world import generate_world_from_geography
-from june.geography.geography import Geography as Geography_class
-from june.demography.demography import Demography as Demography_class
-from june.world import World as World_class
-from process.demography import create_person
-from process.groups import create_group_locations
-from process.distribution import work_and_home_distribution, household_distribution, hospital_distribution, company_distribution
-from process.diags import world2df
-
 from logging import getLogger
+
+from june.demography.demography import Demography as Demography_class
+from june.geography.geography import Geography as Geography_class
+from june.world import World as World_class
+from june.world import generate_world_from_geography
+
+from process.demography import create_person
+from process.diags import world2df
+from process.distribution import (
+    company_distribution,
+    hospital_distribution,
+    household_distribution,
+    work_and_home_distribution,
+)
+from process.groups import create_group_locations
 
 logger = getLogger()
 
+
 def create_world_wrapper(
-    geography_object, 
+    geography_object,
     base_input: str,
     demography_cfg: dict,
     geography_cfg: dict,
     group_and_interaction_cfg: dict,
-    workdir: str) -> World_class:
+    workdir: str,
+) -> World_class:
     """Initialiate a world object
 
     Args:
@@ -29,22 +37,18 @@ def create_world_wrapper(
         World: a World object
     """
     # -----------------------------
-    # 1. Create Geography dependant groups 
+    # 1. Create Geography dependant groups
     # (e.g., venues such as companies, hospitals ...)
     # -----------------------------
     logger.info("Creating groups (companies, hospitals etc.)...")
     group_object = create_group_locations(
-        geography_object["data"], 
-        base_input, 
-        group_and_interaction_cfg)
+        geography_object["data"], base_input, group_and_interaction_cfg
+    )
     geography_object["data"] = group_object["data"]
 
     logger.info("Creating demography ...")
-    person = create_person(
-        geography_object["data"],
-        base_input, 
-        demography_cfg)
-    
+    person = create_person(geography_object["data"], base_input, demography_cfg)
+
     logger.info("Creating the world ...")
     world = create_world(geography_object["data"], person["data"])
 
@@ -52,38 +56,27 @@ def create_world_wrapper(
     # 2. Assign people with work/work places
     # -----------------------------
     logger.info("Distributing individuals to work/home areas...")
-    work_and_home_distribution(
-        world,
-        base_input, 
-        group_and_interaction_cfg, 
-        geography_cfg)
+    work_and_home_distribution(world, base_input, group_and_interaction_cfg, geography_cfg)
 
     # -----------------------------
     # 3. Assign people to fixed interaction objects
     # -----------------------------
     for interaction_obj in group_and_interaction_cfg:
-        
         if interaction_obj in ["others", "commute"]:
             continue
 
         logger.info(f"Distributing individuals to {interaction_obj} ...")
 
         if interaction_obj == "household":
-            household_distribution(
-                world, 
-                base_input, 
-                group_and_interaction_cfg["household"])
+            household_distribution(world, base_input, group_and_interaction_cfg["household"])
         elif interaction_obj == "hospital":
-            hospital_distribution(
-                world,
-                base_input,
-                group_and_interaction_cfg["hospital"])
+            hospital_distribution(world, base_input, group_and_interaction_cfg["hospital"])
         elif interaction_obj == "company":
             company_distribution(world)
 
     return {
         "data": world,
-        "df": world2df(world, write_csv = True, workdir=workdir, tag="after_init")
+        "df": world2df(world, write_csv=True, workdir=workdir, tag="after_init"),
     }
 
 
@@ -98,5 +91,3 @@ def create_world(geography: Geography_class, person: Demography_class) -> World_
         World_class: _description_
     """
     return generate_world_from_geography(geography, demography=person)
-
-

@@ -121,4 +121,6 @@ AREAS_CONSISTENCY_CHECK = {
     "super_area_name": {"super_area": "super_area"},
     "household_number": {"area": "output_area"},
     "workplace_and_home": None,
+    "household_communal": {"area": "output_area"},
+    "household_student": {"area": "area"},
 }

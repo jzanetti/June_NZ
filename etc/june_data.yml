@@ -1,4 +1,6 @@
 
+total_population: https://github.com/jzanetti/JUNE_NZ_data/raw/main/demography/total_population.xlsx
+
 geography:
   geography_hierarchy_definition:
     run: true

@@ -14,6 +14,38 @@ from process import FIXED_DATA, REGION_NAMES_CONVERSIONS
 from process.data.utils import get_raw_data
 
 
+def write_household_student(workdir: str, pop: DataFrame) -> DataFrame:
+    """Write number of students living in student dorms
+
+    Args:
+        workdir (str): Working directory
+        pop (DataFrame): Population
+    """
+    df = DataFrame({"area": pop["area"], "n_students": 0})
+
+    output = join(workdir, "group", "household", "household_student.csv")
+
+    df.to_csv(output, index=False)
+
+    return {"data": df, "output": output}
+
+
+def write_household_communal(workdir: str, pop: DataFrame):
+    """Write number of people living in communal places
+
+    Args:
+        workdir (str): Working directory
+        pop (DataFrame): Population
+    """
+    df = DataFrame({"output_area": pop["area"], "0": 0})
+
+    output = join(workdir, "group", "household", "household_commual.csv")
+
+    df.to_csv(output, index=False)
+
+    return {"data": df, "output": output}
+
+
 def write_hospital_locations(workdir: str, hospital_locations_cfg: dict):
     """Write hospital locations
 
@@ -201,11 +233,40 @@ def write_workplace_and_home(workdir: str, workplace_and_home_cfg: dict):
             "Male": "Male",
             "Female": "Female",
         }
+    ).astype(int)
+
+    geography_hierarchy_definition = read_csv(
+        workplace_and_home_cfg["deps"]["geography_hierarchy_definition"]
+    )[["SA22018_code", "REGC2023_code"]].astype(int)
+    # "Area of residence","Area of workplace","All categories: Sex","Male","Female"
+
+    mapping_dict = dict(
+        zip(
+            geography_hierarchy_definition["SA22018_code"],
+            geography_hierarchy_definition["REGC2023_code"],
+        )
+    )
+
+    merged_df["Area"] = merged_df["Area"].map(mapping_dict)
+    merged_df["SA2_code_workplace_address"] = merged_df["SA2_code_workplace_address"].map(
+        mapping_dict
+    )
+    merged_df = merged_df.groupby(["Area", "SA2_code_workplace_address"]).sum().reset_index()
+
+    merged_df = merged_df.rename(
+        columns={
+            "Area": "Area of residence",
+            "SA2_code_workplace_address": "Area of workplace",
+            "Total": "All categories: Sex",
+            "Male": "Male",
+            "Female": "Female",
+        }
     )
 
     merged_df.to_csv(data_path["output"], index=False)
 
     return {"data": merged_df, "output": data_path["output"]}
+
 
 def write_household_age_difference(workdir: str):
     """Write household age difference for couple and parent-children

@@ -17,6 +17,7 @@ check_availability_for_june_model(checkout_repo=False)
 create_pseudo_data_folder()
 
 import argparse
+import sys
 from os import makedirs
 from os.path import exists
 
@@ -30,6 +31,8 @@ from process.simulation import start_simulation
 from process.tracker import create_tracker_wrapper
 from process.utils import check_data_availability, read_cfg, setup_logging
 from process.world import create_world_wrapper
+
+sys.setrecursionlimit(999999)
 
 
 def get_example_usage():
@@ -75,6 +78,7 @@ def main():
     initiate_interaction(cfg["data"]["base_dir"], cfg["data"]["group_and_interaction"])
 
     logger.info("Creating the world object ...")
+
     world = create_world_wrapper(
         geography_object,
         cfg["data"]["base_dir"],
@@ -83,7 +87,7 @@ def main():
         cfg["data"]["group_and_interaction"],
         args.workdir,
     )
-
+    raise Exception("!23")
     logger.info("Creating commuting object ...")
     commute = create_commute_wrapper(
         world["data"],

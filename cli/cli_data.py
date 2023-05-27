@@ -9,6 +9,7 @@ from os import makedirs
 from os.path import exists
 
 from process.data.demography import (
+    read_population,
     write_age_profile,
     write_commorbidity,
     write_ethnicity_profile,
@@ -24,7 +25,9 @@ from process.data.group import (
     write_employees_by_super_area,
     write_hospital_locations,
     write_household_age_difference,
+    write_household_communal,
     write_household_number,
+    write_household_student,
     write_sectors_by_super_area,
     write_sectors_employee_genders,
     write_super_area_name,
@@ -52,10 +55,25 @@ def setup_parser():
 
     parser.add_argument("--workdir", required=True, help="working directory")
     parser.add_argument("--cfg", required=True, help="configuration path, e.g., data.cfg")
+    parser.add_argument(
+        "--scale",
+        required=False,
+        default=1.0,
+        help="The scale of population [default = 1.0]",
+        type=str,
+    )
     parser.add_argument("--postp", help="If run postprocessing", action="store_true")
 
     return parser.parse_args(
-        ["--workdir", "etc/data/realworld", "--cfg", "etc/june_data.yml", "--postp"]
+        [
+            "--workdir",
+            "etc/data/realworld",
+            "--cfg",
+            "etc/june_data.yml",
+            "--postp",
+            "--scale",
+            "0.1",
+        ]
     )
 
 
@@ -70,6 +88,13 @@ def main():
 
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
+
+    pop = read_population(cfg["total_population"])
+
+    logger.info("Processing workplace_and_home ...")
+    workplace_and_home = write_workplace_and_home(
+        args.workdir, cfg["group"]["others"]["workplace_and_home"]
+    )
 
     # -----------------------------
     # Get geography data
@@ -102,7 +127,7 @@ def main():
 
     logger.info("Processing ethnicity profile ...")
     ethnicity_profile = write_ethnicity_profile(
-        args.workdir, cfg["demography"]["ethnicity_profile"]
+        args.workdir, cfg["demography"]["ethnicity_profile"], pop=pop
     )
 
     logger.info("Processing age profile ...")
@@ -134,17 +159,6 @@ def main():
         args.workdir, cfg["group"]["hospital"]["hospital_locations"]
     )
 
-    # -----------------------------
-    # Get commute data
-    # -----------------------------
-    transport_mode = write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
-    super_area_name = write_super_area_name(
-        args.workdir, cfg["group"]["commute"]["super_area_name"]
-    )
-
-    # -----------------------------
-    # Get group data
-    # -----------------------------
     logger.info("Processing household age difference ...")
     write_household_age_difference(args.workdir)
 
@@ -156,6 +170,20 @@ def main():
     logger.info("Processing workplace_and_home ...")
     workplace_and_home = write_workplace_and_home(
         args.workdir, cfg["group"]["others"]["workplace_and_home"]
+    )
+
+    logger.info("Processing household_student ...")
+    household_student = write_household_student(args.workdir, pop)
+
+    logger.info("Processing household_communal ...")
+    household_communal = write_household_communal(args.workdir, pop)
+
+    # -----------------------------
+    # Get commute data
+    # -----------------------------
+    transport_mode = write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
+    super_area_name = write_super_area_name(
+        args.workdir, cfg["group"]["commute"]["super_area_name"]
     )
 
     # -----------------------------
@@ -180,7 +208,10 @@ def main():
                 "super_area_name": super_area_name,
                 "household_number": household_number,
                 "workplace_and_home": workplace_and_home,
-            }
+                "household_student": household_student,
+                "household_communal": household_communal,
+            },
+            scale=float(args.scale),
         )
 
     logger.info("Processing house keeping ...")

@@ -10,7 +10,7 @@ from process.utils import download_file
 logger = getLogger()
 
 
-def postproc(data_list: list):
+def postproc(data_list: list, scale: float = 1.0):
     """Postprocessing the dataset, e.g., match the number of SA2 etc.
 
     Args:
@@ -26,6 +26,23 @@ def postproc(data_list: list):
             common_values = common_values.intersection(sublist)
 
         return common_values
+
+    # scaling the population
+    age_profile = data_list["age_profile"]["data"]
+    columns_to_multiply = [col for col in age_profile.columns if col not in ["output_area"]]
+    age_profile[columns_to_multiply] = age_profile[columns_to_multiply] * scale
+    age_profile[columns_to_multiply] = age_profile[columns_to_multiply].astype(int)
+
+    # remove areas with no people live
+    age_profile["sum"] = age_profile[columns_to_multiply].sum(axis=1)
+    age_profile = age_profile[age_profile["sum"] != 0]
+
+    # remove areas with no people > 18
+    cols_to_sum = list(range(18, 101))
+    age_profile["sum18"] = age_profile[cols_to_sum].sum(axis=1)
+    age_profile = age_profile[age_profile["sum18"] != 0]
+
+    data_list["age_profile"]["data"] = age_profile.drop(["sum", "sum18"], axis=1)
 
     # get all super_areas/areas:
     all_geo = {"super_area": [], "area": []}
