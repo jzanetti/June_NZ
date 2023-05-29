@@ -72,7 +72,7 @@ def setup_parser():
             "etc/june_data.yml",
             "--postp",
             "--scale",
-            "0.1",
+            "0.05",
         ]
     )
 

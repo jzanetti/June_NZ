@@ -346,6 +346,10 @@ def write_transport_mode(workdir: str, transport_mode_cfg: dict):
         ]
     ]
 
+    data = data.replace(-999.0, 0)
+
+    data = data.groupby("SA2_code_usual_residence_address").sum().reset_index()
+
     data = data.rename(columns={"SA2_code_usual_residence_address": "geography"})
 
     for data_key in data.columns:
@@ -358,15 +362,37 @@ def write_transport_mode(workdir: str, transport_mode_cfg: dict):
     data["geography code"] = data["geography"]
     data["Rural Urban"] = "Total"
 
-    data = data.replace(-999.0, 0)
+    # Remove rows that there is no travel methods
+    travel_methods = [
+        x
+        for x in list(data.columns)
+        if x
+        not in [
+            "geography",
+            "date",
+            "geography code",
+            "Rural Urban",
+            "Method of Travel to Work: Total; measures: Value",
+        ]
+    ]
+    data = data.loc[~((data[travel_methods] == 0).all(axis=1))]
+
+    # Convert all columns from string to integer, except for the Rural Urban
+    for column in data.columns:
+        if column != "Rural Urban":
+            data[column] = data[column].astype(int)
+
+    # data = data.drop(columns=["date", "geography code", "Rural Urban"])
 
     data.to_csv(data_path["output"], index=False)
 
     return {"data": data, "output": data_path["output"]}
 
 
-def write_super_area_name(workdir: str, super_area_name_cfg: dict):
-    """Write Super Area name file
+def write_super_area_name(
+    workdir: str, super_area_name_cfg: dict
+):
+    """Write Super Area name file + number of stations
 
     Args:
         workdir (str): Working directory
@@ -389,6 +415,8 @@ def write_super_area_name(workdir: str, super_area_name_cfg: dict):
     data = data.rename(columns={"REGC2023_code": "super_area", "REGC2023_name": "city"})
 
     data = data.drop_duplicates()
+
+    data["super_area"] = data["super_area"].astype(str)
 
     data.to_csv(data_path["output"], index=False)
 

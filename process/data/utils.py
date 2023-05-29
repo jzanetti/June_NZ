@@ -1,4 +1,5 @@
 from logging import getLogger
+from math import ceil as math_ceil
 from os import listdir, makedirs, remove
 from os.path import exists, isfile, join
 
@@ -31,7 +32,13 @@ def postproc(data_list: list, scale: float = 1.0):
     age_profile = data_list["age_profile"]["data"]
     columns_to_multiply = [col for col in age_profile.columns if col not in ["output_area"]]
     age_profile[columns_to_multiply] = age_profile[columns_to_multiply] * scale
+
     age_profile[columns_to_multiply] = age_profile[columns_to_multiply].astype(int)
+    # age_profile[columns_to_multiply] = age_profile[columns_to_multiply].applymap(math_ceil)
+
+    total_person = age_profile[columns_to_multiply].values.sum()
+    logger.info(f"A total of {total_person} person will be used ...")
+    # age_profile[columns_to_multiply] = age_profile[columns_to_multiply].astype(int)
 
     # remove areas with no people live
     age_profile["sum"] = age_profile[columns_to_multiply].sum(axis=1)

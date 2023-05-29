@@ -76,7 +76,7 @@ def create_world_wrapper(
 
     return {
         "data": world,
-        "df": world2df(world, write_csv=True, workdir=workdir, tag="after_init"),
+        # "df": world2df(world, write_csv=True, workdir=workdir, tag="after_init"),
     }
 
 

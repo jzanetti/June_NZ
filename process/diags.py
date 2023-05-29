@@ -1,38 +1,42 @@
 from copy import deepcopy
-from pandas import DataFrame
 from datetime import datetime
 from os.path import join
-from june.world import World as World_class
+
 from june.geography.geography import Geography as Geography_class
+from june.world import World as World_class
+from pandas import DataFrame
+
 from process import SECTOR_CODES
 
+
 def get_people_for_groups_df(
-        world_input2: World_class,
-        time: datetime =None, 
-        groups: list = [
-            "care_homes", 
-            "cemeteries", 
-            "cinemas", 
-            "city_transports", 
-            "companies", 
-            "groceries", 
-            "hospitals", 
-            "inter_city_transports", 
-            "households", 
-            "pubs", 
-            "schools", 
-            "universities"
-        ]) -> dict:
+    world_input2: World_class,
+    time: datetime = None,
+    groups: list = [
+        "care_homes",
+        "cemeteries",
+        "cinemas",
+        "city_transports",
+        "companies",
+        "groceries",
+        "hospitals",
+        "inter_city_transports",
+        "households",
+        "pubs",
+        "schools",
+        "universities",
+    ],
+) -> dict:
     """Get total people for different groups
 
     Args:
         world_input2 (World_class): World object
         total_people (dict): total people to be exported
         time (Datetime, optional): Time for data. Defaults to None.
-        groups (list, optional): Groups to use. Defaults to [ 
-            "care_homes", "cemeteries", "cinemas", "city_transports", 
-            "companies", "groceries", "hospitals", 
-            "inter_city_transports", "households", 
+        groups (list, optional): Groups to use. Defaults to [
+            "care_homes", "cemeteries", "cinemas", "city_transports",
+            "companies", "groceries", "hospitals",
+            "inter_city_transports", "households",
             "pubs", "schools", "universities" ].
 
     Returns:
@@ -42,14 +46,12 @@ def get_people_for_groups_df(
 
     output = {"area": [], "time": [], "people": [], "group": []}
     for proc_group in groups:
-
         if proc_group == "cemeteries":
             continue
 
         proc_data = getattr(world_input, proc_group)
 
         if proc_data is not None:
-            
             for proc_member in proc_data:
                 output["area"].append(proc_member.area.name)
                 output["time"].append(time)
@@ -59,10 +61,8 @@ def get_people_for_groups_df(
     return DataFrame.from_dict(output)
 
 
-
 def world_person2df(world_input2, time=None):
     world_input = deepcopy(world_input2)
-
 
     person_info = {
         "time": [],
@@ -77,7 +77,6 @@ def world_person2df(world_input2, time=None):
         "sub_sector": [],
         "subgroup_or_activity": [],
         "lockdown_status": [],
-
         "work_super_area": [],
         "home_super_area": [],
         "work_city": [],
@@ -88,10 +87,8 @@ def world_person2df(world_input2, time=None):
         "commute_station_city": [],
         "commute_group_name": [],
         "busy": [],
-
         "housemates": [],
         "num_housemates": [],
-
         "residence_group_type": [],
         "residence_subgroup_type": [],
         "residence_external": [],
@@ -101,12 +98,10 @@ def world_person2df(world_input2, time=None):
         "time_of_infection": [],
         "intensive_care": [],
         "symptoms_trajectory": [],
-        "dead": []
-
+        "dead": [],
     }
 
     for proc_person in world_input.people:
-
         if time is not None:
             person_info["time"].append(time)
         else:
@@ -116,7 +111,7 @@ def world_person2df(world_input2, time=None):
         person_info["super_area_name"].append(proc_person.super_area.name)
 
         person_info["area_name"].append(proc_person.area.name)
-        
+
         try:
             housemates = [person.id for person in proc_person.housemates]
         except AttributeError:
@@ -145,7 +140,7 @@ def world_person2df(world_input2, time=None):
         if len(subgroup_name) == 0:
             subgroup_name = None
         person_info["subgroup_or_activity"].append(subgroup_name)
-            
+
         try:
             residence_group_type = proc_person.residence.group.type
         except AttributeError:
@@ -169,9 +164,14 @@ def world_person2df(world_input2, time=None):
         if proc_person.infection is not None:
             person_info["infection"].append(
                 # proc_person.infection
-                proc_person.infection.tag.name)
-            person_info["infection_probability"].append(round(proc_person.infection.infection_probability, 5))
-            person_info["time_of_infection"].append(round(proc_person.infection.time_of_infection, 5))
+                proc_person.infection.tag.name
+            )
+            person_info["infection_probability"].append(
+                round(proc_person.infection.infection_probability, 5)
+            )
+            person_info["time_of_infection"].append(
+                round(proc_person.infection.time_of_infection, 5)
+            )
         else:
             person_info["infection"].append(None)
             person_info["infection_probability"].append(None)
@@ -181,19 +181,14 @@ def world_person2df(world_input2, time=None):
 
         person_info["dead"].append(proc_person.dead)
         if proc_person.symptoms is not None:
-
             symptoms_trajectory = []
             for proc_traj in proc_person.symptoms.trajectory:
-                symptoms_trajectory.append(
-                    (
-                        proc_traj[0],
-                        proc_traj[1].name
-                    )
-                )
+                symptoms_trajectory.append((proc_traj[0], proc_traj[1].name))
 
             person_info["symptoms_trajectory"].append(
                 # proc_person.symptoms.trajectory
-                symptoms_trajectory)
+                symptoms_trajectory
+            )
         else:
             person_info["symptoms_trajectory"].append(None)
 
@@ -203,19 +198,16 @@ def world_person2df(world_input2, time=None):
             person_info["work_super_area"].append(None)
         person_info["home_super_area"].append(proc_person.super_area.name)
 
-
         try:
             num_housemates = len(proc_person.housemates)
         except AttributeError:
             num_housemates = None
         person_info["num_housemates"].append(num_housemates)
 
-
         if proc_person.work_city is not None:
             person_info["work_city"].append(proc_person.work_city.name)
         else:
             person_info["work_city"].append(None)
-
 
         if proc_person.home_city is not None:
             person_info["home_city"].append(proc_person.home_city.name)
@@ -233,12 +225,8 @@ def world_person2df(world_input2, time=None):
             person_info["commute_station_type"].append(
                 proc_person.commute.group.station.station_type
             )
-            person_info["commute_station_city"].append(
-                proc_person.commute.group.station.city
-            )
-            person_info["commute_group_name"].append(
-                proc_person.commute.group.name
-            )
+            person_info["commute_station_city"].append(proc_person.commute.group.station.city)
+            person_info["commute_group_name"].append(proc_person.commute.group.name)
 
             # person_info["commute"].append(proc_person.commute)
         else:
@@ -249,8 +237,13 @@ def world_person2df(world_input2, time=None):
     return DataFrame.from_dict(person_info)
 
 
-
-def world2df(world_input: World_class, time: datetime = None, write_csv: bool = False, workdir: str = None, tag: str = ""):
+def world2df(
+    world_input: World_class,
+    time: datetime = None,
+    write_csv: bool = False,
+    workdir: str = None,
+    tag: str = "",
+):
     """Convert the world object to a dataframe
 
     Args:
@@ -276,8 +269,7 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
         "coordinates": [],
         "n_residents": [],
         "size": [],
-        "type": []
-
+        "type": [],
     }
 
     person_info = {
@@ -308,8 +300,7 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
         "infected": [],
         "infection": [],
         "intensive_care": [],
-        "symptoms": []
-
+        "symptoms": [],
     }
 
     cities_info = {
@@ -318,7 +309,7 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
         "num_city_stations": [],
         "num_inter_city_stations": [],
         "travel_within_the_city": [],
-        "travel_to_this_city_from_others": []
+        "travel_to_this_city_from_others": [],
     }
 
     all_citieis = world_input.cities
@@ -327,13 +318,17 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
             cities_info["work_city_name"].append(proc_city.name)
             cities_info["coordinates"].append(proc_city.coordinates)
             cities_info["num_city_stations"].append(len(proc_city.city_stations.members))
-            cities_info["num_inter_city_stations"].append(len(proc_city.inter_city_stations.members))
+            cities_info["num_inter_city_stations"].append(
+                len(proc_city.inter_city_stations.members)
+            )
             cities_info["travel_within_the_city"].append(proc_city.internal_commuter_ids)
-            cities_info["travel_to_this_city_from_others"].append(proc_city.super_area.closest_inter_city_station_for_city[proc_city.name].commuter_ids)
-
+            cities_info["travel_to_this_city_from_others"].append(
+                proc_city.super_area.closest_inter_city_station_for_city[
+                    proc_city.name
+                ].commuter_ids
+            )
 
     for proc_area in all_areas.members:
-        
         super_area_name = proc_area.super_area.name
         area_name = proc_area.name
         area_population = len(proc_area.people)
@@ -341,7 +336,6 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
 
         # Print household
         for proc_household in proc_area.households:
-
             household_info["super_area_name"].append(super_area_name)
             household_info["area_name"].append(area_name)
             household_info["area_population"].append(area_population)
@@ -355,7 +349,6 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
             household_info["type"].append(proc_household.type)
 
             for proc_person in proc_household.people:
-
                 if time is not None:
                     person_info["time"].append(time)
                 else:
@@ -374,7 +367,9 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
                 person_info["comorbidity"].append(proc_person.comorbidity)
                 person_info["busy"].append(proc_person.busy)
                 person_info["residence_group_type"].append(proc_person.residence.group.type)
-                person_info["residence_subgroup_type"].append(proc_person.residence.group.subgroup_type)
+                person_info["residence_subgroup_type"].append(
+                    proc_person.residence.group.subgroup_type
+                )
                 person_info["residence_external"].append(proc_person.residence.external)
                 person_info["infected"].append(proc_person.infected)
 
@@ -402,14 +397,15 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
                 else:
                     person_info["work_city"].append(None)
 
-
                 if proc_person.home_city is not None:
                     person_info["home_city"].append(proc_person.home_city.name)
                 else:
                     person_info["home_city"].append(None)
 
                 if proc_person.mode_of_transport is not None:
-                    person_info["transport_method"].append(proc_person.mode_of_transport.description)
+                    person_info["transport_method"].append(
+                        proc_person.mode_of_transport.description
+                    )
                     person_info["transport_public"].append(proc_person.mode_of_transport.is_public)
                 else:
                     person_info["transport_method"].append(None)
@@ -420,7 +416,7 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
     output = {
         "household": DataFrame.from_dict(household_info),
         "person": DataFrame.from_dict(person_info),
-        "city": DataFrame.from_dict(cities_info)
+        "city": DataFrame.from_dict(cities_info),
     }
 
     if write_csv:
@@ -428,6 +424,7 @@ def world2df(world_input: World_class, time: datetime = None, write_csv: bool = 
             output[output_key].to_csv(join(workdir, f"{output_key}_{tag}.csv"))
 
     return output
+
 
 def geography2df(geography: Geography_class) -> DataFrame:
     """Convert geography to DataFrame
@@ -439,7 +436,6 @@ def geography2df(geography: Geography_class) -> DataFrame:
         DataFrame: geography Dataframe
     """
 
-
     all_regions = geography.regions
 
     geography_info = {
@@ -448,17 +444,15 @@ def geography2df(geography: Geography_class) -> DataFrame:
         "area_name": [],
         "socialeconomic_index": [],
         "super_area_coords": [],
-        "area_coords": []
+        "area_coords": [],
     }
 
     for proc_region in all_regions.members:
-
         proc_region_name = proc_region.name
 
         all_super_areas = proc_region.super_areas
 
         for proc_super_area in all_super_areas:
-
             proc_super_area_coords = proc_super_area.coordinates
 
             proc_super_area_name = proc_super_area.name
@@ -466,7 +460,6 @@ def geography2df(geography: Geography_class) -> DataFrame:
             all_areas = proc_super_area.areas
 
             for proc_area in all_areas:
-
                 proc_area_socialeconomic_index = proc_area.socioeconomic_index
                 proc_area_coordinates = proc_area.coordinates
                 proc_area_name = proc_area.name
@@ -477,6 +470,5 @@ def geography2df(geography: Geography_class) -> DataFrame:
                 geography_info["socialeconomic_index"].append(proc_area_socialeconomic_index)
                 geography_info["super_area_coords"].append(proc_super_area_coords)
                 geography_info["area_coords"].append(proc_area_coordinates)
-    
 
     return DataFrame.from_dict(geography_info)

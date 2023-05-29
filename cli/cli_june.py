@@ -87,7 +87,7 @@ def main():
         cfg["data"]["group_and_interaction"],
         args.workdir,
     )
-    raise Exception("!23")
+
     logger.info("Creating commuting object ...")
     commute = create_commute_wrapper(
         world["data"],
@@ -108,6 +108,8 @@ def main():
 
     logger.info("Creating policy object ...")
     policy = create_policy_wrapper(cfg["data"]["base_dir"], cfg["data"]["policy"])
+
+    raise Exception("!23")
 
     logger.info("Creating tracker ...")
     tracker = create_tracker_wrapper(
