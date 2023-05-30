@@ -4,10 +4,14 @@ from os.path import join
 from june.groups.travel import Travel
 from june.world import World as World_class
 
+from process.diags import world2df
+
 logger = getLogger()
 
 
-def create_commute_wrapper(world: World_class, base_dir: str, commute_cfg: dict, workdir: str):
+def create_commute_wrapper(
+    world: World_class, base_dir: str, commute_cfg: dict, workdir: str, save_df: bool = False
+):
     """Creating the commuting object
 
     Args:
@@ -23,7 +27,8 @@ def create_commute_wrapper(world: World_class, base_dir: str, commute_cfg: dict,
 
     commute = create_commute(world, base_dir, commute_cfg)
 
-    # world2df(world, write_csv=True, workdir=workdir, tag="after_commute")
+    if save_df:
+        world2df(world, write_csv=True, workdir=workdir, tag="after_commute")
 
     return commute
 

@@ -255,13 +255,10 @@ def world2df(
     Returns:
         dict: The dict contains the dataframe
     """
-    print("step 1")
     my_world = deepcopy(world_input)
 
-    print("step 1.1")
     all_areas = my_world.areas
 
-    print("step 2")
     household_info = {
         "super_area_name": [],
         "area_name": [],
@@ -316,16 +313,23 @@ def world2df(
         "travel_to_this_city_from_others": [],
     }
 
-    print("step 3")
     all_citieis = world_input.cities
     if all_citieis is not None:
         for proc_city in all_citieis.members:
             cities_info["work_city_name"].append(proc_city.name)
             cities_info["coordinates"].append(proc_city.coordinates)
-            cities_info["num_city_stations"].append(len(proc_city.city_stations.members))
-            cities_info["num_inter_city_stations"].append(
-                len(proc_city.inter_city_stations.members)
-            )
+            if isinstance(proc_city.city_stations, list):
+                len_city_stations = 0
+            else:
+                len_city_stations = len(proc_city.city_stations.members)
+            cities_info["num_city_stations"].append(len_city_stations)
+
+            if isinstance(proc_city.city_stations, list):
+                len_inter_city_stations = 0
+            else:
+                len_inter_city_stations = len(proc_city.inter_city_stations.members)
+
+            cities_info["num_inter_city_stations"].append(len_inter_city_stations)
             cities_info["travel_within_the_city"].append(proc_city.internal_commuter_ids)
             cities_info["travel_to_this_city_from_others"].append(
                 proc_city.super_area.closest_inter_city_station_for_city[
@@ -333,7 +337,6 @@ def world2df(
                 ].commuter_ids
             )
 
-    print("step 4")
     for proc_area in all_areas.members:
         super_area_name = proc_area.super_area.name
         area_name = proc_area.name
@@ -419,7 +422,6 @@ def world2df(
 
                 person_info["commute"].append(proc_person.commute)
 
-    print("step 5")
     output = {
         "household": DataFrame.from_dict(household_info),
         "person": DataFrame.from_dict(person_info),

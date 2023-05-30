@@ -418,6 +418,8 @@ def write_super_area_name(
 
     data["super_area"] = data["super_area"].astype(str)
 
+    data["city"] = data["city"].replace("Manawatū-Whanganui", "Manawatu-Whanganui")
+
     data.to_csv(data_path["output"], index=False)
 
     return {"data": data, "output": data_path["output"]}

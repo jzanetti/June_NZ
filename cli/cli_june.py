@@ -88,15 +88,15 @@ def main():
         cfg["data"]["geography"],
         cfg["data"]["group_and_interaction"],
         args.workdir,
-        save_df=cfg["save"]["world"],
     )
-
+    # len(world.cities.members)
     logger.info("Creating commuting object ...")
     commute = create_commute_wrapper(
         world["data"],
         cfg["data"]["base_dir"],
         cfg["data"]["group_and_interaction"]["commute"],
         args.workdir,
+        save_df=cfg["save"]["world"],
     )
 
     logger.info("Creating disease object ...")

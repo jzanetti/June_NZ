@@ -62,7 +62,13 @@ def setup_parser():
         help="The scale of population [default = 1.0]",
         type=str,
     )
-    parser.add_argument("--postp", help="If run postprocessing", action="store_true")
+    parser.add_argument(
+        "--exclude_super_areas",
+        nargs="+",
+        help="Super areas to be excluded",
+        required=False,
+        default=[],
+    )
 
     return parser.parse_args(
         [
@@ -70,9 +76,11 @@ def setup_parser():
             "etc/data/realworld",
             "--cfg",
             "etc/june_data.yml",
-            "--postp",
             "--scale",
             "0.02",
+            "--exclude_super_areas",
+            "Tasman",
+            "Marlborough",
         ]
     )
 
@@ -189,30 +197,30 @@ def main():
     # -----------------------------
     # Housekeep
     # -----------------------------
-    if args.postp:
-        logger.info("Running postprocessing ...")
-        postproc(
-            {
-                "geography_hierarchy_definition": geography_hierarchy_definition,
-                "super_area_location": super_area_location,
-                "area_location": area_location,
-                "area_socialeconomic_index": area_socialeconomic_index,
-                "gender_profile_female_ratio": gender_profile_female_ratio,
-                "ethnicity_profile": ethnicity_profile,
-                "age_profile": age_profile,
-                "sectors_employee_genders": sectors_employee_genders,
-                "employees_by_super_area": employees_by_super_area,
-                "sectors_by_super_area": sectors_by_super_area,
-                "hospital_locations": hospital_locations,
-                "transport_mode": transport_mode,
-                "super_area_name": super_area_name,
-                "household_number": household_number,
-                "workplace_and_home": workplace_and_home,
-                "household_student": household_student,
-                "household_communal": household_communal,
-            },
-            scale=float(args.scale),
-        )
+    logger.info("Running postprocessing ...")
+    postproc(
+        {
+            "geography_hierarchy_definition": geography_hierarchy_definition,
+            "super_area_location": super_area_location,
+            "area_location": area_location,
+            "area_socialeconomic_index": area_socialeconomic_index,
+            "gender_profile_female_ratio": gender_profile_female_ratio,
+            "ethnicity_profile": ethnicity_profile,
+            "age_profile": age_profile,
+            "sectors_employee_genders": sectors_employee_genders,
+            "employees_by_super_area": employees_by_super_area,
+            "sectors_by_super_area": sectors_by_super_area,
+            "hospital_locations": hospital_locations,
+            "transport_mode": transport_mode,
+            "super_area_name": super_area_name,
+            "household_number": household_number,
+            "workplace_and_home": workplace_and_home,
+            "household_student": household_student,
+            "household_communal": household_communal,
+        },
+        scale=float(args.scale),
+        exclude_super_areas=args.exclude_super_areas,
+    )
 
     logger.info("Processing house keeping ...")
     housekeeping(args.workdir)

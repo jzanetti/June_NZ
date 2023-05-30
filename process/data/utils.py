@@ -4,6 +4,7 @@ from os import listdir, makedirs, remove
 from os.path import exists, isfile, join
 
 from numpy import unique
+from pandas import read_csv
 
 from process import AREAS_CONSISTENCY_CHECK
 from process.utils import download_file
@@ -11,7 +12,35 @@ from process.utils import download_file
 logger = getLogger()
 
 
-def postproc(data_list: list, scale: float = 1.0):
+def remove_super_area(super_area_to_exclude: list, data_list: dict, all_geo: dict) -> dict:
+    """Remove super areas from input
+
+    Args:
+        super_area_to_exclude (list): Super area to be excluded, e.g.,
+            super_area_to_exclude = ["Tasman", "Marlborough"]
+    """
+
+    if len(super_area_to_exclude) == 0:
+        return
+
+    super_area_name_to_remove = data_list["super_area_name"]["data"]
+    geography_hierarchy_definition = data_list["geography_hierarchy_definition"]["data"]
+    age_profile = data_list["age_profile"]["data"]
+
+    super_area_name_to_remove = super_area_name_to_remove[
+        super_area_name_to_remove["city"].isin(super_area_to_exclude)
+    ]["super_area"].to_list()
+
+    super_area_name_to_remove = [int(item) for item in super_area_name_to_remove]
+
+    all_geo["super_area"] = set(
+        [item for item in all_geo["super_area"] if item not in super_area_name_to_remove]
+    )
+
+    return all_geo
+
+
+def postproc(data_list: list, scale: float = 1.0, exclude_super_areas: list = []):
     """Postprocessing the dataset, e.g., match the number of SA2 etc.
 
     Args:
@@ -72,6 +101,8 @@ def postproc(data_list: list, scale: float = 1.0):
 
     for area_key in all_geo:
         all_geo[area_key] = _find_common_values(all_geo[area_key])
+
+    # all_geo = remove_super_area(exclude_super_areas, data_list, all_geo)
 
     # extract data with overlapped areas
     for data_name in data_list:
