@@ -25,6 +25,7 @@ def create_world_wrapper(
     geography_cfg: dict,
     group_and_interaction_cfg: dict,
     workdir: str,
+    save_df: bool = False,
 ) -> World_class:
     """Initialiate a world object
 
@@ -74,10 +75,11 @@ def create_world_wrapper(
         elif interaction_obj == "company":
             company_distribution(world)
 
-    return {
-        "data": world,
-        # "df": world2df(world, write_csv=True, workdir=workdir, tag="after_init"),
-    }
+    if save_df:
+        df = world2df(world, write_csv=True, workdir=workdir, tag="after_init")
+    else:
+        df = None
+    return {"data": world, "df": df}
 
 
 def create_world(geography: Geography_class, person: Demography_class) -> World_class:

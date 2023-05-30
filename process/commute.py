@@ -4,8 +4,6 @@ from os.path import join
 from june.groups.travel import Travel
 from june.world import World as World_class
 
-from process.diags import world2df
-
 logger = getLogger()
 
 

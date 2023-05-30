@@ -72,7 +72,9 @@ def main():
     check_data_availability(cfg["data"])
 
     logger.info("Creating geography object ...")
-    geography_object = create_geography_wrapper(cfg["data"]["base_dir"], cfg["data"]["geography"])
+    geography_object = create_geography_wrapper(
+        cfg["data"]["base_dir"], cfg["data"]["geography"], save_df=cfg["save"]["geography"]
+    )
 
     logger.info("Initiating the interaction ...")
     initiate_interaction(cfg["data"]["base_dir"], cfg["data"]["group_and_interaction"])
@@ -86,6 +88,7 @@ def main():
         cfg["data"]["geography"],
         cfg["data"]["group_and_interaction"],
         args.workdir,
+        save_df=cfg["save"]["world"],
     )
 
     logger.info("Creating commuting object ...")
@@ -109,7 +112,7 @@ def main():
     logger.info("Creating policy object ...")
     policy = create_policy_wrapper(cfg["data"]["base_dir"], cfg["data"]["policy"])
 
-    raise Exception("!23")
+    # raise Exception("!23")
 
     logger.info("Creating tracker ...")
     tracker = create_tracker_wrapper(

@@ -1,9 +1,11 @@
-from june.geography import Geography
-from process.diags import geography2df
 from os.path import join
 
+from june.geography import Geography
 
-def create_geography_wrapper(base_input: str, geography_cfg: dict) -> dict:
+from process.diags import geography2df
+
+
+def create_geography_wrapper(base_input: str, geography_cfg: dict, save_df: bool = False) -> dict:
     """Create geography object
 
     Args:
@@ -17,12 +19,14 @@ def create_geography_wrapper(base_input: str, geography_cfg: dict) -> dict:
         hierarchy_filename=join(base_input, geography_cfg["geography_hierarchy"]),
         super_area_coordinates_filename=join(base_input, geography_cfg["super_area_location"]),
         area_coordinates_filename=join(base_input, geography_cfg["area_location"]),
-        area_socioeconomic_index_filename=join(base_input, geography_cfg["area_socialeconomic_index"])
+        area_socioeconomic_index_filename=join(
+            base_input, geography_cfg["area_socialeconomic_index"]
+        ),
     )
 
-    geography_df = geography2df(geography)
+    if save_df:
+        geography_df = geography2df(geography)
+    else:
+        geography_df = None
 
-    return {
-        "data": geography,
-        "df": geography_df
-    }
+    return {"data": geography, "df": geography_df}

@@ -21,6 +21,7 @@
     },
     "python.analysis.extraPaths": [
         "/home/zhangs/Github/June_NZ",
-        "/Users/sijinzhang/Github/June_NZ/lib/JUNE_v1.2.0"
+        "/Users/sijinzhang/Github/June_NZ/lib/JUNE_v1.2.0",
+        "/home/zhangs/Github/June_NZ/lib/JUNE_v1.2.0"
     ]
 }

@@ -5,6 +5,10 @@ exp_name: singleobs
 
 simulation_cfg: etc/data/singleobs/simulation/simulation_cfg.yml
 
+save:
+  geography: true
+  world: true
+
 output:
   demography: true
   timeseries:
