@@ -24,6 +24,7 @@ def create_world_wrapper(
     demography_cfg: dict,
     geography_cfg: dict,
     group_and_interaction_cfg: dict,
+    disease_cfg: dict,
     workdir: str,
     save_df: bool = False,
 ) -> World_class:
@@ -48,7 +49,9 @@ def create_world_wrapper(
     geography_object["data"] = group_object["data"]
 
     logger.info("Creating demography ...")
-    person = create_person(geography_object["data"], base_input, demography_cfg)
+    person = create_person(
+        geography_object["data"], base_input, demography_cfg, disease_cfg["comorbidity"]
+    )
 
     logger.info("Creating the world ...")
     world = create_world(geography_object["data"], person["data"])

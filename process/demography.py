@@ -8,7 +8,10 @@ from pandas import DataFrame
 
 
 def create_person(
-    geography: Geography_class, base_dir: str, demography_individual_cfg: dict
+    geography: Geography_class,
+    base_dir: str,
+    demography_individual_cfg: dict,
+    comorbidity_cfg: dict,
 ) -> Demography_class:
     """Create individual person
 
@@ -18,10 +21,9 @@ def create_person(
         demography_individual_cfg (dict): Demography configuration (individual)
     """
 
+    demography_individual_cfg["comorbidity"] = {}
     for gender in ["male", "female"]:
-        demography_individual_cfg["comorbidity"][gender] = join(
-            base_dir, demography_individual_cfg["comorbidity"][gender]
-        )
+        demography_individual_cfg["comorbidity"][gender] = join(base_dir, comorbidity_cfg[gender])
 
     demography = Demography.for_geography(
         geography,

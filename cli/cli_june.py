@@ -53,7 +53,9 @@ def setup_parser():
     parser.add_argument("--workdir", required=True, help="working directory")
     parser.add_argument("--cfg", required=True, help="configuration path, e.g., june.cfg")
 
-    return parser.parse_args(["--workdir", "/tmp/june_nz", "--cfg", "etc/june_nz.yml"])
+    return parser.parse_args(
+        ["--workdir", "/tmp/june_singleobs", "--cfg", "etc/june_singleobs.yml"]
+    )
 
 
 def main():
@@ -87,6 +89,7 @@ def main():
         cfg["data"]["demography"],
         cfg["data"]["geography"],
         cfg["data"]["group_and_interaction"],
+        cfg["data"]["disease"],
         args.workdir,
     )
     # len(world.cities.members)

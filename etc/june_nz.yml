@@ -28,9 +28,6 @@ data:
     age: demography/age_profile.csv
     gender: demography/gender_profile_female_ratio.csv
     ethnicity: demography/ethnicity_profile.csv
-    comorbidity:
-      female: demography/comorbidities_female.csv
-      male: demography/comorbidities_male.csv
 
   group_and_interaction:
     hospital:
@@ -72,6 +69,12 @@ data:
     transmission_profile: diesease/covid19.yaml
     sympton_trajectories: diesease/symptom_trajectories.yaml
     infection_outcome: diesease/infection_outcome_ratio.csv
+    comorbidity:
+      female: diesease/comorbidities_female.csv
+      male: diesease/comorbidities_male.csv
+      intensity: diesease/comorbidity_intensity.yaml
+    virus:
+      intensity: diesease/virus_intensity.yaml
 
   policy: policy/policy.yaml
     
