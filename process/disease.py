@@ -121,9 +121,9 @@ def create_disease_wrapper(
     # A dictionary mapping infection_id -> symptoms reduction by age.
     # infection_id = {"Covid19": 170852960, "B117": 37224668, "B16172": 76677444}
     # multiplier_dict = {
-    #    infection_id["Covid19"]: {"0-50": 1.0, "50-100": 1.5},
-    #    infection_id["B117"]: {"0-50": 1.0, "50-100": 1.5},
-    #    infection_id["B16172"]: {"0-50": 1.0, "50-100": 1.5},
+    #    infection_id["Covid19"]: 1.0,
+    #    infection_id["B117"]: 1.5,
+    #    infection_id["B16172"]: 1.5,
     # }
 
     multiplier_setter = ImmunitySetter(

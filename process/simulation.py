@@ -1,12 +1,13 @@
+from os.path import join
+
+from june.epidemiology.epidemiology import Epidemiology as Epidemiology_class
+from june.groups.travel.travel import Travel as Travel_class
+from june.interaction.interaction import Interaction as Interaction_class
+from june.policy.policy import Policies as Policies_class
 from june.records import Record
 from june.simulator import Simulator
-from june.world import World as World_class
-from os.path import join
-from june.epidemiology.epidemiology import Epidemiology as Epidemiology_class
-from june.interaction.interaction import Interaction as Interaction_class
-from june.groups.travel.travel import Travel as Travel_class
 from june.tracker.tracker import Tracker as Tracker_class
-from june.policy.policy import Policies as Policies_class
+from june.world import World as World_class
 
 
 def start_simulation(
@@ -19,8 +20,8 @@ def start_simulation(
     simulation_cfg: dict = None,
     disease_cfg: dict = None,
     base_dir: str = None,
-    workdir: str = None
-    ):
+    workdir: str = None,
+):
     """Start running the simulation
 
     Args:
@@ -39,15 +40,15 @@ def start_simulation(
     simulator = Simulator.from_file(
         world=world,
         epidemiology=disease_obj,
-        interaction=interaction_obj, 
-        config_filename = simulation_cfg,
-        trajectory_filename = join(base_dir, disease_cfg["sympton_trajectories"]),
-        travel = travel_obj,
-        record = Record(    
-            record_path = join(workdir, "output"),    
+        interaction=interaction_obj,
+        config_filename=simulation_cfg,
+        trajectory_filename=join(base_dir, disease_cfg["sympton_trajectories"]),
+        travel=travel_obj,
+        record=Record(
+            record_path=join(workdir, "output"),
             record_static_data=True,
-        ) ,
-        policies = policy_obj,
+        ),
+        policies=policy_obj,
         tracker=tracker_obj,
     )
 
