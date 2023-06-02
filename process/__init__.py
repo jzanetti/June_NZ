@@ -6,14 +6,9 @@ JUNE_MODEL = {
     "model_name": "JUNE_v1.2.0",
 }
 
+USE_POLARS = False
+
 SECTOR_CODES = {
-    "A": "Agriculture, forestry and fishing",
-    "Q": "Human health and social work activities",
-    "P": "Education",
-}
-
-
-SECTORS_CODES2 = {
     "A": "Agriculture, Forestry and Fishing",
     "B": "Mining",
     "C": "Manufacturing",

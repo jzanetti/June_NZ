@@ -1,9 +1,9 @@
 
 
-exp_name: singleobs
+exp_name: realworld
 
 
-simulation_cfg: etc/data/singleobs/simulation/simulation_cfg.yml
+simulation_cfg: etc/data/realworld/simulation/simulation_cfg.yml
 
 save:
   geography: true

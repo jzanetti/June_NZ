@@ -1,5 +1,5 @@
 
-override CONDA = $(CONDA_BASE)/bin/conda
+override MAMBA = $(CONDA_BASE)/bin/mamba
 override PKG=june_nz
 
 clear_env:
@@ -18,5 +18,5 @@ clear_all:
 	# $(CONDA) index $(CONDA_BASE)/conda-bld
 
 create_env: clear_all clear_env
-	$(CONDA) env create -n $(PKG) -f env.yml
+	$(MAMBA) env create -n $(PKG) -f env.yml
 	$(CONDA_BASE)/envs/$(PKG)/bin/pip3 install recordclass

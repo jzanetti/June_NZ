@@ -141,6 +141,8 @@ def main():
 
     logger.info("Producing outputs ...")
     output = output_postprocess(args.workdir, output)
+
+    logger.info("Producing figures ...")
     output_to_figure(args.workdir, output, cfg["output"])
 
     logger.info("Job done ...")

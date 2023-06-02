@@ -5,8 +5,9 @@ from os.path import join
 from june.geography.geography import Geography as Geography_class
 from june.world import World as World_class
 from pandas import DataFrame
+from polars import from_dict as polars_from_dict
 
-from process import SECTOR_CODES
+from process import SECTOR_CODES, USE_POLARS
 
 
 def get_people_for_groups_df(
@@ -57,6 +58,9 @@ def get_people_for_groups_df(
                 output["time"].append(time)
                 output["people"].append(proc_member.size)
                 output["group"].append(proc_group)
+
+    if USE_POLARS:
+        return polars_from_dict(output)
 
     return DataFrame.from_dict(output)
 
@@ -187,7 +191,7 @@ def world_person2df(world_input2, time=None):
 
             person_info["symptoms_trajectory"].append(
                 # proc_person.symptoms.trajectory
-                symptoms_trajectory
+                str(symptoms_trajectory)
             )
         else:
             person_info["symptoms_trajectory"].append(None)
@@ -233,6 +237,9 @@ def world_person2df(world_input2, time=None):
             person_info["commute_station_type"].append(None)
             person_info["commute_station_city"].append(None)
             person_info["commute_group_name"].append(None)
+
+    if USE_POLARS:
+        return polars_from_dict(person_info)
 
     return DataFrame.from_dict(person_info)
 
@@ -317,7 +324,7 @@ def world2df(
     if all_citieis is not None:
         for proc_city in all_citieis.members:
             cities_info["work_city_name"].append(proc_city.name)
-            cities_info["coordinates"].append(proc_city.coordinates)
+            cities_info["coordinates"].append(str(proc_city.coordinates))
             if isinstance(proc_city.city_stations, list):
                 len_city_stations = 0
             else:
@@ -330,11 +337,13 @@ def world2df(
                 len_inter_city_stations = len(proc_city.inter_city_stations.members)
 
             cities_info["num_inter_city_stations"].append(len_inter_city_stations)
-            cities_info["travel_within_the_city"].append(proc_city.internal_commuter_ids)
+            cities_info["travel_within_the_city"].append(str(proc_city.internal_commuter_ids))
             cities_info["travel_to_this_city_from_others"].append(
-                proc_city.super_area.closest_inter_city_station_for_city[
-                    proc_city.name
-                ].commuter_ids
+                str(
+                    proc_city.super_area.closest_inter_city_station_for_city[
+                        proc_city.name
+                    ].commuter_ids
+                )
             )
 
     for proc_area in all_areas.members:
@@ -352,7 +361,7 @@ def world2df(
             household_info["composition_type"].append(proc_household.composition_type)
             household_info["being_visited"].append(proc_household.being_visited)
             household_info["contains_people"].append(proc_household.contains_people)
-            household_info["coordinates"].append(proc_household.coordinates)
+            household_info["coordinates"].append(str(proc_household.coordinates))
             household_info["n_residents"].append(proc_household.n_residents)
             household_info["size"].append(proc_household.size)
             household_info["type"].append(proc_household.type)
@@ -422,15 +431,28 @@ def world2df(
 
                 person_info["commute"].append(proc_person.commute)
 
-    output = {
-        "household": DataFrame.from_dict(household_info),
-        "person": DataFrame.from_dict(person_info),
-        "city": DataFrame.from_dict(cities_info),
-    }
+    if USE_POLARS:
+        output = {
+            "household": polars_from_dict(household_info),
+            "person": polars_from_dict(person_info),
+            "city": polars_from_dict(cities_info),
+        }
+        # from pickle import dump as pickle_dump
 
-    if write_csv:
-        for output_key in output:
-            output[output_key].to_csv(join(workdir, f"{output_key}_{tag}.csv"))
+        if write_csv:
+            for output_key in output:
+                # pickle_dump(output[output_key], open("save.p", "wb"))
+                output[output_key].write_parquet(join(workdir, f"{output_key}_{tag}.parquet"))
+    else:
+        output = {
+            "household": DataFrame.from_dict(household_info),
+            "person": DataFrame.from_dict(person_info),
+            "city": DataFrame.from_dict(cities_info),
+        }
+
+        if write_csv:
+            for output_key in output:
+                output[output_key].to_csv(join(workdir, f"{output_key}_{tag}.csv"))
 
     return output
 
@@ -479,5 +501,8 @@ def geography2df(geography: Geography_class) -> DataFrame:
                 geography_info["socialeconomic_index"].append(proc_area_socialeconomic_index)
                 geography_info["super_area_coords"].append(proc_super_area_coords)
                 geography_info["area_coords"].append(proc_area_coordinates)
+
+    if USE_POLARS:
+        return polars_from_dict(geography_info)
 
     return DataFrame.from_dict(geography_info)
