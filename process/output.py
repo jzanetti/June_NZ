@@ -26,7 +26,6 @@ def output_postprocess(workdir: str, simulation_output: list, write_csv: bool = 
 
         logger.info(f"Output_postprocess: processing {proc_simulation_time} ...")
 
-        # print(proc_simulation[proc_simulation_time].companies.group_subgroups_size)
         output_people.append(
             world_person2df(proc_simulation[proc_simulation_time], time=proc_simulation_time)
         )
@@ -37,8 +36,11 @@ def output_postprocess(workdir: str, simulation_output: list, write_csv: bool = 
             )
         )
 
-    output_people = concat(output_people)
+    logger.info(f"Output_postprocess: concat output_groups ...")
     output_groups = concat(output_groups)
+
+    logger.info(f"Output_postprocess: concat output_people ...")
+    output_people = concat(output_people)
 
     if write_csv:
         output_people.to_csv(join(workdir, "output_people.csv"))
