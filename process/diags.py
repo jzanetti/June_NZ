@@ -4,12 +4,14 @@ from os.path import join
 
 from june.geography.geography import Geography as Geography_class
 from june.world import World as World_class
+from numba import njit
 from pandas import DataFrame
 from polars import from_dict as polars_from_dict
 
 from process import SECTOR_CODES, USE_POLARS
 
 
+@njit
 def get_people_for_groups_df(
     world_input2: World_class,
     time: datetime = None,
@@ -65,6 +67,7 @@ def get_people_for_groups_df(
     return DataFrame.from_dict(output)
 
 
+@njit
 def world_person2df(world_input2, time=None):
     world_input = deepcopy(world_input2)
 

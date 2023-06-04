@@ -77,10 +77,10 @@ def setup_parser():
             "--cfg",
             "etc/june_data.yml",
             "--scale",
-            "0.02",
-            "--exclude_super_areas",
-            "Tasman",
-            "Marlborough",
+            "0.1",
+            # "--exclude_super_areas",
+            # "Tasman",
+            # "Marlborough",
         ]
     )
 

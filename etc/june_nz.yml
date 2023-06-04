@@ -6,8 +6,8 @@ exp_name: realworld
 simulation_cfg: etc/data/realworld/simulation/simulation_cfg.yml
 
 save:
-  geography: true
-  world: true
+  geography: false
+  world: false
 
 output:
   demography: true
