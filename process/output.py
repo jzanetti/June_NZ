@@ -71,7 +71,11 @@ def output_to_figure(workdir: str, output: dict, output_cfg: dict):
     df_people["work_super_area"] = df_people["work_super_area"].astype(str)
 
     if output_cfg["demography"]:
-        for proc_area in df_people.area_name.unique():
+        total_areas = len(df_people.area_name.unique())
+        for i, proc_area in enumerate(df_people.area_name.unique()):
+            logger.info(
+                f"Creating vis (demography): {proc_area} ... ({round(100.0 * (float(i)/float(total_areas)), 2)}%)"
+            )
             proc_area_data = df_people.loc[df_people["area_name"] == proc_area][
                 [
                     "sex",
@@ -106,6 +110,7 @@ def output_to_figure(workdir: str, output: dict, output_cfg: dict):
             plt.close()
 
     if output_cfg["timeseries"]["total_people"]:
+        logger.info(f"Creating vis (timeseries) ...")
         result = df_group.groupby(["area", "time"])["people"].sum()
         result_df = result.unstack(level="area")
         result_df["total"] = result_df.sum(axis=1)
@@ -117,7 +122,11 @@ def output_to_figure(workdir: str, output: dict, output_cfg: dict):
         plt.close()
 
     if output_cfg["timeseries"]["infection"]:
-        for proc_area in df_people.area_name.unique():
+        total_areas = len(df_people.area_name.unique())
+        for i, proc_area in enumerate(df_people.area_name.unique()):
+            logger.info(
+                f"Creating vis (infection): {proc_area} ... ({round(100.0 * (float(i)/float(total_areas)), 2)}%)"
+            )
             proc_area_data = df_people.loc[df_people["area_name"] == proc_area][
                 ["time", "infection", "dead"]
             ]
