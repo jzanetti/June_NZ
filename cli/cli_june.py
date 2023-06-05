@@ -115,8 +115,6 @@ def main():
     logger.info("Creating policy object ...")
     policy = create_policy_wrapper(cfg["data"]["base_dir"], cfg["data"]["policy"])
 
-    # raise Exception("!23")
-
     logger.info("Creating tracker ...")
     tracker = create_tracker_wrapper(
         args.workdir,
@@ -140,7 +138,7 @@ def main():
     )
 
     logger.info("Producing outputs ...")
-    output = output_postprocess(args.workdir, output, write_csv=False)
+    output = output_postprocess(args.workdir, output, write_csv=True)
 
     logger.info("Producing figures ...")
     output_to_figure(args.workdir, output, cfg["output"])

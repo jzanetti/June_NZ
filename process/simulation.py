@@ -1,3 +1,4 @@
+from copy import deepcopy
 from os.path import join
 
 from june.epidemiology.epidemiology import Epidemiology as Epidemiology_class
@@ -36,9 +37,10 @@ def start_simulation(
         base_dir (str): Base directory
         workdir (str, optional): Working directory. Defaults to None.
     """
+    my_world = deepcopy(world)
 
     simulator = Simulator.from_file(
-        world=world,
+        world=my_world,
         epidemiology=disease_obj,
         interaction=interaction_obj,
         config_filename=simulation_cfg,

@@ -5,6 +5,7 @@ from pickle import dump as pickle_dump
 
 import matplotlib.pyplot as plt
 from pandas import DataFrame, concat
+from pandas import cut as pandas_cut
 
 from process.diags import get_people_for_groups_df, world_person2df
 
@@ -97,6 +98,14 @@ def output_to_figure(workdir: str, output: dict, output_cfg: dict):
             proc_area_data = proc_area_data.drop(
                 columns=["work_super_area", "home_super_area", "time"]
             )
+
+            age_bins = [0, 6, 18, 65, 100]  # Define the bin edges
+            age_labels = [6, 18, 65, 100]  # Define the labels for each bin
+
+            proc_area_data["age"] = pandas_cut(
+                proc_area_data["age"], bins=age_bins, labels=age_labels, right=False
+            )
+
             data = proc_area_data.apply(proc_area_data.value_counts)
             data.plot(
                 kind="pie",

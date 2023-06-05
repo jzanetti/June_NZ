@@ -320,7 +320,7 @@ def world2df(
         "travel_to_this_city_from_others": [],
     }
 
-    all_citieis = world_input.cities
+    all_citieis = my_world.cities
     if all_citieis is not None:
         for proc_city in all_citieis.members:
             cities_info["work_city_name"].append(proc_city.name)
