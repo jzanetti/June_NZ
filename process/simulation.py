@@ -22,6 +22,7 @@ def start_simulation(
     disease_cfg: dict = None,
     base_dir: str = None,
     workdir: str = None,
+    save_timestep: bool = False,
 ):
     """Start running the simulation
 
@@ -37,10 +38,8 @@ def start_simulation(
         base_dir (str): Base directory
         workdir (str, optional): Working directory. Defaults to None.
     """
-    my_world = deepcopy(world)
-
     simulator = Simulator.from_file(
-        world=my_world,
+        world=world,
         epidemiology=disease_obj,
         interaction=interaction_obj,
         config_filename=simulation_cfg,
@@ -54,4 +53,4 @@ def start_simulation(
         tracker=tracker_obj,
     )
 
-    return simulator.run()
+    return simulator.run(save_timestep=save_timestep)

@@ -12,7 +12,12 @@ from process.diags import get_people_for_groups_df, world_person2df
 logger = getLogger()
 
 
-def output_postprocess(workdir: str, simulation_output: list, write_csv: bool = True) -> DataFrame:
+def output_postprocess(
+    workdir: str,
+    simulation_output: dict,
+    simulation_output_timestep: dict,
+    write_csv: bool = True,
+) -> DataFrame:
     """Write output (world object) to a csv
 
     Args:
@@ -22,30 +27,40 @@ def output_postprocess(workdir: str, simulation_output: list, write_csv: bool = 
     """
     output_people = []
     output_groups = []
-    for proc_simulation in simulation_output:
-        proc_simulation_time = list(proc_simulation.keys())[0]
+
+    write_timestep = False
+    if len(simulation_output_timestep) > 0:
+        write_timestep = True
+
+    for proc_simulation_time in simulation_output:
+        # proc_simulation_time = list(proc_simulation.keys())[0]
 
         logger.info(f"Output_postprocess: processing {proc_simulation_time} ...")
 
         output_people.append(
-            world_person2df(proc_simulation[proc_simulation_time], time=proc_simulation_time)
+            world_person2df(simulation_output[proc_simulation_time], time=proc_simulation_time)
         )
 
-        output_groups.append(
-            get_people_for_groups_df(
-                proc_simulation[proc_simulation_time], time=proc_simulation_time
+        if write_timestep:
+            output_groups.append(
+                get_people_for_groups_df(
+                    simulation_output_timestep[proc_simulation_time], time=proc_simulation_time
+                )
             )
-        )
-
-    logger.info(f"Output_postprocess: concat output_groups ...")
-    output_groups = concat(output_groups)
 
     logger.info(f"Output_postprocess: concat output_people ...")
     output_people = concat(output_people)
 
+    if write_timestep:
+        logger.info(f"Output_postprocess: concat output_groups ...")
+        output_groups = concat(output_groups)
+    else:
+        output_groups = None
+
     if write_csv:
         output_people.to_csv(join(workdir, "output_people.csv"))
-        output_groups.to_csv(join(workdir, "output_groups.csv"))
+        if write_timestep:
+            output_groups.to_csv(join(workdir, "output_groups.csv"))
 
     output = {"output_people": output_people, "output_groups": output_groups}
 
@@ -119,16 +134,17 @@ def output_to_figure(workdir: str, output: dict, output_cfg: dict):
             plt.close()
 
     if output_cfg["timeseries"]["total_people"]:
-        logger.info(f"Creating vis (timeseries) ...")
-        result = df_group.groupby(["area", "time"])["people"].sum()
-        result_df = result.unstack(level="area")
-        result_df["total"] = result_df.sum(axis=1)
-        result_df.plot.line(legend=False)
-        plt.xlabel("Time")
-        plt.ylabel("Total People")
-        plt.title("Total people for different areas")
-        plt.savefig(join(fig_dir, f"total_people.png"), bbox_inches="tight")
-        plt.close()
+        if df_group is not None:
+            logger.info(f"Creating vis (timeseries) ...")
+            result = df_group.groupby(["area", "time"])["people"].sum()
+            result_df = result.unstack(level="area")
+            result_df["total"] = result_df.sum(axis=1)
+            result_df.plot.line(legend=False)
+            plt.xlabel("Time")
+            plt.ylabel("Total People")
+            plt.title("Total people for different areas")
+            plt.savefig(join(fig_dir, f"total_people.png"), bbox_inches="tight")
+            plt.close()
 
     if output_cfg["timeseries"]["infection"]:
         total_areas = len(df_people.area_name.unique())
