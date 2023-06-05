@@ -1,12 +1,13 @@
 from os.path import join
-from june.groups import Hospitals, Companies
+
+from june.groups import Companies, Hospitals, Household, Schools
+from june.groups.group.group import InteractiveGroup
 from june.groups.group.make_subgroups import SubgroupParams
 from june.groups.travel.transport import Transport
-from june.groups import Household
+from june.interaction import Interaction
 from yaml import dump as yaml_dump
 from yaml import safe_load as yaml_load
-from june.interaction import Interaction
-from june.groups.group.group import InteractiveGroup
+
 
 def create_interaction_wrapper(base_dir: str, interaction_cfg: dict, workdir: str):
     """Create interaction object
@@ -19,16 +20,11 @@ def create_interaction_wrapper(base_dir: str, interaction_cfg: dict, workdir: st
     Returns
         _type_: _description_
     """
-    combined_interaction_cfg_path = combine_interaction_cfg(
-        workdir, base_dir, interaction_cfg)
+    combined_interaction_cfg_path = combine_interaction_cfg(workdir, base_dir, interaction_cfg)
 
-    interaction = Interaction.from_file(
-        config_filename=combined_interaction_cfg_path
-    )
+    interaction = Interaction.from_file(config_filename=combined_interaction_cfg_path)
 
     return {"data": interaction, "path": combined_interaction_cfg_path}
-
-
 
 
 def combine_interaction_cfg(workdir: str, base_dir: str, interaction_cfg: dict) -> str:
@@ -42,7 +38,6 @@ def combine_interaction_cfg(workdir: str, base_dir: str, interaction_cfg: dict) 
     all_cfg = []
 
     for proc_group in interaction_cfg:
-
         if proc_group == "others":
             continue
 
@@ -80,42 +75,33 @@ def initiate_interaction(base_dir: str, group_and_interaction: dict):
         Exception: If the group is not implemented
     """
     for group_name in group_and_interaction:
-
         if group_name == "others":
             continue
 
         if group_name == "hospital":
             Hospitals.get_interaction(
-                join(
-                    base_dir,
-                    group_and_interaction["hospital"]["interaction"])
-                )
+                join(base_dir, group_and_interaction["hospital"]["interaction"])
+            )
         elif group_name == "company":
             Companies.get_interaction(
-                join(
-                    base_dir,
-                    group_and_interaction["company"]["interaction"])
-                )
-            InteractiveGroup.interaction_path= join(
-                    base_dir,
-                    group_and_interaction[
-                        "others"]["general_interaction"])
+                join(base_dir, group_and_interaction["company"]["interaction"])
+            )
+            InteractiveGroup.interaction_path = join(
+                base_dir, group_and_interaction["others"]["general_interaction"]
+            )
+        elif group_name == "school":
+            Schools.get_interaction(join(base_dir, group_and_interaction["school"]["interaction"]))
 
         elif group_name == "commute":
             mytransport = Transport
             mytransport.subgroup_params = SubgroupParams.from_file(
-                config_filename=join(
-                    base_dir, 
-                    group_and_interaction["commute"]["interaction"])
+                config_filename=join(base_dir, group_and_interaction["commute"]["interaction"])
             )
 
         elif group_name == "household":
-            my_household= Household
+            my_household = Household
             my_household.subgroup_params = SubgroupParams.from_file(
-                config_filename=join(
-                    base_dir, 
-                    group_and_interaction["household"]["interaction"])
+                config_filename=join(base_dir, group_and_interaction["household"]["interaction"])
             )
         else:
-            raise Exception(f"{group_name} has not been implemented "
-                            "in init_interaction ...")
+            raise Exception(f"{group_name} has not been implemented " "in init_interaction ...")

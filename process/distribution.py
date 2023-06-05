@@ -4,6 +4,7 @@ from june.distributors import (
     CompanyDistributor,
     HospitalDistributor,
     HouseholdDistributor,
+    SchoolDistributor,
     WorkerDistributor,
 )
 from june.world import World as World_class
@@ -95,6 +96,13 @@ def hospital_distribution(world: World_class, base_dir: str, distribution_hospit
     )
     hospital_distributor.distribute_medics_to_super_areas(world.super_areas)
     hospital_distributor.assign_closest_hospitals_to_super_areas(world.super_areas)
+
+
+def school_distribution(world: World_class):
+    school_distributor = SchoolDistributor(world.schools)
+    school_distributor.distribute_kids_to_school(world.areas)
+    school_distributor.limit_classroom_sizes()
+    school_distributor.distribute_teachers_to_schools_in_super_areas(world.super_areas)
 
 
 def company_distribution(

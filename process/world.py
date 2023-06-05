@@ -11,6 +11,7 @@ from process.distribution import (
     company_distribution,
     hospital_distribution,
     household_distribution,
+    school_distribution,
     work_and_home_distribution,
 )
 from process.groups import create_group_locations
@@ -77,6 +78,8 @@ def create_world_wrapper(
             hospital_distribution(world, base_input, group_and_interaction_cfg["hospital"])
         elif interaction_obj == "company":
             company_distribution(world)
+        elif interaction_obj == "school":
+            school_distribution(world)
 
     if save_df:
         df = world2df(world, write_csv=True, workdir=workdir, tag="after_init")

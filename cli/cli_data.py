@@ -28,6 +28,7 @@ from process.data.group import (
     write_household_communal,
     write_household_number,
     write_household_student,
+    write_school,
     write_sectors_by_super_area,
     write_sectors_employee_genders,
     write_super_area_name,
@@ -97,12 +98,11 @@ def main():
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
 
+    logger.info("Writing schools ...")
+
     pop = read_population(cfg["total_population"])
 
-    logger.info("Processing workplace_and_home ...")
-    workplace_and_home = write_workplace_and_home(
-        args.workdir, cfg["group"]["others"]["workplace_and_home"]
-    )
+    # write_school(workdir: str, school_cfg: dict)
 
     # -----------------------------
     # Get geography data

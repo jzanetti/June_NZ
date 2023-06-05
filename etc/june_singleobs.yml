@@ -31,6 +31,10 @@ data:
     ethnicity: demography/ethnicity_profile.csv
 
   group_and_interaction:
+    school:
+      defination:
+        location: group/school/schools.csv
+      interaction: interaction/school.yaml
     hospital:
       defination:
         neighbour_hospitals: group/hospital/neighbour_hospitals.yaml

@@ -14,6 +14,25 @@ from process import FIXED_DATA, REGION_NAMES_CONVERSIONS
 from process.data.utils import get_raw_data
 
 
+def write_school(workdir: str, school_cfg: dict):
+    """
+    data_path = get_raw_data(
+        workdir,
+        workplace_and_home_cfg,
+        "workplace_and_home",
+        "group/others",
+        force=True,
+    )
+
+    commute_data = read_csv(data_path["raw"])[
+        ["SA2_code_usual_residence_address", "SA2_code_workplace_address", "Total"]
+    ]
+    """
+    data = read_csv(school_cfg["defination"]["location"])
+
+    x = 3
+
+
 def write_household_student(workdir: str, pop: DataFrame) -> DataFrame:
     """Write number of students living in student dorms
 
@@ -389,9 +408,7 @@ def write_transport_mode(workdir: str, transport_mode_cfg: dict):
     return {"data": data, "output": data_path["output"]}
 
 
-def write_super_area_name(
-    workdir: str, super_area_name_cfg: dict
-):
+def write_super_area_name(workdir: str, super_area_name_cfg: dict):
     """Write Super Area name file + number of stations
 
     Args:
