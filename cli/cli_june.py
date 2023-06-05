@@ -92,7 +92,7 @@ def main():
         cfg["data"]["disease"],
         args.workdir,
     )
-    # len(world.cities.members)
+
     logger.info("Creating commuting object ...")
     commute = create_commute_wrapper(
         world["data"],
