@@ -1,0 +1,167 @@
+hospitalisation:
+  start_time: 1000-01-01
+  end_time: 9999-01-01
+
+severe_symptoms_stay_home:
+  start_time: 9999-01-01
+  end_time: 9999-01-01
+
+regional_compliance:
+  1:
+    start_time: 9999-07-04
+    end_time: 9999-12-01
+    compliances_per_region:
+      Region1: 1.15
+      Region2: 0.99
+
+tiered_lockdown:
+  1:
+    start_time: 9999-10-14
+    end_time: 9999-10-17
+    tiers_per_region:
+      Region1: 1.
+      Region2: 1.
+  2:
+    start_time: 9999-10-17
+    end_time: 9999-11-05 # breaking for the national lockdown
+    tiers_per_region:
+      Region1: 2.
+      Region2: 1.
+
+limit_long_commute:
+  # prevents people that have their workplace
+  # far away from their homes of commuting daily.
+  start_time: 2020-01-01
+  end_time: 2021-01-01
+  apply_from_distance: 100
+  going_to_work_probability: 0.2 # once a week
+
+
+quarantine:
+    1:
+        n_days: 7 # for the symptomatic person
+        n_days_household: 14 # for the housemates
+        compliance: 0.5 
+        household_compliance: 0.2
+        start_time: 9999-03-16 
+        end_time: 9999-03-24 
+    2:
+        n_days: 7 # for the symptomatic person
+        n_days_household: 14 # for the housemates
+        compliance: 0.95 # for the symptomatic individual - needs to be checked
+        household_compliance: 0.9
+        start_time: 9999-03-24
+        end_time: 9999-07-04
+
+shielding:
+    1:
+        min_age: 70
+        compliance: 0.2
+        start_time: 9999-03-16 
+        end_time: 9999-03-24
+
+close_companies:
+    1:
+        start_time: 9999-03-16
+        end_time: 9999-03-20
+        full_closure: False 
+        avoid_work_probability: 0.20 # prob of avoiding workplace if still working (YouGov)
+        furlough_probability: 0.04 # prob of being furloughed (Statista)
+        key_probability: 0.22 # prob of being a key worker (ONS)
+    2:
+        start_time: 9999-03-20
+        end_time: 9999-03-27
+        full_closure: False 
+        avoid_work_probability: 0.29
+        furlough_probability: 0.04
+        key_probability: 0.19
+
+social_distancing:
+    1: 
+        start_time: 9999-03-16
+        end_time: 9999-03-24 
+        beta_factors:
+            pub: 0.875
+            grocery: 0.875
+            cinema: 0.875
+            city_transport: 0.875
+            inter_city_transport: 0.875
+            hospital: 0.875
+            care_home: 0.875
+            company: 0.875
+            school: 0.875
+            household: 1.0
+            university: 0.875
+            gym: 0.875
+            household_visits: 0.875
+
+mask_wearing:
+    1: 
+        start_time: 9999-03-27
+        end_time: 9999-04-24
+        compliance: 0.09 # overall mask wearing compliance (YouGov)
+        beta_factor: 0.5 # overall beta reducion if mask wearing
+        mask_probabilities: # given a mask is work, probability of where it is worn
+            pub: 0.
+            grocery: 0.5
+            cinema: 0.
+            inter_city_transport: 1.
+            city_transport: 1.
+            hospital: 0.
+            care_home: 0.5
+            company: 0.5
+            school: 0.
+            household: 0.
+            university: 0.5
+
+
+close_leisure_venue:
+    1:
+        start_time: 9999-03-21
+        end_time: 9999-07-04 
+        venues_to_close: ['pub', 'cinema', 'gym']
+    2:
+        start_time: 9999-11-05
+        end_time: 9999-12-03 
+        venues_to_close: ['pub', 'cinema', 'gym'] 
+
+change_leisure_probability:
+    1:
+        start_time: 9999-03-24
+        end_time: 9999-05-21
+        activity_reductions:
+          residence_visits:
+            both_sexes:
+              0-100: 0.05
+    2:
+        start_time: 9999-05-21
+        end_time: 9999-05-31
+        activity_reductions:
+          residence_visits:
+            both_sexes:
+              0-100: 0.125
+
+change_visits_probability:
+  1:
+    start_time: 9999-03-24
+    end_time: 9999-07-01
+    new_residence_type_probabilities:
+      household: 0.97
+      care_home : 0.03
+
+close_schools:
+    1:
+        start_time: 9999-03-20
+        end_time: 9999-06-01
+        years_to_close: all
+        full_closure: False
+    2:
+        start_time: 9999-06-01
+        end_time: 9999-06-11
+        years_to_close: [0,1,2,7,8,9,12,13,14,15,16,17,18,19]
+        attending_compliance: 0.125
+        full_closure: False
+
+close_universities:
+    start_time: 9999-03-20
+    end_time: 9999-09-28

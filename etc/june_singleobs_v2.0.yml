@@ -1,0 +1,85 @@
+
+
+exp_name: singleobs
+
+
+simulation_cfg: etc/data/singleobs_v2.0/simulation/simulation_cfg.yml
+
+save:
+  geography: true
+  world: true
+
+
+output:
+  demography: true
+  timeseries:
+    infection: true
+    total_people: true
+
+
+data:
+  base_dir: etc/data/singleobs_v2.0
+  geography:
+    geography_hierarchy: geography/geography_hierarchy_definition.csv
+    super_area_location: geography/super_area_location.csv
+    area_location: geography/area_location.csv
+    area_socialeconomic_index: geography/area_socialeconomic_index.csv
+    
+  demography:
+    age: demography/age_profile.csv
+    gender: demography/gender_profile_female_ratio.csv
+    ethnicity: demography/ethnicity_profile.csv
+
+  group_and_interaction:
+    school:
+      defination:
+        location: group/school/schools.csv
+      interaction: interaction/school.yaml
+    hospital:
+      defination:
+        neighbour_hospitals: group/hospital/neighbour_hospitals.yaml
+        configs: group/hospital/hospital_config.yaml
+        location: group/hospital/hospital_locations.csv
+      interaction: interaction/hospital.yaml
+    company:
+      defination:
+        company_closure: group/company/company_closure.yaml
+        employees_by_super_area: group/company/employees_by_super_area2.csv
+        sectors_by_super_area: group/company/sectors_by_super_area2.csv
+        sectors_employee_genders: group/company/sectors_employee_genders.csv
+        subsector_cfg: group/company/subsector_cfg.yaml
+      interaction: interaction/company.yaml
+    household:
+      defination:
+        age_difference_couple: group/household/age_difference_couple.csv
+        age_difference_parent_child: group/household/age_difference_parent_child.csv
+        household_number: group/household/household_number.csv
+        household_student: group/household/household_student.csv
+        household_commual: group/household/household_commual.csv
+        household_structure: group/household/household_structure.yaml
+      interaction: interaction/household.yaml
+    commute:
+      defination:
+        super_area_name: group/commute/super_area_name.csv
+        transport_mode: group/commute/transport_mode_all_public.csv
+        stations: group/commute/stations.yaml
+        passage_seats_ratio: group/commute/passage_seats_ratio.yaml
+        public_or_private_transport: group/commute/mode_of_transport.yaml
+      interaction: interaction/commute.yaml
+    others:
+      workplace_and_home: group/others/workplace_and_home2.csv
+      general_interaction: interaction/general.yaml
+
+  disease:
+    transmission_profile: diesease/covid19.yaml
+    sympton_trajectories: diesease/symptom_trajectories.yaml
+    infection_outcome: diesease/infection_outcome_ratio.csv
+    comorbidity:
+      female: diesease/comorbidities_female.csv
+      male: diesease/comorbidities_male.csv
+      intensity: diesease/comorbidity_intensity.yaml
+    virus:
+      intensity: diesease/virus_intensity.yaml
+
+  policy: policy/policy.yaml
+    

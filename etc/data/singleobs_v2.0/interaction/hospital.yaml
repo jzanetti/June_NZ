@@ -1,0 +1,10 @@
+contact_matrices:
+  # number 10 comes from the fact that on average there are 10 medics per patient
+  # for ICU that should be lower, but it isn't reflected in hospital distributor yet
+  hospital:
+    contacts: [[5.00, 10., 10.], [1., 0., 0.], [1., 0., 0.]]
+    proportion_physical: [[0.05, 1., 1.], [1.0, 0., 0.], [1., 0., 0.]]
+    characteristic_time: 8 # in hours
+    type: Discrete
+    bins: ["workers", "patients", "icu_patients"]
+

@@ -1,0 +1,4 @@
+,area,max_students,sector,latitude,longitude,age_min,age_max
+0,A1,150,primary,-38.5,175.0,4,13
+1,A2,100,secondary,-45.5,179.0,7,18
+2,B1,100,primary_secondary,-45.2,177.0,4,18

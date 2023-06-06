@@ -54,7 +54,7 @@ def setup_parser():
     parser.add_argument("--cfg", required=True, help="configuration path, e.g., june.cfg")
 
     return parser.parse_args(
-        ["--workdir", "/tmp/june_singleobs", "--cfg", "etc/june_singleobs.yml"]
+        ["--workdir", "/tmp/june_singleobs_v2.0", "--cfg", "etc/june_singleobs_v2.0.yml"]
     )
 
 
