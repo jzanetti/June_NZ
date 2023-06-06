@@ -8,29 +8,82 @@ from numpy import nan as numpy_nan
 from numpy import radians, sin, sqrt
 from pandas import DataFrame, merge, pivot_table, read_csv, read_excel
 from scipy.spatial.distance import cdist
-from shapely.wkt import loads as wkt_loads
 
-from process import FIXED_DATA, REGION_NAMES_CONVERSIONS
-from process.data.utils import get_raw_data
+from process import FIXED_DATA, REGION_NAMES_CONVERSIONS, SCHOOL_AGE_TABLE
+from process.data.utils import get_central_point, get_raw_data, haversine_distance
 
 
-def write_school(workdir: str, school_cfg: dict):
+def write_school(workdir: str, school_cfg: dict, max_to_cur_occupancy_ratio=1.2) -> dict:
+    """Write schools information
+
+    Args:
+        workdir (str): Working directory
+        school_cfg (dict): School configuration
+        max_to_cur_occupancy_ratio (float, optional): In the data, we have the estimated occupancy
+            for a school, while in JUNE we need the max possible occupancy. Defaults to 1.2.
+
+    Returns:
+        dict: The dict contains the school information
     """
     data_path = get_raw_data(
         workdir,
-        workplace_and_home_cfg,
-        "workplace_and_home",
-        "group/others",
+        school_cfg,
+        "schools",
+        "group/school",
         force=True,
     )
 
-    commute_data = read_csv(data_path["raw"])[
-        ["SA2_code_usual_residence_address", "SA2_code_workplace_address", "Total"]
-    ]
-    """
-    data = read_csv(school_cfg["defination"]["location"])
+    data = read_csv(data_path["raw"])
 
-    x = 3
+    data = data[data["use"] == "School"]
+
+    data = data[
+        ~data["use_type"].isin(
+            [
+                "Teen Parent Unit",
+                "Correspondence School",
+            ]
+        )
+    ]
+
+    data["use_type"] = data["use_type"].map(SCHOOL_AGE_TABLE)
+
+    data[["sector", "age_min", "age_max"]] = data["use_type"].str.extract(
+        r"([A-Za-z\s]+)\s\((\d+)-(\d+)\)"
+    )
+
+    data["Central Point"] = data["WKT"].apply(get_central_point)
+
+    data["latitude"] = data["Central Point"].apply(lambda point: point.y)
+    data["longitude"] = data["Central Point"].apply(lambda point: point.x)
+
+    sa2_loc = read_csv(data_path["deps"]["sa2_loc"])
+
+    sa2_loc = sa2_loc[["SA22018_V1_00", "LATITUDE", "LONGITUDE"]]
+
+    sa2_loc = sa2_loc.rename(
+        columns={"LATITUDE": "latitude", "LONGITUDE": "longitude", "SA22018_V1_00": "sa2"}
+    )
+
+    distances = cdist(
+        data[["latitude", "longitude"]],
+        sa2_loc[["latitude", "longitude"]],
+        lambda x, y: haversine_distance(x[0], x[1], y[0], y[1]),
+    )
+
+    # Find the nearest location in A for each point in B
+    nearest_indices = argmin(distances, axis=1)
+    data["area"] = sa2_loc["sa2"].iloc[nearest_indices].values
+
+    data["max_students"] = data["estimated_occupancy"] * max_to_cur_occupancy_ratio
+
+    data["max_students"] = data["max_students"].astype(int)
+
+    data = data[["area", "max_students", "sector", "latitude", "longitude", "age_min", "age_max"]]
+
+    data.to_csv(data_path["output"], index=True)
+
+    return {"data": data, "output": data_path["output"]}
 
 
 def write_household_student(workdir: str, pop: DataFrame) -> DataFrame:
@@ -72,42 +125,6 @@ def write_hospital_locations(workdir: str, hospital_locations_cfg: dict):
         workdir (str): Working directory
         hospital_locations_cfg (dict): Hospital location configuration
     """
-
-    def _get_central_point(wkt_string: str):
-        """Get central point from MultiPolygon
-
-        Args:
-            wkt (str): WKT description
-
-        Returns:
-            _type_: _description_
-        """
-        polygon = wkt_loads(wkt_string)
-        central_point = polygon.centroid
-        return central_point
-
-    def _haversine_distance(lat1, lon1, lat2, lon2):
-        """Function to calculate the Haversine distance between two points
-
-        Args:
-            lat1 (float): Latitude 1
-            lon1 (float): Longitude 1
-            lat2 (float): Latitude 1
-            lon2 (float): Longitude 2
-
-        Returns:
-            _type_: _description_
-        """
-        r = 6371  # Earth's radius in kilometers
-        phi1 = radians(lat1)
-        phi2 = radians(lat2)
-        delta_phi = radians(lat2 - lat1)
-        delta_lambda = radians(lon2 - lon1)
-        a = sin(delta_phi / 2) ** 2 + cos(phi1) * cos(phi2) * sin(delta_lambda / 2) ** 2
-        c = 2 * arctan2(sqrt(a), sqrt(1 - a))
-        distance = r * c
-        return distance
-
     data_path = get_raw_data(
         workdir,
         hospital_locations_cfg,
@@ -120,7 +137,7 @@ def write_hospital_locations(workdir: str, hospital_locations_cfg: dict):
 
     data = data[data["use"] == "Hospital"]
 
-    data["Central Point"] = data["WKT"].apply(_get_central_point)
+    data["Central Point"] = data["WKT"].apply(get_central_point)
 
     data["latitude"] = data["Central Point"].apply(lambda point: point.y)
     data["longitude"] = data["Central Point"].apply(lambda point: point.x)
@@ -138,7 +155,7 @@ def write_hospital_locations(workdir: str, hospital_locations_cfg: dict):
     distances = cdist(
         data[["latitude", "longitude"]],
         sa2_loc[["latitude", "longitude"]],
-        lambda x, y: _haversine_distance(x[0], x[1], y[0], y[1]),
+        lambda x, y: haversine_distance(x[0], x[1], y[0], y[1]),
     )
 
     # Find the nearest location in A for each point in B
@@ -744,26 +761,3 @@ def write_sectors_employee_genders(workdir: str, sectors_employee_genders_cfg: d
     df_pivot.to_csv(data_path["output"], index=False)
 
     return {"data": df_pivot, "output": data_path["output"]}
-
-
-def write_company_info(
-    workdir: str,
-    comnpany_cfg: dict,
-):
-    """Write sector/company related data using the stats sent over by NZ Stats, which includes:
-        - At super area level:
-         * employees_by_super_area.csv: the number of employees by each age category
-         * sectors_by_super_area.csv: number of companies in each sector
-        - At area level:
-         * sectors_employee_genders.csv: number of employees by each industrials + by gender
-
-    Args:
-        workdir (str): working directory
-        comnpany_cfg (dict): Company data configuration
-    """
-    if comnpany_cfg["path"].startswith("https"):
-        raw_data_path = download_file(comnpany_cfg["path"], workdir=workdir)
-
-    from pandas import read_excel
-
-    df = read_excel(raw_data_path, header=1)

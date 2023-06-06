@@ -111,6 +111,7 @@ AREAS_CONSISTENCY_CHECK = {
     "employees_by_super_area": {"super_area": "MSOA"},
     "sectors_by_super_area": {"super_area": "MSOA"},
     "hospital_locations": None,
+    "schools": None,
     # "hospital_locations": {"super_area": "super_area", "area": "area"},
     "transport_mode": {"area": "geography"},
     "super_area_name": {"super_area": "super_area"},
@@ -118,4 +119,20 @@ AREAS_CONSISTENCY_CHECK = {
     "workplace_and_home": None,
     "household_communal": {"area": "output_area"},
     "household_student": {"area": "area"},
+}
+
+
+SCHOOL_AGE_TABLE = {
+    "Secondary (Year 9-15)": "secondary (14-19)",
+    "Composite": "primary_secondary (5-19)",
+    "Full Primary": "primary (5-13)",
+    "Secondary (Year 7-15)": "secondary (11-19)",
+    "Contributing": "primary (5-11)",
+    "Special School": "primary_secondary (8-15)",
+    "Secondary (Year 7-10)": "secondary (11-14)",
+    "Intermediate": "secondary (11-13)",
+    "Secondary (Year 11-15)": "secondary (15-19)",
+    "Restricted Composite (Year 7-10)": "secondary (11-14)",
+    "Composite (Year 1-10)": "primary_secondary (5-14)",
+    "Activity Centre": "secondary (14-17)",
 }

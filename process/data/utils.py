@@ -3,13 +3,51 @@ from math import ceil as math_ceil
 from os import listdir, makedirs, remove
 from os.path import exists, isfile, join
 
-from numpy import unique
+from numpy import arctan2, argmin, cos, radians, sin, sqrt, unique
 from pandas import read_csv
+from shapely.wkt import loads as wkt_loads
 
 from process import AREAS_CONSISTENCY_CHECK
 from process.utils import download_file
 
 logger = getLogger()
+
+
+def haversine_distance(lat1, lon1, lat2, lon2):
+    """Function to calculate the Haversine distance between two points
+
+    Args:
+        lat1 (float): Latitude 1
+        lon1 (float): Longitude 1
+        lat2 (float): Latitude 1
+        lon2 (float): Longitude 2
+
+    Returns:
+        _type_: _description_
+    """
+    r = 6371  # Earth's radius in kilometers
+    phi1 = radians(lat1)
+    phi2 = radians(lat2)
+    delta_phi = radians(lat2 - lat1)
+    delta_lambda = radians(lon2 - lon1)
+    a = sin(delta_phi / 2) ** 2 + cos(phi1) * cos(phi2) * sin(delta_lambda / 2) ** 2
+    c = 2 * arctan2(sqrt(a), sqrt(1 - a))
+    distance = r * c
+    return distance
+
+
+def get_central_point(wkt_string: str):
+    """Get central point from MultiPolygon
+
+    Args:
+        wkt (str): WKT description
+
+    Returns:
+        _type_: _description_
+    """
+    polygon = wkt_loads(wkt_string)
+    central_point = polygon.centroid
+    return central_point
 
 
 def remove_super_area(super_area_to_exclude: list, data_list: dict, all_geo: dict) -> dict:

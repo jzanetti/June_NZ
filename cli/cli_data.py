@@ -102,8 +102,6 @@ def main():
 
     pop = read_population(cfg["total_population"])
 
-    # write_school(workdir: str, school_cfg: dict)
-
     # -----------------------------
     # Get geography data
     # -----------------------------
@@ -167,6 +165,9 @@ def main():
         args.workdir, cfg["group"]["hospital"]["hospital_locations"]
     )
 
+    logger.info("Processing schools")
+    schools = write_school(args.workdir, cfg["group"]["school"]["schools"])
+
     logger.info("Processing household age difference ...")
     write_household_age_difference(args.workdir)
 
@@ -211,6 +212,7 @@ def main():
             "employees_by_super_area": employees_by_super_area,
             "sectors_by_super_area": sectors_by_super_area,
             "hospital_locations": hospital_locations,
+            "schools": schools,
             "transport_mode": transport_mode,
             "super_area_name": super_area_name,
             "household_number": household_number,

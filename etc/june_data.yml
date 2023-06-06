@@ -28,6 +28,13 @@ group:
       deps:
         sa2_loc: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/statistical-area-2-2018-centroid-inside.csv
         geography_hierarchy_definition: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/geographic-areas-table-2023.csv
+  school:
+    schools:
+      run: true
+      path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/nz-facilities.csv
+      deps:
+        sa2_loc: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/statistical-area-2-2018-centroid-inside.csv
+        geography_hierarchy_definition: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/geographic-areas-table-2023.csv
   company:
     sectors_employee_genders:
       run: true
