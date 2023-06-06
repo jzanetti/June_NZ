@@ -33,7 +33,7 @@ limit_long_commute:
   # far away from their homes of commuting daily.
   start_time: 2020-01-01
   end_time: 2021-01-01
-  apply_from_distance: 100
+  apply_from_distance: 1000000
   going_to_work_probability: 0.2 # once a week
 
 

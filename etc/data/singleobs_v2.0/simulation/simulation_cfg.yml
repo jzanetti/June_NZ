@@ -8,30 +8,35 @@ activity_to_super_groups:
   commute: ['city_transports', 'inter_city_transports']
 
 seed:
-    cases_per_capita: 0.5
-    seed_super_area: null
+    cases_per_capita: 0.1
+    seed_super_area:
+        - SA
 
 time:
   total_days: 30
   initial_day: "2020-03-01 9:00" 
   step_duration: 
       weekday:
-          0: 8
+          0: 1 
           1: 8
-          2: 8
+          2: 4
+          3: 11
       weekend:
-          0: 8
+          0: 1 
           1: 8
-          2: 8
+          2: 4
+          3: 11
   step_activities:
       weekday:
-          0: ['residence', 'primary_activity', 'medical_facility', 'commute']
-          1: ['residence', 'primary_activity', 'medical_facility', 'commute']
-          2: ['residence', 'primary_activity', 'medical_facility', 'commute']
+          0: ['residence', 'medical_facility', 'commute']
+          1: ['residence', 'primary_activity', 'medical_facility']
+          2: ['residence', 'medical_facility', 'commute']
+          3: ['residence', 'medical_facility']
       weekend:
-          0: ['residence', 'primary_activity', 'medical_facility', 'commute']
-          1: ['residence', 'primary_activity', 'medical_facility', 'commute']
-          2: ['residence', 'primary_activity', 'medical_facility', 'commute']
+          0: ['residence', 'medical_facility', 'commute']
+          1: ['residence', 'primary_activity', 'medical_facility']
+          2: ['residence', 'medical_facility', 'commute']
+          3: ['residence', 'medical_facility']
 
 checkpoint_save_dates:
 
