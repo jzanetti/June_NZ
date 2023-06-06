@@ -134,7 +134,7 @@ def main():
         disease_cfg=cfg["data"]["disease"],
         base_dir=cfg["data"]["base_dir"],
         workdir=args.workdir,
-        save_timestep=True,
+        save_timestep=False,
     )
 
     logger.info("Producing outputs ...")
