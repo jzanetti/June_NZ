@@ -1,0 +1,267 @@
+nohup: ignoring input
+No --data argument given - defaulting to:
+lib/JUNE_v1.2.0/data
+No --configs argument given - defaulting to:
+/home/zhangs/Github/June_NZ/lib/JUNE_v1.2.0/june/configs
+2023-06-06 18:07:08,591 - root - INFO - Reading configuration ...
+2023-06-06 18:07:08,591 - root.68 - INFO - Reading configuration ...
+2023-06-06 18:07:08,601 - root - INFO - Checking data ...
+2023-06-06 18:07:08,601 - root.71 - INFO - Checking data ...
+2023-06-06 18:07:08,611 - root - INFO - Creating geography object ...
+2023-06-06 18:07:08,611 - root.74 - INFO - Creating geography object ...
+2023-06-06 18:07:08,844 - june.geography.geography - INFO - There are 2030 areas and 16 super_areas and 2 regions in the world.
+2023-06-06 18:07:08,844 - june.geography.geography.592 - INFO - There are 2030 areas and 16 super_areas and 2 regions in the world.
+2023-06-06 18:07:08,844 - root - INFO - Initiating the interaction ...
+2023-06-06 18:07:08,844 - root.79 - INFO - Initiating the interaction ...
+2023-06-06 18:07:08,860 - root - INFO - Creating the world object ...
+2023-06-06 18:07:08,860 - root.82 - INFO - Creating the world object ...
+2023-06-06 18:07:08,860 - root - INFO - Creating groups (companies, hospitals etc.)...
+2023-06-06 18:07:08,860 - root.46 - INFO - Creating groups (companies, hospitals etc.)...
+2023-06-06 18:07:08,870 - hospitals - INFO - There are 139 hospitals in this geography.
+2023-06-06 18:07:08,870 - hospitals.273 - INFO - There are 139 hospitals in this geography.
+2023-06-06 18:07:31,600 - root - INFO - Creating demography ...
+2023-06-06 18:07:31,600 - root.52 - INFO - Creating demography ...
+2023-06-06 18:07:35,456 - root - INFO - Creating the world ...
+/home/zhangs/Github/June_NZ/lib/JUNE_v1.2.0/june/demography/demography.py:443: RuntimeWarning: invalid value encountered in scalar divide
+  male_co[column].loc[idx] / m_norm_2 * m_norm_1
+/home/zhangs/Github/June_NZ/lib/JUNE_v1.2.0/june/demography/demography.py:446: RuntimeWarning: invalid value encountered in scalar divide
+  female_co[column].loc[idx] / f_norm_2 * f_norm_1
+2023-06-06 18:07:35,456 - root.57 - INFO - Creating the world ...
+2023-06-06 18:07:35,456 - world - INFO - Populating areas
+2023-06-06 18:07:35,456 - world.32 - INFO - Populating areas
+2023-06-06 18:07:40,451 - world - INFO - Areas populated. This world's population is: 407551
+2023-06-06 18:07:40,451 - world.38 - INFO - Areas populated. This world's population is: 407551
+2023-06-06 18:07:40,452 - root - INFO - Distributing individuals to work/home areas...
+2023-06-06 18:07:40,452 - root.63 - INFO - Distributing individuals to work/home areas...
+2023-06-06 18:07:40,524 - worker_distributor - INFO - Distributing workers to super areas...
+2023-06-06 18:07:40,524 - worker_distributor.110 - INFO - Distributing workers to super areas...
+2023-06-06 18:08:24,920 - worker_distributor - INFO - Workers distributed.
+2023-06-06 18:08:24,920 - worker_distributor.127 - INFO - Workers distributed.
+2023-06-06 18:08:24,922 - root - INFO - Distributing individuals to hospital ...
+2023-06-06 18:08:24,922 - root.73 - INFO - Distributing individuals to hospital ...
+2023-06-06 18:08:24,933 - hospital_distributor - INFO - Distributing medics to hospitals
+2023-06-06 18:08:24,933 - hospital_distributor.107 - INFO - Distributing medics to hospitals
+2023-06-06 18:08:25,027 - hospital_distributor - INFO - Medics distributed to hospitals
+2023-06-06 18:08:25,027 - hospital_distributor.110 - INFO - Medics distributed to hospitals
+2023-06-06 18:08:25,032 - root - INFO - Distributing individuals to company ...
+2023-06-06 18:08:25,032 - root.73 - INFO - Distributing individuals to company ...
+2023-06-06 18:08:25,035 - company_distributor - INFO - Distributing workers to companies
+2023-06-06 18:08:25,035 - company_distributor.27 - INFO - Distributing workers to companies
+2023-06-06 18:08:25,043 - company_distributor - INFO - Distributed workers to companies in 0 of 16 super areas.
+2023-06-06 18:08:25,043 - company_distributor.30 - INFO - Distributed workers to companies in 0 of 16 super areas.
+2023-06-06 18:08:35,738 - company_distributor - INFO - Workers distributed to companies
+2023-06-06 18:08:35,738 - company_distributor.34 - INFO - Workers distributed to companies
+2023-06-06 18:08:35,738 - root - INFO - Distributing individuals to household ...
+2023-06-06 18:08:35,738 - root.73 - INFO - Distributing individuals to household ...
+2023-06-06 18:08:35,760 - household_distributor - INFO - Distributing people to households
+2023-06-06 18:08:35,760 - household_distributor.296 - INFO - Distributing people to households
+2023-06-06 18:10:24,413 - household_distributor - INFO - People assigned to households. There are 310027 households in this world.
+2023-06-06 18:10:24,413 - household_distributor.326 - INFO - People assigned to households. There are 310027 households in this world.
+2023-06-06 18:10:24,509 - root - INFO - Creating commuting object ...
+2023-06-06 18:10:24,509 - root.94 - INFO - Creating commuting object ...
+2023-06-06 18:10:24,509 - root - INFO - Creating a commute ...
+2023-06-06 18:10:24,509 - root.26 - INFO - Creating a commute ...
+2023-06-06 18:10:24,512 - travel - INFO - Initialising commute...
+2023-06-06 18:10:24,512 - travel.46 - INFO - Initialising commute...
+2023-06-06 18:10:24,516 - travel - INFO - Creating cities...
+2023-06-06 18:10:24,516 - travel.83 - INFO - Creating cities...
+2023-06-06 18:10:24,534 - travel - INFO - This world has 16 cities, with names
+['Northland', 'Otago', 'Waikato', 'Auckland', 'Bay of Plenty', 'Manawatu-Whanganui', 'Southland', "Hawke's Bay", 'Gisborne', 'Taranaki', 'Wellington', 'Nelson', 'Marlborough', 'Canterbury', 'Tasman', 'West Coast']
+2023-06-06 18:10:24,534 - travel.89 - INFO - This world has 16 cities, with names
+['Northland', 'Otago', 'Waikato', 'Auckland', 'Bay of Plenty', 'Manawatu-Whanganui', 'Southland', "Hawke's Bay", 'Gisborne', 'Taranaki', 'Wellington', 'Nelson', 'Marlborough', 'Canterbury', 'Tasman', 'West Coast']
+2023-06-06 18:10:24,534 - travel - INFO - Determining people mode of transport
+2023-06-06 18:10:24,534 - travel.99 - INFO - Determining people mode of transport
+2023-06-06 18:10:24,636 - travel - INFO - Mode of transport allocated in 0 of 2030 areas.
+2023-06-06 18:10:24,636 - travel.106 - INFO - Mode of transport allocated in 0 of 2030 areas.
+2023-06-06 18:10:25,096 - travel - INFO - Mode of transport determined for everyone.
+2023-06-06 18:10:25,096 - travel.121 - INFO - Mode of transport determined for everyone.
+2023-06-06 18:10:25,102 - travel - INFO - Assigning commuters to stations...
+2023-06-06 18:10:25,102 - travel.141 - INFO - Assigning commuters to stations...
+2023-06-06 18:10:25,102 - travel - INFO - Assigned 0 of 407551 potential commuters...
+2023-06-06 18:10:25,102 - travel.155 - INFO - Assigned 0 of 407551 potential commuters...
+2023-06-06 18:10:25,209 - travel - INFO - Commuters assigned
+2023-06-06 18:10:25,209 - travel.158 - INFO - Commuters assigned
+2023-06-06 18:10:25,209 - travel - INFO - City Northland has 300 internal and 3 external commuters.
+2023-06-06 18:10:25,209 - travel.163 - INFO - City Northland has 300 internal and 3 external commuters.
+2023-06-06 18:10:25,209 - travel - INFO - City Otago has 776 internal and 0 external commuters.
+2023-06-06 18:10:25,209 - travel.163 - INFO - City Otago has 776 internal and 0 external commuters.
+2023-06-06 18:10:25,219 - travel - INFO - City Waikato has 597 internal and 1 external commuters.
+2023-06-06 18:10:25,219 - travel.163 - INFO - City Waikato has 597 internal and 1 external commuters.
+2023-06-06 18:10:25,243 - travel - INFO - City Auckland has 12119 internal and 16 external commuters.
+2023-06-06 18:10:25,243 - travel.163 - INFO - City Auckland has 12119 internal and 16 external commuters.
+2023-06-06 18:10:25,253 - travel - INFO - City Bay of Plenty has 475 internal and 0 external commuters.
+2023-06-06 18:10:25,253 - travel.163 - INFO - City Bay of Plenty has 475 internal and 0 external commuters.
+2023-06-06 18:10:25,259 - travel - INFO - City Manawatu-Whanganui has 391 internal and 10 external commuters.
+2023-06-06 18:10:25,259 - travel.163 - INFO - City Manawatu-Whanganui has 391 internal and 10 external commuters.
+2023-06-06 18:10:25,263 - travel - INFO - City Southland has 188 internal and 1 external commuters.
+2023-06-06 18:10:25,263 - travel.163 - INFO - City Southland has 188 internal and 1 external commuters.
+2023-06-06 18:10:25,268 - travel - INFO - City Hawke's Bay has 265 internal and 0 external commuters.
+2023-06-06 18:10:25,268 - travel.163 - INFO - City Hawke's Bay has 265 internal and 0 external commuters.
+2023-06-06 18:10:25,270 - travel - INFO - City Gisborne has 145 internal and 0 external commuters.
+2023-06-06 18:10:25,270 - travel.163 - INFO - City Gisborne has 145 internal and 0 external commuters.
+2023-06-06 18:10:25,271 - travel - INFO - City Taranaki has 129 internal and 0 external commuters.
+2023-06-06 18:10:25,271 - travel.163 - INFO - City Taranaki has 129 internal and 0 external commuters.
+2023-06-06 18:10:25,273 - travel - INFO - City Wellington has 9351 internal and 2 external commuters.
+2023-06-06 18:10:25,273 - travel.163 - INFO - City Wellington has 9351 internal and 2 external commuters.
+2023-06-06 18:10:25,275 - travel - INFO - City Nelson has 36 internal and 9 external commuters.
+2023-06-06 18:10:25,275 - travel.163 - INFO - City Nelson has 36 internal and 9 external commuters.
+2023-06-06 18:10:25,276 - travel - INFO - City Marlborough has 53 internal and 0 external commuters.
+2023-06-06 18:10:25,276 - travel.163 - INFO - City Marlborough has 53 internal and 0 external commuters.
+2023-06-06 18:10:25,279 - travel - INFO - City Canterbury has 622 internal and 0 external commuters.
+2023-06-06 18:10:25,279 - travel.163 - INFO - City Canterbury has 622 internal and 0 external commuters.
+2023-06-06 18:10:25,281 - travel - INFO - City Tasman has 54 internal and 1 external commuters.
+2023-06-06 18:10:25,281 - travel.163 - INFO - City Tasman has 54 internal and 1 external commuters.
+2023-06-06 18:10:25,284 - travel - INFO - City West Coast has 74 internal and 0 external commuters.
+2023-06-06 18:10:25,284 - travel.163 - INFO - City West Coast has 74 internal and 0 external commuters.
+2023-06-06 18:10:25,291 - travel - INFO - Creating stations...
+2023-06-06 18:10:25,291 - travel.182 - INFO - Creating stations...
+2023-06-06 18:10:25,293 - travel - INFO - City Northland has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,293 - travel.217 - INFO - City Northland has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,296 - travel - INFO - City Otago has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,296 - travel.217 - INFO - City Otago has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,297 - travel - INFO - City Waikato has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,297 - travel.217 - INFO - City Waikato has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,300 - travel - INFO - City Auckland has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,300 - travel.217 - INFO - City Auckland has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,301 - travel - INFO - City Bay of Plenty has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,301 - travel.217 - INFO - City Bay of Plenty has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,301 - travel - INFO - City Manawatu-Whanganui has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,301 - travel.217 - INFO - City Manawatu-Whanganui has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,302 - travel - INFO - City Southland has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,302 - travel.217 - INFO - City Southland has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,304 - travel - INFO - City Hawke's Bay has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,304 - travel.217 - INFO - City Hawke's Bay has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,305 - travel - INFO - City Gisborne has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,305 - travel.217 - INFO - City Gisborne has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,312 - travel - INFO - City Taranaki has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,312 - travel.217 - INFO - City Taranaki has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,320 - travel - INFO - City Wellington has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,320 - travel.217 - INFO - City Wellington has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,326 - travel - INFO - City Nelson has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,326 - travel.217 - INFO - City Nelson has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,329 - travel - INFO - City Marlborough has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,329 - travel.217 - INFO - City Marlborough has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,333 - travel - INFO - City Canterbury has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,333 - travel.217 - INFO - City Canterbury has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,335 - travel - INFO - City Tasman has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,335 - travel.217 - INFO - City Tasman has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,336 - travel - INFO - City West Coast has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,336 - travel.217 - INFO - City West Coast has 1 city and 1 inter city stations.
+2023-06-06 18:10:25,369 - travel - INFO - Creating transport units for the population
+2023-06-06 18:10:25,369 - travel.249 - INFO - Creating transport units for the population
+2023-06-06 18:10:25,369 - travel - INFO - City Northland has 6 city train carriages.
+2023-06-06 18:10:25,369 - travel.270 - INFO - City Northland has 6 city train carriages.
+2023-06-06 18:10:25,373 - travel - INFO - City Northland has 1 inter-city train carriages.
+2023-06-06 18:10:25,373 - travel.307 - INFO - City Northland has 1 inter-city train carriages.
+2023-06-06 18:10:25,374 - travel - INFO - City Otago has 16 city train carriages.
+2023-06-06 18:10:25,374 - travel.270 - INFO - City Otago has 16 city train carriages.
+2023-06-06 18:10:25,379 - travel - INFO - City Otago has 0 inter-city train carriages.
+2023-06-06 18:10:25,379 - travel.307 - INFO - City Otago has 0 inter-city train carriages.
+2023-06-06 18:10:25,379 - travel - INFO - City Waikato has 12 city train carriages.
+2023-06-06 18:10:25,379 - travel.270 - INFO - City Waikato has 12 city train carriages.
+2023-06-06 18:10:25,382 - travel - INFO - City Waikato has 1 inter-city train carriages.
+2023-06-06 18:10:25,382 - travel.307 - INFO - City Waikato has 1 inter-city train carriages.
+2023-06-06 18:10:25,382 - travel - INFO - City Auckland has 243 city train carriages.
+2023-06-06 18:10:25,382 - travel.270 - INFO - City Auckland has 243 city train carriages.
+2023-06-06 18:10:25,409 - travel - INFO - City Auckland has 1 inter-city train carriages.
+2023-06-06 18:10:25,409 - travel.307 - INFO - City Auckland has 1 inter-city train carriages.
+2023-06-06 18:10:25,410 - travel - INFO - City Bay of Plenty has 10 city train carriages.
+2023-06-06 18:10:25,410 - travel.270 - INFO - City Bay of Plenty has 10 city train carriages.
+2023-06-06 18:10:25,413 - travel - INFO - City Bay of Plenty has 0 inter-city train carriages.
+2023-06-06 18:10:25,413 - travel.307 - INFO - City Bay of Plenty has 0 inter-city train carriages.
+2023-06-06 18:10:25,413 - travel - INFO - City Manawatu-Whanganui has 8 city train carriages.
+2023-06-06 18:10:25,413 - travel.270 - INFO - City Manawatu-Whanganui has 8 city train carriages.
+2023-06-06 18:10:25,415 - travel - INFO - City Manawatu-Whanganui has 1 inter-city train carriages.
+2023-06-06 18:10:25,415 - travel.307 - INFO - City Manawatu-Whanganui has 1 inter-city train carriages.
+2023-06-06 18:10:25,416 - travel - INFO - City Southland has 4 city train carriages.
+2023-06-06 18:10:25,416 - travel.270 - INFO - City Southland has 4 city train carriages.
+2023-06-06 18:10:25,418 - travel - INFO - City Southland has 1 inter-city train carriages.
+2023-06-06 18:10:25,418 - travel.307 - INFO - City Southland has 1 inter-city train carriages.
+2023-06-06 18:10:25,420 - travel - INFO - City Hawke's Bay has 6 city train carriages.
+2023-06-06 18:10:25,420 - travel.270 - INFO - City Hawke's Bay has 6 city train carriages.
+2023-06-06 18:10:25,421 - travel - INFO - City Hawke's Bay has 0 inter-city train carriages.
+2023-06-06 18:10:25,421 - travel.307 - INFO - City Hawke's Bay has 0 inter-city train carriages.
+2023-06-06 18:10:25,421 - travel - INFO - City Gisborne has 3 city train carriages.
+2023-06-06 18:10:25,421 - travel.270 - INFO - City Gisborne has 3 city train carriages.
+2023-06-06 18:10:25,424 - travel - INFO - City Gisborne has 0 inter-city train carriages.
+2023-06-06 18:10:25,424 - travel.307 - INFO - City Gisborne has 0 inter-city train carriages.
+2023-06-06 18:10:25,424 - travel - INFO - City Taranaki has 3 city train carriages.
+2023-06-06 18:10:25,424 - travel.270 - INFO - City Taranaki has 3 city train carriages.
+2023-06-06 18:10:25,426 - travel - INFO - City Taranaki has 0 inter-city train carriages.
+2023-06-06 18:10:25,426 - travel.307 - INFO - City Taranaki has 0 inter-city train carriages.
+2023-06-06 18:10:25,426 - travel - INFO - City Wellington has 188 city train carriages.
+2023-06-06 18:10:25,426 - travel.270 - INFO - City Wellington has 188 city train carriages.
+2023-06-06 18:10:25,447 - travel - INFO - City Wellington has 1 inter-city train carriages.
+2023-06-06 18:10:25,447 - travel.307 - INFO - City Wellington has 1 inter-city train carriages.
+2023-06-06 18:10:25,447 - travel - INFO - City Nelson has 1 city train carriages.
+2023-06-06 18:10:25,447 - travel.270 - INFO - City Nelson has 1 city train carriages.
+2023-06-06 18:10:25,450 - travel - INFO - City Nelson has 1 inter-city train carriages.
+2023-06-06 18:10:25,450 - travel.307 - INFO - City Nelson has 1 inter-city train carriages.
+2023-06-06 18:10:25,450 - travel - INFO - City Marlborough has 2 city train carriages.
+2023-06-06 18:10:25,450 - travel.270 - INFO - City Marlborough has 2 city train carriages.
+2023-06-06 18:10:25,452 - travel - INFO - City Marlborough has 0 inter-city train carriages.
+2023-06-06 18:10:25,452 - travel.307 - INFO - City Marlborough has 0 inter-city train carriages.
+2023-06-06 18:10:25,452 - travel - INFO - City Canterbury has 13 city train carriages.
+2023-06-06 18:10:25,452 - travel.270 - INFO - City Canterbury has 13 city train carriages.
+2023-06-06 18:10:25,455 - travel - INFO - City Canterbury has 0 inter-city train carriages.
+2023-06-06 18:10:25,455 - travel.307 - INFO - City Canterbury has 0 inter-city train carriages.
+2023-06-06 18:10:25,455 - travel - INFO - City Tasman has 2 city train carriages.
+2023-06-06 18:10:25,455 - travel.270 - INFO - City Tasman has 2 city train carriages.
+2023-06-06 18:10:25,457 - travel - INFO - City Tasman has 1 inter-city train carriages.
+2023-06-06 18:10:25,457 - travel.307 - INFO - City Tasman has 1 inter-city train carriages.
+2023-06-06 18:10:25,457 - travel - INFO - City West Coast has 2 city train carriages.
+2023-06-06 18:10:25,457 - travel.270 - INFO - City West Coast has 2 city train carriages.
+2023-06-06 18:10:25,460 - travel - INFO - City West Coast has 0 inter-city train carriages.
+2023-06-06 18:10:25,460 - travel.307 - INFO - City West Coast has 0 inter-city train carriages.
+2023-06-06 18:10:25,462 - travel - INFO - Cities' transport initialised
+2023-06-06 18:10:25,462 - travel.310 - INFO - Cities' transport initialised
+2023-06-06 18:10:25,464 - root - INFO - Creating disease object ...
+2023-06-06 18:10:25,464 - root.103 - INFO - Creating disease object ...
+2023-06-06 18:10:25,536 - root - INFO - Creating interaction object ...
+/home/zhangs/Github/June_NZ/lib/JUNE_v1.2.0/june/epidemiology/infection/health_index/health_index.py:216: RuntimeWarning: invalid value encountered in scalar divide
+  k = target_adjust_sum / to_adjust_sum
+2023-06-06 18:10:25,536 - root.108 - INFO - Creating interaction object ...
+2023-06-06 18:10:25,569 - root - INFO - Creating policy object ...
+2023-06-06 18:10:25,569 - root.113 - INFO - Creating policy object ...
+2023-06-06 18:10:25,594 - root - INFO - Creating tracker ...
+2023-06-06 18:10:25,594 - root.116 - INFO - Creating tracker ...
+2023-06-06 18:10:29,205 - root - INFO - Starting simulation ...
+2023-06-06 18:10:29,205 - root.124 - INFO - Starting simulation ...
+2023-06-06 18:10:35,358 - simulator - INFO - Starting simulation for 30 days at day 2020-03-01 09:00:00,to run for 30 days
+2023-06-06 18:10:35,358 - simulator.380 - INFO - Starting simulation for 30 days at day 2020-03-01 09:00:00,to run for 30 days
+2023-06-06 18:10:36,312 - seed - INFO - Seeding Covid19 infections at date 2020-03-01
+2023-06-06 18:10:36,312 - seed.299 - INFO - Seeding Covid19 infections at date 2020-03-01
+2023-06-06 18:10:50,191 - rank - INFO - Next timestep
+2023-06-06 18:10:50,191 - rank.408 - INFO - Next timestep
+2023-06-06 18:10:50,191 - simulator - INFO - ==================== timestep ====================
+2023-06-06 18:10:50,191 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-06 18:10:51,622 - rank - INFO - Rank 0 -- move_people -- 1.4311071529809851
+2023-06-06 18:10:51,622 - rank.213 - INFO - Rank 0 -- move_people -- 1.4311071529809851
+2023-06-06 18:10:51,623 - rank - INFO - Rank 0 -- move_people_waiting -- 2.9320071917027235e-06
+2023-06-06 18:10:51,623 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.9320071917027235e-06
+2023-06-06 18:10:51,624 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 7.242982974275947e-06,6.67572021484375e-06 - 2020-03-01 09:00:00
+2023-06-06 18:10:51,624 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 7.242982974275947e-06,6.67572021484375e-06 - 2020-03-01 09:00:00
+2023-06-06 18:10:51,688 - simulator - INFO - Info for rank 0, Date = 2020-03-01 09:00:00, number of deaths =  0, number of infected = 14617
+2023-06-06 18:10:51,688 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-01 09:00:00, number of deaths =  0, number of infected = 14617
+2023-06-06 18:10:54,600 - rank - INFO - Rank 0 -- interaction -- 2.973444119008491
+2023-06-06 18:10:54,600 - rank.323 - INFO - Rank 0 -- interaction -- 2.973444119008491
+2023-06-06 18:10:54,601 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-06 18:10:54,601 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-06 18:10:54,871 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-06 18:10:54,871 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-06 18:10:54,878 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 519 of type city_transport
+2023-06-06 18:10:54,878 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 519 of type city_transport
+2023-06-06 18:10:58,077 - tracker - INFO - Rank 0 -- tracking contacts -- 8 of 8 of type inter_city_transport
+2023-06-06 18:10:58,077 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 8 of 8 of type inter_city_transport
+2023-06-06 18:10:58,500 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-06 18:10:58,500 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-06 18:10:58,614 - rank - INFO - Rank 0 -- tracker -- 4.013265946996398
+2023-06-06 18:10:58,614 - rank.332 - INFO - Rank 0 -- tracker -- 4.013265946996398
+2023-06-06 18:10:58,614 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0005938550166320056,0.0005936622619628906 - 2020-03-01 09:00:00
+2023-06-06 18:10:58,614 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0005938550166320056,0.0005936622619628906 - 2020-03-01 09:00:00
+2023-06-06 18:10:59,019 - rank - INFO - Rank 0 -- interaction_waiting -- 6.526010110974312e-06
+2023-06-06 18:10:59,019 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 6.526010110974312e-06
+2023-06-06 18:10:59,640 - simulator - INFO - CMS: Timestep for rank 0/1 - 9.448331459978363,9.44833254814148 - 2020-03-01 09:00:00
+
+2023-06-06 18:10:59,640 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 9.448331459978363,9.44833254814148 - 2020-03-01 09:00:00
+
