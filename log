@@ -3059,3 +3059,1313 @@ No --configs argument given - defaulting to:
 2023-06-07 15:32:57,324 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
 2023-06-07 15:32:57,333 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
 2023-06-07 15:32:57,333 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:34:35,276 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:34:35,276 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:34:38,155 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:34:38,155 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:34:38,163 - rank - INFO - Rank 0 -- tracker -- 101.61351056100102
+2023-06-07 15:34:38,163 - rank.332 - INFO - Rank 0 -- tracker -- 101.61351056100102
+2023-06-07 15:34:38,210 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004072160227224231,0.00040721893310546875 - 2020-03-21 18:00:00
+2023-06-07 15:34:38,210 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004072160227224231,0.00040721893310546875 - 2020-03-21 18:00:00
+2023-06-07 15:34:38,812 - rank - INFO - Rank 0 -- interaction_waiting -- 8.535978849977255e-06
+2023-06-07 15:34:38,812 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 8.535978849977255e-06
+2023-06-07 15:34:39,673 - simulator - INFO - CMS: Timestep for rank 0/1 - 106.76920640701428,106.76920676231384 - 2020-03-21 18:00:00
+
+2023-06-07 15:34:39,673 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 106.76920640701428,106.76920676231384 - 2020-03-21 18:00:00
+
+2023-06-07 15:34:39,676 - rank - INFO - Next timestep
+2023-06-07 15:34:39,676 - rank.408 - INFO - Next timestep
+2023-06-07 15:34:39,676 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:34:39,676 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:34:40,518 - rank - INFO - Rank 0 -- move_people -- 0.8402728749788366
+2023-06-07 15:34:40,518 - rank.213 - INFO - Rank 0 -- move_people -- 0.8402728749788366
+2023-06-07 15:34:40,518 - rank - INFO - Rank 0 -- move_people_waiting -- 2.7820351533591747e-06
+2023-06-07 15:34:40,518 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.7820351533591747e-06
+2023-06-07 15:34:40,518 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.43699536845088e-06,4.291534423828125e-06 - 2020-03-21 22:00:00
+2023-06-07 15:34:40,518 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.43699536845088e-06,4.291534423828125e-06 - 2020-03-21 22:00:00
+2023-06-07 15:34:40,599 - simulator - INFO - Info for rank 0, Date = 2020-03-21 22:00:00, number of deaths =  83544, number of infected = 35376
+2023-06-07 15:34:40,599 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-21 22:00:00, number of deaths =  83544, number of infected = 35376
+2023-06-07 15:34:42,994 - rank - INFO - Rank 0 -- interaction -- 2.473754597012885
+2023-06-07 15:34:42,994 - rank.323 - INFO - Rank 0 -- interaction -- 2.473754597012885
+2023-06-07 15:34:43,413 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:34:43,413 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:34:43,773 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:34:43,773 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:34:43,781 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:34:43,781 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:36:17,487 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:36:17,487 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:36:17,512 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:36:17,512 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:36:17,512 - rank - INFO - Rank 0 -- tracker -- 94.51846004801337
+2023-06-07 15:36:17,512 - rank.332 - INFO - Rank 0 -- tracker -- 94.51846004801337
+2023-06-07 15:36:17,534 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004191840416751802,0.0004189014434814453 - 2020-03-21 22:00:00
+2023-06-07 15:36:17,534 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004191840416751802,0.0004189014434814453 - 2020-03-21 22:00:00
+2023-06-07 15:36:18,796 - rank - INFO - Rank 0 -- interaction_waiting -- 5.815993063151836e-06
+2023-06-07 15:36:18,796 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.815993063151836e-06
+2023-06-07 15:36:19,700 - simulator - INFO - CMS: Timestep for rank 0/1 - 100.02266683703056,100.02266716957092 - 2020-03-21 22:00:00
+
+2023-06-07 15:36:19,700 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 100.02266683703056,100.02266716957092 - 2020-03-21 22:00:00
+
+2023-06-07 15:36:19,703 - rank - INFO - Next timestep
+2023-06-07 15:36:19,703 - rank.408 - INFO - Next timestep
+2023-06-07 15:36:19,704 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:36:19,704 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:36:20,812 - rank - INFO - Rank 0 -- move_people -- 1.1064736919943243
+2023-06-07 15:36:20,812 - rank.213 - INFO - Rank 0 -- move_people -- 1.1064736919943243
+2023-06-07 15:36:20,812 - rank - INFO - Rank 0 -- move_people_waiting -- 2.463988494127989e-06
+2023-06-07 15:36:20,812 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.463988494127989e-06
+2023-06-07 15:36:20,814 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 8.208968210965395e-06,7.867813110351562e-06 - 2020-03-22 09:00:00
+2023-06-07 15:36:20,814 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 8.208968210965395e-06,7.867813110351562e-06 - 2020-03-22 09:00:00
+2023-06-07 15:36:20,895 - simulator - INFO - Info for rank 0, Date = 2020-03-22 09:00:00, number of deaths =  86056, number of infected = 32896
+2023-06-07 15:36:20,895 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-22 09:00:00, number of deaths =  86056, number of infected = 32896
+2023-06-07 15:36:23,382 - rank - INFO - Rank 0 -- interaction -- 2.5668563609942794
+2023-06-07 15:36:23,382 - rank.323 - INFO - Rank 0 -- interaction -- 2.5668563609942794
+2023-06-07 15:36:23,801 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:36:23,801 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:36:24,208 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:36:24,208 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:36:24,218 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:36:24,218 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:37:46,924 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:37:46,924 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:37:49,340 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:37:49,340 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:37:49,348 - rank - INFO - Rank 0 -- tracker -- 85.96475821896456
+2023-06-07 15:37:49,348 - rank.332 - INFO - Rank 0 -- tracker -- 85.96475821896456
+2023-06-07 15:37:49,360 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004006010130979121,0.00040078163146972656 - 2020-03-22 09:00:00
+2023-06-07 15:37:49,360 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004006010130979121,0.00040078163146972656 - 2020-03-22 09:00:00
+2023-06-07 15:37:50,494 - rank - INFO - Rank 0 -- interaction_waiting -- 5.44404610991478e-06
+2023-06-07 15:37:50,494 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.44404610991478e-06
+2023-06-07 15:37:51,338 - simulator - INFO - CMS: Timestep for rank 0/1 - 91.63278485898627,91.63278532028198 - 2020-03-22 09:00:00
+
+2023-06-07 15:37:51,338 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 91.63278485898627,91.63278532028198 - 2020-03-22 09:00:00
+
+2023-06-07 15:39:29,974 - rank - INFO - Next timestep
+2023-06-07 15:39:29,974 - rank.408 - INFO - Next timestep
+2023-06-07 15:39:29,976 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:39:29,976 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:39:30,827 - rank - INFO - Rank 0 -- move_people -- 0.8508983289939351
+2023-06-07 15:39:30,827 - rank.213 - INFO - Rank 0 -- move_people -- 0.8508983289939351
+2023-06-07 15:39:30,827 - rank - INFO - Rank 0 -- move_people_waiting -- 2.495013177394867e-06
+2023-06-07 15:39:30,827 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.495013177394867e-06
+2023-06-07 15:39:30,827 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.9060327000916e-06,4.76837158203125e-06 - 2020-03-22 10:00:00
+2023-06-07 15:39:30,827 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.9060327000916e-06,4.76837158203125e-06 - 2020-03-22 10:00:00
+2023-06-07 15:39:30,908 - simulator - INFO - Info for rank 0, Date = 2020-03-22 10:00:00, number of deaths =  86278, number of infected = 32690
+2023-06-07 15:39:30,908 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-22 10:00:00, number of deaths =  86278, number of infected = 32690
+2023-06-07 15:39:35,509 - rank - INFO - Rank 0 -- interaction -- 4.680633009003941
+2023-06-07 15:39:35,509 - rank.323 - INFO - Rank 0 -- interaction -- 4.680633009003941
+2023-06-07 15:39:35,965 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:39:35,965 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:39:36,266 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:39:36,266 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:39:36,319 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:39:36,319 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:40:56,686 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:40:56,686 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:40:56,705 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:40:56,705 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:40:56,706 - rank - INFO - Rank 0 -- tracker -- 81.19655197998509
+2023-06-07 15:40:56,706 - rank.332 - INFO - Rank 0 -- tracker -- 81.19655197998509
+2023-06-07 15:40:57,055 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00044015597086399794,0.0004398822784423828 - 2020-03-22 10:00:00
+2023-06-07 15:40:57,055 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00044015597086399794,0.0004398822784423828 - 2020-03-22 10:00:00
+2023-06-07 15:40:57,695 - rank - INFO - Rank 0 -- interaction_waiting -- 5.889043677598238e-06
+2023-06-07 15:40:57,695 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.889043677598238e-06
+2023-06-07 15:40:58,768 - simulator - INFO - CMS: Timestep for rank 0/1 - 88.7917514690198,88.79175209999084 - 2020-03-22 10:00:00
+
+2023-06-07 15:40:58,768 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 88.7917514690198,88.79175209999084 - 2020-03-22 10:00:00
+
+2023-06-07 15:40:58,772 - rank - INFO - Next timestep
+2023-06-07 15:40:58,772 - rank.408 - INFO - Next timestep
+2023-06-07 15:40:58,772 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:40:58,772 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:40:59,869 - rank - INFO - Rank 0 -- move_people -- 1.095959104015492
+2023-06-07 15:40:59,869 - rank.213 - INFO - Rank 0 -- move_people -- 1.095959104015492
+2023-06-07 15:40:59,869 - rank - INFO - Rank 0 -- move_people_waiting -- 2.56003113463521e-06
+2023-06-07 15:40:59,869 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.56003113463521e-06
+2023-06-07 15:40:59,870 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 7.736030966043472e-06,7.3909759521484375e-06 - 2020-03-22 18:00:00
+2023-06-07 15:40:59,870 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 7.736030966043472e-06,7.3909759521484375e-06 - 2020-03-22 18:00:00
+2023-06-07 15:40:59,949 - simulator - INFO - Info for rank 0, Date = 2020-03-22 18:00:00, number of deaths =  88004, number of infected = 31290
+2023-06-07 15:40:59,949 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-22 18:00:00, number of deaths =  88004, number of infected = 31290
+2023-06-07 15:41:02,388 - rank - INFO - Rank 0 -- interaction -- 2.5162503480096348
+2023-06-07 15:41:02,388 - rank.323 - INFO - Rank 0 -- interaction -- 2.5162503480096348
+2023-06-07 15:41:02,806 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:41:02,806 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:41:03,162 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:41:03,162 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:41:03,170 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:41:03,170 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:42:16,435 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:42:16,435 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:42:19,259 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:42:19,259 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:42:19,267 - rank - INFO - Rank 0 -- tracker -- 76.87891269399552
+2023-06-07 15:42:19,267 - rank.332 - INFO - Rank 0 -- tracker -- 76.87891269399552
+2023-06-07 15:42:19,307 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004113449831493199,0.0004112720489501953 - 2020-03-22 18:00:00
+2023-06-07 15:42:19,307 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004113449831493199,0.0004112720489501953 - 2020-03-22 18:00:00
+2023-06-07 15:42:20,916 - rank - INFO - Rank 0 -- interaction_waiting -- 5.826994311064482e-06
+2023-06-07 15:42:20,916 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.826994311064482e-06
+2023-06-07 15:42:21,755 - simulator - INFO - CMS: Timestep for rank 0/1 - 82.98168589000124,82.98168706893921 - 2020-03-22 18:00:00
+
+2023-06-07 15:42:21,755 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 82.98168589000124,82.98168706893921 - 2020-03-22 18:00:00
+
+2023-06-07 15:42:21,758 - rank - INFO - Next timestep
+2023-06-07 15:42:21,758 - rank.408 - INFO - Next timestep
+2023-06-07 15:42:21,758 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:42:21,758 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:42:22,586 - rank - INFO - Rank 0 -- move_people -- 0.8267828639945947
+2023-06-07 15:42:22,586 - rank.213 - INFO - Rank 0 -- move_people -- 0.8267828639945947
+2023-06-07 15:42:22,586 - rank - INFO - Rank 0 -- move_people_waiting -- 2.849963493645191e-06
+2023-06-07 15:42:22,586 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.849963493645191e-06
+2023-06-07 15:42:22,586 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.625995643436909e-06,4.5299530029296875e-06 - 2020-03-22 22:00:00
+2023-06-07 15:42:22,586 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.625995643436909e-06,4.5299530029296875e-06 - 2020-03-22 22:00:00
+2023-06-07 15:42:22,666 - simulator - INFO - Info for rank 0, Date = 2020-03-22 22:00:00, number of deaths =  88819, number of infected = 30546
+2023-06-07 15:42:22,666 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-22 22:00:00, number of deaths =  88819, number of infected = 30546
+2023-06-07 15:42:25,016 - rank - INFO - Rank 0 -- interaction -- 2.428204532014206
+2023-06-07 15:42:25,016 - rank.323 - INFO - Rank 0 -- interaction -- 2.428204532014206
+2023-06-07 15:42:25,432 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:42:25,432 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:42:25,792 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:42:25,792 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:42:25,800 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:42:25,800 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:43:35,317 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:43:35,317 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:43:35,341 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:43:35,341 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:43:35,342 - rank - INFO - Rank 0 -- tracker -- 70.32582536095288
+2023-06-07 15:43:35,342 - rank.332 - INFO - Rank 0 -- tracker -- 70.32582536095288
+2023-06-07 15:43:35,365 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004096869961358607,0.00040912628173828125 - 2020-03-22 22:00:00
+2023-06-07 15:43:35,365 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004096869961358607,0.00040912628173828125 - 2020-03-22 22:00:00
+2023-06-07 15:43:36,485 - rank - INFO - Rank 0 -- interaction_waiting -- 5.984969902783632e-06
+2023-06-07 15:43:36,485 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.984969902783632e-06
+2023-06-07 15:43:37,344 - simulator - INFO - CMS: Timestep for rank 0/1 - 75.58483389997855,75.5848343372345 - 2020-03-22 22:00:00
+
+2023-06-07 15:43:37,344 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 75.58483389997855,75.5848343372345 - 2020-03-22 22:00:00
+
+2023-06-07 15:43:37,347 - rank - INFO - Next timestep
+2023-06-07 15:43:37,347 - rank.408 - INFO - Next timestep
+2023-06-07 15:43:37,347 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:43:37,347 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:43:38,433 - rank - INFO - Rank 0 -- move_people -- 1.083917273033876
+2023-06-07 15:43:38,433 - rank.213 - INFO - Rank 0 -- move_people -- 1.083917273033876
+2023-06-07 15:43:38,433 - rank - INFO - Rank 0 -- move_people_waiting -- 2.4929759092628956e-06
+2023-06-07 15:43:38,433 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.4929759092628956e-06
+2023-06-07 15:43:38,433 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.542991518974304e-06,4.5299530029296875e-06 - 2020-03-23 09:00:00
+2023-06-07 15:43:38,433 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.542991518974304e-06,4.5299530029296875e-06 - 2020-03-23 09:00:00
+2023-06-07 15:43:38,514 - simulator - INFO - Info for rank 0, Date = 2020-03-23 09:00:00, number of deaths =  91036, number of infected = 28364
+2023-06-07 15:43:38,514 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-23 09:00:00, number of deaths =  91036, number of infected = 28364
+2023-06-07 15:43:40,928 - rank - INFO - Rank 0 -- interaction -- 2.492808802984655
+2023-06-07 15:43:40,928 - rank.323 - INFO - Rank 0 -- interaction -- 2.492808802984655
+2023-06-07 15:43:41,350 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:43:41,350 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:43:41,708 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:43:41,708 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:43:41,717 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:43:41,717 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:44:42,628 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:44:42,628 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:44:44,994 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:44:44,994 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:44:45,001 - rank - INFO - Rank 0 -- tracker -- 64.07283204101259
+2023-06-07 15:44:45,001 - rank.332 - INFO - Rank 0 -- tracker -- 64.07283204101259
+2023-06-07 15:44:45,012 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00040496402652934194,0.00040459632873535156 - 2020-03-23 09:00:00
+2023-06-07 15:44:45,012 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00040496402652934194,0.00040459632873535156 - 2020-03-23 09:00:00
+2023-06-07 15:44:45,528 - rank - INFO - Rank 0 -- interaction_waiting -- 4.8800138756632805e-06
+2023-06-07 15:44:45,528 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 4.8800138756632805e-06
+2023-06-07 15:44:46,433 - simulator - INFO - CMS: Timestep for rank 0/1 - 69.08384088298772,69.08384132385254 - 2020-03-23 09:00:00
+
+2023-06-07 15:44:46,433 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 69.08384088298772,69.08384132385254 - 2020-03-23 09:00:00
+
+2023-06-07 15:47:36,238 - rank - INFO - Next timestep
+2023-06-07 15:47:36,238 - rank.408 - INFO - Next timestep
+2023-06-07 15:47:36,241 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:47:36,241 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:47:37,095 - rank - INFO - Rank 0 -- move_people -- 0.852649612003006
+2023-06-07 15:47:37,095 - rank.213 - INFO - Rank 0 -- move_people -- 0.852649612003006
+2023-06-07 15:47:37,095 - rank - INFO - Rank 0 -- move_people_waiting -- 3.1410017982125282e-06
+2023-06-07 15:47:37,095 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.1410017982125282e-06
+2023-06-07 15:47:37,095 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 1.2049975339323282e-05,1.1682510375976562e-05 - 2020-03-23 10:00:00
+2023-06-07 15:47:37,095 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 1.2049975339323282e-05,1.1682510375976562e-05 - 2020-03-23 10:00:00
+2023-06-07 15:47:37,176 - simulator - INFO - Info for rank 0, Date = 2020-03-23 10:00:00, number of deaths =  91278, number of infected = 28136
+2023-06-07 15:47:37,176 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-23 10:00:00, number of deaths =  91278, number of infected = 28136
+2023-06-07 15:47:41,882 - rank - INFO - Rank 0 -- interaction -- 4.785781512968242
+2023-06-07 15:47:41,882 - rank.323 - INFO - Rank 0 -- interaction -- 4.785781512968242
+2023-06-07 15:47:42,303 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:47:42,303 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:47:42,588 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:47:42,588 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:47:42,638 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:47:42,638 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:48:43,236 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:48:43,236 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:48:43,258 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:48:43,258 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:48:43,258 - rank - INFO - Rank 0 -- tracker -- 61.376255313982256
+2023-06-07 15:48:43,258 - rank.332 - INFO - Rank 0 -- tracker -- 61.376255313982256
+2023-06-07 15:48:43,604 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004291280056349933,0.0004284381866455078 - 2020-03-23 10:00:00
+2023-06-07 15:48:43,604 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004291280056349933,0.0004284381866455078 - 2020-03-23 10:00:00
+2023-06-07 15:48:44,209 - rank - INFO - Rank 0 -- interaction_waiting -- 5.225010681897402e-06
+2023-06-07 15:48:44,209 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.225010681897402e-06
+2023-06-07 15:48:45,373 - simulator - INFO - CMS: Timestep for rank 0/1 - 69.13115937000839,69.13116121292114 - 2020-03-23 10:00:00
+
+2023-06-07 15:48:45,373 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 69.13115937000839,69.13116121292114 - 2020-03-23 10:00:00
+
+2023-06-07 15:48:45,378 - rank - INFO - Next timestep
+2023-06-07 15:48:45,378 - rank.408 - INFO - Next timestep
+2023-06-07 15:48:45,378 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:48:45,378 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:48:46,494 - rank - INFO - Rank 0 -- move_people -- 1.114310495031532
+2023-06-07 15:48:46,494 - rank.213 - INFO - Rank 0 -- move_people -- 1.114310495031532
+2023-06-07 15:48:46,494 - rank - INFO - Rank 0 -- move_people_waiting -- 4.933972377330065e-06
+2023-06-07 15:48:46,494 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 4.933972377330065e-06
+2023-06-07 15:48:46,494 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.7539942897856236e-06,4.5299530029296875e-06 - 2020-03-23 18:00:00
+2023-06-07 15:48:46,494 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.7539942897856236e-06,4.5299530029296875e-06 - 2020-03-23 18:00:00
+2023-06-07 15:48:46,577 - simulator - INFO - Info for rank 0, Date = 2020-03-23 18:00:00, number of deaths =  92791, number of infected = 26935
+2023-06-07 15:48:46,577 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-23 18:00:00, number of deaths =  92791, number of infected = 26935
+2023-06-07 15:48:48,997 - rank - INFO - Rank 0 -- interaction -- 2.5020376250031404
+2023-06-07 15:48:48,997 - rank.323 - INFO - Rank 0 -- interaction -- 2.5020376250031404
+2023-06-07 15:48:49,418 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:48:49,418 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:48:49,775 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:48:49,775 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:48:49,783 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:48:49,783 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:49:44,294 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:49:44,294 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:49:47,044 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:49:47,044 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:49:47,052 - rank - INFO - Rank 0 -- tracker -- 58.054609764018096
+2023-06-07 15:49:47,052 - rank.332 - INFO - Rank 0 -- tracker -- 58.054609764018096
+2023-06-07 15:49:47,094 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00040850398363545537,0.000408172607421875 - 2020-03-23 18:00:00
+2023-06-07 15:49:47,094 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00040850398363545537,0.000408172607421875 - 2020-03-23 18:00:00
+2023-06-07 15:49:47,623 - rank - INFO - Rank 0 -- interaction_waiting -- 8.638016879558563e-06
+2023-06-07 15:49:47,623 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 8.638016879558563e-06
+2023-06-07 15:49:48,508 - simulator - INFO - CMS: Timestep for rank 0/1 - 63.12885867297882,63.12885928153992 - 2020-03-23 18:00:00
+
+2023-06-07 15:49:48,508 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 63.12885867297882,63.12885928153992 - 2020-03-23 18:00:00
+
+2023-06-07 15:49:48,512 - rank - INFO - Next timestep
+2023-06-07 15:49:48,512 - rank.408 - INFO - Next timestep
+2023-06-07 15:49:48,512 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:49:48,512 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:49:49,327 - rank - INFO - Rank 0 -- move_people -- 0.8135514790192246
+2023-06-07 15:49:49,327 - rank.213 - INFO - Rank 0 -- move_people -- 0.8135514790192246
+2023-06-07 15:49:49,327 - rank - INFO - Rank 0 -- move_people_waiting -- 3.759050741791725e-06
+2023-06-07 15:49:49,327 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.759050741791725e-06
+2023-06-07 15:49:49,328 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 7.3410337790846825e-06,7.152557373046875e-06 - 2020-03-23 22:00:00
+2023-06-07 15:49:49,328 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 7.3410337790846825e-06,7.152557373046875e-06 - 2020-03-23 22:00:00
+2023-06-07 15:49:49,408 - simulator - INFO - Info for rank 0, Date = 2020-03-23 22:00:00, number of deaths =  93511, number of infected = 26290
+2023-06-07 15:49:49,408 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-23 22:00:00, number of deaths =  93511, number of infected = 26290
+2023-06-07 15:49:51,756 - rank - INFO - Rank 0 -- interaction -- 2.4270878260140307
+2023-06-07 15:49:51,756 - rank.323 - INFO - Rank 0 -- interaction -- 2.4270878260140307
+2023-06-07 15:49:52,174 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:49:52,174 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:49:52,532 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:49:52,532 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:49:52,540 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:49:52,540 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:50:44,659 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:50:44,659 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:50:44,686 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:50:44,686 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:50:44,686 - rank - INFO - Rank 0 -- tracker -- 52.92947039101273
+2023-06-07 15:50:44,686 - rank.332 - INFO - Rank 0 -- tracker -- 52.92947039101273
+2023-06-07 15:50:44,738 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004392559640109539,0.00043845176696777344 - 2020-03-23 22:00:00
+2023-06-07 15:50:44,738 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004392559640109539,0.00043845176696777344 - 2020-03-23 22:00:00
+2023-06-07 15:50:46,078 - rank - INFO - Rank 0 -- interaction_waiting -- 7.78702087700367e-06
+2023-06-07 15:50:46,078 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 7.78702087700367e-06
+2023-06-07 15:50:47,131 - simulator - INFO - CMS: Timestep for rank 0/1 - 58.61759517301107,58.61759567260742 - 2020-03-23 22:00:00
+
+2023-06-07 15:50:47,131 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 58.61759517301107,58.61759567260742 - 2020-03-23 22:00:00
+
+2023-06-07 15:50:47,134 - rank - INFO - Next timestep
+2023-06-07 15:50:47,134 - rank.408 - INFO - Next timestep
+2023-06-07 15:50:47,134 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:50:47,134 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:50:48,236 - rank - INFO - Rank 0 -- move_people -- 1.1015278180129826
+2023-06-07 15:50:48,236 - rank.213 - INFO - Rank 0 -- move_people -- 1.1015278180129826
+2023-06-07 15:50:48,236 - rank - INFO - Rank 0 -- move_people_waiting -- 4.500965587794781e-06
+2023-06-07 15:50:48,236 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 4.500965587794781e-06
+2023-06-07 15:50:48,236 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 5.238980520516634e-06,5.245208740234375e-06 - 2020-03-24 09:00:00
+2023-06-07 15:50:48,236 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 5.238980520516634e-06,5.245208740234375e-06 - 2020-03-24 09:00:00
+2023-06-07 15:50:48,317 - simulator - INFO - Info for rank 0, Date = 2020-03-24 09:00:00, number of deaths =  95458, number of infected = 24372
+2023-06-07 15:50:48,317 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-24 09:00:00, number of deaths =  95458, number of infected = 24372
+2023-06-07 15:50:50,762 - rank - INFO - Rank 0 -- interaction -- 2.5251950609963387
+2023-06-07 15:50:50,762 - rank.323 - INFO - Rank 0 -- interaction -- 2.5251950609963387
+2023-06-07 15:50:51,184 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:50:51,184 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:50:51,539 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:50:51,539 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:50:51,547 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:50:51,547 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:51:36,322 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:51:36,322 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:51:39,729 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:51:39,729 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:51:39,737 - rank - INFO - Rank 0 -- tracker -- 48.974474128976
+2023-06-07 15:51:39,737 - rank.332 - INFO - Rank 0 -- tracker -- 48.974474128976
+2023-06-07 15:51:39,747 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00043248903239145875,0.0004322528839111328 - 2020-03-24 09:00:00
+2023-06-07 15:51:39,747 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00043248903239145875,0.0004322528839111328 - 2020-03-24 09:00:00
+2023-06-07 15:51:40,465 - rank - INFO - Rank 0 -- interaction_waiting -- 8.01600981503725e-06
+2023-06-07 15:51:40,465 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 8.01600981503725e-06
+2023-06-07 15:51:41,435 - simulator - INFO - CMS: Timestep for rank 0/1 - 54.300433330005035,54.300435066223145 - 2020-03-24 09:00:00
+
+2023-06-07 15:51:41,435 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 54.300433330005035,54.300435066223145 - 2020-03-24 09:00:00
+
+2023-06-07 15:53:22,106 - rank - INFO - Next timestep
+2023-06-07 15:53:22,106 - rank.408 - INFO - Next timestep
+2023-06-07 15:53:22,109 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:53:22,109 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:53:22,945 - rank - INFO - Rank 0 -- move_people -- 0.8340664409915917
+2023-06-07 15:53:22,945 - rank.213 - INFO - Rank 0 -- move_people -- 0.8340664409915917
+2023-06-07 15:53:22,945 - rank - INFO - Rank 0 -- move_people_waiting -- 2.987042535096407e-06
+2023-06-07 15:53:22,945 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.987042535096407e-06
+2023-06-07 15:53:22,946 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 5.820998921990395e-06,5.245208740234375e-06 - 2020-03-24 10:00:00
+2023-06-07 15:53:22,946 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 5.820998921990395e-06,5.245208740234375e-06 - 2020-03-24 10:00:00
+2023-06-07 15:53:23,028 - simulator - INFO - Info for rank 0, Date = 2020-03-24 10:00:00, number of deaths =  95627, number of infected = 24220
+2023-06-07 15:53:23,028 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-24 10:00:00, number of deaths =  95627, number of infected = 24220
+2023-06-07 15:53:27,558 - rank - INFO - Rank 0 -- interaction -- 4.6114101350540295
+2023-06-07 15:53:27,558 - rank.323 - INFO - Rank 0 -- interaction -- 4.6114101350540295
+2023-06-07 15:53:27,979 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:53:27,979 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:53:28,261 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:53:28,261 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:53:28,311 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:53:28,311 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:54:13,806 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:54:13,806 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:54:13,825 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:54:13,825 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:54:13,825 - rank - INFO - Rank 0 -- tracker -- 46.26741104898974
+2023-06-07 15:54:13,825 - rank.332 - INFO - Rank 0 -- tracker -- 46.26741104898974
+2023-06-07 15:54:14,215 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00047488900600001216,0.0004742145538330078 - 2020-03-24 10:00:00
+2023-06-07 15:54:14,215 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00047488900600001216,0.0004742145538330078 - 2020-03-24 10:00:00
+2023-06-07 15:54:14,815 - rank - INFO - Rank 0 -- interaction_waiting -- 5.75394369661808e-06
+2023-06-07 15:54:14,815 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.75394369661808e-06
+2023-06-07 15:54:15,922 - simulator - INFO - CMS: Timestep for rank 0/1 - 53.81130217196187,53.81130290031433 - 2020-03-24 10:00:00
+
+2023-06-07 15:54:15,922 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 53.81130217196187,53.81130290031433 - 2020-03-24 10:00:00
+
+2023-06-07 15:54:15,927 - rank - INFO - Next timestep
+2023-06-07 15:54:15,927 - rank.408 - INFO - Next timestep
+2023-06-07 15:54:15,927 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:54:15,927 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:54:17,000 - rank - INFO - Rank 0 -- move_people -- 1.0715183209977113
+2023-06-07 15:54:17,000 - rank.213 - INFO - Rank 0 -- move_people -- 1.0715183209977113
+2023-06-07 15:54:17,000 - rank - INFO - Rank 0 -- move_people_waiting -- 2.9879738576710224e-06
+2023-06-07 15:54:17,000 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.9879738576710224e-06
+2023-06-07 15:54:17,000 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.4539920054376125e-06,4.0531158447265625e-06 - 2020-03-24 18:00:00
+2023-06-07 15:54:17,000 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.4539920054376125e-06,4.0531158447265625e-06 - 2020-03-24 18:00:00
+2023-06-07 15:54:17,080 - simulator - INFO - Info for rank 0, Date = 2020-03-24 18:00:00, number of deaths =  96911, number of infected = 23289
+2023-06-07 15:54:17,080 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-24 18:00:00, number of deaths =  96911, number of infected = 23289
+2023-06-07 15:54:19,576 - rank - INFO - Rank 0 -- interaction -- 2.5752380460035056
+2023-06-07 15:54:19,576 - rank.323 - INFO - Rank 0 -- interaction -- 2.5752380460035056
+2023-06-07 15:54:19,993 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:54:19,993 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:54:20,353 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:54:20,353 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:54:20,361 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:54:20,361 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:55:01,595 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:55:01,595 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:55:04,489 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:55:04,489 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:55:04,496 - rank - INFO - Rank 0 -- tracker -- 44.919587937998585
+2023-06-07 15:55:04,496 - rank.332 - INFO - Rank 0 -- tracker -- 44.919587937998585
+2023-06-07 15:55:04,552 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004363380139693618,0.0004363059997558594 - 2020-03-24 18:00:00
+2023-06-07 15:55:04,552 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004363380139693618,0.0004363059997558594 - 2020-03-24 18:00:00
+2023-06-07 15:55:05,034 - rank - INFO - Rank 0 -- interaction_waiting -- 5.915993824601173e-06
+2023-06-07 15:55:05,034 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.915993824601173e-06
+2023-06-07 15:55:05,916 - simulator - INFO - CMS: Timestep for rank 0/1 - 49.98752623196924,49.98752737045288 - 2020-03-24 18:00:00
+
+2023-06-07 15:55:05,916 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 49.98752623196924,49.98752737045288 - 2020-03-24 18:00:00
+
+2023-06-07 15:55:05,919 - rank - INFO - Next timestep
+2023-06-07 15:55:05,919 - rank.408 - INFO - Next timestep
+2023-06-07 15:55:05,919 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:55:05,919 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:55:06,736 - rank - INFO - Rank 0 -- move_people -- 0.8151844859821722
+2023-06-07 15:55:06,736 - rank.213 - INFO - Rank 0 -- move_people -- 0.8151844859821722
+2023-06-07 15:55:06,736 - rank - INFO - Rank 0 -- move_people_waiting -- 4.1450257413089275e-06
+2023-06-07 15:55:06,736 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 4.1450257413089275e-06
+2023-06-07 15:55:06,736 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 5.94195444136858e-06,5.9604644775390625e-06 - 2020-03-24 22:00:00
+2023-06-07 15:55:06,736 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 5.94195444136858e-06,5.9604644775390625e-06 - 2020-03-24 22:00:00
+2023-06-07 15:55:06,832 - simulator - INFO - Info for rank 0, Date = 2020-03-24 22:00:00, number of deaths =  97515, number of infected = 22778
+2023-06-07 15:55:06,832 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-24 22:00:00, number of deaths =  97515, number of infected = 22778
+2023-06-07 15:55:09,193 - rank - INFO - Rank 0 -- interaction -- 2.4564704680233262
+2023-06-07 15:55:09,193 - rank.323 - INFO - Rank 0 -- interaction -- 2.4564704680233262
+2023-06-07 15:55:09,611 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:55:09,611 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:55:09,970 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:55:09,970 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:55:09,978 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:55:09,978 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:55:48,341 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:55:48,341 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:55:48,360 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:55:48,360 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:55:48,361 - rank - INFO - Rank 0 -- tracker -- 39.16754179500276
+2023-06-07 15:55:48,361 - rank.332 - INFO - Rank 0 -- tracker -- 39.16754179500276
+2023-06-07 15:55:48,375 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00025113997980952263,0.0002512931823730469 - 2020-03-24 22:00:00
+2023-06-07 15:55:48,375 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00025113997980952263,0.0002512931823730469 - 2020-03-24 22:00:00
+2023-06-07 15:55:49,844 - rank - INFO - Rank 0 -- interaction_waiting -- 5.776004400104284e-06
+2023-06-07 15:55:49,844 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.776004400104284e-06
+2023-06-07 15:55:50,543 - simulator - INFO - CMS: Timestep for rank 0/1 - 44.62241856800392,44.62241888046265 - 2020-03-24 22:00:00
+
+2023-06-07 15:55:50,543 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 44.62241856800392,44.62241888046265 - 2020-03-24 22:00:00
+
+2023-06-07 15:55:50,544 - rank - INFO - Next timestep
+2023-06-07 15:55:50,544 - rank.408 - INFO - Next timestep
+2023-06-07 15:55:50,545 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:55:50,545 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:55:51,602 - rank - INFO - Rank 0 -- move_people -- 1.0560231810086407
+2023-06-07 15:55:51,602 - rank.213 - INFO - Rank 0 -- move_people -- 1.0560231810086407
+2023-06-07 15:55:51,602 - rank - INFO - Rank 0 -- move_people_waiting -- 2.99699604511261e-06
+2023-06-07 15:55:51,602 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.99699604511261e-06
+2023-06-07 15:55:51,602 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.325003828853369e-06,4.291534423828125e-06 - 2020-03-25 09:00:00
+2023-06-07 15:55:51,602 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.325003828853369e-06,4.291534423828125e-06 - 2020-03-25 09:00:00
+2023-06-07 15:55:51,683 - simulator - INFO - Info for rank 0, Date = 2020-03-25 09:00:00, number of deaths =  99150, number of infected = 21164
+2023-06-07 15:55:51,683 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-25 09:00:00, number of deaths =  99150, number of infected = 21164
+2023-06-07 15:55:54,097 - rank - INFO - Rank 0 -- interaction -- 2.492216464946978
+2023-06-07 15:55:54,097 - rank.323 - INFO - Rank 0 -- interaction -- 2.492216464946978
+2023-06-07 15:55:54,589 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:55:54,589 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:55:54,948 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:55:54,948 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:55:54,956 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:55:54,956 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:56:28,485 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:56:28,485 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 15:56:30,682 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:56:30,682 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 15:56:30,690 - rank - INFO - Rank 0 -- tracker -- 36.592601975018624
+2023-06-07 15:56:30,690 - rank.332 - INFO - Rank 0 -- tracker -- 36.592601975018624
+2023-06-07 15:56:30,706 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004100250080227852,0.0004096031188964844 - 2020-03-25 09:00:00
+2023-06-07 15:56:30,706 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004100250080227852,0.0004096031188964844 - 2020-03-25 09:00:00
+2023-06-07 15:56:31,155 - rank - INFO - Rank 0 -- interaction_waiting -- 5.628971848636866e-06
+2023-06-07 15:56:31,155 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.628971848636866e-06
+2023-06-07 15:56:32,001 - simulator - INFO - CMS: Timestep for rank 0/1 - 41.45511797600193,41.45511841773987 - 2020-03-25 09:00:00
+
+2023-06-07 15:56:32,001 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 41.45511797600193,41.45511841773987 - 2020-03-25 09:00:00
+
+2023-06-07 15:59:33,175 - rank - INFO - Next timestep
+2023-06-07 15:59:33,175 - rank.408 - INFO - Next timestep
+2023-06-07 15:59:33,177 - simulator - INFO - ==================== timestep ====================
+2023-06-07 15:59:33,177 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 15:59:34,005 - rank - INFO - Rank 0 -- move_people -- 0.8240933600463904
+2023-06-07 15:59:34,005 - rank.213 - INFO - Rank 0 -- move_people -- 0.8240933600463904
+2023-06-07 15:59:34,005 - rank - INFO - Rank 0 -- move_people_waiting -- 3.0859955586493015e-06
+2023-06-07 15:59:34,005 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.0859955586493015e-06
+2023-06-07 15:59:34,005 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 5.412031896412373e-06,5.0067901611328125e-06 - 2020-03-25 10:00:00
+2023-06-07 15:59:34,005 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 5.412031896412373e-06,5.0067901611328125e-06 - 2020-03-25 10:00:00
+2023-06-07 15:59:34,086 - simulator - INFO - Info for rank 0, Date = 2020-03-25 10:00:00, number of deaths =  99294, number of infected = 21046
+2023-06-07 15:59:34,086 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-25 10:00:00, number of deaths =  99294, number of infected = 21046
+2023-06-07 15:59:38,374 - rank - INFO - Rank 0 -- interaction -- 4.367609856009949
+2023-06-07 15:59:38,374 - rank.323 - INFO - Rank 0 -- interaction -- 4.367609856009949
+2023-06-07 15:59:38,795 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:59:38,795 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 15:59:39,075 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:59:39,075 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 15:59:39,124 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 15:59:39,124 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:00:12,515 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:00:12,515 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:00:12,534 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:00:12,534 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:00:12,535 - rank - INFO - Rank 0 -- tracker -- 34.16094388399506
+2023-06-07 16:00:12,535 - rank.332 - INFO - Rank 0 -- tracker -- 34.16094388399506
+2023-06-07 16:00:12,735 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004293000092729926,0.00042939186096191406 - 2020-03-25 10:00:00
+2023-06-07 16:00:12,735 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004293000092729926,0.00042939186096191406 - 2020-03-25 10:00:00
+2023-06-07 16:00:13,268 - rank - INFO - Rank 0 -- interaction_waiting -- 6.017042323946953e-06
+2023-06-07 16:00:13,268 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 6.017042323946953e-06
+2023-06-07 16:00:14,364 - simulator - INFO - CMS: Timestep for rank 0/1 - 41.18437124596676,41.18437170982361 - 2020-03-25 10:00:00
+
+2023-06-07 16:00:14,364 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 41.18437124596676,41.18437170982361 - 2020-03-25 10:00:00
+
+2023-06-07 16:00:14,370 - rank - INFO - Next timestep
+2023-06-07 16:00:14,370 - rank.408 - INFO - Next timestep
+2023-06-07 16:00:14,370 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:00:14,370 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:00:15,422 - rank - INFO - Rank 0 -- move_people -- 1.0506393339601345
+2023-06-07 16:00:15,422 - rank.213 - INFO - Rank 0 -- move_people -- 1.0506393339601345
+2023-06-07 16:00:15,422 - rank - INFO - Rank 0 -- move_people_waiting -- 2.56003113463521e-06
+2023-06-07 16:00:15,422 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.56003113463521e-06
+2023-06-07 16:00:15,422 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 3.839028067886829e-06,3.814697265625e-06 - 2020-03-25 18:00:00
+2023-06-07 16:00:15,422 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 3.839028067886829e-06,3.814697265625e-06 - 2020-03-25 18:00:00
+2023-06-07 16:00:15,504 - simulator - INFO - Info for rank 0, Date = 2020-03-25 18:00:00, number of deaths =  100402, number of infected = 20305
+2023-06-07 16:00:15,504 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-25 18:00:00, number of deaths =  100402, number of infected = 20305
+2023-06-07 16:00:17,913 - rank - INFO - Rank 0 -- interaction -- 2.4876779199694283
+2023-06-07 16:00:17,913 - rank.323 - INFO - Rank 0 -- interaction -- 2.4876779199694283
+2023-06-07 16:00:18,335 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:00:18,335 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:00:18,692 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:00:18,692 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:00:18,700 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:00:18,700 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:00:48,652 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:00:48,652 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:00:52,188 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:00:52,188 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:00:52,196 - rank - INFO - Rank 0 -- tracker -- 34.282373731955886
+2023-06-07 16:00:52,196 - rank.332 - INFO - Rank 0 -- tracker -- 34.282373731955886
+2023-06-07 16:00:52,254 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004213819629512727,0.00042128562927246094 - 2020-03-25 18:00:00
+2023-06-07 16:00:52,254 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004213819629512727,0.00042128562927246094 - 2020-03-25 18:00:00
+2023-06-07 16:00:52,698 - rank - INFO - Rank 0 -- interaction_waiting -- 5.761976353824139e-06
+2023-06-07 16:00:52,698 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.761976353824139e-06
+2023-06-07 16:00:53,563 - simulator - INFO - CMS: Timestep for rank 0/1 - 39.19211484497646,39.19211506843567 - 2020-03-25 18:00:00
+
+2023-06-07 16:00:53,563 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 39.19211484497646,39.19211506843567 - 2020-03-25 18:00:00
+
+2023-06-07 16:00:53,566 - rank - INFO - Next timestep
+2023-06-07 16:00:53,566 - rank.408 - INFO - Next timestep
+2023-06-07 16:00:53,566 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:00:53,566 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:00:54,365 - rank - INFO - Rank 0 -- move_people -- 0.7972371120122261
+2023-06-07 16:00:54,365 - rank.213 - INFO - Rank 0 -- move_people -- 0.7972371120122261
+2023-06-07 16:00:54,365 - rank - INFO - Rank 0 -- move_people_waiting -- 2.667016815394163e-06
+2023-06-07 16:00:54,365 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.667016815394163e-06
+2023-06-07 16:00:54,365 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 3.4879776649177074e-06,3.337860107421875e-06 - 2020-03-25 22:00:00
+2023-06-07 16:00:54,365 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 3.4879776649177074e-06,3.337860107421875e-06 - 2020-03-25 22:00:00
+2023-06-07 16:00:54,446 - simulator - INFO - Info for rank 0, Date = 2020-03-25 22:00:00, number of deaths =  100960, number of infected = 19854
+2023-06-07 16:00:54,446 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-25 22:00:00, number of deaths =  100960, number of infected = 19854
+2023-06-07 16:00:56,766 - rank - INFO - Rank 0 -- interaction -- 2.398957289988175
+2023-06-07 16:00:56,766 - rank.323 - INFO - Rank 0 -- interaction -- 2.398957289988175
+2023-06-07 16:00:57,190 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:00:57,190 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:00:57,552 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:00:57,552 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:00:57,560 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:00:57,560 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:01:26,468 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:01:26,468 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:01:26,494 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:01:26,494 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:01:26,494 - rank - INFO - Rank 0 -- tracker -- 29.72764668497257
+2023-06-07 16:01:26,494 - rank.332 - INFO - Rank 0 -- tracker -- 29.72764668497257
+2023-06-07 16:01:26,514 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004260960267856717,0.0004260540008544922 - 2020-03-25 22:00:00
+2023-06-07 16:01:26,514 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004260960267856717,0.0004260540008544922 - 2020-03-25 22:00:00
+2023-06-07 16:01:27,560 - rank - INFO - Rank 0 -- interaction_waiting -- 5.343987140804529e-06
+2023-06-07 16:01:27,560 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.343987140804529e-06
+2023-06-07 16:01:28,442 - simulator - INFO - CMS: Timestep for rank 0/1 - 34.87435227102833,34.87435293197632 - 2020-03-25 22:00:00
+
+2023-06-07 16:01:28,442 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 34.87435227102833,34.87435293197632 - 2020-03-25 22:00:00
+
+2023-06-07 16:01:28,445 - rank - INFO - Next timestep
+2023-06-07 16:01:28,445 - rank.408 - INFO - Next timestep
+2023-06-07 16:01:28,445 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:01:28,445 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:01:29,508 - rank - INFO - Rank 0 -- move_people -- 1.0605799510376528
+2023-06-07 16:01:29,508 - rank.213 - INFO - Rank 0 -- move_people -- 1.0605799510376528
+2023-06-07 16:01:29,508 - rank - INFO - Rank 0 -- move_people_waiting -- 2.830987796187401e-06
+2023-06-07 16:01:29,508 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.830987796187401e-06
+2023-06-07 16:01:29,508 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 3.9629521779716015e-06,3.814697265625e-06 - 2020-03-26 09:00:00
+2023-06-07 16:01:29,508 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 3.9629521779716015e-06,3.814697265625e-06 - 2020-03-26 09:00:00
+2023-06-07 16:01:29,589 - simulator - INFO - Info for rank 0, Date = 2020-03-26 09:00:00, number of deaths =  102417, number of infected = 18429
+2023-06-07 16:01:29,589 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-26 09:00:00, number of deaths =  102417, number of infected = 18429
+2023-06-07 16:01:31,937 - rank - INFO - Rank 0 -- interaction -- 2.4274887639912777
+2023-06-07 16:01:31,937 - rank.323 - INFO - Rank 0 -- interaction -- 2.4274887639912777
+2023-06-07 16:01:32,361 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:01:32,361 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:01:32,719 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:01:32,719 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:01:32,727 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:01:32,727 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:01:57,155 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:01:57,155 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:01:59,506 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:01:59,506 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:01:59,513 - rank - INFO - Rank 0 -- tracker -- 27.57542734197341
+2023-06-07 16:01:59,513 - rank.332 - INFO - Rank 0 -- tracker -- 27.57542734197341
+2023-06-07 16:01:59,529 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004038950428366661,0.0004036426544189453 - 2020-03-26 09:00:00
+2023-06-07 16:01:59,529 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004038950428366661,0.0004036426544189453 - 2020-03-26 09:00:00
+2023-06-07 16:01:59,955 - rank - INFO - Rank 0 -- interaction_waiting -- 5.298992618918419e-06
+2023-06-07 16:01:59,955 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.298992618918419e-06
+2023-06-07 16:02:00,855 - simulator - INFO - CMS: Timestep for rank 0/1 - 32.40842236496974,32.40842270851135 - 2020-03-26 09:00:00
+
+2023-06-07 16:02:00,855 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 32.40842236496974,32.40842270851135 - 2020-03-26 09:00:00
+
+2023-06-07 16:03:39,676 - rank - INFO - Next timestep
+2023-06-07 16:03:39,676 - rank.408 - INFO - Next timestep
+2023-06-07 16:03:39,678 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:03:39,678 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:03:40,590 - rank - INFO - Rank 0 -- move_people -- 0.910851628985256
+2023-06-07 16:03:40,590 - rank.213 - INFO - Rank 0 -- move_people -- 0.910851628985256
+2023-06-07 16:03:40,591 - rank - INFO - Rank 0 -- move_people_waiting -- 3.2800016924738884e-06
+2023-06-07 16:03:40,591 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.2800016924738884e-06
+2023-06-07 16:03:40,591 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.784960765391588e-06,4.76837158203125e-06 - 2020-03-26 10:00:00
+2023-06-07 16:03:40,591 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.784960765391588e-06,4.76837158203125e-06 - 2020-03-26 10:00:00
+2023-06-07 16:03:40,672 - simulator - INFO - Info for rank 0, Date = 2020-03-26 10:00:00, number of deaths =  102544, number of infected = 18328
+2023-06-07 16:03:40,672 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-26 10:00:00, number of deaths =  102544, number of infected = 18328
+2023-06-07 16:03:44,930 - rank - INFO - Rank 0 -- interaction -- 4.338041034992784
+2023-06-07 16:03:44,930 - rank.323 - INFO - Rank 0 -- interaction -- 4.338041034992784
+2023-06-07 16:03:45,358 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:03:45,358 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:03:45,643 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:03:45,643 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:03:45,693 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:03:45,693 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:04:10,075 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:04:10,075 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:04:10,094 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:04:10,094 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:04:10,094 - rank - INFO - Rank 0 -- tracker -- 25.163746224949136
+2023-06-07 16:04:10,094 - rank.332 - INFO - Rank 0 -- tracker -- 25.163746224949136
+2023-06-07 16:04:10,980 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00044408999383449554,0.0004436969757080078 - 2020-03-26 10:00:00
+2023-06-07 16:04:10,980 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00044408999383449554,0.0004436969757080078 - 2020-03-26 10:00:00
+2023-06-07 16:04:11,462 - rank - INFO - Rank 0 -- interaction_waiting -- 5.452020559459925e-06
+2023-06-07 16:04:11,462 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.452020559459925e-06
+2023-06-07 16:04:12,591 - simulator - INFO - CMS: Timestep for rank 0/1 - 32.91113992402097,32.91114568710327 - 2020-03-26 10:00:00
+
+2023-06-07 16:04:12,591 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 32.91113992402097,32.91114568710327 - 2020-03-26 10:00:00
+
+2023-06-07 16:04:12,596 - rank - INFO - Next timestep
+2023-06-07 16:04:12,596 - rank.408 - INFO - Next timestep
+2023-06-07 16:04:12,596 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:04:12,596 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:04:13,682 - rank - INFO - Rank 0 -- move_people -- 1.0847264929907396
+2023-06-07 16:04:13,682 - rank.213 - INFO - Rank 0 -- move_people -- 1.0847264929907396
+2023-06-07 16:04:13,682 - rank - INFO - Rank 0 -- move_people_waiting -- 2.7589849196374416e-06
+2023-06-07 16:04:13,682 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.7589849196374416e-06
+2023-06-07 16:04:13,683 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 7.588008884340525e-06,7.62939453125e-06 - 2020-03-26 18:00:00
+2023-06-07 16:04:13,683 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 7.588008884340525e-06,7.62939453125e-06 - 2020-03-26 18:00:00
+2023-06-07 16:04:13,763 - simulator - INFO - Info for rank 0, Date = 2020-03-26 18:00:00, number of deaths =  103468, number of infected = 17783
+2023-06-07 16:04:13,763 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-26 18:00:00, number of deaths =  103468, number of infected = 17783
+2023-06-07 16:04:16,255 - rank - INFO - Rank 0 -- interaction -- 2.5715259989956394
+2023-06-07 16:04:16,255 - rank.323 - INFO - Rank 0 -- interaction -- 2.5715259989956394
+2023-06-07 16:04:16,678 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:04:16,678 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:04:17,039 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:04:17,039 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:04:17,047 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:04:17,047 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:04:39,181 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:04:39,181 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:04:41,898 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:04:41,898 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:04:41,906 - rank - INFO - Rank 0 -- tracker -- 25.650220017007086
+2023-06-07 16:04:41,906 - rank.332 - INFO - Rank 0 -- tracker -- 25.650220017007086
+2023-06-07 16:04:41,968 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004255850217305124,0.00042557716369628906 - 2020-03-26 18:00:00
+2023-06-07 16:04:41,968 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004255850217305124,0.00042557716369628906 - 2020-03-26 18:00:00
+2023-06-07 16:04:42,392 - rank - INFO - Rank 0 -- interaction_waiting -- 5.5810087360441685e-06
+2023-06-07 16:04:42,392 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.5810087360441685e-06
+2023-06-07 16:04:43,297 - simulator - INFO - CMS: Timestep for rank 0/1 - 30.70026658498682,30.700267553329468 - 2020-03-26 18:00:00
+
+2023-06-07 16:04:43,297 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 30.70026658498682,30.700267553329468 - 2020-03-26 18:00:00
+
+2023-06-07 16:04:43,300 - rank - INFO - Next timestep
+2023-06-07 16:04:43,300 - rank.408 - INFO - Next timestep
+2023-06-07 16:04:43,300 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:04:43,300 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:04:44,102 - rank - INFO - Rank 0 -- move_people -- 0.8002076810225844
+2023-06-07 16:04:44,102 - rank.213 - INFO - Rank 0 -- move_people -- 0.8002076810225844
+2023-06-07 16:04:44,102 - rank - INFO - Rank 0 -- move_people_waiting -- 3.2869866117835045e-06
+2023-06-07 16:04:44,102 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.2869866117835045e-06
+2023-06-07 16:04:44,102 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.7559733502566814e-06,4.5299530029296875e-06 - 2020-03-26 22:00:00
+2023-06-07 16:04:44,102 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.7559733502566814e-06,4.5299530029296875e-06 - 2020-03-26 22:00:00
+2023-06-07 16:04:44,183 - simulator - INFO - Info for rank 0, Date = 2020-03-26 22:00:00, number of deaths =  103928, number of infected = 17440
+2023-06-07 16:04:44,183 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-26 22:00:00, number of deaths =  103928, number of infected = 17440
+2023-06-07 16:04:46,521 - rank - INFO - Rank 0 -- interaction -- 2.4165766020305455
+2023-06-07 16:04:46,521 - rank.323 - INFO - Rank 0 -- interaction -- 2.4165766020305455
+2023-06-07 16:04:46,943 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:04:46,943 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:04:47,305 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:04:47,305 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:04:47,313 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:04:47,313 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:05:08,195 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:05:08,195 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:05:08,219 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:05:08,219 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:05:08,220 - rank - INFO - Rank 0 -- tracker -- 21.69887480296893
+2023-06-07 16:05:08,220 - rank.332 - INFO - Rank 0 -- tracker -- 21.69887480296893
+2023-06-07 16:05:08,236 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.000422904035076499,0.0004222393035888672 - 2020-03-26 22:00:00
+2023-06-07 16:05:08,236 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.000422904035076499,0.0004222393035888672 - 2020-03-26 22:00:00
+2023-06-07 16:05:09,246 - rank - INFO - Rank 0 -- interaction_waiting -- 1.0099029168486595e-05
+2023-06-07 16:05:09,246 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 1.0099029168486595e-05
+2023-06-07 16:05:10,147 - simulator - INFO - CMS: Timestep for rank 0/1 - 26.844989934994373,26.844990491867065 - 2020-03-26 22:00:00
+
+2023-06-07 16:05:10,147 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 26.844989934994373,26.844990491867065 - 2020-03-26 22:00:00
+
+2023-06-07 16:05:10,150 - rank - INFO - Next timestep
+2023-06-07 16:05:10,150 - rank.408 - INFO - Next timestep
+2023-06-07 16:05:10,150 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:05:10,150 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:05:11,202 - rank - INFO - Rank 0 -- move_people -- 1.0503597059869207
+2023-06-07 16:05:11,202 - rank.213 - INFO - Rank 0 -- move_people -- 1.0503597059869207
+2023-06-07 16:05:11,202 - rank - INFO - Rank 0 -- move_people_waiting -- 3.0259834602475166e-06
+2023-06-07 16:05:11,202 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.0259834602475166e-06
+2023-06-07 16:05:11,202 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.449975676834583e-06,4.291534423828125e-06 - 2020-03-27 09:00:00
+2023-06-07 16:05:11,202 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.449975676834583e-06,4.291534423828125e-06 - 2020-03-27 09:00:00
+2023-06-07 16:05:11,283 - simulator - INFO - Info for rank 0, Date = 2020-03-27 09:00:00, number of deaths =  105126, number of infected = 16266
+2023-06-07 16:05:11,283 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-27 09:00:00, number of deaths =  105126, number of infected = 16266
+2023-06-07 16:05:13,635 - rank - INFO - Rank 0 -- interaction -- 2.43126686103642
+2023-06-07 16:05:13,635 - rank.323 - INFO - Rank 0 -- interaction -- 2.43126686103642
+2023-06-07 16:05:14,059 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:05:14,059 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:05:14,417 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:05:14,417 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:05:14,425 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:05:14,425 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:05:32,357 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:05:32,357 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:05:34,342 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:05:34,342 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:05:34,348 - rank - INFO - Rank 0 -- tracker -- 20.712197615008336
+2023-06-07 16:05:34,348 - rank.332 - INFO - Rank 0 -- tracker -- 20.712197615008336
+2023-06-07 16:05:34,361 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00023746798979118466,0.0002372264862060547 - 2020-03-27 09:00:00
+2023-06-07 16:05:34,361 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00023746798979118466,0.0002372264862060547 - 2020-03-27 09:00:00
+2023-06-07 16:05:34,698 - rank - INFO - Rank 0 -- interaction_waiting -- 5.163019523024559e-06
+2023-06-07 16:05:34,698 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.163019523024559e-06
+2023-06-07 16:05:35,389 - simulator - INFO - CMS: Timestep for rank 0/1 - 25.23757677397225,25.237577438354492 - 2020-03-27 09:00:00
+
+2023-06-07 16:05:35,389 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 25.23757677397225,25.237577438354492 - 2020-03-27 09:00:00
+
+2023-06-07 16:08:35,958 - rank - INFO - Next timestep
+2023-06-07 16:08:35,958 - rank.408 - INFO - Next timestep
+2023-06-07 16:08:35,962 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:08:35,962 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:08:36,780 - rank - INFO - Rank 0 -- move_people -- 0.8141297770198435
+2023-06-07 16:08:36,780 - rank.213 - INFO - Rank 0 -- move_people -- 0.8141297770198435
+2023-06-07 16:08:36,780 - rank - INFO - Rank 0 -- move_people_waiting -- 3.4700497053563595e-06
+2023-06-07 16:08:36,780 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.4700497053563595e-06
+2023-06-07 16:08:36,780 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.7149951569736e-06,4.5299530029296875e-06 - 2020-03-27 10:00:00
+2023-06-07 16:08:36,780 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.7149951569736e-06,4.5299530029296875e-06 - 2020-03-27 10:00:00
+2023-06-07 16:08:36,862 - simulator - INFO - Info for rank 0, Date = 2020-03-27 10:00:00, number of deaths =  105250, number of infected = 16165
+2023-06-07 16:08:36,862 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-27 10:00:00, number of deaths =  105250, number of infected = 16165
+2023-06-07 16:08:41,241 - rank - INFO - Rank 0 -- interaction -- 4.4586702329688706
+2023-06-07 16:08:41,241 - rank.323 - INFO - Rank 0 -- interaction -- 4.4586702329688706
+2023-06-07 16:08:41,664 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:08:41,664 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:08:41,947 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:08:41,947 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:08:41,995 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:08:41,995 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:08:59,706 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:08:59,706 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:08:59,724 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:08:59,724 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:08:59,724 - rank - INFO - Rank 0 -- tracker -- 18.483577120990958
+2023-06-07 16:08:59,724 - rank.332 - INFO - Rank 0 -- tracker -- 18.483577120990958
+2023-06-07 16:08:59,997 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00045035401126369834,0.0004494190216064453 - 2020-03-27 10:00:00
+2023-06-07 16:08:59,997 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00045035401126369834,0.0004494190216064453 - 2020-03-27 10:00:00
+2023-06-07 16:09:00,453 - rank - INFO - Rank 0 -- interaction_waiting -- 5.634967237710953e-06
+2023-06-07 16:09:00,453 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.634967237710953e-06
+2023-06-07 16:09:01,558 - simulator - INFO - CMS: Timestep for rank 0/1 - 25.59333370398963,25.593335151672363 - 2020-03-27 10:00:00
+
+2023-06-07 16:09:01,558 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 25.59333370398963,25.593335151672363 - 2020-03-27 10:00:00
+
+2023-06-07 16:09:01,562 - rank - INFO - Next timestep
+2023-06-07 16:09:01,562 - rank.408 - INFO - Next timestep
+2023-06-07 16:09:01,562 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:09:01,562 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:09:02,609 - rank - INFO - Rank 0 -- move_people -- 1.0453234509914182
+2023-06-07 16:09:02,609 - rank.213 - INFO - Rank 0 -- move_people -- 1.0453234509914182
+2023-06-07 16:09:02,609 - rank - INFO - Rank 0 -- move_people_waiting -- 3.1829695217311382e-06
+2023-06-07 16:09:02,609 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.1829695217311382e-06
+2023-06-07 16:09:02,609 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.83199255540967e-06,4.291534423828125e-06 - 2020-03-27 18:00:00
+2023-06-07 16:09:02,609 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.83199255540967e-06,4.291534423828125e-06 - 2020-03-27 18:00:00
+2023-06-07 16:09:02,690 - simulator - INFO - Info for rank 0, Date = 2020-03-27 18:00:00, number of deaths =  106089, number of infected = 15769
+2023-06-07 16:09:02,690 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-27 18:00:00, number of deaths =  106089, number of infected = 15769
+2023-06-07 16:09:05,135 - rank - INFO - Rank 0 -- interaction -- 2.5241767810075544
+2023-06-07 16:09:05,135 - rank.323 - INFO - Rank 0 -- interaction -- 2.5241767810075544
+2023-06-07 16:09:05,556 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:09:05,556 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:09:05,916 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:09:05,916 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:09:05,924 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:09:05,924 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:09:21,692 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:09:21,692 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:09:23,894 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:09:23,894 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:09:24,213 - rank - INFO - Rank 0 -- tracker -- 19.077768221031874
+2023-06-07 16:09:24,213 - rank.332 - INFO - Rank 0 -- tracker -- 19.077768221031874
+2023-06-07 16:09:24,293 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00025291304336860776,0.0002524852752685547 - 2020-03-27 18:00:00
+2023-06-07 16:09:24,293 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00025291304336860776,0.0002524852752685547 - 2020-03-27 18:00:00
+2023-06-07 16:09:24,622 - rank - INFO - Rank 0 -- interaction_waiting -- 5.5800192058086395e-06
+2023-06-07 16:09:24,622 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.5800192058086395e-06
+2023-06-07 16:09:25,305 - simulator - INFO - CMS: Timestep for rank 0/1 - 23.74162605399033,23.74162721633911 - 2020-03-27 18:00:00
+
+2023-06-07 16:09:25,305 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 23.74162605399033,23.74162721633911 - 2020-03-27 18:00:00
+
+2023-06-07 16:09:25,307 - rank - INFO - Next timestep
+2023-06-07 16:09:25,307 - rank.408 - INFO - Next timestep
+2023-06-07 16:09:25,312 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:09:25,312 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:09:26,102 - rank - INFO - Rank 0 -- move_people -- 0.788765877019614
+2023-06-07 16:09:26,102 - rank.213 - INFO - Rank 0 -- move_people -- 0.788765877019614
+2023-06-07 16:09:26,102 - rank - INFO - Rank 0 -- move_people_waiting -- 2.80898530036211e-06
+2023-06-07 16:09:26,102 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.80898530036211e-06
+2023-06-07 16:09:26,102 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.866975359618664e-06,4.76837158203125e-06 - 2020-03-27 22:00:00
+2023-06-07 16:09:26,102 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.866975359618664e-06,4.76837158203125e-06 - 2020-03-27 22:00:00
+2023-06-07 16:09:26,182 - simulator - INFO - Info for rank 0, Date = 2020-03-27 22:00:00, number of deaths =  106477, number of infected = 15522
+2023-06-07 16:09:26,182 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-27 22:00:00, number of deaths =  106477, number of infected = 15522
+2023-06-07 16:09:28,457 - rank - INFO - Rank 0 -- interaction -- 2.353597009961959
+2023-06-07 16:09:28,457 - rank.323 - INFO - Rank 0 -- interaction -- 2.353597009961959
+2023-06-07 16:09:28,876 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:09:28,876 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:09:29,241 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:09:29,241 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:09:29,249 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:09:29,249 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:09:44,081 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:09:44,081 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:09:44,099 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:09:44,099 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:09:44,100 - rank - INFO - Rank 0 -- tracker -- 15.642597660014872
+2023-06-07 16:09:44,100 - rank.332 - INFO - Rank 0 -- tracker -- 15.642597660014872
+2023-06-07 16:09:44,118 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00025491201085969806,0.00025463104248046875 - 2020-03-27 22:00:00
+2023-06-07 16:09:44,118 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00025491201085969806,0.00025463104248046875 - 2020-03-27 22:00:00
+2023-06-07 16:09:44,768 - rank - INFO - Rank 0 -- interaction_waiting -- 5.635025445371866e-06
+2023-06-07 16:09:44,768 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.635025445371866e-06
+2023-06-07 16:09:45,464 - simulator - INFO - CMS: Timestep for rank 0/1 - 20.151217931997962,20.151219129562378 - 2020-03-27 22:00:00
+
+2023-06-07 16:09:45,464 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 20.151217931997962,20.151219129562378 - 2020-03-27 22:00:00
+
+2023-06-07 16:09:45,466 - rank - INFO - Next timestep
+2023-06-07 16:09:45,466 - rank.408 - INFO - Next timestep
+2023-06-07 16:09:45,466 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:09:45,466 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:09:46,502 - rank - INFO - Rank 0 -- move_people -- 1.033231617999263
+2023-06-07 16:09:46,502 - rank.213 - INFO - Rank 0 -- move_people -- 1.033231617999263
+2023-06-07 16:09:46,502 - rank - INFO - Rank 0 -- move_people_waiting -- 3.2040406949818134e-06
+2023-06-07 16:09:46,502 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.2040406949818134e-06
+2023-06-07 16:09:46,502 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.793982952833176e-06,4.76837158203125e-06 - 2020-03-28 09:00:00
+2023-06-07 16:09:46,502 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.793982952833176e-06,4.76837158203125e-06 - 2020-03-28 09:00:00
+2023-06-07 16:09:46,583 - simulator - INFO - Info for rank 0, Date = 2020-03-28 09:00:00, number of deaths =  107469, number of infected = 14557
+2023-06-07 16:09:46,583 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-28 09:00:00, number of deaths =  107469, number of infected = 14557
+2023-06-07 16:09:48,960 - rank - INFO - Rank 0 -- interaction -- 2.4565498189767823
+2023-06-07 16:09:48,960 - rank.323 - INFO - Rank 0 -- interaction -- 2.4565498189767823
+2023-06-07 16:09:49,383 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:09:49,383 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:09:49,744 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:09:49,744 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:09:49,752 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:09:49,752 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:10:02,607 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:10:02,607 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:10:04,411 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:10:04,411 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:10:04,418 - rank - INFO - Rank 0 -- tracker -- 15.457775301008951
+2023-06-07 16:10:04,418 - rank.332 - INFO - Rank 0 -- tracker -- 15.457775301008951
+2023-06-07 16:10:05,016 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004539969959296286,0.0004532337188720703 - 2020-03-28 09:00:00
+2023-06-07 16:10:05,016 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004539969959296286,0.0004532337188720703 - 2020-03-28 09:00:00
+2023-06-07 16:10:05,372 - rank - INFO - Rank 0 -- interaction_waiting -- 6.670947186648846e-06
+2023-06-07 16:10:05,372 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 6.670947186648846e-06
+2023-06-07 16:10:06,273 - simulator - INFO - CMS: Timestep for rank 0/1 - 20.804537671036087,20.804542541503906 - 2020-03-28 09:00:00
+
+2023-06-07 16:10:06,273 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 20.804537671036087,20.804542541503906 - 2020-03-28 09:00:00
+
+2023-06-07 16:11:44,174 - rank - INFO - Next timestep
+2023-06-07 16:11:44,174 - rank.408 - INFO - Next timestep
+2023-06-07 16:11:44,176 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:11:44,176 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:11:44,987 - rank - INFO - Rank 0 -- move_people -- 0.8073797709657811
+2023-06-07 16:11:44,987 - rank.213 - INFO - Rank 0 -- move_people -- 0.8073797709657811
+2023-06-07 16:11:44,987 - rank - INFO - Rank 0 -- move_people_waiting -- 2.5249901227653027e-06
+2023-06-07 16:11:44,987 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.5249901227653027e-06
+2023-06-07 16:11:44,988 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 5.249981768429279e-06,5.0067901611328125e-06 - 2020-03-28 10:00:00
+2023-06-07 16:11:44,988 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 5.249981768429279e-06,5.0067901611328125e-06 - 2020-03-28 10:00:00
+2023-06-07 16:11:45,068 - simulator - INFO - Info for rank 0, Date = 2020-03-28 10:00:00, number of deaths =  107565, number of infected = 14504
+2023-06-07 16:11:45,068 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-28 10:00:00, number of deaths =  107565, number of infected = 14504
+2023-06-07 16:11:49,622 - rank - INFO - Rank 0 -- interaction -- 4.633401503961068
+2023-06-07 16:11:49,622 - rank.323 - INFO - Rank 0 -- interaction -- 4.633401503961068
+2023-06-07 16:11:50,044 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:11:50,044 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:11:50,328 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:11:50,328 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:11:50,380 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:11:50,380 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:12:03,222 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:12:03,222 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:12:03,256 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:12:03,256 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:12:03,257 - rank - INFO - Rank 0 -- tracker -- 13.634436536987778
+2023-06-07 16:12:03,257 - rank.332 - INFO - Rank 0 -- tracker -- 13.634436536987778
+2023-06-07 16:12:03,615 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00039691204437986016,0.000396728515625 - 2020-03-28 10:00:00
+2023-06-07 16:12:03,615 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00039691204437986016,0.000396728515625 - 2020-03-28 10:00:00
+2023-06-07 16:12:03,976 - rank - INFO - Rank 0 -- interaction_waiting -- 5.134963430464268e-06
+2023-06-07 16:12:03,976 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.134963430464268e-06
+2023-06-07 16:12:04,873 - simulator - INFO - CMS: Timestep for rank 0/1 - 20.694593576015905,20.694594860076904 - 2020-03-28 10:00:00
+
+2023-06-07 16:12:04,873 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 20.694593576015905,20.694594860076904 - 2020-03-28 10:00:00
+
+2023-06-07 16:12:04,876 - rank - INFO - Next timestep
+2023-06-07 16:12:04,876 - rank.408 - INFO - Next timestep
+2023-06-07 16:12:04,877 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:12:04,877 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:12:06,011 - rank - INFO - Rank 0 -- move_people -- 1.1334370599943213
+2023-06-07 16:12:06,011 - rank.213 - INFO - Rank 0 -- move_people -- 1.1334370599943213
+2023-06-07 16:12:06,011 - rank - INFO - Rank 0 -- move_people_waiting -- 1.851900015026331e-05
+2023-06-07 16:12:06,011 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 1.851900015026331e-05
+2023-06-07 16:12:06,011 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.600035026669502e-06,4.291534423828125e-06 - 2020-03-28 18:00:00
+2023-06-07 16:12:06,011 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.600035026669502e-06,4.291534423828125e-06 - 2020-03-28 18:00:00
+2023-06-07 16:12:06,106 - simulator - INFO - Info for rank 0, Date = 2020-03-28 18:00:00, number of deaths =  108242, number of infected = 14343
+2023-06-07 16:12:06,106 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-28 18:00:00, number of deaths =  108242, number of infected = 14343
+2023-06-07 16:12:08,683 - rank - INFO - Rank 0 -- interaction -- 2.6707279490074143
+2023-06-07 16:12:08,683 - rank.323 - INFO - Rank 0 -- interaction -- 2.6707279490074143
+2023-06-07 16:12:09,103 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:12:09,103 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:12:09,524 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:12:09,524 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:12:09,534 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:12:09,534 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:12:20,953 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:12:20,953 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:12:23,127 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:12:23,127 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:12:23,135 - rank - INFO - Rank 0 -- tracker -- 14.450819585996214
+2023-06-07 16:12:23,135 - rank.332 - INFO - Rank 0 -- tracker -- 14.450819585996214
+2023-06-07 16:12:23,551 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00042851699981838465,0.00042819976806640625 - 2020-03-28 18:00:00
+2023-06-07 16:12:23,551 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00042851699981838465,0.00042819976806640625 - 2020-03-28 18:00:00
+2023-06-07 16:12:23,870 - rank - INFO - Rank 0 -- interaction_waiting -- 5.854002665728331e-06
+2023-06-07 16:12:23,870 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.854002665728331e-06
+2023-06-07 16:12:24,588 - simulator - INFO - CMS: Timestep for rank 0/1 - 19.711065943003632,19.71106719970703 - 2020-03-28 18:00:00
+
+2023-06-07 16:12:24,588 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 19.711065943003632,19.71106719970703 - 2020-03-28 18:00:00
+
+2023-06-07 16:12:24,593 - rank - INFO - Next timestep
+2023-06-07 16:12:24,593 - rank.408 - INFO - Next timestep
+2023-06-07 16:12:24,593 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:12:24,593 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:12:25,379 - rank - INFO - Rank 0 -- move_people -- 0.783727990987245
+2023-06-07 16:12:25,379 - rank.213 - INFO - Rank 0 -- move_people -- 0.783727990987245
+2023-06-07 16:12:25,379 - rank - INFO - Rank 0 -- move_people_waiting -- 2.1399464458227158e-06
+2023-06-07 16:12:25,379 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.1399464458227158e-06
+2023-06-07 16:12:25,379 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.738976713269949e-06,4.5299530029296875e-06 - 2020-03-28 22:00:00
+2023-06-07 16:12:25,379 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.738976713269949e-06,4.5299530029296875e-06 - 2020-03-28 22:00:00
+2023-06-07 16:12:25,459 - simulator - INFO - Info for rank 0, Date = 2020-03-28 22:00:00, number of deaths =  108556, number of infected = 14203
+2023-06-07 16:12:25,459 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-28 22:00:00, number of deaths =  108556, number of infected = 14203
+2023-06-07 16:12:27,728 - rank - INFO - Rank 0 -- interaction -- 2.347464469028637
+2023-06-07 16:12:27,728 - rank.323 - INFO - Rank 0 -- interaction -- 2.347464469028637
+2023-06-07 16:12:28,146 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:12:28,146 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:12:28,512 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:12:28,512 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:12:28,520 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:12:28,520 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:12:39,349 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:12:39,349 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:12:39,367 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:12:39,367 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:12:39,368 - rank - INFO - Rank 0 -- tracker -- 11.639085326984059
+2023-06-07 16:12:39,368 - rank.332 - INFO - Rank 0 -- tracker -- 11.639085326984059
+2023-06-07 16:12:39,391 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00024576199939474463,0.00024509429931640625 - 2020-03-28 22:00:00
+2023-06-07 16:12:39,391 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00024576199939474463,0.00024509429931640625 - 2020-03-28 22:00:00
+2023-06-07 16:12:40,021 - rank - INFO - Rank 0 -- interaction_waiting -- 6.352027412503958e-06
+2023-06-07 16:12:40,021 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 6.352027412503958e-06
+2023-06-07 16:12:40,711 - simulator - INFO - CMS: Timestep for rank 0/1 - 16.11614916601684,16.11615014076233 - 2020-03-28 22:00:00
+
+2023-06-07 16:12:40,711 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 16.11614916601684,16.11615014076233 - 2020-03-28 22:00:00
+
+2023-06-07 16:12:40,712 - rank - INFO - Next timestep
+2023-06-07 16:12:40,712 - rank.408 - INFO - Next timestep
+2023-06-07 16:12:40,713 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:12:40,713 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:12:41,745 - rank - INFO - Rank 0 -- move_people -- 1.0311372830183245
+2023-06-07 16:12:41,745 - rank.213 - INFO - Rank 0 -- move_people -- 1.0311372830183245
+2023-06-07 16:12:41,745 - rank - INFO - Rank 0 -- move_people_waiting -- 2.4999608285725117e-06
+2023-06-07 16:12:41,745 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.4999608285725117e-06
+2023-06-07 16:12:41,747 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 8.261005859822035e-06,7.867813110351562e-06 - 2020-03-29 09:00:00
+2023-06-07 16:12:41,747 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 8.261005859822035e-06,7.867813110351562e-06 - 2020-03-29 09:00:00
+2023-06-07 16:12:41,826 - simulator - INFO - Info for rank 0, Date = 2020-03-29 09:00:00, number of deaths =  109478, number of infected = 13317
+2023-06-07 16:12:41,826 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-29 09:00:00, number of deaths =  109478, number of infected = 13317
+2023-06-07 16:12:44,154 - rank - INFO - Rank 0 -- interaction -- 2.406535985006485
+2023-06-07 16:12:44,154 - rank.323 - INFO - Rank 0 -- interaction -- 2.406535985006485
+2023-06-07 16:12:44,579 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:12:44,579 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:12:44,939 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:12:44,939 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:12:44,947 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:12:44,947 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:12:54,220 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:12:54,220 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:12:55,979 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:12:55,979 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:12:55,986 - rank - INFO - Rank 0 -- tracker -- 11.83138174598571
+2023-06-07 16:12:55,986 - rank.332 - INFO - Rank 0 -- tracker -- 11.83138174598571
+2023-06-07 16:12:56,020 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00024601101176813245,0.0002460479736328125 - 2020-03-29 09:00:00
+2023-06-07 16:12:56,020 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00024601101176813245,0.0002460479736328125 - 2020-03-29 09:00:00
+2023-06-07 16:12:56,658 - rank - INFO - Rank 0 -- interaction_waiting -- 5.51203265786171e-06
+2023-06-07 16:12:56,658 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.51203265786171e-06
+2023-06-07 16:12:57,352 - simulator - INFO - CMS: Timestep for rank 0/1 - 16.637746959982906,16.63774847984314 - 2020-03-29 09:00:00
+
+2023-06-07 16:12:57,352 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 16.637746959982906,16.63774847984314 - 2020-03-29 09:00:00
+
+2023-06-07 16:16:11,274 - rank - INFO - Next timestep
+2023-06-07 16:16:11,274 - rank.408 - INFO - Next timestep
+2023-06-07 16:16:11,277 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:16:11,277 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:16:12,086 - rank - INFO - Rank 0 -- move_people -- 0.805918226018548
+2023-06-07 16:16:12,086 - rank.213 - INFO - Rank 0 -- move_people -- 0.805918226018548
+2023-06-07 16:16:12,086 - rank - INFO - Rank 0 -- move_people_waiting -- 2.963992301374674e-06
+2023-06-07 16:16:12,086 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.963992301374674e-06
+2023-06-07 16:16:12,086 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.898989573121071e-06,4.76837158203125e-06 - 2020-03-29 10:00:00
+2023-06-07 16:16:12,086 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.898989573121071e-06,4.76837158203125e-06 - 2020-03-29 10:00:00
+2023-06-07 16:16:12,169 - simulator - INFO - Info for rank 0, Date = 2020-03-29 10:00:00, number of deaths =  109567, number of infected = 13285
+2023-06-07 16:16:12,169 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-29 10:00:00, number of deaths =  109567, number of infected = 13285
+2023-06-07 16:16:16,769 - rank - INFO - Rank 0 -- interaction -- 4.681182793981861
+2023-06-07 16:16:16,769 - rank.323 - INFO - Rank 0 -- interaction -- 4.681182793981861
+2023-06-07 16:16:17,191 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:16:17,191 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:16:17,471 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:16:17,471 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:16:17,522 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:16:17,522 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:16:26,766 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:16:26,766 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:16:26,784 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:16:26,784 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:16:26,784 - rank - INFO - Rank 0 -- tracker -- 10.01458602299681
+2023-06-07 16:16:26,784 - rank.332 - INFO - Rank 0 -- tracker -- 10.01458602299681
+2023-06-07 16:16:27,120 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004553159815259278,0.00045490264892578125 - 2020-03-29 10:00:00
+2023-06-07 16:16:27,120 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0004553159815259278,0.00045490264892578125 - 2020-03-29 10:00:00
+2023-06-07 16:16:27,526 - rank - INFO - Rank 0 -- interaction_waiting -- 5.80598134547472e-06
+2023-06-07 16:16:27,526 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.80598134547472e-06
+2023-06-07 16:16:28,637 - simulator - INFO - CMS: Timestep for rank 0/1 - 17.35789881000528,17.35789966583252 - 2020-03-29 10:00:00
+
+2023-06-07 16:16:28,637 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 17.35789881000528,17.35789966583252 - 2020-03-29 10:00:00
+
+2023-06-07 16:16:28,642 - rank - INFO - Next timestep
+2023-06-07 16:16:28,642 - rank.408 - INFO - Next timestep
+2023-06-07 16:16:28,642 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:16:28,642 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:16:29,691 - rank - INFO - Rank 0 -- move_people -- 1.047042261052411
+2023-06-07 16:16:29,691 - rank.213 - INFO - Rank 0 -- move_people -- 1.047042261052411
+2023-06-07 16:16:29,691 - rank - INFO - Rank 0 -- move_people_waiting -- 3.1139934435486794e-06
+2023-06-07 16:16:29,691 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.1139934435486794e-06
+2023-06-07 16:16:29,693 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 8.893024642020464e-06,8.344650268554688e-06 - 2020-03-29 18:00:00
+2023-06-07 16:16:29,693 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 8.893024642020464e-06,8.344650268554688e-06 - 2020-03-29 18:00:00
+2023-06-07 16:16:29,774 - simulator - INFO - Info for rank 0, Date = 2020-03-29 18:00:00, number of deaths =  110176, number of infected = 13247
+2023-06-07 16:16:29,774 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-29 18:00:00, number of deaths =  110176, number of infected = 13247
+2023-06-07 16:16:32,178 - rank - INFO - Rank 0 -- interaction -- 2.483835622027982
+2023-06-07 16:16:32,178 - rank.323 - INFO - Rank 0 -- interaction -- 2.483835622027982
+2023-06-07 16:16:32,598 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:16:32,598 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:16:32,959 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:16:32,959 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:16:32,967 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:16:32,967 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:16:41,040 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:16:41,040 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:16:43,195 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:16:43,195 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:16:43,203 - rank - INFO - Rank 0 -- tracker -- 11.024133489991073
+2023-06-07 16:16:43,203 - rank.332 - INFO - Rank 0 -- tracker -- 11.024133489991073
+2023-06-07 16:16:43,641 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0002517509856261313,0.0002512931823730469 - 2020-03-29 18:00:00
+2023-06-07 16:16:43,641 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0002517509856261313,0.0002512931823730469 - 2020-03-29 18:00:00
+2023-06-07 16:16:43,960 - rank - INFO - Rank 0 -- interaction_waiting -- 5.431997124105692e-06
+2023-06-07 16:16:43,960 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.431997124105692e-06
+2023-06-07 16:16:44,643 - simulator - INFO - CMS: Timestep for rank 0/1 - 15.999610523984302,15.999611139297485 - 2020-03-29 18:00:00
+
+2023-06-07 16:16:44,643 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 15.999610523984302,15.999611139297485 - 2020-03-29 18:00:00
+
+2023-06-07 16:16:44,645 - rank - INFO - Next timestep
+2023-06-07 16:16:44,645 - rank.408 - INFO - Next timestep
+2023-06-07 16:16:44,645 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:16:44,645 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:16:45,432 - rank - INFO - Rank 0 -- move_people -- 0.7850115139735863
+2023-06-07 16:16:45,432 - rank.213 - INFO - Rank 0 -- move_people -- 0.7850115139735863
+2023-06-07 16:16:45,432 - rank - INFO - Rank 0 -- move_people_waiting -- 2.1479791030287743e-06
+2023-06-07 16:16:45,432 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.1479791030287743e-06
+2023-06-07 16:16:45,433 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 8.068978786468506e-06,7.62939453125e-06 - 2020-03-29 22:00:00
+2023-06-07 16:16:45,433 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 8.068978786468506e-06,7.62939453125e-06 - 2020-03-29 22:00:00
+2023-06-07 16:16:45,514 - simulator - INFO - Info for rank 0, Date = 2020-03-29 22:00:00, number of deaths =  110448, number of infected = 13199
+2023-06-07 16:16:45,514 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-29 22:00:00, number of deaths =  110448, number of infected = 13199
+2023-06-07 16:16:47,832 - rank - INFO - Rank 0 -- interaction -- 2.3971884100465104
+2023-06-07 16:16:47,832 - rank.323 - INFO - Rank 0 -- interaction -- 2.3971884100465104
+2023-06-07 16:16:48,252 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:16:48,252 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:16:48,617 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:16:48,617 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:16:48,625 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:16:48,625 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:16:56,261 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:16:56,261 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:16:56,280 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:16:56,280 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:16:56,280 - rank - INFO - Rank 0 -- tracker -- 8.44745142100146
+2023-06-07 16:16:56,280 - rank.332 - INFO - Rank 0 -- tracker -- 8.44745142100146
+2023-06-07 16:16:56,299 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0002326109679415822,0.0002319812774658203 - 2020-03-29 22:00:00
+2023-06-07 16:16:56,299 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0002326109679415822,0.0002319812774658203 - 2020-03-29 22:00:00
+2023-06-07 16:16:56,909 - rank - INFO - Rank 0 -- interaction_waiting -- 5.705980584025383e-06
+2023-06-07 16:16:56,909 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.705980584025383e-06
+2023-06-07 16:16:57,598 - simulator - INFO - CMS: Timestep for rank 0/1 - 12.951530416030437,12.951530694961548 - 2020-03-29 22:00:00
+
+2023-06-07 16:16:57,598 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 12.951530416030437,12.951530694961548 - 2020-03-29 22:00:00
+
+2023-06-07 16:16:57,600 - rank - INFO - Next timestep
+2023-06-07 16:16:57,600 - rank.408 - INFO - Next timestep
+2023-06-07 16:16:57,600 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:16:57,600 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:16:58,631 - rank - INFO - Rank 0 -- move_people -- 1.0297411140054464
+2023-06-07 16:16:58,631 - rank.213 - INFO - Rank 0 -- move_people -- 1.0297411140054464
+2023-06-07 16:16:58,632 - rank - INFO - Rank 0 -- move_people_waiting -- 2.8500217013061047e-06
+2023-06-07 16:16:58,632 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.8500217013061047e-06
+2023-06-07 16:16:58,635 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 7.479044143110514e-06,7.152557373046875e-06 - 2020-03-30 09:00:00
+2023-06-07 16:16:58,635 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 7.479044143110514e-06,7.152557373046875e-06 - 2020-03-30 09:00:00
+2023-06-07 16:16:58,714 - simulator - INFO - Info for rank 0, Date = 2020-03-30 09:00:00, number of deaths =  111136, number of infected = 12544
+2023-06-07 16:16:58,714 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-30 09:00:00, number of deaths =  111136, number of infected = 12544
+2023-06-07 16:17:01,060 - rank - INFO - Rank 0 -- interaction -- 2.423699379025493
+2023-06-07 16:17:01,060 - rank.323 - INFO - Rank 0 -- interaction -- 2.423699379025493
+2023-06-07 16:17:01,484 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:17:01,484 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:17:01,840 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:17:01,840 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:17:01,847 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:17:01,847 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:17:08,511 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:17:08,511 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:17:10,088 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:17:10,088 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:17:10,095 - rank - INFO - Rank 0 -- tracker -- 9.034651274967473
+2023-06-07 16:17:10,095 - rank.332 - INFO - Rank 0 -- tracker -- 9.034651274967473
+2023-06-07 16:17:10,124 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00023345794761553407,0.00023317337036132812 - 2020-03-30 09:00:00
+2023-06-07 16:17:10,124 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00023345794761553407,0.00023317337036132812 - 2020-03-30 09:00:00
+2023-06-07 16:17:10,726 - rank - INFO - Rank 0 -- interaction_waiting -- 5.762965884059668e-06
+2023-06-07 16:17:10,726 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.762965884059668e-06
+2023-06-07 16:17:11,419 - simulator - INFO - CMS: Timestep for rank 0/1 - 13.817558859009296,13.817559003829956 - 2020-03-30 09:00:00
+
+2023-06-07 16:17:11,419 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 13.817558859009296,13.817559003829956 - 2020-03-30 09:00:00
+
+2023-06-07 16:18:49,289 - rank - INFO - Next timestep
+2023-06-07 16:18:49,289 - rank.408 - INFO - Next timestep
+2023-06-07 16:18:49,292 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:18:49,292 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:18:50,100 - rank - INFO - Rank 0 -- move_people -- 0.803842409979552
+2023-06-07 16:18:50,100 - rank.213 - INFO - Rank 0 -- move_people -- 0.803842409979552
+2023-06-07 16:18:50,100 - rank - INFO - Rank 0 -- move_people_waiting -- 3.23000131174922e-06
+2023-06-07 16:18:50,100 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 3.23000131174922e-06
+2023-06-07 16:18:50,100 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.658009856939316e-06,4.291534423828125e-06 - 2020-03-30 10:00:00
+2023-06-07 16:18:50,100 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.658009856939316e-06,4.291534423828125e-06 - 2020-03-30 10:00:00
+2023-06-07 16:18:50,181 - simulator - INFO - Info for rank 0, Date = 2020-03-30 10:00:00, number of deaths =  111205, number of infected = 12532
+2023-06-07 16:18:50,181 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-30 10:00:00, number of deaths =  111205, number of infected = 12532
+2023-06-07 16:18:54,705 - rank - INFO - Rank 0 -- interaction -- 4.603616671985947
+2023-06-07 16:18:54,705 - rank.323 - INFO - Rank 0 -- interaction -- 4.603616671985947
+2023-06-07 16:18:55,128 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:18:55,128 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:18:55,410 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:18:55,410 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:18:55,459 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:18:55,459 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:19:02,272 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:19:02,272 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:19:02,287 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:19:02,287 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:19:02,287 - rank - INFO - Rank 0 -- tracker -- 7.58143199904589
+2023-06-07 16:19:02,287 - rank.332 - INFO - Rank 0 -- tracker -- 7.58143199904589
+2023-06-07 16:19:02,756 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0003849850036203861,0.00038433074951171875 - 2020-03-30 10:00:00
+2023-06-07 16:19:02,756 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.0003849850036203861,0.00038433074951171875 - 2020-03-30 10:00:00
+2023-06-07 16:19:03,075 - rank - INFO - Rank 0 -- interaction_waiting -- 4.6539935283362865e-06
+2023-06-07 16:19:03,075 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 4.6539935283362865e-06
+2023-06-07 16:19:03,765 - simulator - INFO - CMS: Timestep for rank 0/1 - 14.46995416196296,14.469954252243042 - 2020-03-30 10:00:00
+
+2023-06-07 16:19:03,765 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 14.46995416196296,14.469954252243042 - 2020-03-30 10:00:00
+
+2023-06-07 16:19:03,768 - rank - INFO - Next timestep
+2023-06-07 16:19:03,768 - rank.408 - INFO - Next timestep
+2023-06-07 16:19:03,768 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:19:03,768 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:19:04,792 - rank - INFO - Rank 0 -- move_people -- 1.022582762001548
+2023-06-07 16:19:04,792 - rank.213 - INFO - Rank 0 -- move_people -- 1.022582762001548
+2023-06-07 16:19:04,792 - rank - INFO - Rank 0 -- move_people_waiting -- 2.401997335255146e-06
+2023-06-07 16:19:04,792 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.401997335255146e-06
+2023-06-07 16:19:04,793 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.578963853418827e-06,4.291534423828125e-06 - 2020-03-30 18:00:00
+2023-06-07 16:19:04,793 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.578963853418827e-06,4.291534423828125e-06 - 2020-03-30 18:00:00
+2023-06-07 16:19:04,875 - simulator - INFO - Info for rank 0, Date = 2020-03-30 18:00:00, number of deaths =  111737, number of infected = 12596
+2023-06-07 16:19:04,875 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-30 18:00:00, number of deaths =  111737, number of infected = 12596
+2023-06-07 16:19:07,211 - rank - INFO - Rank 0 -- interaction -- 2.415689206973184
+2023-06-07 16:19:07,211 - rank.323 - INFO - Rank 0 -- interaction -- 2.415689206973184
+2023-06-07 16:19:07,629 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:19:07,629 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:19:07,984 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:19:07,984 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:19:07,992 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:19:07,992 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:19:13,868 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:19:13,868 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:19:16,172 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:19:16,172 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:19:16,178 - rank - INFO - Rank 0 -- tracker -- 8.967387398006395
+2023-06-07 16:19:16,178 - rank.332 - INFO - Rank 0 -- tracker -- 8.967387398006395
+2023-06-07 16:19:16,303 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00022594002075493336,0.0002257823944091797 - 2020-03-30 18:00:00
+2023-06-07 16:19:16,303 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00022594002075493336,0.0002257823944091797 - 2020-03-30 18:00:00
+2023-06-07 16:19:16,598 - rank - INFO - Rank 0 -- interaction_waiting -- 4.97099244967103e-06
+2023-06-07 16:19:16,598 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 4.97099244967103e-06
+2023-06-07 16:19:17,293 - simulator - INFO - CMS: Timestep for rank 0/1 - 13.523676204960793,13.523676633834839 - 2020-03-30 18:00:00
+
+2023-06-07 16:19:17,293 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 13.523676204960793,13.523676633834839 - 2020-03-30 18:00:00
+
+2023-06-07 16:19:17,295 - rank - INFO - Next timestep
+2023-06-07 16:19:17,295 - rank.408 - INFO - Next timestep
+2023-06-07 16:19:17,295 - simulator - INFO - ==================== timestep ====================
+2023-06-07 16:19:17,295 - simulator.241 - INFO - ==================== timestep ====================
+2023-06-07 16:19:18,075 - rank - INFO - Rank 0 -- move_people -- 0.7794038289575838
+2023-06-07 16:19:18,075 - rank.213 - INFO - Rank 0 -- move_people -- 0.7794038289575838
+2023-06-07 16:19:18,075 - rank - INFO - Rank 0 -- move_people_waiting -- 2.2790045477449894e-06
+2023-06-07 16:19:18,075 - rank.219 - INFO - Rank 0 -- move_people_waiting -- 2.2790045477449894e-06
+2023-06-07 16:19:18,075 - activity_manager - INFO - CMS: People COMS for rank 0/1 - 4.241010174155235e-06,4.0531158447265625e-06 - 2020-03-30 22:00:00
+2023-06-07 16:19:18,075 - activity_manager.352 - INFO - CMS: People COMS for rank 0/1 - 4.241010174155235e-06,4.0531158447265625e-06 - 2020-03-30 22:00:00
+2023-06-07 16:19:18,156 - simulator - INFO - Info for rank 0, Date = 2020-03-30 22:00:00, number of deaths =  111982, number of infected = 12598
+2023-06-07 16:19:18,156 - simulator.288 - INFO - Info for rank 0, Date = 2020-03-30 22:00:00, number of deaths =  111982, number of infected = 12598
+2023-06-07 16:19:20,415 - rank - INFO - Rank 0 -- interaction -- 2.3383083660155535
+2023-06-07 16:19:20,415 - rank.323 - INFO - Rank 0 -- interaction -- 2.3383083660155535
+2023-06-07 16:19:20,835 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:19:20,835 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 310027 of type household
+2023-06-07 16:19:21,192 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:19:21,192 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 201456 of type company
+2023-06-07 16:19:21,200 - tracker - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:19:21,200 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 139 of 139 of type hospital
+2023-06-07 16:19:26,761 - tracker - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:19:26,761 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 500 of 507 of type city_transport
+2023-06-07 16:19:26,779 - tracker - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:19:26,779 - tracker.2376 - INFO - Rank 0 -- tracking contacts -- 10 of 10 of type inter_city_transport
+2023-06-07 16:19:26,779 - rank - INFO - Rank 0 -- tracker -- 6.363824817992281
+2023-06-07 16:19:26,779 - rank.332 - INFO - Rank 0 -- tracker -- 6.363824817992281
+2023-06-07 16:19:26,813 - epidemiology - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00023436103947460651,0.00023412704467773438 - 2020-03-30 22:00:00
+2023-06-07 16:19:26,813 - epidemiology.327 - INFO - CMS: Infection COMS-v2 for rank 0/1(2)0.00023436103947460651,0.00023412704467773438 - 2020-03-30 22:00:00
+2023-06-07 16:19:27,426 - rank - INFO - Rank 0 -- interaction_waiting -- 5.387002602219582e-06
+2023-06-07 16:19:27,426 - rank.347 - INFO - Rank 0 -- interaction_waiting -- 5.387002602219582e-06
+2023-06-07 16:19:28,129 - simulator - INFO - CMS: Timestep for rank 0/1 - 10.832756987016182,10.832757949829102 - 2020-03-30 22:00:00
+
+2023-06-07 16:19:28,129 - simulator.368 - INFO - CMS: Timestep for rank 0/1 - 10.832756987016182,10.832757949829102 - 2020-03-30 22:00:00
+
+2023-06-07 16:19:28,129 - root - INFO - Producing outputs ...
+2023-06-07 16:19:28,129 - root.140 - INFO - Producing outputs ...
+2023-06-07 16:19:28,131 - root - INFO - Output_postprocess: processing 2020-03-01 09:00:00 ...
+2023-06-07 16:19:28,131 - root.38 - INFO - Output_postprocess: processing 2020-03-01 09:00:00 ...
+2023-06-07 16:23:29,093 - root - INFO - Output_postprocess: processing 2020-03-02 09:00:00 ...
+2023-06-07 16:23:29,093 - root.38 - INFO - Output_postprocess: processing 2020-03-02 09:00:00 ...
+2023-06-07 16:25:40,745 - root - INFO - Output_postprocess: processing 2020-03-03 09:00:00 ...
+2023-06-07 16:25:40,745 - root.38 - INFO - Output_postprocess: processing 2020-03-03 09:00:00 ...
+2023-06-07 16:27:53,510 - root - INFO - Output_postprocess: processing 2020-03-04 09:00:00 ...
+2023-06-07 16:27:53,510 - root.38 - INFO - Output_postprocess: processing 2020-03-04 09:00:00 ...
+2023-06-07 16:32:06,151 - root - INFO - Output_postprocess: processing 2020-03-05 09:00:00 ...
+2023-06-07 16:32:06,151 - root.38 - INFO - Output_postprocess: processing 2020-03-05 09:00:00 ...
+2023-06-07 16:34:21,192 - root - INFO - Output_postprocess: processing 2020-03-06 09:00:00 ...
+2023-06-07 16:34:21,192 - root.38 - INFO - Output_postprocess: processing 2020-03-06 09:00:00 ...
+2023-06-07 16:36:37,623 - root - INFO - Output_postprocess: processing 2020-03-07 09:00:00 ...
+2023-06-07 16:36:37,623 - root.38 - INFO - Output_postprocess: processing 2020-03-07 09:00:00 ...
+2023-06-07 16:41:05,862 - root - INFO - Output_postprocess: processing 2020-03-08 09:00:00 ...
+2023-06-07 16:41:05,862 - root.38 - INFO - Output_postprocess: processing 2020-03-08 09:00:00 ...
+2023-06-07 16:43:26,523 - root - INFO - Output_postprocess: processing 2020-03-09 09:00:00 ...
+2023-06-07 16:43:26,523 - root.38 - INFO - Output_postprocess: processing 2020-03-09 09:00:00 ...
+2023-06-07 16:45:49,234 - root - INFO - Output_postprocess: processing 2020-03-10 09:00:00 ...
+2023-06-07 16:45:49,234 - root.38 - INFO - Output_postprocess: processing 2020-03-10 09:00:00 ...
+2023-06-07 16:51:26,010 - root - INFO - Output_postprocess: processing 2020-03-11 09:00:00 ...
+2023-06-07 16:51:26,010 - root.38 - INFO - Output_postprocess: processing 2020-03-11 09:00:00 ...
+2023-06-07 16:53:48,777 - root - INFO - Output_postprocess: processing 2020-03-12 09:00:00 ...
+2023-06-07 16:53:48,777 - root.38 - INFO - Output_postprocess: processing 2020-03-12 09:00:00 ...
+2023-06-07 16:56:07,929 - root - INFO - Output_postprocess: processing 2020-03-13 09:00:00 ...
+2023-06-07 16:56:07,929 - root.38 - INFO - Output_postprocess: processing 2020-03-13 09:00:00 ...
+2023-06-07 16:58:25,358 - root - INFO - Output_postprocess: processing 2020-03-14 09:00:00 ...
+2023-06-07 16:58:25,358 - root.38 - INFO - Output_postprocess: processing 2020-03-14 09:00:00 ...
+2023-06-07 17:03:32,976 - root - INFO - Output_postprocess: processing 2020-03-15 09:00:00 ...
+2023-06-07 17:03:32,976 - root.38 - INFO - Output_postprocess: processing 2020-03-15 09:00:00 ...
+2023-06-07 17:05:48,330 - root - INFO - Output_postprocess: processing 2020-03-16 09:00:00 ...
+2023-06-07 17:05:48,330 - root.38 - INFO - Output_postprocess: processing 2020-03-16 09:00:00 ...
+2023-06-07 17:08:03,211 - root - INFO - Output_postprocess: processing 2020-03-17 09:00:00 ...
+2023-06-07 17:08:03,211 - root.38 - INFO - Output_postprocess: processing 2020-03-17 09:00:00 ...
+2023-06-07 17:10:14,925 - root - INFO - Output_postprocess: processing 2020-03-18 09:00:00 ...
+2023-06-07 17:10:14,925 - root.38 - INFO - Output_postprocess: processing 2020-03-18 09:00:00 ...
