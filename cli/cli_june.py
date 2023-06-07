@@ -1,12 +1,10 @@
 """
 Usage: cli_june --workdir /tmp/june_nz --cfg june.cfg
 Author: Sijin Zhang
+Contact: sijin.zhang@esr.cri.nz
+
 Description: 
     This is a wrapper to run the JUNE model
-
-
-export PYTHONPATH=/Users/sijinzhang/Github/June_NZ
-
 """
 from process.june_model import (
     check_availability_for_june_model,
@@ -45,19 +43,23 @@ def get_example_usage():
 
 def setup_parser():
     parser = argparse.ArgumentParser(
-        description="Run JUNE model for NZ",
+        description="Run JUNE model for New Zealand",
         epilog=get_example_usage(),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 
-    parser.add_argument("--workdir", required=True, help="working directory")
-    parser.add_argument("--cfg", required=True, help="configuration path, e.g., june.cfg")
+    parser.add_argument(
+        "--workdir", required=True, help="Working directory, e.g., where the output will be stored"
+    )
+    parser.add_argument(
+        "--cfg", required=True, help="Configuration path for the model, e.g., june.cfg"
+    )
 
     return parser.parse_args(["--workdir", "/tmp/june_nz2", "--cfg", "etc/june_nz.yml"])
 
 
 def main():
-    """Run June model"""
+    """Run June model for New Zealand"""
     args = setup_parser()
 
     if not exists(args.workdir):
@@ -68,7 +70,7 @@ def main():
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
 
-    logger.info("Checking data ...")
+    logger.info("Checking data availability ...")
     check_data_availability(cfg["data"])
 
     logger.info("Creating geography object ...")

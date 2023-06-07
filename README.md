@@ -1,8 +1,9 @@
 
 # JUNE model for New Zealand
 
-The base model of **JUNE** ([link](https://github.com/jzanetti/JUNE/tree/sijin_dev)) is forked from [link](https://github.com/IDAS-Durham/JUNE).
-This repository provides a wrapper to run it for New Zealand.
+This repository contains scripts to run **JUNE_NZ**, the JUNE model for New Zealand.
+
+**JUNE_NZ** is adapted from the **JUNE** model developed by Durham University (see [details](https://www.durham.ac.uk/news-events/latest-news/2021/09/new-model-helps-covid-19-planning/) here). The base model (**JUNE_NZ**) ([link](https://github.com/jzanetti/JUNE/tree/sijin_dev)) is forked from [link](https://github.com/IDAS-Durham/JUNE).
 
 ## Installation
 The package can be installed using:
