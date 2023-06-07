@@ -22,7 +22,7 @@ def start_simulation(
     disease_cfg: dict = None,
     base_dir: str = None,
     workdir: str = None,
-    save_timestep: bool = False,
+    save_debug: bool = False,
 ):
     """Start running the simulation
 
@@ -53,4 +53,4 @@ def start_simulation(
         tracker=tracker_obj,
     )
 
-    return simulator.run(save_timestep=save_timestep)
+    return simulator.run(workdir, save_debug=save_debug)

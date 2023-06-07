@@ -55,7 +55,9 @@ def setup_parser():
         "--cfg", required=True, help="Configuration path for the model, e.g., june.cfg"
     )
 
-    return parser.parse_args(["--workdir", "/tmp/june_nz2", "--cfg", "etc/june_nz.yml"])
+    return parser.parse_args(
+        ["--workdir", "/tmp/june_singleobs", "--cfg", "etc/june_singleobs.yml"]
+    )
 
 
 def main():
@@ -125,7 +127,7 @@ def main():
 
     logger.info("Starting simulation ...")
 
-    output, output_timestep = start_simulation(
+    output = start_simulation(
         world["data"],
         disease_obj=disease,
         interaction_obj=interaction["data"],
@@ -136,11 +138,11 @@ def main():
         disease_cfg=cfg["data"]["disease"],
         base_dir=cfg["data"]["base_dir"],
         workdir=args.workdir,
-        save_timestep=False,
+        save_debug=False,
     )
 
     logger.info("Producing outputs ...")
-    output = output_postprocess(args.workdir, output, output_timestep, write_csv=True)
+    output = output_postprocess(args.workdir, output, write_csv=True)
 
     logger.info("Producing figures ...")
     output_to_figure(args.workdir, output, cfg["output"])

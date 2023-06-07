@@ -15,7 +15,7 @@ logger = getLogger()
 def output_postprocess(
     workdir: str,
     simulation_output: dict,
-    simulation_output_timestep: dict,
+    simulation_output_timestep: dict = {},
     write_csv: bool = True,
 ) -> DataFrame:
     """Write output (world object) to a csv
