@@ -125,7 +125,7 @@ def main():
 
     logger.info("Starting simulation ...")
 
-    output = start_simulation(
+    start_simulation(
         world["data"],
         disease_obj=disease,
         interaction_obj=interaction["data"],
@@ -139,8 +139,8 @@ def main():
         save_debug=False,
     )
 
-    logger.info("Producing outputs ...")
-    output = output_postprocess(args.workdir, output, write_csv=True)
+    # logger.info("Producing outputs ...")
+    # output = output_postprocess(args.workdir, output, write_csv=True)
 
     logger.info("Job done ...")
 

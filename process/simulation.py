@@ -53,4 +53,4 @@ def start_simulation(
         tracker=tracker_obj,
     )
 
-    return simulator.run(workdir, save_debug=save_debug)
+    simulator.run(workdir, save_debug=save_debug)
