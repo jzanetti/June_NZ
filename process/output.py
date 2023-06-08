@@ -1,13 +1,15 @@
 from logging import getLogger
-from os import makedirs
+
+# from os import makedirs
 from os.path import exists, join
 from pickle import dump as pickle_dump
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from pandas import DataFrame, concat
-from pandas import cut as pandas_cut
 
-from process.diags import get_people_for_groups_df, world_person2df
+# from pandas import cut as pandas_cut
+
+# from process.diags import get_people_for_groups_df, world_person2df
 
 logger = getLogger()
 
@@ -69,13 +71,9 @@ def output_postprocess(
     return output
 
 
+"""
 def output_to_figure(workdir: str, output: dict, output_cfg: dict):
-    """Convert output dataframe to figures
 
-    Args:
-        workdir (str): Working directory
-        output (DataFrame): Processed output
-    """
     fig_dir = join(workdir, "fig")
     if not exists(fig_dir):
         makedirs(fig_dir)
@@ -86,52 +84,56 @@ def output_to_figure(workdir: str, output: dict, output_cfg: dict):
     df_people["home_super_area"] = df_people["home_super_area"].astype(str)
     df_people["work_super_area"] = df_people["work_super_area"].astype(str)
 
-    if output_cfg["demography"]:
-        total_areas = len(df_people.area_name.unique())
-        for i, proc_area in enumerate(df_people.area_name.unique()):
-            logger.info(
-                f"Creating vis (demography): {proc_area} ... ({round(100.0 * (float(i)/float(total_areas)), 2)}%)"
-            )
-            proc_area_data = df_people.loc[df_people["area_name"] == proc_area][
-                [
-                    "sex",
-                    "age",
-                    "ethnicity",
-                    "comorbidity",
-                    "work_sector",
-                    "work_super_area",
-                    "home_super_area",
-                    "time",
+    if output_cfg["demography"] is not None:
+        min_time = min(df_people["time"])
+        all_areas = df_people.area_name.unique()
+        all_super_areas = df_people.super_area_name.unique()
+
+        if output_cfg["demography"]["area"]:
+            for i, proc_area in enumerate(df_people.area_name.unique()):
+                logger.info(
+                    f"Creating vis (demography): {proc_area} ... ({round(100.0 * (float(i)/float(len(all_areas))), 2)}%)"
+                )
+                proc_area_data = df_people.loc[df_people["area_name"] == proc_area][
+                    [
+                        "sex",
+                        "age",
+                        "ethnicity",
+                        "comorbidity",
+                        "work_sector",
+                        "work_super_area",
+                        "home_super_area",
+                        "time",
+                    ]
                 ]
-            ]
-            proc_area_data = proc_area_data[proc_area_data["time"] == min(proc_area_data["time"])]
+                proc_area_data = proc_area_data[proc_area_data["time"] == min_time]
 
-            proc_area_data.fillna("", inplace=True)
-            proc_area_data["work_to_home"] = proc_area_data[
-                ["work_super_area", "home_super_area"]
-            ].agg("-".join, axis=1)
-            proc_area_data = proc_area_data.drop(
-                columns=["work_super_area", "home_super_area", "time"]
-            )
+                proc_area_data.fillna("", inplace=True)
+                proc_area_data["work_to_home"] = proc_area_data[
+                    ["work_super_area", "home_super_area"]
+                ].agg("-".join, axis=1)
+                proc_area_data = proc_area_data.drop(
+                    columns=["work_super_area", "home_super_area", "time"]
+                )
 
-            age_bins = [0, 6, 18, 65, 100]  # Define the bin edges
-            age_labels = [6, 18, 65, 100]  # Define the labels for each bin
+                age_bins = [0, 6, 18, 65, 100]  # Define the bin edges
+                age_labels = [6, 18, 65, 100]  # Define the labels for each bin
 
-            proc_area_data["age"] = pandas_cut(
-                proc_area_data["age"], bins=age_bins, labels=age_labels, right=False
-            )
+                proc_area_data["age"] = pandas_cut(
+                    proc_area_data["age"], bins=age_bins, labels=age_labels, right=False
+                )
 
-            data = proc_area_data.apply(proc_area_data.value_counts)
-            data.plot(
-                kind="pie",
-                subplots=True,
-                legend=False,
-                layout=(2, 3),
-                figsize=(15, 9),
-                title=f"Area: {proc_area}, Total people {len(data)}",
-            )
-            plt.savefig(join(fig_dir, f"{proc_area}_demography.png"), bbox_inches="tight")
-            plt.close()
+                data = proc_area_data.apply(proc_area_data.value_counts)
+                data.plot(
+                    kind="pie",
+                    subplots=True,
+                    legend=False,
+                    layout=(2, 3),
+                    figsize=(15, 9),
+                    title=f"Area: {proc_area}, Total people {len(data)}",
+                )
+                plt.savefig(join(fig_dir, f"{proc_area}_demography.png"), bbox_inches="tight")
+                plt.close()
 
     if output_cfg["timeseries"]["total_people"]:
         if df_group is not None:
@@ -167,3 +169,4 @@ def output_to_figure(workdir: str, output: dict, output_cfg: dict):
             probabilities.plot(kind="line", figsize=(14, 7), title=f"Area: {proc_area}")
             plt.savefig(join(fig_dir, f"{proc_area}_infection.png"), bbox_inches="tight")
             plt.close()
+"""

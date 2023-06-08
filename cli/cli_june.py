@@ -23,7 +23,7 @@ from process.commute import create_commute_wrapper
 from process.disease import create_disease_wrapper
 from process.geography import create_geography_wrapper
 from process.interaction import create_interaction_wrapper, initiate_interaction
-from process.output import output_postprocess, output_to_figure
+from process.output import output_postprocess
 from process.policy import create_policy_wrapper
 from process.simulation import start_simulation
 from process.tracker import create_tracker_wrapper
@@ -143,9 +143,6 @@ def main():
 
     logger.info("Producing outputs ...")
     output = output_postprocess(args.workdir, output, write_csv=True)
-
-    logger.info("Producing figures ...")
-    output_to_figure(args.workdir, output, cfg["output"])
 
     logger.info("Job done ...")
 
