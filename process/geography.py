@@ -2,7 +2,7 @@ from os.path import join
 
 from june.geography import Geography
 
-from process.diags import geography2df
+from process.june2df import geography2df
 
 
 def create_geography_wrapper(base_input: str, geography_cfg: dict, save_df: bool = False) -> dict:

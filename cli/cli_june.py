@@ -55,9 +55,7 @@ def setup_parser():
         "--cfg", required=True, help="Configuration path for the model, e.g., june.cfg"
     )
 
-    return parser.parse_args(
-        ["--workdir", "/tmp/june_singleobs", "--cfg", "etc/june_singleobs.yml"]
-    )
+    return parser.parse_args(["--workdir", "/tmp/june_nz3", "--cfg", "etc/june_nz.yml"])
 
 
 def main():

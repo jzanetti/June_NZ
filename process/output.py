@@ -7,9 +7,10 @@ from pickle import dump as pickle_dump
 # import matplotlib.pyplot as plt
 from pandas import DataFrame, concat
 
+from process.june2df import get_people_for_groups_df, world_person2df
+
 # from pandas import cut as pandas_cut
 
-# from process.diags import get_people_for_groups_df, world_person2df
 
 logger = getLogger()
 

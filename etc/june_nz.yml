@@ -72,7 +72,7 @@ data:
   disease:
     transmission_profile: diesease/covid19.yaml
     sympton_trajectories: diesease/symptom_trajectories.yaml
-    infection_outcome: diesease/infection_outcome_ratio.csv
+    infection_outcome: diesease/infection_outcome_ratio_v2.0.csv
     comorbidity:
       female: diesease/comorbidities_female.csv
       male: diesease/comorbidities_male.csv

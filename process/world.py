@@ -6,7 +6,6 @@ from june.world import World as World_class
 from june.world import generate_world_from_geography
 
 from process.demography import create_person
-from process.diags import world2df
 from process.distribution import (
     company_distribution,
     hospital_distribution,
@@ -15,6 +14,7 @@ from process.distribution import (
     work_and_home_distribution,
 )
 from process.groups import create_group_locations
+from process.june2df import world2df
 
 logger = getLogger()
 
