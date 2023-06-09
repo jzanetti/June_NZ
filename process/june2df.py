@@ -1,3 +1,4 @@
+from copy import copy as shallow_copy
 from copy import deepcopy
 from datetime import datetime
 from os.path import join
@@ -66,7 +67,7 @@ def get_people_for_groups_df(
 
 
 def world_person2df(world_input2, time=None):
-    world_input = deepcopy(world_input2)
+    world_input = shallow_copy(world_input2)
 
     person_info = {
         "time": [],
@@ -262,7 +263,7 @@ def world2df(
     Returns:
         dict: The dict contains the dataframe
     """
-    my_world = deepcopy(world_input)
+    my_world = shallow_copy(world_input)
 
     all_areas = my_world.areas
 

@@ -7,7 +7,7 @@ simulation_cfg: etc/data/realworld/simulation/simulation_cfg.yml
 
 save:
   geography: false
-  world: false
+  world: true
 
 output:
   demography: true

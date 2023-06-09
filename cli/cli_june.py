@@ -55,7 +55,7 @@ def setup_parser():
         "--cfg", required=True, help="Configuration path for the model, e.g., june.cfg"
     )
 
-    return parser.parse_args(["--workdir", "/tmp/june_nz3", "--cfg", "etc/june_nz.yml"])
+    return parser.parse_args(["--workdir", "/tmp/june_nz5", "--cfg", "etc/june_nz.yml"])
 
 
 def main():
@@ -138,9 +138,6 @@ def main():
         workdir=args.workdir,
         save_debug=False,
     )
-
-    # logger.info("Producing outputs ...")
-    # output = output_postprocess(args.workdir, output, write_csv=True)
 
     logger.info("Job done ...")
 

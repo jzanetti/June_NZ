@@ -5,12 +5,12 @@ from pandas import DataFrame
 
 from process.diags.demography import plot_demography
 from process.diags.timeseries import plot_timeseries
-from process.diags.utils import get_geo_table, load_june_output
+from process.diags.utils import get_geo_table
 
 logger = getLogger()
 
 
-def diags_wrapper(workdir: str, june_output_path: str, diags_cfg: dict):
+def diags_wrapper(workdir: str, df_people: DataFrame, diags_cfg: dict):
     """Creating diags data
 
     Args:
@@ -19,10 +19,6 @@ def diags_wrapper(workdir: str, june_output_path: str, diags_cfg: dict):
         diags_cfg (dict): Diags configuration
     """
     logger.info("Loading June-NZ outputs ...")
-    output = load_june_output(june_output_path)
-
-    df_people = output["output_people"]
-    df_group = output["output_groups"]
 
     logger.info("Loading Geo table ...")
     geotable = get_geo_table(diags_cfg["geo_table"], workdir)

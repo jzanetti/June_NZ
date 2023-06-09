@@ -6,9 +6,10 @@ Description:
 """
 import argparse
 from os import makedirs
-from os.path import exists, join
+from os.path import exists
 
 from process.diags.wrapper import diags_wrapper
+from process.output import combine_outputs
 
 # from process.output import output_to_figure
 from process.utils import read_cfg, setup_logging
@@ -31,15 +32,15 @@ def setup_parser():
     )
 
     parser.add_argument("--workdir", required=True, help="working directory")
-    parser.add_argument("--june_data", required=True, help="JUNE_NZ output data")
+    parser.add_argument("--june_data_dir", required=True, help="JUNE_NZ output data directory")
     parser.add_argument("--cfg", required=True, help="configuration path, e.g., diags.cfg")
 
     return parser.parse_args(
         [
             "--workdir",
-            "/tmp/june_diags",
-            "--june_data",
-            "/tmp/june_nz2/output.pickle",
+            "/tmp/june_diag",
+            "--june_data_dir",
+            "/tmp/june_nz5/output",
             "--cfg",
             "etc/june_diags.yml",
         ]
@@ -58,7 +59,9 @@ def main():
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
 
-    diags_wrapper(args.workdir, args.june_data, cfg)
+    output = combine_outputs(args.june_data_dir)
+
+    diags_wrapper(args.workdir, output, cfg)
 
     logger.info("Job done ...")
 
