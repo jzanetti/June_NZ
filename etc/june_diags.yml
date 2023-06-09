@@ -8,6 +8,7 @@ demography:
 
 
 infection:
+  add_no_infected: false
   timeseries:
     super_area: true
-    area: true
+    area: false

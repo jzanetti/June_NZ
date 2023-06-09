@@ -49,4 +49,5 @@ def diags_wrapper(workdir: str, df_people: DataFrame, diags_cfg: dict):
                 areas_or_super_areas,
                 area_type,
                 geotable=geotable,
+                add_no_infected=diags_cfg["infection"]["add_no_infected"],
             )

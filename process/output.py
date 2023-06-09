@@ -22,4 +22,6 @@ def combine_outputs(workdir: str) -> dict:
     for proc_file in all_files:
         all_data.append(read_parquet(proc_file))
 
-    return concat(all_data)
+    all_data = concat(all_data)
+
+    return all_data

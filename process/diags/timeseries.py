@@ -18,6 +18,7 @@ def plot_timeseries(
     areas_or_super_areas: list,
     area_type: str,  # super_area or area
     geotable: DataFrame or None = None,
+    add_no_infected: bool = True,
 ):
     fig_dir = join(workdir, "infection", area_type)
 
@@ -36,7 +37,7 @@ def plot_timeseries(
 
         total_people = len(proc_area_data_first)
 
-        proc_area_data["infection"].fillna("Not infected", inplace=True)
+        proc_area_data["infection"].fillna("Recovered/Not infected", inplace=True)
         proc_area_data.loc[proc_area_data["dead"] == True, "infection"] = "dead"
         proc_area_data = proc_area_data.drop(columns=["dead"])
         grouped = proc_area_data.groupby(["time", "infection"]).size().reset_index(name="count")
@@ -51,27 +52,33 @@ def plot_timeseries(
 
         _, axes = subplots(nrows=2, ncols=1, figsize=(12, 12))
 
-        probabilities.plot(
-            ax=axes[0],
-            kind="line",
-            # figsize=(14, 7),
-            title=False,
-            # title=f"Area: {proc_area} ({area_name}) \n {total_people} individuals",
-            ylabel="Probability of symptom stages",
-            xlabel="Simulation time",
-            logy=False,
-        )
+        if not add_no_infected:
+            probabilities = probabilities.drop("Recovered/Not infected", axis=1)
 
-        probabilities.plot(
-            ax=axes[1],
-            kind="line",
-            # figsize=(14, 7),
-            title=False,
-            # title=f"Area: {proc_area} ({area_name}) \n {total_people} individuals",
-            ylabel="Probability of symptom stages (log)",
-            xlabel="Simulation time",
-            logy=True,
-        )
+        try:
+            probabilities.plot(
+                ax=axes[0],
+                kind="line",
+                # figsize=(14, 7),
+                title=False,
+                # title=f"Area: {proc_area} ({area_name}) \n {total_people} individuals",
+                ylabel="Probability of symptom stages",
+                xlabel="Simulation time",
+                logy=False,
+            )
+
+            probabilities.plot(
+                ax=axes[1],
+                kind="line",
+                # figsize=(14, 7),
+                title=False,
+                # title=f"Area: {proc_area} ({area_name}) \n {total_people} individuals",
+                ylabel="Probability of symptom stages (log)",
+                xlabel="Simulation time",
+                logy=True,
+            )
+        except TypeError:
+            logger.info("No infection at all for this area")
 
         suptitle(f"Area: {proc_area} ({area_name}) \n {total_people} individuals")
         tight_layout()
