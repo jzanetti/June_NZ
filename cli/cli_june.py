@@ -23,7 +23,6 @@ from process.commute import create_commute_wrapper
 from process.disease import create_disease_wrapper
 from process.geography import create_geography_wrapper
 from process.interaction import create_interaction_wrapper, initiate_interaction
-from process.output import output_postprocess
 from process.policy import create_policy_wrapper
 from process.simulation import start_simulation
 from process.tracker import create_tracker_wrapper
@@ -55,7 +54,9 @@ def setup_parser():
         "--cfg", required=True, help="Configuration path for the model, e.g., june.cfg"
     )
 
-    return parser.parse_args(["--workdir", "/tmp/june_nz5", "--cfg", "etc/june_nz.yml"])
+    return parser.parse_args(
+        ["--workdir", "/tmp/june_singleobs", "--cfg", "etc/june_singleobs.yml"]
+    )
 
 
 def main():

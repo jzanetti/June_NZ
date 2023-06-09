@@ -2,9 +2,8 @@ from logging import getLogger
 from os.path import join
 
 from june.groups.travel import Travel
+from june.utils.june2df import world2df
 from june.world import World as World_class
-
-from process.june2df import world2df
 
 logger = getLogger()
 

@@ -2,6 +2,7 @@ from logging import getLogger
 
 from june.demography.demography import Demography as Demography_class
 from june.geography.geography import Geography as Geography_class
+from june.utils.june2df import world2df
 from june.world import World as World_class
 from june.world import generate_world_from_geography
 
@@ -14,7 +15,6 @@ from process.distribution import (
     work_and_home_distribution,
 )
 from process.groups import create_group_locations
-from process.june2df import world2df
 
 logger = getLogger()
 
