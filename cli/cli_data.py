@@ -28,6 +28,7 @@ from process.data.group import (
     write_household_communal,
     write_household_number,
     write_household_student,
+    write_leisures,
     write_school,
     write_sectors_by_super_area,
     write_sectors_employee_genders,
@@ -186,6 +187,9 @@ def main():
 
     logger.info("Processing household_communal ...")
     household_communal = write_household_communal(args.workdir, pop)
+
+    logger.info("Processing leisure ...")
+    write_leisures(args.workdir)
 
     # -----------------------------
     # Get commute data

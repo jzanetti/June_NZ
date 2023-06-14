@@ -1,9 +1,15 @@
 
 # JUNE model for New Zealand
 
-This repository contains scripts to run **JUNE_NZ**, the JUNE model for New Zealand.
+This repository contains the codes to run **JUNE_NZ**, the **JUNE** model for New Zealand.
 
-**JUNE_NZ** is adapted from the **JUNE** model developed by Durham University (see [details](https://www.durham.ac.uk/news-events/latest-news/2021/09/new-model-helps-covid-19-planning/) here). The base model (**JUNE_NZ**) ([link](https://github.com/jzanetti/JUNE/tree/sijin_dev)) is forked from [link](https://github.com/IDAS-Durham/JUNE).
+**JUNE_NZ** is adapted from **JUNE**, a world-leading health modeling framework led by Durham University, UK (see [details](https://www.durham.ac.uk/news-events/latest-news/2021/09/new-model-helps-covid-19-planning/) here). The contributors for **JUNE_NZ** are from:
+
+- Inistitute of Environmental Research and Science (ESR), New Zealand
+- Durham University, UK
+- Oxford University, UK
+
+Note that this model is still under development, and the latest differentable (AI-enabled) features have not been included in this repository yet.
 
 ## Installation
 The package can be installed using:
@@ -20,6 +26,8 @@ There are three levels of data used for New Zealand:
 `North/South Island` -> `Regional council` (REGC2023_code) -> `Statistical Area 2` (SA12023_code)
 
 ## Required data:
+
+All the required data can be produced using the provided script `cli/cli_data.py`:
 
 #### Disease:
 - `covid19.yaml`: infection transmission profile defination (geography independant)
@@ -77,3 +85,6 @@ There are three levels of data used for New Zealand:
 - `geography_hierarchy_definition.csv`: geography hierarchy (geography independant)
 
 
+## Others
+
+The base model (**JUNE_NZ**) ([link](https://github.com/jzanetti/JUNE/tree/sijin_dev)) is forked from [link](https://github.com/IDAS-Durham/JUNE).

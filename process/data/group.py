@@ -1,5 +1,7 @@
 from copy import deepcopy
-from os.path import join
+from logging import getLogger
+from os import makedirs
+from os.path import dirname, exists, join
 from re import findall as re_findall
 from re import match as re_match
 
@@ -10,7 +12,39 @@ from pandas import DataFrame, merge, pivot_table, read_csv, read_excel
 from scipy.spatial.distance import cdist
 
 from process import FIXED_DATA, REGION_NAMES_CONVERSIONS, SCHOOL_AGE_TABLE
+from process.data.osm import get_data_from_osm
 from process.data.utils import get_central_point, get_raw_data, haversine_distance
+
+logger = getLogger()
+
+
+def write_leisures(workdir: str):
+    """Write cinema information
+
+    Args:
+        workdir (str): Working directory
+    """
+
+    for proc_leisure in ["cinema", "gym", "pub", "grocery"]:
+        output = {"lat": [], "lon": [], "super_area": []}
+        for super_area_id in REGION_NAMES_CONVERSIONS:
+            logger.info(f"Getting {proc_leisure} for {REGION_NAMES_CONVERSIONS[super_area_id]}")
+
+            if super_area_id == 99:
+                continue
+
+            output = get_data_from_osm(
+                proc_leisure, super_area_id, REGION_NAMES_CONVERSIONS[super_area_id], output
+            )
+
+        output = DataFrame.from_dict(output)
+
+        output_path = join(workdir, "group", "leisure", f"{proc_leisure}.csv")
+
+        if not exists(dirname(output_path)):
+            makedirs(dirname(output_path))
+
+        output.to_csv(output_path, index=True)
 
 
 def write_school(workdir: str, school_cfg: dict, max_to_cur_occupancy_ratio=1.2) -> dict:
