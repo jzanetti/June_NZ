@@ -7,6 +7,8 @@ api = overpy.Overpass()
 
 from logging import getLogger
 
+from process import OVERPY_QUERY_KEY
+
 logger = getLogger()
 
 
@@ -28,7 +30,6 @@ def get_data_from_osm(
     Returns:
         list: the queried results from OSM
     """
-
     geolocator = Nominatim(user_agent="{name}_extraction")
     location = geolocator.geocode(f"{geo_name}, New Zealand")
     lat = location.latitude
@@ -36,10 +37,16 @@ def get_data_from_osm(
 
     radius *= 1000.0
 
-    query = f"""
-    node["amenity"="{name}"](around:{radius},{lat},{lon});
-    out;
-    """
+    proc_query_key = OVERPY_QUERY_KEY[name]
+
+    query = "("
+    for query_key in proc_query_key:
+        proc_data_list = proc_query_key[query_key]
+
+        for proc_data_name in proc_data_list:
+            query += f'node["{query_key}"="{proc_data_name}"](around:{radius},{lat},{lon});'
+
+    query = query + "); \nout;"
 
     tried = 0
     while True:

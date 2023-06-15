@@ -25,7 +25,7 @@ def write_leisures(workdir: str):
         workdir (str): Working directory
     """
 
-    for proc_leisure in ["cinema", "gym", "pub", "grocery"]:
+    for proc_leisure in ["gym", "grocery", "cinema", "pub"]:
         output = {"lat": [], "lon": [], "super_area": []}
         for super_area_id in REGION_NAMES_CONVERSIONS:
             logger.info(f"Getting {proc_leisure} for {REGION_NAMES_CONVERSIONS[super_area_id]}")

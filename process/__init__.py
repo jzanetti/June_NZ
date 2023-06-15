@@ -136,3 +136,13 @@ SCHOOL_AGE_TABLE = {
     "Composite (Year 1-10)": "primary_secondary (5-14)",
     "Activity Centre": "secondary (14-17)",
 }
+
+# https://wiki.openstreetmap.org/wiki/Key:amenity
+# https://wiki.openstreetmap.org/wiki/Key:leisure
+# https://wiki.openstreetmap.org/wiki/Key:building
+OVERPY_QUERY_KEY = {
+    "cinema": {"amenity": ["cinema"]},
+    "pub": {"amenity": ["pub"]},
+    "gym": {"leisure": ["fitness_centre"]},
+    "grocery": {"shop": ["convenience", "supermarket"]},
+}
