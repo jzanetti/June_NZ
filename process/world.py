@@ -11,6 +11,7 @@ from process.distribution import (
     company_distribution,
     hospital_distribution,
     household_distribution,
+    leisure_distribution,
     school_distribution,
     work_and_home_distribution,
 )
@@ -26,6 +27,7 @@ def create_world_wrapper(
     geography_cfg: dict,
     group_and_interaction_cfg: dict,
     disease_cfg: dict,
+    simulation_cfg: str,
     workdir: str,
     save_df: bool = False,
 ) -> World_class:
@@ -80,6 +82,10 @@ def create_world_wrapper(
             company_distribution(world)
         elif interaction_obj == "school":
             school_distribution(world)
+        elif interaction_obj == "leisure":
+            leisure_distribution(
+                world, simulation_cfg, base_input, group_and_interaction_cfg["leisure"]
+            )
 
     if save_df:
         df = world2df(world, write_csv=True, workdir=workdir, tag="after_init")

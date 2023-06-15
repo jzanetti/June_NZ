@@ -31,6 +31,27 @@ data:
     ethnicity: demography/ethnicity_profile.csv
 
   group_and_interaction:
+    leisure:
+      cinemas:
+        defination:
+          location: group/leisure/data/cinema.csv
+          configs: group/leisure/cfg/cinema.yaml
+        interaction: interaction/cinema.yaml
+      groceries:
+        defination:
+          location: group/leisure/data/grocery.csv
+          configs: group/leisure/cfg/grocery.yaml
+        interaction: interaction/grocery.yaml
+      gyms:
+        defination:
+          location: group/leisure/data/gym.csv
+          configs: group/leisure/cfg/gym.yaml
+        interaction: interaction/gym.yaml
+      pubs:
+        defination:
+          location: group/leisure/data/pub.csv
+          configs: group/leisure/cfg/pub.yaml
+        interaction: interaction/pub.yaml
     school:
       defination:
         location: group/school/schools.csv

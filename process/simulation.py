@@ -43,6 +43,7 @@ def start_simulation(
         epidemiology=disease_obj,
         interaction=interaction_obj,
         config_filename=simulation_cfg,
+        leisure=world.leisure,
         trajectory_filename=join(base_dir, disease_cfg["sympton_trajectories"]),
         travel=travel_obj,
         record=Record(

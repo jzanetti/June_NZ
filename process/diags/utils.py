@@ -18,7 +18,11 @@ def get_area_name(area_type: str, proc_area_code: int, geotable: DataFrame or No
         str: area name
     """
     if area_type == "super_area":
-        area_name = REGION_NAMES_CONVERSIONS[proc_area_code]
+        try:
+            area_name = REGION_NAMES_CONVERSIONS[proc_area_code]
+        except KeyError:
+            area_name = proc_area_code
+
     elif area_type == "area":
         if geotable is not None:
             area_name = geotable[geotable["SA22018_code"] == proc_area_code]["SA22018_name"].values

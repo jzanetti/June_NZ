@@ -2,7 +2,10 @@ from os.path import join
 
 from june.geography.geography import Geography as Geography_class
 from june.groups import Companies, Hospitals, Schools
+from june.groups.leisure import Cinemas, Groceries, Gyms, Pubs
 from pandas import DataFrame
+
+from process.interaction import LEISURE_OBJS
 
 
 def create_group_locations(
@@ -53,6 +56,23 @@ def create_group_locations(
                 ),
                 config_file=None,
             )
+
+        elif group_name == "leisure":
+            for leisure_key in group_and_interaction_cfg["leisure"]:
+                setattr(
+                    geography,
+                    leisure_key,
+                    LEISURE_OBJS[leisure_key].for_geography(
+                        geography,
+                        coordinates_filename=join(
+                            base_dir,
+                            group_and_interaction_cfg[group_name][leisure_key]["defination"][
+                                "location"
+                            ],
+                        ),
+                        max_distance_to_super_area=200.0,
+                    ),
+                )
 
     output["data"] = geography
 

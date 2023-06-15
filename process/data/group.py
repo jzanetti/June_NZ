@@ -44,7 +44,7 @@ def write_leisures(workdir: str):
         if not exists(dirname(output_path)):
             makedirs(dirname(output_path))
 
-        output.to_csv(output_path, index=True)
+        output[["super_area", "lat", "lon"]].to_csv(output_path, index=False)
 
 
 def write_school(workdir: str, school_cfg: dict, max_to_cur_occupancy_ratio=1.2) -> dict:

@@ -7,7 +7,40 @@ from june.distributors import (
     SchoolDistributor,
     WorkerDistributor,
 )
+from june.geography.geography import Geography as Geography_class
+from june.groups.leisure import generate_leisure_for_config
 from june.world import World as World_class
+
+
+def leisure_distribution(
+    world: World_class, simulation_cfg_path: str, base_dir: str, group_and_interaction_cfg: dict
+):
+    """Distribute leisure activities
+
+    Args:
+        world (World_class): A world object
+        simulation_cfg_path (str): Simulation path,
+            e.g., etc/data/singleobs_v2.0/simulation/simulation_cfg.yml
+    """
+    world.leisure = generate_leisure_for_config(
+        world,
+        config_filename=simulation_cfg_path,
+        pub_config_filename=join(
+            base_dir, group_and_interaction_cfg["pubs"]["defination"]["configs"]
+        ),
+        gym_config_filename=join(
+            base_dir, group_and_interaction_cfg["gyms"]["defination"]["configs"]
+        ),
+        cinema_config_filename=join(
+            base_dir, group_and_interaction_cfg["cinemas"]["defination"]["configs"]
+        ),
+        grocery_config_filename=join(
+            base_dir, group_and_interaction_cfg["groceries"]["defination"]["configs"]
+        ),
+    )
+    world.leisure.distribute_social_venues_to_areas(
+        areas=world.areas, super_areas=world.super_areas
+    )
 
 
 def work_and_home_distribution(
