@@ -4,11 +4,11 @@ geo_table: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geograph
 
 demography:
   super_area: true
-  area: true
+  area: false
 
 
 infection:
   add_no_infected: false
   timeseries:
     super_area: true
-    area: true
+    area: false
