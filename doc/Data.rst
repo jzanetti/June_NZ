@@ -9,8 +9,12 @@ Population data (demography)
 
 .. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
 
-.. csv-table:: Population data
-   :file: data/data.csv
+.. csv-table:: Population/demography data
+   :file: data/data_population.csv
    :header-rows: 1
    :class: longtable
    :widths: 1 1 1
+
+.. note::
+
+   ``The number of people (grouped by age)`` will determine the number of total people to be used in the model.

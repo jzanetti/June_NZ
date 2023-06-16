@@ -1,0 +1,4 @@
+Data,Geography level,Example
+The number of people (grouped by age),area,age_profile.csv
+The number of people (grouped by age and ethnicities),area,ethnicity_profile.csv
+The percentage of female (grouped by age),area,gender_profile_female_ratio.csv
