@@ -7,20 +7,10 @@ Data
 Population data (demography)
 ^^^^^^^^^^^^^^^^^^^^
 
-+---------------------------------------+-----------------+-----------------------+
-| Data                                  | Geography level | Example               |
-+=======================================+=================+=======================+
-| The number of people in total         | Area            | age_profile.csv       |
-+---------------------------------------+-----------------+-----------------------+
-| The number of people grouped by       |                 |                       |
-| ethnic                                | Area            | ethnicity_profile.csv |
-+---------------------------------------+-----------------+-----------------------+
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
 
-
-+------+---------------+
-| Item | Character     |
-+======+===============+
-| 1    | Puss in Boots |
-+------+---------------+
-| 2    | Cinderella    |
-+------+---------------+
+.. csv-table:: Population data
+   :file: data/data.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1
