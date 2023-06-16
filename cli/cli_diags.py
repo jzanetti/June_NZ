@@ -40,7 +40,7 @@ def setup_parser():
             "--workdir",
             "/tmp/june_diag2",
             "--june_data_dir",
-            "/tmp/june_nz_2023_0615/output",
+            "/tmp/june_realworld_2023_0615_4/output",
             "--cfg",
             "etc/june_diags.yml",
         ]
