@@ -3,6 +3,7 @@ from logging import getLogger
 
 from pandas import DataFrame
 
+from process.diags.activities import plot_activities
 from process.diags.demography import plot_demography
 from process.diags.timeseries import plot_timeseries
 from process.diags.utils import get_geo_table
@@ -24,6 +25,9 @@ def diags_wrapper(workdir: str, df_people: DataFrame, diags_cfg: dict):
     geotable = get_geo_table(diags_cfg["geo_table"], workdir)
 
     min_time = min(df_people["time"])
+
+    if diags_cfg["activity"]:
+        plot_activities(workdir, df_people)
 
     for area_type in ["super_area", "area"]:
         if area_type == "area":

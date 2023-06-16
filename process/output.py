@@ -18,10 +18,13 @@ def combine_outputs(workdir: str) -> dict:
 
     all_files = glob(workdir + "/world*.parquet")
 
+    logger.info(f"Reading files: {len(all_files)}")
+
     all_data = []
     for proc_file in all_files:
         all_data.append(read_parquet(proc_file))
 
     all_data = concat(all_data)
 
+    logger.info("Done reading ...")
     return all_data

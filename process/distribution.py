@@ -42,6 +42,8 @@ def leisure_distribution(
         areas=world.areas, super_areas=world.super_areas
     )
 
+    x = 3
+
 
 def work_and_home_distribution(
     world: World_class, base_dir: str, group_and_interaction_cfg: dict, geography_cfg: dict

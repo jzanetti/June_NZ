@@ -55,7 +55,8 @@ def setup_parser():
     )
 
     return parser.parse_args(
-        ["--workdir", "/tmp/june_singleobs_test", "--cfg", "etc/june_singleobs_v2.0.yml"]
+        ["--workdir", "/tmp/june_realworld_2023_0615_4", "--cfg", "etc/june_nz.yml"]
+        # ["--workdir", "/tmp/june_singleobs_v2.0", "--cfg", "etc/june_singleobs_v2.0.yml"]
     )
 
 
@@ -93,7 +94,7 @@ def main():
         cfg["data"]["disease"],
         cfg["simulation_cfg"],
         args.workdir,
-        save_df=True,
+        save_df=False,
     )
 
     logger.info("Creating commuting object ...")
@@ -139,7 +140,7 @@ def main():
         disease_cfg=cfg["data"]["disease"],
         base_dir=cfg["data"]["base_dir"],
         workdir=args.workdir,
-        save_debug=False,
+        save_debug=True,
     )
 
     logger.info("Job done ...")
