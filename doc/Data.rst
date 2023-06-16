@@ -12,7 +12,8 @@ Population data (demography)
 +=======================================+=================+=======================+
 | The number of people in total         | Area            | age_profile.csv       |
 +---------------------------------------+-----------------+-----------------------+
-| The number of people grouped by ethnic| Area            | ethnicity_profile.csv |
+| The number of people grouped by       |                 |                       |
+| ethnic                                | Area            | ethnicity_profile.csv |
 +---------------------------------------+-----------------+-----------------------+
 
 
