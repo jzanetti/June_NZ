@@ -1,11 +1,12 @@
-Data
-=====
+##############
+Data Description
+##############
 
 **JUNE_NZ** requires a number of input files, all the files below can be created by :doc:`link <Data_creation>`
 
-
+**********
 1. Population data (demography)
-^^^^^^^^^^^^^^^^^^^^
+**********
 
 It defines the population (agents) to be used in the model.
 
@@ -21,8 +22,9 @@ It defines the population (agents) to be used in the model.
 
    ``The number of people (grouped by age)`` will determine the number of total people to be used in the model.
 
+**********
 2. Geography data
-^^^^^^^^^^^^^^^^^^^^
+**********
 
 It defines the geography (grid) to be used in the model.
 
@@ -34,13 +36,14 @@ It defines the geography (grid) to be used in the model.
    :class: longtable
    :widths: 1 1 1
 
+**********
 3. Group (activities) data
-^^^^^^^^^^^^^^^^^^^^
+**********
 
 Group data contains different types of activities that an individual might do every day.
 
 3.1 Commute
-********
+===============
 
 Commute defines how people move across different areas
 
@@ -52,12 +55,12 @@ Commute defines how people move across different areas
    :class: longtable
    :widths: 1 1 1
 
-
+**********
 4. Disease data
-^^^^^^^^^^^^^^^^^^^^
+**********
 
 4.1 Comorbidities
-************
+============
 
 ``Comorbidities`` are defined by the variable ``FIXED_DATA``, which is located in ``process/__init__.py``. The comorbidity is one of the parameters determing the severity of symptom that
 an individual may experience.
@@ -108,7 +111,11 @@ An example of the defination of ``Comorbidities`` is:
 
 
 4.2 Transmission profile
-************
+============
+
+
+4.2.1 Base probability of infection
+----------------
 The transmssion profile determins the probability of the infection (e.g, the higher the probabilities, the more infectiousness an infector can be). 
 
 The probability of the infection is usually chosen from a ``Gamma`` profile, which is defined by ``(shape,shift,scale)``. 
@@ -116,13 +123,34 @@ The following figures show the ``Gamma`` profile for different ``shape``, ``shif
 The x-axis is the value of ``shift (loc)``, which corresponds to the infection time. The y-axis is the probability of infection.
 
 .. image:: data/gamma_profile.png
-   :scale: 50 %
+   :scale: 90 %
    :alt: Gamma profile
    :align: center
 
 When a person is infected, the infection time will be applied to the above ``Gamma`` function (as ``x``), and then obtain the related probability of infection. 
 
-For example, for ``COVID-19``, the following transmission profile is set up:
+
+4.2.1 Adjust max infectiousness
+----------------
+
+The maximum infectiousness from the probability of infection is adjusted with the argument ``max_infectiousness``. For an infector, a random
+value will be drawn from the ``lognormal`` function, and it will be multiplied to the probability of function. 
+
+The ``lognormal`` is determined by parameters of ``shape``, ``loc`` and ``scale``.
+For example, the following figures show the ``lognormal`` profile:
+
+.. image:: data/lognormal_profile.png
+   :scale: 90 %
+   :alt: Lognormal profile
+   :align: center
+
+4.2.2 Adjust mild/asymptomatic infectiousness
+----------------
+
+We can adjust the the probability of infection based on a person's maximum symptom. For example, if the maximum symtom is ``asymptomatic``, we can
+reduce the probability of infection profile by 50%.
+
+An example for ``COVID-19`` transmission is set up as:
 
 .. code-block:: python
 
