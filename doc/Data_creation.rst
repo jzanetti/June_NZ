@@ -64,7 +64,18 @@ The co-morbidities are defined in ``demography`` -> ``comorbidities_female`` / `
 
 Note that the ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual.
 
+So the accumulated intensity of the background disease at the age ``a`` and for the gender ``g``, :math:`K_(a,g)^'`, can be represented as:
+
 .. math::
-   :label: eq1
 
    K_{(a,g)}' = \sum_{i=0}^N M_i C_{i, (a,g)}
+
+Where ``N`` represents the total types of comorbidities (including “no-condition”).
+
+Given a person has the comorbidity of ``j``, the intensity of this comorbidity, therefore, is :math:`M_j`. So relative intensity for ``j`` is:
+
+.. math::
+
+    M_j^' = \frac{M_j}{{K_{(a,g)}'}}
+
+When :math:`M_j > 1.0`, it means that this person is more likely to experience significant symptoms than average, while when :math:`M_j < 1.0`, this person is less likely to experience significant symptoms than average. 
