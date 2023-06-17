@@ -59,6 +59,22 @@ Commute defines how people move across different areas
 4. Disease data
 **********
 
+4.1 Virus intensity
+============
+
+The virus intensity is a parameter that influences the severity of symptoms. 
+As the intensity value increases, the likelihood of an individual experiencing more severe symptoms also increases. 
+This can be achieved by elevating the probability of severe symptoms in addition to the 'infection_outcome' input data."
+
+An example of the virus intensity is:
+
+.. code-block:: python
+
+        Covid19: 1.3 # 170852960
+        B117: 1.5 # 37224668
+        B16172: 1.5 # 76677444
+
+
 4.1 Comorbidities
 ============
 
@@ -123,7 +139,7 @@ The following figures show the ``Gamma`` profile for different ``shape``, ``shif
 The x-axis is the value of ``shift (loc)``, which corresponds to the infection time. The y-axis is the probability of infection.
 
 .. image:: data/gamma_profile.png
-   :scale: 90 %
+   :scale: 100%
    :alt: Gamma profile
    :align: center
 
@@ -140,7 +156,7 @@ The ``lognormal`` is determined by parameters of ``shape``, ``loc`` and ``scale`
 For example, the following figures show the ``lognormal`` profile:
 
 .. image:: data/lognormal_profile.png
-   :scale: 90 %
+   :scale: 100%
    :alt: Lognormal profile
    :align: center
 
@@ -181,3 +197,78 @@ An example for ``COVID-19`` transmission is set up as:
                 scale: 1. 
 
 
+4.3 Symptom trajectory
+============
+
+For the symptom trajectory, it is defined by a set of distribution functions (e.g., beta, log-normal etc.). 
+Each distribution function comes with a set of parameters, those parameters decide the timeline for different symptoms during the infection.
+
+The considered symptom stages include:
+
+- Recovered (-3)
+- Healthy (-2)
+- Exposed (-1)
+- Asymptomatic (0)
+- Mild (1)
+- Severe (2), which is calculated by ``1.0 - [ Hospital + Die (from Home) + Asymptomatic + Mild]``
+- Hospital (3)
+- ICU (4)
+- Die (from home, 5)
+- Die (from hospital, 6)
+- Die (from ICU, 7)
+
+For example, if we need to create a symptom trajectory for ``Die (from hospital, 6)``, 
+we need to go through the stages of ``Exposed (-1)``, ``Mild (1)``, ``Hospital (3)`` and ``Die (from hospital, 6)`` one by one. 
+Among this trajectory, at the stage of ``mild (-1)``, we create samples from a ``log-normal`` distribution with a specific, predefined parameters 
+(e.g., ``shape=0.55``, ``loc=0.0``, ``scale=5.0``), a random number is drawn from these samples, 
+and it represents the timing for the infection (or we can understand it as the end time for the stage of symptom).
+
+The chance of having a symptom is determined by:
+
+- Comorbidities (see the section of comorbidities for details)
+- Input infection outcome statistics (e.g., the percentage of symptoms that a person may experience)
+- The target virus intnsity
+
+An example of the symptom trajectory is:
+
+.. code-block:: python
+
+        # exposed => mild => hospitalised => dead
+        - stages:
+        - symptom_tag: exposed
+                completion_time:
+                type: beta
+                a: 2.29
+                b: 19.05
+                loc: 0.39
+                scale: 39.8
+
+        - symptom_tag: mild
+                completion_time:
+                type: lognormal
+                s: 0.55
+                loc: 0.0
+                scale: 5.
+
+        - symptom_tag: hospitalised
+                completion_time:
+                type: beta
+                a: 1.21
+                b: 1.97
+                loc: 0.08
+                scale: 12.9      
+
+        - symptom_tag: dead_hospital
+                completion_time:
+                type: constant
+                value: 0.
+
+An example of the infection outcome statistics is:
+
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{7cm}|p{7cm}|
+
+.. csv-table:: Disease/ infection outcome 
+   :file: data/infection_outcome_ratio.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1 1

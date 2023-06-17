@@ -1,4 +1,8 @@
 Data,Geography level,Example
-Comorbidities (prevalence) for female (grouped by age),`NULL`,comorbidities_female.csv
-Comorbidities (prevalence) for male (grouped by age),`NULL`,comorbidities_male.csv
-Comorbidities intensity,`NULL`,comorbidity_intensity.yaml
+Comorbidities (prevalence) for female (grouped by age),``NULL``,comorbidities_female.csv
+Comorbidities (prevalence) for male (grouped by age),``NULL``,comorbidities_male.csv
+Comorbidities intensity,``NULL``,comorbidity_intensity.yaml
+Probability of infection,``NULL``,covid19.yaml
+Infection outcome (the ratio of symptoms),``NULL``,infection_outcome_ratio.csv
+Symptom trajectory timing profile,``NULL``,symptom_trajectories.yaml
+Virus intensity,``NULL``,virus_intensity.yaml
