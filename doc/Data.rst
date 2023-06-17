@@ -1,7 +1,7 @@
 Data
 =====
 
-**JUNE_NZ** requires a number of input files, all the files below can be created by :doc:`link <Data_creation.rst>` 
+**JUNE_NZ** requires a number of input files, all the files below can be created by :doc:`link <Data_creation>`
 
 
 Population data (demography)
