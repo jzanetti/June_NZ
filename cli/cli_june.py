@@ -141,7 +141,7 @@ def main():
         disease_cfg=cfg["data"]["disease"],
         base_dir=cfg["data"]["base_dir"],
         workdir=args.workdir,
-        save_debug=True,
+        save_debug=False,
     )
 
     logger.info("Job done ...")
