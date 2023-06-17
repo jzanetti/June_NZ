@@ -59,6 +59,17 @@ Commute defines how people move across different areas
 4. Disease data
 **********
 
+Defines virus properties:
+
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
+
+.. csv-table:: Disease/Disease data
+   :file: data/data_disease.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1
+
+
 4.1 Virus intensity
 ============
 
