@@ -21,6 +21,7 @@ data:
   geography:
     geography_hierarchy: geography/geography_hierarchy_definition.csv
     super_area_location: geography/super_area_location.csv
+    super_area_name: group/commute/super_area_name.csv
     area_location: geography/area_location.csv
     area_socialeconomic_index: geography/area_socialeconomic_index.csv
     
@@ -80,7 +81,7 @@ data:
       interaction: interaction/household.yaml
     commute:
       defination:
-        super_area_name: group/commute/super_area_name.csv
+        # super_area_name: group/commute/super_area_name.csv
         transport_mode: group/commute/transport_mode.csv
         stations: group/commute/stations.yaml
         passage_seats_ratio: group/commute/passage_seats_ratio.yaml

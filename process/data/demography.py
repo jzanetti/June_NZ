@@ -1,6 +1,7 @@
 from math import ceil as math_ceil
 from os.path import join
 
+from numpy import inf, nan
 from pandas import DataFrame, concat, melt, merge, read_excel, to_numeric
 
 from process import FIXED_DATA
@@ -157,7 +158,7 @@ def write_ethnicity_profile(workdir: str, ethnicity_cfg: dict, pop: DataFrame or
             df = df.drop(["ratio", "total"], axis=1)
             # df = df.astype(int)
             # df = df.apply(math_ceil).astype(int)
-            df = df.applymap(math_ceil)
+            df = df.round().astype(int)
             dfs_after_ratio[proc_age] = df
 
         dfs = dfs_after_ratio
@@ -202,7 +203,7 @@ def write_commorbidity(workdir: str):
         data.to_csv(join(workdir, "demography", f"{proc_file_key}.csv"), index=False)
 
 
-def write_age_profile(workdir: str, age_profile_cfg: dict):
+def write_age_profile(workdir: str, age_profile_cfg: dict, pop: DataFrame or None = None):
     """Write age profile
 
     Args:
@@ -285,6 +286,27 @@ def write_age_profile(workdir: str, age_profile_cfg: dict):
     new_df = new_df.applymap(math_ceil)
 
     new_df = new_df.rename(columns={"Region": "output_area"})
+
+    # match populations
+    if pop is not None:
+        all_ages = range(101)
+        for index, row in new_df.iterrows():
+            total = sum(row[col] for col in all_ages)
+            new_df.at[index, "total"] = total
+
+        pop = pop.rename(columns={"area": "output_area"})
+        df_after_ratio = new_df.merge(pop, on="output_area")
+        df_after_ratio["ratio"] = df_after_ratio["population"] / df_after_ratio["total"]
+
+        for col in all_ages:
+            df_after_ratio[col] = df_after_ratio[col] / df_after_ratio["ratio"]
+
+        df_after_ratio.replace([inf, -inf], nan, inplace=True)
+        df_after_ratio.dropna(inplace=True)
+
+        df_after_ratio = df_after_ratio.round().astype(int)
+
+        new_df = df_after_ratio.drop(["total", "population", "ratio"], axis=1)
 
     new_df.to_csv(data_path["output"], index=False)
 

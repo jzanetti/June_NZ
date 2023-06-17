@@ -102,6 +102,7 @@ def main():
         world["data"],
         cfg["data"]["base_dir"],
         cfg["data"]["group_and_interaction"]["commute"],
+        cfg["data"]["geography"]["super_area_name"],
         args.workdir,
         save_df=cfg["save"]["world"],
     )

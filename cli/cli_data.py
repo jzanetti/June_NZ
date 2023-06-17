@@ -99,7 +99,7 @@ def main():
     logger.info("Reading configuration ...")
     cfg = read_cfg(args.cfg)
 
-    logger.info("Writing schools ...")
+    logger.info("Writing total population ...")
 
     pop = read_population(cfg["total_population"])
 
@@ -138,7 +138,7 @@ def main():
     )
 
     logger.info("Processing age profile ...")
-    age_profile = write_age_profile(args.workdir, cfg["demography"]["age_profile"])
+    age_profile = write_age_profile(args.workdir, cfg["demography"]["age_profile"], pop=pop)
 
     logger.info("Processing age profile ...")
     write_commorbidity(args.workdir)
