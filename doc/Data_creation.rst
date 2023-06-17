@@ -67,4 +67,4 @@ Note that the ``comorbidity`` is used as one of the parameters for determining t
 .. math::
    :label: eq1
 
-   E = mc^2
+   K_{(a,g)}' = \sum_{i=0}^N M_i C_{i, (a,g)}
