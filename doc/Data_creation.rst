@@ -32,7 +32,8 @@ Most configurations are defined by the variable ``FIXED_DATA``, which is located
 Comorbidities
 *********
 
-The co-morbidities are defined in ``demography`` -> ``comorbidities_female`` / ``comorbidities_male``:
+The co-morbidities are defined in ``demography`` -> ``comorbidities_female`` / ``comorbidities_male``, for example, 
+the following configuration gives the age/gender dependant comorbidities (prevalence) of two diseases (disease1 and disease2) and no-condition:
 
 .. code-block:: python
 
@@ -64,7 +65,7 @@ The co-morbidities are defined in ``demography`` -> ``comorbidities_female`` / `
 
 Note that the ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual.
 
-So the accumulated intensity of the background disease at the age ``a`` and for the gender ``g``, :math:`K_{(a,g)}'`, can be represented as:
+So the accumulated intensity of the background disease at the age :math:`a` and for the gender :math:`g` , :math:`K_{(a,g)}'`, can be represented as:
 
 .. math::
 
