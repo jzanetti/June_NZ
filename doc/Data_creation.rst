@@ -20,7 +20,7 @@ There are two types of output from ``cli_data.py``:
 - ``configuration``: the configuration to be used in **JUNE_NZ**
 
 Configuration
-********
+^^^^^^^^^^^^^^^^^^^^
 
 ``cli_data`` creates the following configurations:
 
@@ -29,32 +29,42 @@ Configuration
 
 Most configurations are defined by the variable ``FIXED_DATA``, which is located in ``process/__init__.py``
 
-- ``comorbidities``: the co-morbidities are defined in ``demography`` -> ``comorbidities_female`` / ``comorbidities_male``:
+Comorbidities
+*********
 
-        .. code-block:: python
+The co-morbidities are defined in ``demography`` -> ``comorbidities_female`` / ``comorbidities_male``:
 
-            FIXED_DATA = {
-                ...
+.. code-block:: python
 
-                "demography": {
-                    "comorbidities_female": {
-                        "comorbidity": ["disease1", "disease2", "no_condition"],
-                        5: [0, 0, 1.0],
-                        10: [0, 0, 1.0],
-                        20: [0, 0, 1.0],
-                        50: [0, 0.1, 0.9],
-                        75: [0, 0.2, 0.8],
-                        100: [0.9, 0.0, 0.1],
-                    },
-                    "comorbidities_male": {
-                        "comorbidity": ["disease1", "disease2", "no_condition"],
-                        5: [0, 0, 1.0],
-                        10: [0, 0, 1.0],
-                        20: [0, 0, 1.0],
-                        50: [0, 0.1, 0.9],
-                        75: [0, 0.2, 0.8],
-                        100: [0.9, 0.0, 0.1],
-                    },
-                }
-                ...
-            }
+    FIXED_DATA = {
+        ...
+
+        "demography": {
+            "comorbidities_female": {
+                "comorbidity": ["disease1", "disease2", "no_condition"],
+                5: [0, 0, 1.0],
+                10: [0, 0, 1.0],
+                20: [0, 0, 1.0],
+                50: [0, 0.1, 0.9],
+                75: [0, 0.2, 0.8],
+                100: [0.9, 0.0, 0.1],
+            },
+            "comorbidities_male": {
+                "comorbidity": ["disease1", "disease2", "no_condition"],
+                5: [0, 0, 1.0],
+                10: [0, 0, 1.0],
+                20: [0, 0, 1.0],
+                50: [0, 0.1, 0.9],
+                75: [0, 0.2, 0.8],
+                100: [0.9, 0.0, 0.1],
+            },
+        }
+        ...
+    }
+
+Note that the ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual.
+
+.. math::
+   :label: eq1
+
+   E = mc^2
