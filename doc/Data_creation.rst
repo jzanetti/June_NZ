@@ -63,20 +63,22 @@ the following configuration gives the age/gender dependant comorbidities (preval
         ...
     }
 
-Note that the ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual.
+.. note::
 
-So the accumulated intensity of the background disease at the age :math:`a` and for the gender :math:`g` , :math:`K_{(a,g)}'`, can be represented as:
+    Note that the ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual.
 
-.. math::
+    So the accumulated intensity of the background disease at the age :math:`a` and for the gender :math:`g` , :math:`K_{(a,g)}'`, can be represented as:
 
-   K_{(a,g)}' = \sum_{i=0}^N M_i C_{i, (a,g)}
+        .. math::
 
-Where ``N`` represents the total types of comorbidities (including “no-condition”).
+        K_{(a,g)}' = \sum_{i=0}^N M_i C_{i, (a,g)}
 
-Given a person has the comorbidity of ``j``, the intensity of this comorbidity, therefore, is :math:`M_j`. So relative intensity for ``j`` is:
+    Where :math:`N` represents the total types of comorbidities (including “no-condition”).
 
-.. math::
+    Given a person has the comorbidity of :math:`j`, the intensity of this comorbidity, therefore, is :math:`M_j`. So relative intensity for :math:`j`` is:
 
-    M_j^' = \frac{M_j}{{K_{(a,g)}'}}
+        .. math::
 
-When :math:`M_j > 1.0`, it means that this person is more likely to experience significant symptoms than average, while when :math:`M_j < 1.0`, this person is less likely to experience significant symptoms than average. 
+            M_j^' = \frac{M_j}{{K_{(a,g)}'}}
+
+    When :math:`M_j > 1.0`, it means that this person is more likely to experience significant symptoms than average, while when :math:`M_j < 1.0`, this person is less likely to experience significant symptoms than average. 
