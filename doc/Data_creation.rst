@@ -64,9 +64,7 @@ The co-morbidities are defined in ``demography`` -> ``comorbidities_female`` / `
 
 Note that the ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual.
 
-So the accumulated intensity of the background disease at the age ``a`` and for the gender ``g``, :math:`K\_(a,g)'\`, can be represented as:
-
-:math:`\frac{ \sum_{t=0}^{N}f(t,k) }{N}`
+So the accumulated intensity of the background disease at the age ``a`` and for the gender ``g``, :math:`K_{(a,g)}'`, can be represented as:
 
 .. math::
 
