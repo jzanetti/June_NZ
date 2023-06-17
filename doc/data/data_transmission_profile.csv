@@ -1,0 +1,4 @@
+Data,Geography level,Example
+Comorbidities (prevalence) for female (grouped by age),`NULL`,comorbidities_female.csv
+Comorbidities (prevalence) for male (grouped by age),`NULL`,comorbidities_male.csv
+Comorbidities intensity,`NULL`,comorbidity_intensity.yaml

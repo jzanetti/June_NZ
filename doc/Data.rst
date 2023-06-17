@@ -55,10 +55,30 @@ Commute defines how people move across different areas
 
 Disease data
 ^^^^^^^^^^^^^^^^^^^^
+
+Comorbidities
+************
+
 .. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
 
-.. csv-table:: Disease data
-   :file: data/data_disease.csv
+.. csv-table:: Comorbidities data
+   :file: data/data_comorbidities.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1
+
+To understand Comorbidities in **JUNE_NZ**, please go to :doc:`link <Data_creation>`
+
+
+Transmission profile
+************
+
+It defines the infectiousness profile for people
+
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
+
+.. csv-table:: Transmission data
+   :file: data/data_comorbidities.csv
    :header-rows: 1
    :class: longtable
    :widths: 1 1 1
