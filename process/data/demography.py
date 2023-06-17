@@ -1,8 +1,10 @@
 from math import ceil as math_ceil
-from os.path import join
+from os import makedirs
+from os.path import exists, join
 
 from numpy import inf, nan
 from pandas import DataFrame, concat, melt, merge, read_excel, to_numeric
+from yaml import dump as yaml_dump
 
 from process import FIXED_DATA
 from process.data.utils import get_raw_data
@@ -197,10 +199,23 @@ def write_commorbidity(workdir: str):
     Args:
         workdir (str): Working directory
     """
-    for proc_file_key in FIXED_DATA["demography"]:
-        proc_data = FIXED_DATA["demography"][proc_file_key]
-        data = DataFrame.from_dict(proc_data)
-        data.to_csv(join(workdir, "demography", f"{proc_file_key}.csv"), index=False)
+
+    output_dir = join(workdir, "disease")
+    if not exists(output_dir):
+        makedirs(output_dir)
+
+    for proc_file_key in FIXED_DATA["disease"]:
+        proc_data = FIXED_DATA["disease"][proc_file_key]
+
+        if not exists(output_dir):
+            makedirs(output_dir)
+
+        if proc_file_key == "comorbidities_intensity":
+            with open(join(output_dir, f"{proc_file_key}.yaml"), "w") as fid:
+                yaml_dump(proc_data, fid)
+        else:
+            data = DataFrame.from_dict(proc_data)
+            data.to_csv(join(output_dir, f"{proc_file_key}.csv"), index=False)
 
 
 def write_age_profile(workdir: str, age_profile_cfg: dict, pop: DataFrame or None = None):

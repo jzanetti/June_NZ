@@ -28,7 +28,7 @@ It defines the geography (grid) to be used in the model.
 
 .. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
 
-.. csv-table:: Population/demography data
+.. csv-table:: Geography data
    :file: data/data_geography.csv
    :header-rows: 1
    :class: longtable
@@ -46,8 +46,22 @@ Commute defines how people move across different areas
 
 .. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
 
-.. csv-table:: Population/commute data
+.. csv-table:: Group/commute data
    :file: data/data_commute.csv
    :header-rows: 1
    :class: longtable
    :widths: 1 1 1
+
+
+Disease data
+^^^^^^^^^^^^^^^^^^^^
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
+
+.. csv-table:: Disease data
+   :file: data/data_disease.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1
+
+To understand Comorbidities in **JUNE_NZ**, please go to :doc:`link <Data_creation>`
+

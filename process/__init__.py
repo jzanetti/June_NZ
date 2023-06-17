@@ -56,6 +56,7 @@ REGION_NAMES_CONVERSIONS = {
     12: "West Coast",
 }
 
+"""
 FIXED_DATA = {
     "group": {
         "household": {
@@ -75,6 +76,48 @@ FIXED_DATA = {
         "hospital": {"icu_beds_ratio": 0.1},
     },
     "demography": {
+        "comorbidities_female": {
+            "comorbidity": ["disease1", "disease2", "no_condition"],
+            5: [0, 0, 1.0],
+            10: [0, 0, 1.0],
+            20: [0, 0, 1.0],
+            50: [0, 0.1, 0.9],
+            75: [0, 0.2, 0.8],
+            100: [0.9, 0.0, 0.1],
+        },
+        "comorbidities_male": {
+            "comorbidity": ["disease1", "disease2", "no_condition"],
+            5: [0, 0, 1.0],
+            10: [0, 0, 1.0],
+            20: [0, 0, 1.0],
+            50: [0, 0.1, 0.9],
+            75: [0, 0.2, 0.8],
+            100: [0.9, 0.0, 0.1],
+        },
+        "comorbidities_intensity": {"disease1": 0.8, "disease2": 1.2, "no_condition": 1.0},
+    },
+}
+"""
+
+FIXED_DATA = {
+    "group": {
+        "household": {
+            "age_difference_couple": {
+                "age_difference": [-5, 0, 5, 10],
+                "frequency": [0.1, 0.7, 0.1, 0.1],
+            },
+            "age_difference_parent_child": {
+                "age_difference": [25, 50],
+                "0": [0.1, 0.9],
+                "1": [0.1, 0.9],
+                "2": [0.2, 0.8],
+                "3": [0.3, 0.7],
+                "4 or more": [0.3, 0.7],
+            },
+        },
+        "hospital": {"icu_beds_ratio": 0.1},
+    },
+    "disease": {
         "comorbidities_female": {
             "comorbidity": ["disease1", "disease2", "no_condition"],
             5: [0, 0, 1.0],
