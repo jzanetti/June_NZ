@@ -66,10 +66,9 @@ the following configuration gives the age/gender dependant comorbidities (preval
 
 .. note::
 
-    ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual (together with the intensity, and the default susceptibility of target virus).
-
-	The prevalence of background diseases (comorbidity) for each age & gender group :math:`C_{i,(a,g)}` (:math:`i` means the comorbidity type, :math:`a` and :math:`g` represent age and gender group, respectively)
-	The intensity of each background diseases is :math:`M_i` (:math:`i` means the comorbidity type). 
+    ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual (together with the intensity, and the default susceptibility of target virus). 
+    
+    The prevalence of background diseases (comorbidity) for each age & gender group :math:`C_{i,(a,g)}` (:math:`i` means the comorbidity type, :math:`a` and :math:`g` represent age and gender group, respectively). The intensity of each background diseases is :math:`M_i` (:math:`i` means the comorbidity type). 
 
     So the accumulated intensity of the background disease at the age :math:`a` and for the gender :math:`g` , :math:`K_{(a,g)}'`, can be represented as:
 
@@ -86,3 +85,7 @@ the following configuration gives the age/gender dependant comorbidities (preval
             M_{j}' = \frac{M_j}{{K_{(a,g)}'}}
 
     When :math:`M_j > 1.0`, it means that this person is more likely to experience significant symptoms than average, while when :math:`M_j < 1.0`, this person is less likely to experience significant symptoms than average. 
+
+    Details can be found ``june/epidemiology/infection/health_index/health_index.py``. In the function ``apply_effective_multiplier(self, probabilities, effective_multiplier)``,
+    we have the probability of having severe symptoms as ``modified_probability_severe = probability_severe * effective_multiplier`` where 
+    ``effective_multiplier`` is :math:`M_j`.
