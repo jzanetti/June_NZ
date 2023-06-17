@@ -39,7 +39,7 @@ the following configuration gives the age/gender dependant comorbidities (preval
 
 .. note::
 
-    ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual (together with the intensity, and the default susceptibility of target virus). 
+    ``comorbidity`` is used as one of the parameters for determining the symptom severity of an individual. 
     
     The prevalence of background diseases (comorbidity) for each age & gender group :math:`C_{i,(a,g)}` (:math:`i` means the comorbidity type, :math:`a` and :math:`g` represent age and gender group, respectively). The intensity of each background diseases is :math:`M_i` (:math:`i` means the comorbidity type). 
 

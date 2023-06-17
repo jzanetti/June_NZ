@@ -59,7 +59,21 @@ Commute defines how people move across different areas
 4.1 Comorbidities
 ************
 
-``Comorbidities`` are defined by the variable ``FIXED_DATA``, which is located in ``process/__init__.py``. To understand Comorbidities in **JUNE_NZ**, please go to :doc:`link <comorbidities>`
+``Comorbidities`` are defined by the variable ``FIXED_DATA``, which is located in ``process/__init__.py``. The comorbidity is one of the parameters determing the severity of symptom that
+an individual may experience.
+
+- ``comorbidities_female``: the ratio of female have certain comorbidities (grouped by ages)
+- ``comorbidities_male``: the ratio of male have certain comorbidities (grouped by ages)
+- ``comorbidities_intensity``: the intensity of the comorbidities
+
+.. note::
+
+    For example, if the average female comorbidity intensity for the age group 50 is ``1.02``:
+
+        It is caculated by :math:`[0, 0.1, 0.9] * [0.8, 1.2, 1.0]` where ``[0, 0.1, 0.9]`` is the ratio of comorbidities and ``[0.8, 1.2, 1.0]`` represents the intensities of comorbidities. 
+        
+    If a person has disease2, which has the intensity of ``1.2``, then the symptom multiplier factor for this person is ``1.2/1.02=1.18`` which is larger than 1.0, 
+    and therefore will lead to higher chance of experiencing severe symptoms.
 
 An example of the defination of ``Comorbidities`` is:
 
