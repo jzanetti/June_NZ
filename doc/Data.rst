@@ -68,9 +68,8 @@ an individual may experience.
 
 .. note::
 
-    For example, if the average female comorbidity intensity for the age group 50 is ``1.02``:
-
-        It is caculated by :math:`[0, 0.1, 0.9] * [0.8, 1.2, 1.0]` where ``[0, 0.1, 0.9]`` is the ratio of comorbidities and ``[0.8, 1.2, 1.0]`` represents the intensities of comorbidities. 
+    For example, if the average female comorbidity intensity for the age group 50 is ``1.02``: tt is caculated by ``[0, 0.1, 0.9] * [0.8, 1.2, 1.0]`` where ``[0, 0.1, 0.9]`` is the 
+    ratio of comorbidities and ``[0.8, 1.2, 1.0]`` represents the intensities of comorbidities. 
         
     If a person has disease2, which has the intensity of ``1.2``, then the symptom multiplier factor for this person is ``1.2/1.02=1.18`` which is larger than 1.0, 
     and therefore will lead to higher chance of experiencing severe symptoms.
@@ -110,4 +109,47 @@ An example of the defination of ``Comorbidities`` is:
 
 4.2 Transmission profile
 ************
+The transmssion profile determins the probability of the infection (e.g, the higher the probabilities, the more infectiousness an infector can be). 
+
+The probability of the infection is usually chosen from a ``Gamma`` profile, which is defined by ``(shape,shift,scale)``. 
+The following figures show the ``Gamma`` profile for different ``shape``, ``shift (loc)`` and ``scale``. 
+The x-axis is the value of ``shift (loc)``, which corresponds to the infection time. The y-axis is the probability of infection.
+
+.. image:: gamma_profile.jpg
+   :scale: 50 %
+   :alt: Gamma profile
+   :align: center
+
+When a person is infected, the infection time will be applied to the above ``Gamma`` function (as ``x``), and then obtain the related probability of infection. 
+
+For example, for ``COVID-19``, the following transmission profile is set up:
+
+.. code-block:: python
+
+        type:
+                'gamma'
+        shape:
+                type: normal 
+                loc: 1.56
+                scale: 0.08
+        rate:
+                type: normal 
+                loc: 0.53
+                scale: 0.03
+        shift:
+                type: normal 
+                loc: -2.12
+                scale: 0.1
+        asymptomatic_infectious_factor:
+                type: constant
+                value: 0.5
+        mild_infectious_factor:
+                type: constant
+                value: 1.
+        max_infectiousness:
+                type: lognormal
+                s: 0.5 
+                loc: 0.0
+                scale: 1. 
+
 
