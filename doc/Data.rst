@@ -115,7 +115,7 @@ The probability of the infection is usually chosen from a ``Gamma`` profile, whi
 The following figures show the ``Gamma`` profile for different ``shape``, ``shift (loc)`` and ``scale``. 
 The x-axis is the value of ``shift (loc)``, which corresponds to the infection time. The y-axis is the probability of infection.
 
-.. image:: gamma_profile.jpg
+.. image:: data/gamma_profile.jpg
    :scale: 50 %
    :alt: Gamma profile
    :align: center
