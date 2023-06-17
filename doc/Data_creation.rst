@@ -32,7 +32,7 @@ Most configurations are defined by the variable ``FIXED_DATA``, which is located
 Comorbidities
 *********
 
-The co-morbidities are defined in ``demography`` -> ``comorbidities_female`` / ``comorbidities_male``, for example, 
+The co-morbidities (prevalence) are defined in ``demography`` -> ``comorbidities_female`` / ``comorbidities_male`` / ``comorbidities_intensity``, for example, 
 the following configuration gives the age/gender dependant comorbidities (prevalence) of two diseases (disease1 and disease2) and no-condition:
 
 .. code-block:: python
@@ -59,13 +59,17 @@ the following configuration gives the age/gender dependant comorbidities (preval
                 75: [0, 0.2, 0.8],
                 100: [0.9, 0.0, 0.1],
             },
+            "comorbidities_intensity": {"disease1": 0.8, "disease2": 1.2, "no_condition": 1.0},
         }
         ...
     }
 
 .. note::
 
-    Note that the ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual.
+    ``comorbidity`` is used as one of the parameters for determining the susceptibility of an individual (together with the intensity, and the default susceptibility of target virus).
+
+	The prevalence of background diseases (comorbidity) for each age & gender group :math:`C_{i,(a,g)}` (:math:`i` means the comorbidity type, :math:`a` and :math:`g` represent age and gender group, respectively)
+	The intensity of each background diseases is :math:`M_i` (:math:`i` means the comorbidity type). 
 
     So the accumulated intensity of the background disease at the age :math:`a` and for the gender :math:`g` , :math:`K_{(a,g)}'`, can be represented as:
 
@@ -75,7 +79,7 @@ the following configuration gives the age/gender dependant comorbidities (preval
 
     Where :math:`N` represents the total types of comorbidities (including “no-condition”).
 
-    Given a person has the comorbidity of :math:`j`, the intensity of this comorbidity, therefore, is :math:`M_j`. So relative intensity for :math:`j`` is:
+    Given a person has the comorbidity of :math:`j`, the intensity of this comorbidity, therefore, is :math:`M_j`. So relative intensity for :math:`j` is:
 
         .. math::
 
