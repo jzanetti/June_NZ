@@ -140,9 +140,6 @@ def main():
     logger.info("Processing age profile ...")
     age_profile = write_age_profile(args.workdir, cfg["demography"]["age_profile"], pop=pop)
 
-    logger.info("Processing age profile ...")
-    write_commorbidity(args.workdir)
-
     # -----------------------------
     # Get group data
     # -----------------------------
@@ -198,6 +195,12 @@ def main():
     super_area_name = write_super_area_name(
         args.workdir, cfg["group"]["commute"]["super_area_name"]
     )
+
+    # -----------------------------
+    # Get disease data
+    # -----------------------------
+    logger.info("Processing age profile ...")
+    write_commorbidity(args.workdir)
 
     # -----------------------------
     # Housekeep
