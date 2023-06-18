@@ -19,6 +19,11 @@ geography:
     path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/otago730397.csv
     deps:
       geography_hierarchy_definition: geography/geography_hierarchy_definition
+  super_area_name:
+    run: true
+    path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/geographic-areas-table-2023.csv
+    deps: null
+
 
 group:
   hospital:
@@ -53,28 +58,23 @@ group:
       deps: null
   
   commute:
-    super_area_name:
-      run: true
-      path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/geographic-areas-table-2023.csv
-      deps: null
     transport_mode:
       run: true
       path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/2018-census-main-means-of-travel-to-work-by-statistical-area.csv
       deps: null
-
-  household:
-    household_number:
-      run: true
-      path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/household_composition_total.csv
-      deps: null
-  
-  others:
     workplace_and_home:
       run: true
       path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/2018-census-main-means-of-travel-to-work-by-statistical-area.csv
       deps:
         gender_profile: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/gender.csv
         geography_hierarchy_definition: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/geographic-areas-table-2023.csv
+
+
+  household:
+    household_number:
+      run: true
+      path: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/group/household_composition_total.csv
+      deps: null
 
 demography:
   age_profile:

@@ -20,6 +20,7 @@ from process.data.geography import (
     write_area_socialeconomic_index,
     write_geography_hierarchy_definition,
     write_super_area_location,
+    write_super_area_name,
 )
 from process.data.group import (
     write_company_closure,
@@ -32,9 +33,9 @@ from process.data.group import (
     write_household_number,
     write_household_student,
     write_leisures,
+    write_number_of_inter_city_stations,
     write_school,
     write_subsector_cfg,
-    write_super_area_name,
     write_transport_def,
     write_transport_mode,
     write_workplace_and_home,
@@ -125,6 +126,7 @@ def main():
     area_socialeconomic_index = write_area_socialeconomic_index(
         args.workdir, cfg["geography"]["area_socialeconomic_index"]
     )
+    super_area_name = write_super_area_name(args.workdir)
 
     # =============================
     # Get demography data
@@ -181,9 +183,10 @@ def main():
     # Get commute data
     # -----------------------------
     write_transport_def(args.workdir)
+    write_number_of_inter_city_stations(args.workdir)
     transport_mode = write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
-    super_area_name = write_super_area_name(
-        args.workdir, cfg["group"]["commute"]["super_area_name"]
+    workplace_and_home = write_workplace_and_home(
+        args.workdir, cfg["group"]["commute"]["workplace_and_home"]
     )
 
     # ----------------

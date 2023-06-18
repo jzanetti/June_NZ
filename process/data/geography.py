@@ -2,7 +2,7 @@ from logging import getLogger
 from os import remove
 from os.path import join
 
-from pandas import merge, read_csv
+from pandas import DataFrame, merge, read_csv
 
 from process import EXCLUDED_AREAS, REGION_CODES, REGION_NAMES_CONVERSIONS
 from process.data.utils import check_list, get_raw_data
@@ -163,3 +163,55 @@ def write_geography_hierarchy_definition(
     logger.info("Geography_hierarchy_definition is created ...")
 
     return {"data": data, "output": data_path["output"]}
+
+
+def write_super_area_name(workdir: str) -> dict:
+    """Write super area names
+
+    Args:
+        workdir (str): Working directory
+    """
+
+    data = {"super_area": [], "city": []}
+
+    for super_area_code in REGION_NAMES_CONVERSIONS:
+        if super_area_code == 99:
+            continue
+
+        data["super_area"].append(super_area_code)
+        data["city"].append(REGION_NAMES_CONVERSIONS[super_area_code])
+
+    df = DataFrame(data)
+
+    output_path = join(workdir, "geography", "super_area_name.csv")
+    df.to_csv(output_path, index=False)
+
+    return {"data": df, "output": output_path}
+
+    """
+    data_path = get_raw_data(
+        workdir,
+        super_area_name_cfg,
+        "super_area_name",
+        "geography",
+        force=True,
+    )
+
+    data = read_csv(data_path["raw"])
+
+    data = data[["REGC2023_code", "REGC2023_name"]]
+
+    data["REGC2023_name"] = data["REGC2023_name"].str.replace(" Region", "")
+
+    data = data.rename(columns={"REGC2023_code": "super_area", "REGC2023_name": "city"})
+
+    data = data.drop_duplicates()
+
+    data["super_area"] = data["super_area"].astype(str)
+
+    data["city"] = data["city"].replace("Manawatū-Whanganui", "Manawatu-Whanganui")
+
+    data.to_csv(data_path["output"], index=False)
+
+    return {"data": data, "output": data_path["output"]}
+    """

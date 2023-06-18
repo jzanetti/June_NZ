@@ -1,3 +1,5 @@
 Data,Geography level,Example
-Define if a travel method is public or not,``NULL``,transport_def.yaml
 How people travel (commute method) in different areas,area,transport_mode.csv
+Define if a travel method is public or not,``NULL``,transport_def.yaml
+Number of inter-state stations,super area,number_of_inter_city_stations.yaml
+How people travel across different super areas for work,super area,home_and_workplace.csv

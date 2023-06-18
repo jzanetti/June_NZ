@@ -115,7 +115,28 @@ FIXED_DATA = {
                 {"description": "Bicycle", "is_public": False},
                 {"description": "On foot", "is_public": False},
                 {"description": "Other method of travel to work", "is_public": False},
-            ]
+            ],
+            "passage_seats_ratio": 1.3,
+            "number_of_inter_city_stations": {
+                "number_of_inter_city_stations": {
+                    "Northland": 1,
+                    "Otago": 1,
+                    "Waikato": 1,
+                    "Auckland": 3,
+                    "Bay of Plenty": 1,
+                    "Manawatu-Whanganui": 1,
+                    "Southland": 1,
+                    "Hawke's Bay": 1,
+                    "Gisborne": 1,
+                    "Taranaki": 1,
+                    "Wellington": 2,
+                    "Nelson": 1,
+                    "Marlborough": 1,
+                    "Canterbury": 2,
+                    "Tasman": 1,
+                    "West Coast": 1,
+                }
+            },
         },
         "company": {
             "employees": {"employment_rate": 0.7},

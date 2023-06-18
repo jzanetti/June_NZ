@@ -270,7 +270,7 @@ def write_workplace_and_home(workdir: str, workplace_and_home_cfg: dict):
         workdir,
         workplace_and_home_cfg,
         "workplace_and_home",
-        "group/others",
+        "group/commute",
         force=True,
     )
 
@@ -382,6 +382,33 @@ def write_household_number(workdir: str, household_number_cfg: dict):
     return {"data": data, "output": data_path["output"]}
 
 
+def write_passage_seats_ratio(workdir: str):
+    """Write passage seats ratio
+
+    Args:
+        workdir (str): Working directory
+    """
+    logger.info("Not implemented yet ...")
+
+
+def write_number_of_inter_city_stations(workdir: str):
+    """Write number of inter city stations
+
+    Args:
+        workdir (str): Working directory
+    """
+    output_path = join(workdir, "group", "commute", "number_of_inter_city_stations.yaml")
+    if not exists(dirname(output_path)):
+        makedirs(dirname(output_path))
+
+    with open(output_path, "w") as fid:
+        yaml_dump(
+            FIXED_DATA["group"]["commute"]["number_of_inter_city_stations"],
+            fid,
+            default_flow_style=False,
+        )
+
+
 def write_transport_def(workdir: str):
     """Write transport defination, e.g., public or not
 
@@ -474,13 +501,8 @@ def write_transport_mode(workdir: str, transport_mode_cfg: dict):
     return {"data": data, "output": data_path["output"]}
 
 
+"""
 def write_super_area_name(workdir: str, super_area_name_cfg: dict):
-    """Write Super Area name file + number of stations
-
-    Args:
-        workdir (str): Working directory
-        super_area_name_cfg (dict): Super area name configuration
-    """
     data_path = get_raw_data(
         workdir,
         super_area_name_cfg,
@@ -506,6 +528,7 @@ def write_super_area_name(workdir: str, super_area_name_cfg: dict):
     data.to_csv(data_path["output"], index=False)
 
     return {"data": data, "output": data_path["output"]}
+"""
 
 
 def read_leed(leed_path: str, anzsic_code: DataFrame, if_rate: bool = False) -> DataFrame:

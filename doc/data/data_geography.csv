@@ -1,5 +1,6 @@
 Data,Geography level,Example
 Area latitude and longitude,area,area_location.csv
 Super area latitude and longitude,super area,super_area_location.csv
+Super area names,super area,supare_area_name.csv
 Super area and area socioeconomic_centile,"super area, area",area_socialeconomic_index.csv
 "Hierarchy of region, super area and area","region, super area, area",geography_hierarchy_definition.csv
