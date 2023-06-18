@@ -102,6 +102,21 @@ FIXED_DATA = {
 
 FIXED_DATA = {
     "group": {
+        "commute": {
+            "transport_def": [
+                {"description": "Work mainly at or from home", "is_public": False},
+                {"description": "Underground, metro, light rail, tram", "is_public": True},
+                {"description": "Train", "is_public": True},
+                {"description": "Bus, minibus or coach", "is_public": True},
+                {"description": "Taxi", "is_public": False},
+                {"description": "Motorcycle, scooter or moped", "is_public": False},
+                {"description": "Driving a car or van", "is_public": False},
+                {"description": "Passenger in a car or van", "is_public": False},
+                {"description": "Bicycle", "is_public": False},
+                {"description": "On foot", "is_public": False},
+                {"description": "Other method of travel to work", "is_public": False},
+            ]
+        },
         "company": {
             "employees": {"employment_rate": 0.7},
             "company_closure": {

@@ -128,6 +128,27 @@ Commute defines how people move across different areas
    :class: longtable
    :widths: 1 1 1
 
+Note that ``transport_def.yaml`` is defined in the variable ``FIXED_DATA``, e.g.,
+
+.. code-block:: python
+
+    FIXED_DATA = {
+        ...
+        "group": {
+            "commute": {
+                "transport_def": [
+                    {"description": "Work mainly at or from home", "is_public": False},
+                    {"description": "Underground, metro, light rail, tram", "is_public": True},
+                    
+                    ...
+
+                    {"description": "On foot", "is_public": False},
+                    {"description": "Other method of travel to work", "is_public": False},
+                ]
+            },
+        ...
+
+
 **********
 4. Disease data
 **********

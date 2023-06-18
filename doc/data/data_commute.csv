@@ -1,2 +1,3 @@
 Data,Geography level,Example
+Define if a travel method is public or not,``NULL``,transport_def.yaml
 How people travel (commute method) in different areas,area,transport_mode.csv

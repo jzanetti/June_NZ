@@ -35,6 +35,7 @@ from process.data.group import (
     write_school,
     write_subsector_cfg,
     write_super_area_name,
+    write_transport_def,
     write_transport_mode,
     write_workplace_and_home,
 )
@@ -176,6 +177,15 @@ def main():
         args.workdir, cfg["group"]["hospital"]["hospitals"]
     )  # hospital_locations
 
+    # -----------------------------
+    # Get commute data
+    # -----------------------------
+    write_transport_def(args.workdir)
+    transport_mode = write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
+    super_area_name = write_super_area_name(
+        args.workdir, cfg["group"]["commute"]["super_area_name"]
+    )
+
     # ----------------
     # School
     # ----------------
@@ -212,14 +222,6 @@ def main():
     # ----------------
     logger.info("Processing leisure ...")
     write_leisures(args.workdir)
-
-    # -----------------------------
-    # Get commute data
-    # -----------------------------
-    transport_mode = write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
-    super_area_name = write_super_area_name(
-        args.workdir, cfg["group"]["commute"]["super_area_name"]
-    )
 
     # -----------------------------
     # Get disease data

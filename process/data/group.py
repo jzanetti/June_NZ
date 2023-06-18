@@ -382,6 +382,20 @@ def write_household_number(workdir: str, household_number_cfg: dict):
     return {"data": data, "output": data_path["output"]}
 
 
+def write_transport_def(workdir: str):
+    """Write transport defination, e.g., public or not
+
+    Args:
+        workdir (str): Working directory
+    """
+    output_path = join(workdir, "group", "commute", "transport_def.yaml")
+    if not exists(dirname(output_path)):
+        makedirs(dirname(output_path))
+
+    with open(output_path, "w") as fid:
+        yaml_dump(FIXED_DATA["group"]["commute"]["transport_def"], fid, default_flow_style=False)
+
+
 def write_transport_mode(workdir: str, transport_mode_cfg: dict):
     """Write Transport Model file
 
