@@ -107,7 +107,7 @@ It defines the hospital information used in the model
 .. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
 
 .. csv-table:: Hospital data
-   :file: data/data_hospital.csv
+   :file: data/data_hospitals.csv
    :header-rows: 1
    :class: longtable
    :widths: 1 1 1
@@ -141,22 +141,6 @@ Defines virus properties:
    :header-rows: 1
    :class: longtable
    :widths: 1 1 1
-
-
-4.1 Virus intensity
-============
-
-The virus intensity is a parameter that influences the severity of symptoms. 
-As the intensity value increases, the likelihood of an individual experiencing more severe symptoms also increases. 
-This can be achieved by elevating the probability of severe symptoms in addition to the 'infection_outcome' input data."
-
-An example of the virus intensity is:
-
-.. code-block:: python
-
-        Covid19: 1.3 # 170852960
-        B117: 1.5 # 37224668
-        B16172: 1.5 # 76677444
 
 
 4.1 Comorbidities
@@ -209,79 +193,24 @@ An example of the defination of ``Comorbidities`` is:
     }
 
 
-
-4.2 Transmission profile
+4.2 Virus intensity
 ============
 
+The virus intensity is a parameter that influences the severity of symptoms. 
+As the intensity value increases, the likelihood of an individual experiencing more severe symptoms also increases. 
+This can be achieved by elevating the probability of severe symptoms in addition to the 'infection_outcome' input data."
 
-4.2.1 Base probability of infection
-----------------
-The transmssion profile determins the probability of the infection (e.g, the higher the probabilities, the more infectiousness an infector can be). 
-
-The probability of the infection is usually chosen from a ``Gamma`` profile, which is defined by ``(shape,shift,scale)``. 
-The following figures show the ``Gamma`` profile for different ``shape``, ``shift (loc)`` and ``scale``. 
-The x-axis is the value of ``shift (loc)``, which corresponds to the infection time. The y-axis is the probability of infection.
-
-.. image:: data/gamma_profile.png
-   :scale: 100%
-   :alt: Gamma profile
-   :align: center
-
-When a person is infected, the infection time will be applied to the above ``Gamma`` function (as ``x``), and then obtain the related probability of infection. 
-
-
-4.2.1 Adjust max infectiousness
-----------------
-
-The maximum infectiousness from the probability of infection is adjusted with the argument ``max_infectiousness``. For an infector, a random
-value will be drawn from the ``lognormal`` function, and it will be multiplied to the probability of function. 
-
-The ``lognormal`` is determined by parameters of ``shape``, ``loc`` and ``scale``.
-For example, the following figures show the ``lognormal`` profile:
-
-.. image:: data/lognormal_profile.png
-   :scale: 100%
-   :alt: Lognormal profile
-   :align: center
-
-4.2.2 Adjust mild/asymptomatic infectiousness
-----------------
-
-We can adjust the the probability of infection based on a person's maximum symptom. For example, if the maximum symtom is ``asymptomatic``, we can
-reduce the probability of infection profile by 50%.
-
-An example for ``COVID-19`` transmission is set up as:
+An example of the virus intensity is:
 
 .. code-block:: python
 
-        type:
-                'gamma'
-        shape:
-                type: normal 
-                loc: 1.56
-                scale: 0.08
-        rate:
-                type: normal 
-                loc: 0.53
-                scale: 0.03
-        shift:
-                type: normal 
-                loc: -2.12
-                scale: 0.1
-        asymptomatic_infectious_factor:
-                type: constant
-                value: 0.5
-        mild_infectious_factor:
-                type: constant
-                value: 1.
-        max_infectiousness:
-                type: lognormal
-                s: 0.5 
-                loc: 0.0
-                scale: 1. 
+        Covid19: 1.3 # 170852960
+        B117: 1.5 # 37224668
+        B16172: 1.5 # 76677444
 
 
-4.3 Symptom trajectory
+
+4.3 Symptom trajectory (infection outcome)
 ============
 
 For the symptom trajectory, it is defined by a set of distribution functions (e.g., beta, log-normal etc.). 
@@ -307,11 +236,32 @@ Among this trajectory, at the stage of ``mild (-1)``, we create samples from a `
 (e.g., ``shape=0.55``, ``loc=0.0``, ``scale=5.0``), a random number is drawn from these samples, 
 and it represents the timing for the infection (or we can understand it as the end time for the stage of symptom).
 
-The chance of having a symptom is determined by:
+- The chance of having a symptom is determined by:
 
-- Comorbidities (see the section of comorbidities for details)
-- Input infection outcome statistics (e.g., the percentage of symptoms that a person may experience)
-- The target virus intnsity
+    - Comorbidities (see the Section 4.1 of comorbidities for details)
+    - Input infection outcome statistics (e.g., the percentage of symptoms that a person may experience, see Sectoin 4.3.1)
+    - The target virus intnsity (see Section 4.2)
+
+- How long the sympton will last is dependant on:
+
+    - The symptom trajectory (see Sectoin 4.3.2)
+
+4.3.1 Input infection outcome statistics
+---------
+
+An example of the infection outcome statistics is:
+
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{7cm}|p{7cm}|
+
+.. csv-table:: Disease/ infection outcome 
+   :file: data/infection_outcome_ratio.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1 1
+
+
+4.3.2 Symptom trajectory (infection outcome)
+---------
 
 An example of the symptom trajectory is:
 
@@ -347,12 +297,72 @@ An example of the symptom trajectory is:
                 type: constant
                 value: 0.
 
-An example of the infection outcome statistics is:
 
-.. tabularcolumns:: |p{5cm}|p{7cm}|p{7cm}|p{7cm}|
+4.4 Transmission profile
+============
 
-.. csv-table:: Disease/ infection outcome 
-   :file: data/infection_outcome_ratio.csv
-   :header-rows: 1
-   :class: longtable
-   :widths: 1 1 1 1
+4.4.1 Base probability of infection
+----------------
+The transmssion profile determins the probability of the infection (e.g, the higher the probabilities, the more infectiousness an infector can be). 
+
+The probability of the infection is usually chosen from a ``Gamma`` profile, which is defined by ``(shape,shift,scale)``. 
+The following figures show the ``Gamma`` profile for different ``shape``, ``shift (loc)`` and ``scale``. 
+The x-axis is the value of ``shift (loc)``, which corresponds to the infection time. The y-axis is the probability of infection.
+
+.. image:: data/gamma_profile.png
+   :scale: 100%
+   :alt: Gamma profile
+   :align: center
+
+When a person is infected, the infection time will be applied to the above ``Gamma`` function (as ``x``), and then obtain the related probability of infection. 
+
+
+4.4.2 Adjust max infectiousness
+----------------
+
+The maximum infectiousness from the probability of infection is adjusted with the argument ``max_infectiousness``. For an infector, a random
+value will be drawn from the ``lognormal`` function, and it will be multiplied to the probability of function. 
+
+The ``lognormal`` is determined by parameters of ``shape``, ``loc`` and ``scale``.
+For example, the following figures show the ``lognormal`` profile:
+
+.. image:: data/lognormal_profile.png
+   :scale: 100%
+   :alt: Lognormal profile
+   :align: center
+
+4.4.3 Adjust mild/asymptomatic infectiousness
+----------------
+
+We can adjust the the probability of infection based on a person's maximum symptom. For example, if the maximum symtom is ``asymptomatic``, we can
+reduce the probability of infection profile by 50%.
+
+An example for ``COVID-19`` transmission is set up as:
+
+.. code-block:: python
+
+        type:
+                'gamma'
+        shape:
+                type: normal 
+                loc: 1.56
+                scale: 0.08
+        rate:
+                type: normal 
+                loc: 0.53
+                scale: 0.03
+        shift:
+                type: normal 
+                loc: -2.12
+                scale: 0.1
+        asymptomatic_infectious_factor:
+                type: constant
+                value: 0.5
+        mild_infectious_factor:
+                type: constant
+                value: 1.
+        max_infectiousness:
+                type: lognormal
+                s: 0.5 
+                loc: 0.0
+                scale: 1. 
