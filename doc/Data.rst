@@ -42,6 +42,79 @@ It defines the geography (grid) to be used in the model.
 
 Group data contains different types of activities that an individual might do every day.
 
+3.1 Company
+===============
+It defines the companies used in the model
+
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
+
+.. csv-table:: Company data
+   :file: data/data_company.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1
+
+In the above data, ``Number of employers by firm size``, ``Number of employers by sector type`` and ``Number of employees``
+are obtained from external dataset, while the ``company clousre`` and ``sub-sector configuration`` are defined in the variable ``FIXED_DATA``. For example,
+
+
+.. code-block:: python
+
+        "company": {
+            "employees": {"employment_rate": 0.7},
+            "company_closure": {
+                "company_closure": {
+                    "sectors": {
+                        "A": {"key_worker": 1.0, "furlough": 0.0, "random": 0.0},
+                        "P": {"key_worker": 0.0, "furlough": 0.0833, "random": 0.9167},
+                        ...
+                        "O": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "R": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "S": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                    }
+                }
+            },
+            "subsector_cfg": {
+                "age_range": [18, 64],
+                "sub_sector_ratio": {"P": {"m": 0.4, "f": 0.6}, "Q": {"m": 0.5, "f": 0.5}},
+                "sub_sector_distr": {
+                    "P": {
+                        "label": ["teacher_secondary", "teacher_primary"],
+                        "m": [0.72526887, 0.27473113],
+                        "f": [0.72526887, 0.27473113],
+                    },
+                    ...
+                    "Q": {
+                        "label": ["doctor", "nurse"],
+                        "m": [0.65350126, 0.34649874],
+                        "f": [0.16103136, 0.83896864],
+                    },
+                },
+            },
+        },
+
+
+.. note::
+
+        The ``Number of employees`` from NZStats somehome is smaller than the expected value compared to the NZ population. Therefore, in ``FIXED_DATA``
+        we have a variable called ``employment_rate``, which is a factor makes the total ``number of employees`` matches to the assumed ``employment rate``.
+
+
+3.2 Hospital
+===============
+It defines the hospital information used in the model
+
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
+
+.. csv-table:: Hospital data
+   :file: data/data_hospital.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1
+
+The information would include the hospital address (latitude and longitude), number of beds and number of ICU beds.
+
+
 3.1 Commute
 ===============
 

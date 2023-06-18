@@ -99,8 +99,53 @@ FIXED_DATA = {
 }
 """
 
+
 FIXED_DATA = {
     "group": {
+        "company": {
+            "employees": {"employment_rate": 0.7},
+            "company_closure": {
+                "company_closure": {
+                    "sectors": {
+                        "A": {"key_worker": 1.0, "furlough": 0.0, "random": 0.0},
+                        "P": {"key_worker": 0.0, "furlough": 0.0833, "random": 0.9167},
+                        "Q": {"key_worker": 0.0, "furlough": 0.0769, "random": 0.9231},
+                        "B": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "C": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "D": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "E": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "F": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "G": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "H": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "I": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "J": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "K": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "L": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "M": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "N": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "O": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "R": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                        "S": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
+                    }
+                }
+            },
+            "subsector_cfg": {
+                "age_range": [18, 64],
+                "sub_sector_ratio": {"P": {"m": 0.4, "f": 0.6}, "Q": {"m": 0.5, "f": 0.5}},
+                "sub_sector_distr": {
+                    "P": {
+                        "label": ["teacher_secondary", "teacher_primary"],
+                        "m": [0.72526887, 0.27473113],
+                        "f": [0.72526887, 0.27473113],
+                    },
+                    "Q": {
+                        "label": ["doctor", "nurse"],
+                        "m": [0.65350126, 0.34649874],
+                        "f": [0.16103136, 0.83896864],
+                    },
+                },
+            },
+        },
         "household": {
             "age_difference_couple": {
                 "age_difference": [-5, 0, 5, 10],

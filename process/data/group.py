@@ -10,6 +10,7 @@ from numpy import nan as numpy_nan
 from numpy import radians, sin, sqrt
 from pandas import DataFrame, merge, pivot_table, read_csv, read_excel
 from scipy.spatial.distance import cdist
+from yaml import dump as yaml_dump
 
 from process import FIXED_DATA, REGION_NAMES_CONVERSIONS, SCHOOL_AGE_TABLE
 from process.data.osm import get_data_from_osm
@@ -152,7 +153,7 @@ def write_household_communal(workdir: str, pop: DataFrame):
     return {"data": df, "output": output}
 
 
-def write_hospital_locations(workdir: str, hospital_locations_cfg: dict):
+def write_hospitals(workdir: str, hospital_locations_cfg: dict):
     """Write hospital locations
 
     Args:
@@ -162,7 +163,7 @@ def write_hospital_locations(workdir: str, hospital_locations_cfg: dict):
     data_path = get_raw_data(
         workdir,
         hospital_locations_cfg,
-        "hospital_locations",
+        "hospitals",
         "group/hospital",
         force=True,
     )
@@ -611,7 +612,27 @@ def read_anzsic_code(anzsic06_code_path: str) -> DataFrame:
     return anzsic_code
 
 
-def write_sectors_by_super_area(workdir: str, sectors_by_super_area_cfg: dict):
+def write_subsector_cfg(workdir: str):
+    """Write company subsector configuration
+
+    Args:
+        workdir (str): Working directory
+    """
+    with open(join(workdir, "group", "company", "subsector_cfg.yaml"), "w") as fid:
+        yaml_dump(FIXED_DATA["group"]["company"]["subsector_cfg"], fid, default_flow_style=False)
+
+
+def write_company_closure(workdir: str):
+    """Write company closure file
+
+    Args:
+        workdir (str): Working directory
+    """
+    with open(join(workdir, "group", "company", "company_closure.yaml"), "w") as fid:
+        yaml_dump(FIXED_DATA["group"]["company"]["company_closure"], fid, default_flow_style=False)
+
+
+def write_employers_by_sector(workdir: str, employers_by_sector_cfg: dict):
     """Write number of employers by sectors for super area
 
     Args:
@@ -620,8 +641,8 @@ def write_sectors_by_super_area(workdir: str, sectors_by_super_area_cfg: dict):
     """
     data_path = get_raw_data(
         workdir,
-        sectors_by_super_area_cfg,
-        "sectors_by_super_area",
+        employers_by_sector_cfg,
+        "employers_by_sector",
         "group/company",
         force=True,
     )
@@ -644,8 +665,8 @@ def write_sectors_by_super_area(workdir: str, sectors_by_super_area_cfg: dict):
     return {"data": df_pivot, "output": data_path["output"]}
 
 
-def write_employees_by_super_area(workdir: str, employees_by_super_area_cfg: dict):
-    """Write number of employees by age for super area
+def write_employers_by_firm_size(workdir: str, employers_by_firm_size_cfg: dict):
+    """Write number of employers by firm size
 
     Args:
         workdir (str): _description_
@@ -653,8 +674,8 @@ def write_employees_by_super_area(workdir: str, employees_by_super_area_cfg: dic
     """
     data_path = get_raw_data(
         workdir,
-        employees_by_super_area_cfg,
-        "employees_by_super_area",
+        employers_by_firm_size_cfg,
+        "employers_by_firm_size",
         "group/company",
         force=True,
     )
@@ -692,12 +713,12 @@ def write_employees_by_super_area(workdir: str, employees_by_super_area_cfg: dic
     return {"data": df_pivot, "output": data_path["output"]}
 
 
-def write_sectors_employee_genders(workdir: str, sectors_employee_genders_cfg: dict):
+def write_employees(workdir: str, employees_cfg: dict, pop: DataFrame or None = None):
     """Write the number of employees by gender for different area
 
     Args:
         workdir (str): Working directory
-        sectors_employee_genders_cfg (dict): Configuration
+        employees_cfg (dict): Configuration
     """
 
     def _rename_column(column_name):
@@ -712,8 +733,8 @@ def write_sectors_employee_genders(workdir: str, sectors_employee_genders_cfg: d
 
     data_path = get_raw_data(
         workdir,
-        sectors_employee_genders_cfg,
-        "sectors_employee_genders",
+        employees_cfg,
+        "employees",
         "group/company",
         force=True,
     )
@@ -778,8 +799,21 @@ def write_sectors_employee_genders(workdir: str, sectors_employee_genders_cfg: d
 
     df = data_sa2.drop(columns=industrial_codes_with_genders)
 
+    if pop is not None:
+        total_people_target = int(
+            pop["population"].sum()
+            * FIXED_DATA["group"]["company"]["employees"]["employment_rate"]
+        )
+        total_people_current = df["ec_count"].sum()
+        people_factor = total_people_target / total_people_current
+
+        df["Male"] = df["Male"] * people_factor
+        df["Female"] = df["Female"] * people_factor
+        df["ec_count"] = df["ec_count"] * people_factor
+
     df["Male"] = df["Male"].astype("int")
     df["Female"] = df["Female"].astype("int")
+    df["ec_count"] = df["ec_count"].astype("int")
 
     df_pivot = pivot_table(df, index="area", columns="anzsic06", values=["Male", "Female"])
 

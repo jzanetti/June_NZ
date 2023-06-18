@@ -1,0 +1,6 @@
+Data,Geography level,Example
+Number of employers by firm size,super area,employers_by_firm_size.csv
+Number of employers by sector type,super area,sectors_by_sector.csv
+Number of employees by sector and age,area,employees.csv
+When company close, who will be the key worker etc.,``NULL``,company_closure.yaml
+Sub-sector configuration,``NULL``,subsector_cfg.yaml

@@ -22,16 +22,18 @@ from process.data.geography import (
     write_super_area_location,
 )
 from process.data.group import (
-    write_employees_by_super_area,
-    write_hospital_locations,
+    write_company_closure,
+    write_employees,
+    write_employers_by_firm_size,
+    write_employers_by_sector,
+    write_hospitals,
     write_household_age_difference,
     write_household_communal,
     write_household_number,
     write_household_student,
     write_leisures,
     write_school,
-    write_sectors_by_super_area,
-    write_sectors_employee_genders,
+    write_subsector_cfg,
     write_super_area_name,
     write_transport_mode,
     write_workplace_and_home,
@@ -102,10 +104,9 @@ def main():
     logger.info("Writing total population ...")
 
     pop = read_population(cfg["total_population"])
-
-    # -----------------------------
+    # =============================
     # Get geography data
-    # -----------------------------
+    # =============================
     logger.info("Processing geography_hierarchy_definition ...")
     geography_hierarchy_definition = write_geography_hierarchy_definition(
         args.workdir, cfg["geography"]["geography_hierarchy_definition"]
@@ -124,9 +125,9 @@ def main():
         args.workdir, cfg["geography"]["area_socialeconomic_index"]
     )
 
-    # -----------------------------
+    # =============================
     # Get demography data
-    # -----------------------------
+    # =============================
     logger.info("Processing gender_profile_female_ratio ...")
     gender_profile_female_ratio = write_gender_profile_female_ratio(
         args.workdir, cfg["demography"]["gender_profile_female_ratio"]
@@ -140,32 +141,50 @@ def main():
     logger.info("Processing age profile ...")
     age_profile = write_age_profile(args.workdir, cfg["demography"]["age_profile"], pop=pop)
 
-    # -----------------------------
+    # =============================
     # Get group data
-    # -----------------------------
-    logger.info("Processing sectors_employee_genders and employees_by_super_area")
-    sectors_employee_genders = write_sectors_employee_genders(
-        args.workdir, cfg["group"]["company"]["sectors_employee_genders"]
-    )
+    # =============================
+    # ----------------
+    # Company
+    # ----------------
+    logger.info("Processing employees")
+    employees = write_employees(
+        args.workdir, cfg["group"]["company"]["employees"], pop=pop
+    )  # sectors_employee_genders
 
-    logger.info("Processing employees_by_super_area")
-    employees_by_super_area = write_employees_by_super_area(
-        args.workdir, cfg["group"]["company"]["employees_by_super_area"]
-    )
+    logger.info("Processing employers_by_firm_size")
+    employers_by_firm_size = write_employers_by_firm_size(
+        args.workdir, cfg["group"]["company"]["employers_by_firm_size"]
+    )  # employees_by_super_area
 
-    logger.info("Processing sectors_by_super_area")
-    sectors_by_super_area = write_sectors_by_super_area(
-        args.workdir, cfg["group"]["company"]["sectors_by_super_area"]
-    )
+    logger.info("Processing employers_by_sector")
+    employers_by_sector = write_employers_by_sector(
+        args.workdir, cfg["group"]["company"]["employers_by_sector"]
+    )  # sectors_by_super_area
 
-    logger.info("Processing hospital_locations")
-    hospital_locations = write_hospital_locations(
-        args.workdir, cfg["group"]["hospital"]["hospital_locations"]
-    )
+    logger.info("Processing company_closure")
+    write_company_closure(args.workdir)
 
+    logger.info("Processing subsector_cfg")
+    write_subsector_cfg(args.workdir)
+
+    # ----------------
+    # Hospital
+    # ----------------
+    logger.info("Processing hospitals")
+    hospitals = write_hospitals(
+        args.workdir, cfg["group"]["hospital"]["hospitals"]
+    )  # hospital_locations
+
+    # ----------------
+    # School
+    # ----------------
     logger.info("Processing schools")
     schools = write_school(args.workdir, cfg["group"]["school"]["schools"])
 
+    # ----------------
+    # Household
+    # ----------------
     logger.info("Processing household age difference ...")
     write_household_age_difference(args.workdir)
 
@@ -174,17 +193,23 @@ def main():
         args.workdir, cfg["group"]["household"]["household_number"]
     )
 
-    logger.info("Processing workplace_and_home ...")
-    workplace_and_home = write_workplace_and_home(
-        args.workdir, cfg["group"]["others"]["workplace_and_home"]
-    )
-
     logger.info("Processing household_student ...")
     household_student = write_household_student(args.workdir, pop)
 
     logger.info("Processing household_communal ...")
     household_communal = write_household_communal(args.workdir, pop)
 
+    # ----------------
+    # Workplace and home
+    # ----------------
+    logger.info("Processing workplace_and_home ...")
+    workplace_and_home = write_workplace_and_home(
+        args.workdir, cfg["group"]["others"]["workplace_and_home"]
+    )
+
+    # ----------------
+    # Leisure
+    # ----------------
     logger.info("Processing leisure ...")
     write_leisures(args.workdir)
 
