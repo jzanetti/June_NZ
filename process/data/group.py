@@ -26,7 +26,6 @@ def write_leisiure_def(workdir: str):
         workdir (str): Working directory
     """
     for proc_file_key in ["cinema", "grocery", "gym", "pub"]:
-
         output_path = join(workdir, "group", "leisure", "cfg", f"{proc_file_key}.yaml")
 
         with open(output_path, "w") as fid:
@@ -449,6 +448,20 @@ def write_number_of_inter_city_stations(workdir: str):
             fid,
             default_flow_style=False,
         )
+
+
+def write_passage_seats_ratio(workdir: str):
+    """Write passage seats ratio
+
+    Args:
+        workdir (str): Working directory
+    """
+    output_path = join(workdir, "group", "commute", "passage_seats_ratio.yaml")
+    if not exists(dirname(output_path)):
+        makedirs(dirname(output_path))
+
+    with open(output_path, "w") as fid:
+        yaml_dump(FIXED_DATA["group"]["commute"]["transport_def"], fid, default_flow_style=False)
 
 
 def write_transport_def(workdir: str):

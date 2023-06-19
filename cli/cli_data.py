@@ -42,6 +42,7 @@ from process.data.group import (
     write_transport_mode,
     write_workplace_and_home,
 )
+from process.data.interaction import write_interaction
 from process.data.utils import housekeeping, postproc
 from process.utils import read_cfg, setup_logging
 
@@ -232,6 +233,11 @@ def main():
     logger.info("Processing leisure ...")
     write_leisures(args.workdir)
     write_leisiure_def(args.workdir)
+
+    # =============================
+    # Get interaction data
+    # =============================
+    write_interaction(args.workdir)
 
     # =============================
     # Get disease data

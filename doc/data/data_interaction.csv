@@ -1,0 +1,11 @@
+Data,Geography level,Example
+Base interaction intensity and susceptibilities,``NULL``,general.yaml
+Cinema interaction matrix,``NULL``,cinema.csv
+Company interaction matrix,``NULL``,company.csv
+Grocery interaction matrix,``NULL``,grocery.csv
+Gym interaction matrix,``NULL``,gym.csv
+Hospital interaction matrix,``NULL``,hospital.csv
+Household interaction matrix,``NULL``,household.csv
+Pub interaction matrix,``NULL``,pub.csv
+School interaction matrix,``NULL``,school.csv
+"Commute (city_transport, and inter_city_transport) interaction matrix",``NULL``,school.csv

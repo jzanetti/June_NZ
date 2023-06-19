@@ -464,6 +464,125 @@ FIXED_DATA = {
             },
         },
     },
+    "interaction": {
+        "contact_matrices": {
+            "commute": {
+                "city_transport": {
+                    "contacts": [[6]],
+                    "proportion_physical": [[0.07]],
+                    "characteristic_time": 2,
+                    "type": "Age",
+                    "bins": [0, 100],
+                },
+                "inter_city_transport": {
+                    "contacts": [[4]],
+                    "proportion_physical": [[0.05]],
+                    "characteristic_time": 2,
+                    "type": "Age",
+                    "bins": [0, 100],
+                },
+            },
+            "grocery": {
+                "grocery": {
+                    "contacts": [[1.5]],
+                    "proportion_physical": [[0.12]],
+                    "characteristic_time": 3,
+                    "type": "Age",
+                    "bins": [0, 100],
+                }
+            },
+            "pub": {
+                "pub": {
+                    "contacts": [[3]],
+                    "proportion_physical": [[0.12]],
+                    "characteristic_time": 3,
+                    "type": "Age",
+                    "bins": [0, 100],
+                }
+            },
+            "cinema": {
+                "cinema": {
+                    "contacts": [[3]],
+                    "proportion_physical": [[0.12]],
+                    "characteristic_time": 3,
+                    "type": "Age",
+                    "bins": [0, 100],
+                }
+            },
+            "company": {
+                "company": {
+                    "contacts": [[4.8]],
+                    "proportion_physical": [[0.07]],
+                    "characteristic_time": 8,
+                    "type": "Discrete",
+                    "bins": ["workers"],
+                }
+            },
+            "household": {
+                "household": {
+                    "contacts": [
+                        [1.368, 1.297, 1.485, 1.485],
+                        [1.302, 2.477, 1.312, 1.312],
+                        [1.302, 0.928, 1.192, 1.192],
+                        [1.302, 0.928, 1.192, 1.305],
+                    ],
+                    "proportion_physical": [
+                        [0.79, 0.7, 0.7, 0.7],
+                        [0.7, 0.34, 0.4, 0.4],
+                        [0.7, 0.4, 0.62, 0.62],
+                        [0.7, 0.62, 0.62, 0.45],
+                    ],
+                    "characteristic_time": 12,
+                    "type": "Discrete",
+                    "bins": ["kids", "young_adults", "adults", "old_adults"],
+                }
+            },
+            "gym": {
+                "gym": {
+                    "contacts": [[3]],
+                    "proportion_physical": [[0.12]],
+                    "characteristic_time": 3,
+                    "type": "Age",
+                    "bins": [0, 100],
+                }
+            },
+            "school": {
+                "school": {
+                    "contacts": [[5, 15], [0.75, 2.5]],
+                    "proportion_physical": [[0.05, 0.08], [0.08, 0.15]],
+                    "xi": 0.3,
+                    "characteristic_time": 8,
+                    "type": "Discrete",
+                    "bins": ["teachers", "students"],
+                }
+            },
+            "hospital": {
+                "hospital": {
+                    "contacts": [[5.0, 10.0, 10.0], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0]],
+                    "proportion_physical": [[0.05, 1.0, 1.0], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0]],
+                    "characteristic_time": 8,
+                    "type": "Discrete",
+                    "bins": ["workers", "patients", "icu_patients"],
+                }
+            },
+        },
+        "general": {
+            "susceptibilities": {"0-13": 0.5, "13-100": 1.0},
+            "alpha_physical": 2.0,
+            "betas": {
+                "hospital": 0.1168,
+                "company": 0.371,
+                "household": 0.208,
+                "city_transport": 0.107969,
+                "inter_city_transport": 0.383,
+                "school": 0.07,
+                "pub": 0.42941,
+                "gym": 0.42941,
+                "grocery": 0.04137,
+                "cinema": 0.157461,
+            },
+        },
+    },
 }
 
 
