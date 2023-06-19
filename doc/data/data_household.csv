@@ -1,0 +1,8 @@
+Data,Geography level,Example
+Age difference for parents-children,super area,age_difference_parent_child.csv
+Age difference for couple,super area,age_difference_couple.csv
+Number of regular household (e.g., with different household composition),area,household.csv
+Regular household defination,`NULL`,household_def.yaml
+Number of communal household,area,household_commual.csv
+Number of student only household (e.g., dormitory),area,household_student.csv
+

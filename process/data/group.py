@@ -345,10 +345,35 @@ def write_household_age_difference(workdir: str):
     Args:
         workdir (str): Working directory
     """
-    for proc_file_key in FIXED_DATA["group"]["household"]:
+
+    for proc_file_key in ["age_difference_couple", "age_difference_parent_child"]:
         proc_data = FIXED_DATA["group"]["household"][proc_file_key]
         data = DataFrame.from_dict(proc_data)
-        data.to_csv(join(workdir, "group/household", f"{proc_file_key}.csv"), index=False)
+
+        output_path = join(workdir, "group/household", f"{proc_file_key}.csv")
+
+        if not exists(dirname(output_path)):
+            makedirs(dirname(output_path))
+
+        data.to_csv(output_path, index=False)
+
+
+def write_household_def(workdir: str):
+    """Write household defination
+
+    Args:
+        workdir (str): Working directory
+    """
+    output_path = join(workdir, "group", "household", "household_def.yaml")
+    if not exists(dirname(output_path)):
+        makedirs(dirname(output_path))
+
+    with open(output_path, "w") as fid:
+        yaml_dump(
+            FIXED_DATA["group"]["household"]["household_def"],
+            fid,
+            default_flow_style=False,
+        )
 
 
 def write_household_number(workdir: str, household_number_cfg: dict):

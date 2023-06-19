@@ -30,6 +30,7 @@ from process.data.group import (
     write_hospitals,
     write_household_age_difference,
     write_household_communal,
+    write_household_def,
     write_household_number,
     write_household_student,
     write_leisures,
@@ -128,6 +129,8 @@ def main():
     )
     super_area_name = write_super_area_name(args.workdir)
 
+    # write_student_household(args.workdir, geography_hierarchy_definition)
+
     # =============================
     # Get demography data
     # =============================
@@ -171,14 +174,6 @@ def main():
     logger.info("Processing subsector_cfg")
     write_subsector_cfg(args.workdir)
 
-    # ----------------
-    # Hospital
-    # ----------------
-    logger.info("Processing hospitals")
-    hospitals = write_hospitals(
-        args.workdir, cfg["group"]["hospital"]["hospitals"]
-    )  # hospital_locations
-
     # -----------------------------
     # Get commute data
     # -----------------------------
@@ -188,12 +183,6 @@ def main():
     workplace_and_home = write_workplace_and_home(
         args.workdir, cfg["group"]["commute"]["workplace_and_home"]
     )
-
-    # ----------------
-    # School
-    # ----------------
-    logger.info("Processing schools")
-    schools = write_school(args.workdir, cfg["group"]["school"]["schools"])
 
     # ----------------
     # Household
@@ -206,6 +195,8 @@ def main():
         args.workdir, cfg["group"]["household"]["household_number"]
     )
 
+    household_number = write_household_def(args.workdir)
+
     logger.info("Processing household_student ...")
     household_student = write_household_student(args.workdir, pop)
 
@@ -213,12 +204,18 @@ def main():
     household_communal = write_household_communal(args.workdir, pop)
 
     # ----------------
-    # Workplace and home
+    # Hospital
     # ----------------
-    logger.info("Processing workplace_and_home ...")
-    workplace_and_home = write_workplace_and_home(
-        args.workdir, cfg["group"]["others"]["workplace_and_home"]
-    )
+    logger.info("Processing hospitals")
+    hospitals = write_hospitals(
+        args.workdir, cfg["group"]["hospital"]["hospitals"]
+    )  # hospital_locations
+
+    # ----------------
+    # School
+    # ----------------
+    logger.info("Processing schools")
+    schools = write_school(args.workdir, cfg["group"]["school"]["schools"])
 
     # ----------------
     # Leisure

@@ -100,7 +100,56 @@ are obtained from external dataset, while the ``company clousre`` and ``sub-sect
         we have a variable called ``employment_rate``, which is a factor makes the total ``number of employees`` matches to the assumed ``employment rate``.
 
 
-3.2 Hospital
+3.2 Household
+===============
+It defines the household information used in the model
+
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
+
+.. csv-table:: Household data
+   :file: data/data_household.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1
+
+The household information come from both external dataset and ``FIXED_DATA``:
+
+For example, 
+
+- for setting up the age differences between couples and parents-children, we have:
+
+        .. code-block:: python
+
+                FIXED_DATA = {
+                    "group": {
+                        ......
+                        "household": {
+                            "age_difference_couple": {
+                                "age_difference": [-5, 0, 5, 10],
+                                "frequency": [0.1, 0.7, 0.1, 0.1],
+                            },
+                            "age_difference_parent_child": {
+                                "age_difference": [25, 50],
+                                "0": [0.1, 0.9],
+                                "1": [0.1, 0.9],
+                                "2": [0.2, 0.8],
+                                "3": [0.3, 0.7],
+                                "4 or more": [0.3, 0.7],
+                            },
+                        },
+                    ...
+
+    where the above defines the assumed age differences.
+
+- The ``number of household`` are obtained from NZStats, note that since there is a lack of detailed information, the only household type ``=0 >=0 >=0 >=0 >=0`` is used.
+
+- We also set the number of commnual and student househodls to zero, since the lack of detailed dataset.
+
+
+
+
+
+3.3 Hospital
 ===============
 It defines the hospital information used in the model
 
