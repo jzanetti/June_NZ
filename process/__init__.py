@@ -235,7 +235,7 @@ FIXED_DATA = {
                 "patients_per_medic": 10,
                 "healthcare_sector_label": "Q",
             },
-            "neighbour_hospitals": 3,
+            "neighbour_hospitals": {"neighbour_hospitals": 3},
         },
         "leisure": {
             "pub": {
