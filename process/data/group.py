@@ -496,6 +496,27 @@ def write_passage_seats_ratio(workdir: str):
         yaml_dump(FIXED_DATA["group"]["commute"]["transport_def"], fid, default_flow_style=False)
 
 
+def write_passage_seats_ratio(workdir: str):
+    """Write passage_seats_ratio defination
+
+    Args:
+        workdir (str): Working directory
+    """
+    output_path = join(workdir, "group", "commute", "passage_seats_ratio.yaml")
+    if not exists(dirname(output_path)):
+        makedirs(dirname(output_path))
+
+    passage_seats_ratio = {"seats_per_passenger": {}}
+
+    for proc_super_area_code in REGION_NAMES_CONVERSIONS:
+        passage_seats_ratio["seats_per_passenger"][
+            REGION_NAMES_CONVERSIONS[proc_super_area_code]
+        ] = FIXED_DATA["group"]["commute"]["passage_seats_ratio"]
+
+    with open(output_path, "w") as fid:
+        yaml_dump(passage_seats_ratio, fid, default_flow_style=False)
+
+
 def write_transport_def(workdir: str):
     """Write transport defination, e.g., public or not
 

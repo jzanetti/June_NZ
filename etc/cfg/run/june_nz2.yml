@@ -3,7 +3,7 @@
 exp_name: realworld
 
 
-simulation_cfg: etc/data/realworld_test/simulation/simulation_cfg.yml
+simulation_cfg: etc/data/realworld_test/simulation/simulation_cfg.yaml
 
 save:
   geography: false

@@ -38,6 +38,7 @@ from process.data.group import (
     write_leisures,
     write_neighbour_hospitals,
     write_number_of_inter_city_stations,
+    write_passage_seats_ratio,
     write_school,
     write_subsector_cfg,
     write_transport_def,
@@ -210,6 +211,7 @@ def main():
     # Get commute data
     # -----------------------------
     write_transport_def(args.workdir)
+    write_passage_seats_ratio(args.workdir)
     write_number_of_inter_city_stations(args.workdir)
     transport_mode = write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
     workplace_and_home = write_workplace_and_home(
