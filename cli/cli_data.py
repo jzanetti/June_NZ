@@ -27,6 +27,7 @@ from process.data.group import (
     write_employees,
     write_employers_by_firm_size,
     write_employers_by_sector,
+    write_hospital_cfg,
     write_hospitals,
     write_household_age_difference,
     write_household_communal,
@@ -35,6 +36,7 @@ from process.data.group import (
     write_household_student,
     write_leisiure_def,
     write_leisures,
+    write_neighbour_hospitals,
     write_number_of_inter_city_stations,
     write_school,
     write_subsector_cfg,
@@ -43,6 +45,7 @@ from process.data.group import (
     write_workplace_and_home,
 )
 from process.data.interaction import write_interaction
+from process.data.policy import copy_policy_file
 from process.data.utils import housekeeping, postproc
 from process.utils import read_cfg, setup_logging
 
@@ -86,12 +89,19 @@ def setup_parser():
         default=None,
     )
 
+    parser.add_argument(
+        "--policy_path",
+        type=str or None,
+        help="Policy file to be used",
+        default=None,
+    )
+
     return parser.parse_args(
         [
             "--workdir",
             "etc/data/realworld_test",
             "--cfg",
-            "etc/cfg/june_data.yml",
+            "etc/cfg/run/june_data.yml",
             "--scale",
             "0.1",
             # "--exclude_super_areas",
@@ -99,6 +109,8 @@ def setup_parser():
             # "Marlborough",
             "--disease_cfg_dir",
             "etc/cfg/disease/covid-19",
+            "--policy_path",
+            "etc/cfg/policy/policy1.yaml",
         ]
     )
 
@@ -221,6 +233,8 @@ def main():
         args.workdir, cfg["group"]["hospital"]["hospitals"]
     )  # hospital_locations
 
+    write_hospital_cfg(args.workdir)
+    write_neighbour_hospitals(args.workdir)
     # ----------------
     # School
     # ----------------
@@ -245,6 +259,13 @@ def main():
     if args.disease_cfg_dir is not None:
         logger.info("Processing disease ...")
         copy_disease_cfg(args.workdir, args.disease_cfg_dir)
+
+    # =============================
+    # Get policy data
+    # =============================
+    if args.policy_path is not None:
+        logger.info("Processing policy ...")
+        copy_policy_file(args.workdir, args.policy_path)
 
     # -----------------------------
     # Housekeep

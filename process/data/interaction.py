@@ -1,4 +1,5 @@
-from os.path import join
+from os import makedirs
+from os.path import exists, join
 
 from yaml import dump as yaml_dump
 
@@ -26,8 +27,14 @@ def write_interaction(
         leisure_types (list, optional): Leisure activities.
             Defaults to [ "cinema", "commute", "company", "grocery", "gym", "hospital", "household", "pub", "school", ].
     """
+
+    output_dir = join(workdir, "interaction")
+
+    if not exists(output_dir):
+        makedirs(output_dir)
+
     for proc_file_key in leisure_types:
-        output_path = join(workdir, "interaction", f"{proc_file_key}.yaml")
+        output_path = join(output_dir, f"{proc_file_key}.yaml")
 
         with open(output_path, "w") as fid:
             yaml_dump(
@@ -36,7 +43,7 @@ def write_interaction(
                 default_flow_style=False,
             )
 
-    output_path = join(workdir, "interaction", "general.yaml")
+    output_path = join(output_dir, "general.yaml")
 
     with open(output_path, "w") as fid:
         yaml_dump(

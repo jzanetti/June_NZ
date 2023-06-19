@@ -169,6 +169,38 @@ def write_household_communal(workdir: str, pop: DataFrame):
     return {"data": df, "output": output}
 
 
+def write_hospital_cfg(workdir: str):
+    """Wirt hospital configuration
+
+    Args:
+        workdir (str): Working directory
+    """
+    output_path = join(workdir, "group", "hospital", "hospital_cfg.yaml")
+
+    with open(output_path, "w") as fid:
+        yaml_dump(
+            FIXED_DATA["group"]["hospital"]["hospital_cfg"],
+            fid,
+            default_flow_style=False,
+        )
+
+
+def write_neighbour_hospitals(workdir: str):
+    """Write neighbour_hospitals
+
+    Args:
+        workdir (str): Working directory
+    """
+    output_path = join(workdir, "group", "hospital", "neighbour_hospitals.yaml")
+
+    with open(output_path, "w") as fid:
+        yaml_dump(
+            FIXED_DATA["group"]["hospital"]["neighbour_hospitals"],
+            fid,
+            default_flow_style=False,
+        )
+
+
 def write_hospitals(workdir: str, hospital_locations_cfg: dict):
     """Write hospital locations
 

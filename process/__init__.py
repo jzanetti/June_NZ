@@ -228,7 +228,15 @@ FIXED_DATA = {
                 "ignore_orphans": False,
             },
         },
-        "hospital": {"icu_beds_ratio": 0.1},
+        "hospital": {
+            "icu_beds_ratio": 0.1,
+            "hospital_cfg": {
+                "medic_min_age": 25,
+                "patients_per_medic": 10,
+                "healthcare_sector_label": "Q",
+            },
+            "neighbour_hospitals": 3,
+        },
         "leisure": {
             "pub": {
                 "times_per_week": {

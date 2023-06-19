@@ -1,2 +1,4 @@
 Data,Geography level,Example
 "Hospital information (address, number of beds/ICUs etc.)",area,hospitals.csv
+"Hospital configuration (the age of worker in this sector etc.),``NULL``,hospital_config.yaml
+"How many hospital (maximum) a person could visit", ``NULL``,neighbour_hospitals.yaml

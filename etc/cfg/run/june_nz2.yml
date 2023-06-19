@@ -21,7 +21,7 @@ data:
   geography:
     geography_hierarchy: geography/geography_hierarchy_definition.csv
     super_area_location: geography/super_area_location.csv
-    super_area_name: group/commute/super_area_name.csv
+    super_area_name: geography/super_area_name.csv
     area_location: geography/area_location.csv
     area_socialeconomic_index: geography/area_socialeconomic_index.csv
     
@@ -59,8 +59,8 @@ data:
     hospital:
       defination:
         neighbour_hospitals: group/hospital/neighbour_hospitals.yaml
-        configs: group/hospital/hospital_config.yaml
-        location: group/hospital/hospital_locations.csv
+        configs: group/hospital/hospital_cfg.yaml
+        location: group/hospital/hospitals.csv
       interaction: interaction/hospital.yaml
     company:
       defination:
@@ -93,15 +93,15 @@ data:
       general_interaction: interaction/general.yaml
 
   disease:
-    transmission_profile: diesease/pobability_of_infection.yaml
-    sympton_trajectories: diesease/symptom_trajectories.yaml
-    infection_outcome: diesease/infection_outcome.csv
+    transmission_profile: disease/pobability_of_infection.yaml
+    sympton_trajectories: disease/symptom_trajectories.yaml
+    infection_outcome: disease/infection_outcome.csv
     comorbidity:
-      female: diesease/comorbidities_female.csv
-      male: diesease/comorbidities_male.csv
-      intensity: diesease/comorbidity_intensity.yaml
+      female: disease/comorbidities_female.csv
+      male: disease/comorbidities_male.csv
+      intensity: disease/comorbidity_intensity.yaml
     virus:
-      intensity: diesease/virus_intensity.yaml
+      intensity: disease/virus_intensity.yaml
 
   policy: policy/policy.yaml
     

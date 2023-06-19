@@ -157,7 +157,8 @@ It defines the hospital information used in the model
    :class: longtable
    :widths: 1 1 1
 
-The information would include the hospital address (latitude and longitude), number of beds and number of ICU beds.
+The information would include the hospital address (latitude and longitude), number of beds and number of ICU beds. Also some meta data around it,
+such as the the minimum age working in this sector, and how many hospitals that an indiviual could visit.
 
 
 3.4 School
