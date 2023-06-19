@@ -182,7 +182,7 @@ It defines the leisure information used in the model
 .. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
 
 .. csv-table:: leisure data
-   :file: data/data_leisure.csv
+   :file: data/data_leisures.csv
    :header-rows: 1
    :class: longtable
    :widths: 1 1 1
