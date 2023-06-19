@@ -331,10 +331,6 @@ An example of the defination of ``Comorbidities`` is:
 
 .. code-block:: python
 
-    FIXED_DATA = {
-        ...
-
-        "demography": {
             "comorbidities_female": {
                 "comorbidity": ["disease1", "disease2", "no_condition"],
                 5: [0, 0, 1.0],
@@ -354,9 +350,7 @@ An example of the defination of ``Comorbidities`` is:
                 100: [0.9, 0.0, 0.1],
             },
             "comorbidities_intensity": {"disease1": 0.8, "disease2": 1.2, "no_condition": 1.0},
-        }
-        ...
-    }
+
 
 
 5.2 Virus intensity

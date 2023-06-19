@@ -14,7 +14,7 @@ from process.data.demography import (
     write_ethnicity_profile,
     write_gender_profile_female_ratio,
 )
-from process.data.disease import write_commorbidity
+from process.data.disease import copy_disease_cfg
 from process.data.geography import (
     write_area_location,
     write_area_socialeconomic_index,
@@ -78,17 +78,26 @@ def setup_parser():
         default=[],
     )
 
+    parser.add_argument(
+        "--disease_cfg_dir",
+        type=str or None,
+        help="Directory contains diseases configuration",
+        default=None,
+    )
+
     return parser.parse_args(
         [
             "--workdir",
             "etc/data/realworld_test",
             "--cfg",
-            "etc/june_data.yml",
+            "etc/cfg/june_data.yml",
             "--scale",
             "0.1",
             # "--exclude_super_areas",
             # "Tasman",
             # "Marlborough",
+            "--disease_cfg_dir",
+            "etc/cfg/disease/covid-19",
         ]
     )
 
@@ -227,8 +236,9 @@ def main():
     # =============================
     # Get disease data
     # =============================
-    logger.info("Processing age profile ...")
-    write_commorbidity(args.workdir)
+    if args.disease_cfg_dir is not None:
+        logger.info("Processing disease ...")
+        copy_disease_cfg(args.workdir, args.disease_cfg_dir)
 
     # -----------------------------
     # Housekeep

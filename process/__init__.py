@@ -464,27 +464,6 @@ FIXED_DATA = {
             },
         },
     },
-    "disease": {
-        "comorbidities_female": {
-            "comorbidity": ["disease1", "disease2", "no_condition"],
-            5: [0, 0, 1.0],
-            10: [0, 0, 1.0],
-            20: [0, 0, 1.0],
-            50: [0, 0.1, 0.9],
-            75: [0, 0.2, 0.8],
-            100: [0.9, 0.0, 0.1],
-        },
-        "comorbidities_male": {
-            "comorbidity": ["disease1", "disease2", "no_condition"],
-            5: [0, 0, 1.0],
-            10: [0, 0, 1.0],
-            20: [0, 0, 1.0],
-            50: [0, 0.1, 0.9],
-            75: [0, 0.2, 0.8],
-            100: [0.9, 0.0, 0.1],
-        },
-        "comorbidities_intensity": {"disease1": 0.8, "disease2": 1.2, "no_condition": 1.0},
-    },
 }
 
 
