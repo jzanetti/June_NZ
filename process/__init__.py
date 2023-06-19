@@ -99,22 +99,19 @@ FIXED_DATA = {
 }
 """
 
-
 FIXED_DATA = {
     "group": {
         "commute": {
             "transport_def": [
-                {"description": "Work mainly at or from home", "is_public": False},
-                {"description": "Underground, metro, light rail, tram", "is_public": True},
+                # {"description": "Work mainly at or from home", "is_public": False},
+                {"description": "Drive_a_private_car_truck_or_van", "is_public": False},
+                {"description": "Drive_a_company_car_truck_or_van", "is_public": True},
+                {"description": "Passenger_in_a_car_truck_van_or_company_bus", "is_public": True},
+                {"description": "Public_bus", "is_public": True},
                 {"description": "Train", "is_public": True},
-                {"description": "Bus, minibus or coach", "is_public": True},
-                {"description": "Taxi", "is_public": False},
-                {"description": "Motorcycle, scooter or moped", "is_public": False},
-                {"description": "Driving a car or van", "is_public": False},
-                {"description": "Passenger in a car or van", "is_public": False},
                 {"description": "Bicycle", "is_public": False},
-                {"description": "On foot", "is_public": False},
-                {"description": "Other method of travel to work", "is_public": False},
+                {"description": "Ferry", "is_public": True},
+                {"description": "Other", "is_public": False},
             ],
             "passage_seats_ratio": 1.3,
             "number_of_inter_city_stations": {

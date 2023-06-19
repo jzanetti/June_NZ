@@ -21,3 +21,4 @@ Contents
 
    Installation
    Data
+   Toy

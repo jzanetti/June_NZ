@@ -81,10 +81,9 @@ data:
       interaction: interaction/household.yaml
     commute:
       defination:
-        # super_area_name: group/commute/super_area_name.csv
         transport_mode: group/commute/transport_mode.csv
         stations: group/commute/number_of_inter_city_stations.yaml
-        # passage_seats_ratio: group/commute/passage_seats_ratio.yaml # zzzzzzzzzzzzzzzzzzzzz
+        passage_seats_ratio: group/commute/passage_seats_ratio.yaml
         public_or_private_transport: group/commute/transport_def.yaml
         workplace_and_home: group/commute/workplace_and_home.csv
       interaction: interaction/commute.yaml
