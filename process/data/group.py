@@ -19,13 +19,30 @@ from process.data.utils import get_central_point, get_raw_data, haversine_distan
 logger = getLogger()
 
 
+def write_leisiure_def(workdir: str):
+    """Write leisure activities defination
+
+    Args:
+        workdir (str): Working directory
+    """
+    for proc_file_key in ["cinema", "grocery", "gym", "pub"]:
+
+        output_path = join(workdir, "group", "leisure", "cfg", f"{proc_file_key}.yaml")
+
+        with open(output_path, "w") as fid:
+            yaml_dump(
+                FIXED_DATA["group"]["leisure"][proc_file_key],
+                fid,
+                default_flow_style=False,
+            )
+
+
 def write_leisures(workdir: str):
     """Write cinema information
 
     Args:
         workdir (str): Working directory
     """
-
     for proc_leisure in ["gym", "grocery", "cinema", "pub"]:
         output = {"lat": [], "lon": [], "super_area": []}
         for super_area_id in REGION_NAMES_CONVERSIONS:
@@ -40,7 +57,7 @@ def write_leisures(workdir: str):
 
         output = DataFrame.from_dict(output)
 
-        output_path = join(workdir, "group", "leisure", f"{proc_leisure}.csv")
+        output_path = join(workdir, "group", "leisure", "data", f"{proc_leisure}.csv")
 
         if not exists(dirname(output_path)):
             makedirs(dirname(output_path))

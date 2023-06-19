@@ -145,10 +145,6 @@ For example,
 
 - We also set the number of commnual and student househodls to zero, since the lack of detailed dataset.
 
-
-
-
-
 3.3 Hospital
 ===============
 It defines the hospital information used in the model
@@ -164,8 +160,40 @@ It defines the hospital information used in the model
 The information would include the hospital address (latitude and longitude), number of beds and number of ICU beds.
 
 
-3.1 Commute
+3.4 School
 ===============
+It defines the school information used in the model
+
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
+
+.. csv-table:: School data
+   :file: data/data_schools.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1
+
+The information would include the school address (latitude and longitude), and the student profile (e.g., min and max age)
+
+
+3.5 Leisure (cinema, grocery, pub and gym)
+===============
+It defines the leisure information used in the model
+
+.. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
+
+.. csv-table:: leisure data
+   :file: data/data_leisure.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1
+
+The information would include all the leisure activities.
+
+Note that all the location information are obtained from the Open Street Map, while all the configurations are from ``FIXED_DATA``
+
+**********
+4. Commute
+**********
 
 Commute defines how people move across different areas
 
@@ -199,7 +227,7 @@ Note that ``transport_def.yaml`` is defined in the variable ``FIXED_DATA``, e.g.
 
 
 **********
-4. Disease data
+5. Disease data
 **********
 
 Defines virus properties:
@@ -213,7 +241,7 @@ Defines virus properties:
    :widths: 1 1 1
 
 
-4.1 Comorbidities
+5.1 Comorbidities
 ============
 
 ``Comorbidities`` are defined by the variable ``FIXED_DATA``, which is located in ``process/__init__.py``. The comorbidity is one of the parameters determing the severity of symptom that
@@ -263,7 +291,7 @@ An example of the defination of ``Comorbidities`` is:
     }
 
 
-4.2 Virus intensity
+5.2 Virus intensity
 ============
 
 The virus intensity is a parameter that influences the severity of symptoms. 
@@ -280,7 +308,7 @@ An example of the virus intensity is:
 
 
 
-4.3 Symptom trajectory (infection outcome)
+5.3 Symptom trajectory (infection outcome)
 ============
 
 For the symptom trajectory, it is defined by a set of distribution functions (e.g., beta, log-normal etc.). 
@@ -316,7 +344,7 @@ and it represents the timing for the infection (or we can understand it as the e
 
     - The symptom trajectory (see Sectoin 4.3.2)
 
-4.3.1 Input infection outcome statistics
+5.3.1 Input infection outcome statistics
 ---------
 
 An example of the infection outcome statistics is:
@@ -330,7 +358,7 @@ An example of the infection outcome statistics is:
    :widths: 1 1 1 1
 
 
-4.3.2 Symptom trajectory (infection outcome)
+5.3.2 Symptom trajectory (infection outcome)
 ---------
 
 An example of the symptom trajectory is:
@@ -368,10 +396,10 @@ An example of the symptom trajectory is:
                 value: 0.
 
 
-4.4 Transmission profile
+5.4 Transmission profile
 ============
 
-4.4.1 Base probability of infection
+5.4.1 Base probability of infection
 ----------------
 The transmssion profile determins the probability of the infection (e.g, the higher the probabilities, the more infectiousness an infector can be). 
 
@@ -387,7 +415,7 @@ The x-axis is the value of ``shift (loc)``, which corresponds to the infection t
 When a person is infected, the infection time will be applied to the above ``Gamma`` function (as ``x``), and then obtain the related probability of infection. 
 
 
-4.4.2 Adjust max infectiousness
+5.4.2 Adjust max infectiousness
 ----------------
 
 The maximum infectiousness from the probability of infection is adjusted with the argument ``max_infectiousness``. For an infector, a random
@@ -401,7 +429,7 @@ For example, the following figures show the ``lognormal`` profile:
    :alt: Lognormal profile
    :align: center
 
-4.4.3 Adjust mild/asymptomatic infectiousness
+5.4.3 Adjust mild/asymptomatic infectiousness
 ----------------
 
 We can adjust the the probability of infection based on a person's maximum symptom. For example, if the maximum symtom is ``asymptomatic``, we can

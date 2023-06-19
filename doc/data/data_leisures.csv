@@ -1,0 +1,9 @@
+Data,Geography level,Example
+Cinema locations,`NULL`,data/cinema.csv
+"Cinema configuration (e.g., the chance that people may visit)",``NULL``,data/cinema_cfg.csv
+Grocery locations,`NULL`,data/grocery.csv
+"Grocery configuration (e.g., the chance that people may visit)",``NULL``,cfg/grocery_cfg.csv
+Gym locations,`NULL`,data/gym.csv
+"Gym configuration (e.g., the chance that people may visit)",``NULL``,cfg/gym_cfg.csv
+Pub locations,`NULL`,data/pub.csv
+"Pub configuration (e.g., the chance that people may visit)",``NULL``,cfg/pub_cfg.csv

@@ -33,6 +33,7 @@ from process.data.group import (
     write_household_def,
     write_household_number,
     write_household_student,
+    write_leisiure_def,
     write_leisures,
     write_number_of_inter_city_stations,
     write_school,
@@ -107,6 +108,7 @@ def main():
     logger.info("Writing total population ...")
 
     pop = read_population(cfg["total_population"])
+
     # =============================
     # Get geography data
     # =============================
@@ -222,10 +224,11 @@ def main():
     # ----------------
     logger.info("Processing leisure ...")
     write_leisures(args.workdir)
+    write_leisiure_def(args.workdir)
 
-    # -----------------------------
+    # =============================
     # Get disease data
-    # -----------------------------
+    # =============================
     logger.info("Processing age profile ...")
     write_commorbidity(args.workdir)
 
