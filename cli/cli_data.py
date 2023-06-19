@@ -46,6 +46,7 @@ from process.data.group import (
 )
 from process.data.interaction import write_interaction
 from process.data.policy import copy_policy_file
+from process.data.simulation import copy_simulation_file
 from process.data.utils import housekeeping, postproc
 from process.utils import read_cfg, setup_logging
 
@@ -90,9 +91,16 @@ def setup_parser():
     )
 
     parser.add_argument(
-        "--policy_path",
+        "--policy_cfg_path",
         type=str or None,
         help="Policy file to be used",
+        default=None,
+    )
+
+    parser.add_argument(
+        "--simulation_cfg_path",
+        type=str or None,
+        help="Simulation configuration",
         default=None,
     )
 
@@ -109,8 +117,10 @@ def setup_parser():
             # "Marlborough",
             "--disease_cfg_dir",
             "etc/cfg/disease/covid-19",
-            "--policy_path",
+            "--policy_cfg_path",
             "etc/cfg/policy/policy1.yaml",
+            "--simulation_cfg_path",
+            "etc/cfg/simulation/simulation_cfg.yml",
         ]
     )
 
@@ -263,9 +273,16 @@ def main():
     # =============================
     # Get policy data
     # =============================
-    if args.policy_path is not None:
+    if args.policy_cfg_path is not None:
         logger.info("Processing policy ...")
-        copy_policy_file(args.workdir, args.policy_path)
+        copy_policy_file(args.workdir, args.policy_cfg_path)
+
+    # =============================
+    # Get simulation data
+    # =============================
+    if args.simulation_cfg_path is not None:
+        logger.info("Processing simulation configuration file ...")
+        copy_simulation_file(args.workdir, args.simulation_cfg_path)
 
     # -----------------------------
     # Housekeep

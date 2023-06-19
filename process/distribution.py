@@ -59,7 +59,9 @@ def work_and_home_distribution(
     """
     worker_distr = WorkerDistributor.for_super_areas(
         area_names=[super_area.name for super_area in world.super_areas],
-        workflow_file=join(base_dir, group_and_interaction_cfg["others"]["workplace_and_home"]),
+        workflow_file=join(
+            base_dir, group_and_interaction_cfg["commute"]["defination"]["workplace_and_home"]
+        ),
         sex_per_sector_file=join(
             base_dir,
             group_and_interaction_cfg["company"]["defination"]["sectors_employee_genders"],

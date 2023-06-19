@@ -1,8 +1,31 @@
 ##############
-Data Description
+Data
 ##############
 
-**JUNE_NZ** requires a number of input files, all the files below can be created by :doc:`link <Data_creation>`
+**JUNE_NZ** requires a number of input files.
+
+The script ``cli_data.py`` is provided to create all the required inputs for **JUNE_NZ**.
+
+.. code-block:: console
+
+    cli_data --workdir <Working directory> 
+             --cfg <Data configuration> 
+             --scale <Population scale> 
+             --disease_cfg_dir <Disease configuration directory>
+             --policy_cfg_path <Policy configuration path>
+             [--exclude_super_areas A1, A2]
+
+The command options are explained as below:
+
+- ``--workdir``: Specifies the directory where the generated data will be stored. For example, ``--workdir /tmp/june_data``.
+- ``--cfg``: Sets the configuration for retrieving the source data. For example, ``--cfg etc/june_data.yml``.
+- ``--scale``: Determines the percentage of the population to be used. For instance, a value of 0.1 means only 10% of the population will be utilized. For example, ``--scale 0.1``
+- ``--exclude_super_areas``: Allows excluding specific super areas from the model. For example, ``--exclude_super_areas A1 A2``.
+- ``--disease_cfg_dir``: Disease configuration directory. For example, ``--disease_cfg_dir etc/cfg/disease/covid-19``.
+- ``--policy_cfg_path``: Policy file. For example, ``--policy_cfg_path etc/cfg/policy/policy1.yaml``.
+- ``--simulation_cfg_path``: Simulation file. For example, ``--simulation_cfg_path etc/cfg/simulation/simulation_cfg.yml``.
+
+The following contents show different types of inputs for **JUNE_NZ**.
 
 **********
 1. Population data (demography)

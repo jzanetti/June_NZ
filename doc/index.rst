@@ -8,12 +8,9 @@ to facilitate dynamic simulations and analyses of complex systems in the context
 By leveraging **JUNE-NZ**, researchers and policymakers can gain valuable insights into various aspects of healthcare, 
 enabling informed decision-making and effective planning strategies.
 
-**JUNE-NZ** is an ongoing project from Inisitute of Environmental Science and Research (ESR), New Zealand.
-
 .. note::
 
-   Any questions/issues/suggestions for this system please contact ESR directly.
-
+   **JUNE-NZ** is an ongoing project from Inisitute of Environmental Science and Research (ESR), New Zealand.
 
 The codes of **JUNE-NZ** can be accessed from `here <https://github.com/jzanetti/June_NZ>`_
 
