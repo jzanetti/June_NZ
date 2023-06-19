@@ -193,31 +193,6 @@ def write_ethnicity_profile(workdir: str, ethnicity_cfg: dict, pop: DataFrame or
     return {"data": combined_df, "output": data_path["output"]}
 
 
-def write_commorbidity(workdir: str):
-    """Convert the fixed commorbidity data
-
-    Args:
-        workdir (str): Working directory
-    """
-
-    output_dir = join(workdir, "disease")
-    if not exists(output_dir):
-        makedirs(output_dir)
-
-    for proc_file_key in FIXED_DATA["disease"]:
-        proc_data = FIXED_DATA["disease"][proc_file_key]
-
-        if not exists(output_dir):
-            makedirs(output_dir)
-
-        if proc_file_key == "comorbidities_intensity":
-            with open(join(output_dir, f"{proc_file_key}.yaml"), "w") as fid:
-                yaml_dump(proc_data, fid)
-        else:
-            data = DataFrame.from_dict(proc_data)
-            data.to_csv(join(output_dir, f"{proc_file_key}.csv"), index=False)
-
-
 def write_age_profile(workdir: str, age_profile_cfg: dict, pop: DataFrame or None = None):
     """Write age profile
 

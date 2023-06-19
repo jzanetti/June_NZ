@@ -124,6 +124,7 @@ def postproc(data_list: list, scale: float = 1.0, exclude_super_areas: list = []
         if AREAS_CONSISTENCY_CHECK[data_name] is None:
             continue
 
+        print(data_name)
         proc_data = data_list[data_name]["data"]
 
         for area_key in all_geo:

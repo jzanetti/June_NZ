@@ -11,10 +11,10 @@ from os.path import exists
 from process.data.demography import (
     read_population,
     write_age_profile,
-    write_commorbidity,
     write_ethnicity_profile,
     write_gender_profile_female_ratio,
 )
+from process.data.disease import write_commorbidity
 from process.data.geography import (
     write_area_location,
     write_area_socialeconomic_index,
@@ -131,8 +131,6 @@ def main():
     )
     super_area_name = write_super_area_name(args.workdir)
 
-    # write_student_household(args.workdir, geography_hierarchy_definition)
-
     # =============================
     # Get demography data
     # =============================
@@ -197,7 +195,7 @@ def main():
         args.workdir, cfg["group"]["household"]["household_number"]
     )
 
-    household_number = write_household_def(args.workdir)
+    write_household_def(args.workdir)
 
     logger.info("Processing household_student ...")
     household_student = write_household_student(args.workdir, pop)
@@ -245,10 +243,10 @@ def main():
             "gender_profile_female_ratio": gender_profile_female_ratio,
             "ethnicity_profile": ethnicity_profile,
             "age_profile": age_profile,
-            "sectors_employee_genders": sectors_employee_genders,
-            "employees_by_super_area": employees_by_super_area,
-            "sectors_by_super_area": sectors_by_super_area,
-            "hospital_locations": hospital_locations,
+            "employees": employees,
+            "employers_by_firm_size": employers_by_firm_size,
+            "employers_by_sector": employers_by_sector,
+            "hospitals": hospitals,
             "schools": schools,
             "transport_mode": transport_mode,
             "super_area_name": super_area_name,
