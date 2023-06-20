@@ -57,7 +57,7 @@ def setup_parser():
     return parser.parse_args(
         # ["--workdir", "/tmp/june_realworld_2023_0615_4", "--cfg", "etc/june_nz.yml"]
         # ["--workdir", "/tmp/june_realworld_2023_0615_5", "--cfg", "etc/cfg/run/june_nz2.yml"]
-        ["--workdir", "/tmp/june_singleobs_v2.0", "--cfg", "etc/cfg/run/june_singleobs_v2.0.yml"]
+        ["--workdir", "/tmp/june_singleobs_v2.0_3", "--cfg", "etc/cfg/run/june_singleobs_v2.0.yml"]
     )
 
 
@@ -142,7 +142,7 @@ def main():
         disease_cfg=cfg["data"]["disease"],
         base_dir=cfg["data"]["base_dir"],
         workdir=args.workdir,
-        save_debug=False,
+        save_debug=True,
     )
 
     logger.info("Job done ...")

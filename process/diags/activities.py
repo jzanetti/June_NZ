@@ -40,7 +40,10 @@ def plot_activities(workdir: str, df_people: DataFrame, max_plot_days: int = 7):
     activity_counts = (
         activity_df.groupby(["time", "subgroup_or_activity"]).size().unstack(fill_value=0)
     )
-    activity_counts = activity_counts.drop("", axis=1)
+    try:
+        activity_counts = activity_counts.drop("", axis=1)
+    except KeyError:
+        pass
     activity_percentages = activity_counts.apply(lambda x: x / x.sum(), axis=1) * 100.0
 
     activity_percentages.plot(kind="bar", stacked=True, figsize=(10, 6))
