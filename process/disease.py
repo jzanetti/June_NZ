@@ -69,7 +69,11 @@ def create_virus_info(base_dir: str, virus_cfg: dict) -> dict:
 
 
 def create_disease_wrapper(
-    world: World_class, base_dir: str, disease_cfg: dict, simulation_path: str
+    world: World_class,
+    base_dir: str,
+    disease_cfg: dict,
+    simulation_path: str,
+    apply_vaccine: bool = False,
 ):
     """Create disease wrapper
 
@@ -99,32 +103,8 @@ def create_disease_wrapper(
     )
     infection_seeds = InfectionSeeds([infection_seed])
 
-    """
-    female_filename = (
-        "/home/zhangs/Github/June_NZ/etc/data/singleobs/demography/comorbidities_female.csv"
-    )
-    male_filename = (
-        "/home/zhangs/Github/June_NZ/etc/data/singleobs/demography/comorbidities_male.csv"
-    )
-    prevalence_female = read_comorbidity_csv(female_filename)
-    prevalence_male = read_comorbidity_csv(male_filename)
-
-    prevalence_reference_population = convert_comorbidities_prevalence_to_dict(
-        prevalence_female, prevalence_male
-    )
-
-    comorbidity_multipliers = {"disease1": 0.8, "disease2": 1.2, "no_condition": 1.0}
-    """
     comorbidity_info = create_comorbidity_info(base_dir, disease_cfg["comorbidity"])
     virus_info = create_virus_info(base_dir, disease_cfg["virus"])
-
-    # A dictionary mapping infection_id -> symptoms reduction by age.
-    # infection_id = {"Covid19": 170852960, "B117": 37224668, "B16172": 76677444}
-    # multiplier_dict = {
-    #    infection_id["Covid19"]: 1.0,
-    #    infection_id["B117"]: 1.5,
-    #    infection_id["B16172"]: 1.5,
-    # }
 
     multiplier_setter = ImmunitySetter(
         multiplier_by_comorbidity=comorbidity_info["comorbidity_intensity"],
@@ -132,10 +112,50 @@ def create_disease_wrapper(
         multiplier_dict=virus_info["virus_intensity"],
     )
 
+    vaccination_campaigns = None
+    if apply_vaccine:
+        from june.epidemiology.vaccines.vaccination_campaign import (
+            VaccinationCampaign,
+            VaccinationCampaigns,
+        )
+        from june.epidemiology.vaccines.vaccines import Vaccine
+
+        effectiveness = [
+            {"Delta": {"0-100": 0.3}, "Omicron": {"0-100": 0.3}},
+            {"Delta": {"0-100": 0.9}, "Omicron": {"0-100": 0.9}},
+        ]
+
+        vaccine = Vaccine(
+            "Pfizer",
+            days_administered_to_effective=[5, 5, 5],
+            days_effective_to_waning=[2, 2, 2],
+            days_waning=[10, 10, 10],
+            sterilisation_efficacies=effectiveness,
+            symptomatic_efficacies=effectiveness,
+            waning_factor=0.5,
+        )
+
+        days_to_next_dose = [0, 59]
+        dose_numbers = [0, 1]
+        # 2020-03-01
+        vc = VaccinationCampaign(
+            vaccine=vaccine,
+            days_to_next_dose=[days_to_next_dose[dose_number] for dose_number in dose_numbers],
+            dose_numbers=dose_numbers,
+            start_time="2020-03-01",
+            end_time="2020-03-11",
+            group_by="age",
+            group_type="0-100",
+            group_coverage=1.0,
+        )
+
+        vaccination_campaigns = (VaccinationCampaigns([vc]),)
+
     epidemiology = Epidemiology(
         infection_selectors=selectors,
         infection_seeds=infection_seeds,
         immunity_setter=multiplier_setter,
+        vaccination_campaigns=vaccination_campaigns,
     )
 
     return epidemiology
