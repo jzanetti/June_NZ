@@ -6,10 +6,10 @@ activity: true
 
 demography:
   super_area: true
-  area: true
+  area: false
 
 infection:
-  add_no_infected: true
+  add_no_infected: false
   timeseries:
     super_area: true
     area: true

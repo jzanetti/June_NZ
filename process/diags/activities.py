@@ -3,6 +3,7 @@ from logging import getLogger
 from os import makedirs
 from os.path import exists, join
 
+from matplotlib.dates import AutoDateLocator, DateFormatter
 from matplotlib.pyplot import (
     close,
     legend,
@@ -46,7 +47,8 @@ def plot_activities(workdir: str, df_people: DataFrame, max_plot_days: int = 7):
         pass
     activity_percentages = activity_counts.apply(lambda x: x / x.sum(), axis=1) * 100.0
 
-    activity_percentages.plot(kind="bar", stacked=True, figsize=(10, 6))
+    ax = activity_percentages.plot(kind="bar", stacked=True, figsize=(10, 6))
+    ax.xaxis.set_major_locator(AutoDateLocator(interval_multiples=1))
     xlabel("Time")
     ylabel("Percentage")
     title("Percentage of Activities at Different Times")
