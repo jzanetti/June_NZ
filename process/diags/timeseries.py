@@ -11,6 +11,7 @@ from process.diags.utils import get_area_name
 logger = getLogger()
 
 
+
 def plot_timeseries(
     workdir: str,
     df_people: DataFrame,
