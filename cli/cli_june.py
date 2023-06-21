@@ -57,7 +57,12 @@ def setup_parser():
     return parser.parse_args(
         # ["--workdir", "/tmp/june_realworld_2023_0615_4", "--cfg", "etc/june_nz.yml"]
         # ["--workdir", "/tmp/june_realworld_2023_0615_6", "--cfg", "etc/cfg/run/june_nz2.yml"]
-        ["--workdir", "/tmp/june_singleobs_v2.0_3", "--cfg", "etc/cfg/run/june_singleobs_v2.0.yml"]
+        [
+            "--workdir",
+            "/tmp/june_singleobs_v2.0_vaccine",
+            "--cfg",
+            "etc/cfg/run/june_singleobs_v2.0.yml",
+        ]
     )
 
 
@@ -110,7 +115,11 @@ def main():
 
     logger.info("Creating disease object ...")
     disease = create_disease_wrapper(
-        world["data"], cfg["data"]["base_dir"], cfg["data"]["disease"], cfg["simulation_cfg"]
+        world["data"],
+        cfg["data"]["base_dir"],
+        cfg["data"]["disease"],
+        cfg["simulation_cfg"],
+        apply_vaccine=True,
     )
 
     logger.info("Creating interaction object ...")

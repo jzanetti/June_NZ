@@ -120,36 +120,39 @@ def create_disease_wrapper(
         )
         from june.epidemiology.vaccines.vaccines import Vaccine
 
-        effectiveness = [
-            {"Delta": {"0-100": 0.3}, "Omicron": {"0-100": 0.3}},
-            {"Delta": {"0-100": 0.9}, "Omicron": {"0-100": 0.9}},
-        ]
+        # effectiveness = [
+        #    {"Delta": {"0-100": 0.3}, "Omicron": {"0-100": 0.3}},
+        #    {"Delta": {"0-100": 0.9}, "Omicron": {"0-100": 0.9}},
+        # ]
+
+        effectiveness = [{"Covid19": {"0-100": 0.9}}]
 
         vaccine = Vaccine(
             "Pfizer",
-            days_administered_to_effective=[5, 5, 5],
+            days_administered_to_effective=[1, 1, 1],
             days_effective_to_waning=[2, 2, 2],
-            days_waning=[10, 10, 10],
+            # days_waning=[10, 10, 10],
+            days_waning=[5, 5, 5],
             sterilisation_efficacies=effectiveness,
             symptomatic_efficacies=effectiveness,
-            waning_factor=0.5,
+            waning_factor=0.8,
         )
 
-        days_to_next_dose = [0, 59]
-        dose_numbers = [0, 1]
+        days_to_next_dose = [0]  # [0, 59]
+        dose_numbers = [0]  # [0, 1]
         # 2020-03-01
         vc = VaccinationCampaign(
             vaccine=vaccine,
             days_to_next_dose=[days_to_next_dose[dose_number] for dose_number in dose_numbers],
             dose_numbers=dose_numbers,
-            start_time="2020-03-01",
-            end_time="2020-03-11",
+            start_time="2020-02-25",  # "2020-03-01 9:00"
+            end_time="2020-03-02",
             group_by="age",
             group_type="0-100",
             group_coverage=1.0,
         )
 
-        vaccination_campaigns = (VaccinationCampaigns([vc]),)
+        vaccination_campaigns = VaccinationCampaigns([vc])
 
     epidemiology = Epidemiology(
         infection_selectors=selectors,

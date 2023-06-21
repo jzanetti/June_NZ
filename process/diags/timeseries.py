@@ -3,7 +3,7 @@ from logging import getLogger
 from os import makedirs
 from os.path import exists, join
 
-from matplotlib.pyplot import close, savefig, subplots, suptitle, tight_layout
+from matplotlib.pyplot import close, savefig, subplots, suptitle, tight_layout, ylim
 from pandas import DataFrame
 
 from process.diags.utils import get_area_name
@@ -56,7 +56,7 @@ def plot_timeseries(
             probabilities = probabilities.drop("Recovered/Not infected", axis=1)
 
         try:
-            probabilities.plot(
+            ax = probabilities.plot(
                 ax=axes[0],
                 kind="line",
                 # figsize=(14, 7),
@@ -66,7 +66,7 @@ def plot_timeseries(
                 xlabel="Simulation time",
                 logy=False,
             )
-
+            ax.set_ylim(0, 100.0)
             probabilities.plot(
                 ax=axes[1],
                 kind="line",
