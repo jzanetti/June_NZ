@@ -1,0 +1,11 @@
+contact_matrices:
+  gym:
+    bins:
+    - 0
+    - 100
+    characteristic_time: 3
+    contacts:
+    - - 3
+    proportion_physical:
+    - - 0.12
+    type: Age

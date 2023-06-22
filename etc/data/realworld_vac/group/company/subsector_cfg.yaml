@@ -1,0 +1,31 @@
+age_range:
+- 18
+- 64
+sub_sector_distr:
+  P:
+    f:
+    - 0.72526887
+    - 0.27473113
+    label:
+    - teacher_secondary
+    - teacher_primary
+    m:
+    - 0.72526887
+    - 0.27473113
+  Q:
+    f:
+    - 0.16103136
+    - 0.83896864
+    label:
+    - doctor
+    - nurse
+    m:
+    - 0.65350126
+    - 0.34649874
+sub_sector_ratio:
+  P:
+    f: 0.6
+    m: 0.4
+  Q:
+    f: 0.5
+    m: 0.5

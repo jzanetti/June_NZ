@@ -1,0 +1,16 @@
+- description: Drive_a_private_car_truck_or_van
+  is_public: false
+- description: Drive_a_company_car_truck_or_van
+  is_public: true
+- description: Passenger_in_a_car_truck_van_or_company_bus
+  is_public: true
+- description: Public_bus
+  is_public: true
+- description: Train
+  is_public: true
+- description: Bicycle
+  is_public: false
+- description: Ferry
+  is_public: true
+- description: Other
+  is_public: false

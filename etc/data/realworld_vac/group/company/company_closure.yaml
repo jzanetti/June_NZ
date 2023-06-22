@@ -1,0 +1,78 @@
+company_closure:
+  sectors:
+    A:
+      furlough: 0.0
+      key_worker: 1.0
+      random: 0.0
+    B:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    C:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    D:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    E:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    F:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    G:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    H:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    I:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    J:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    K:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    L:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    M:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    N:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    O:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    P:
+      furlough: 0.0833
+      key_worker: 0.0
+      random: 0.9167
+    Q:
+      furlough: 0.0769
+      key_worker: 0.0
+      random: 0.9231
+    R:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0
+    S:
+      furlough: 0.0
+      key_worker: 0.0
+      random: 1.0

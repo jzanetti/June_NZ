@@ -1,0 +1,29 @@
+adult_max_age: 64
+adult_min_age: 18
+allowed_household_compositions:
+- 1 0 >=0 1 0
+- '>=2 0 >=0 1 0'
+- 1 0 >=0 2 0
+- '>=2 0 >=0 2 0'
+- 1 0 >=0 >=1 >=0
+- '>=2 0 >=0 >=1 >=0'
+- 0 0 0 0 >=2
+- 0 >=1 0 0 0
+- 0 0 0 0 1
+- 0 0 0 0 2
+- 0 0 0 1 0
+- 0 0 0 2 0
+- 0 0 >=1 1 0
+- 0 0 >=1 2 0
+- 0 0 >=0 >=0 >=0
+- '>=0 >=0 >=0 >=0 >=0'
+ignore_orphans: false
+kid_max_age: 17
+max_age_to_be_parent: 64
+max_household_size: 8
+old_max_age: 99
+old_min_age: 65
+student_max_age: 25
+student_min_age: 18
+young_adult_max_age: 35
+young_adult_min_age: 18

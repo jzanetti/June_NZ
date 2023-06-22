@@ -1,0 +1,10 @@
+contact_matrices:
+  company:
+    bins:
+    - workers
+    characteristic_time: 8
+    contacts:
+    - - 4.8
+    proportion_physical:
+    - - 0.07
+    type: Discrete

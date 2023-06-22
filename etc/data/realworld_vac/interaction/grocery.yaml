@@ -1,0 +1,11 @@
+contact_matrices:
+  grocery:
+    bins:
+    - 0
+    - 100
+    characteristic_time: 3
+    contacts:
+    - - 1.5
+    proportion_physical:
+    - - 0.12
+    type: Age

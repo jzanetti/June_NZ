@@ -1,0 +1,28 @@
+contact_matrices:
+  hospital:
+    bins:
+    - workers
+    - patients
+    - icu_patients
+    characteristic_time: 8
+    contacts:
+    - - 5.0
+      - 10.0
+      - 10.0
+    - - 1.0
+      - 0.0
+      - 0.0
+    - - 1.0
+      - 0.0
+      - 0.0
+    proportion_physical:
+    - - 0.05
+      - 1.0
+      - 1.0
+    - - 1.0
+      - 0.0
+      - 0.0
+    - - 1.0
+      - 0.0
+      - 0.0
+    type: Discrete

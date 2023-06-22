@@ -116,7 +116,7 @@ def setup_parser():
     return parser.parse_args(
         [
             "--workdir",
-            "etc/data/realworld_test",
+            "etc/data/realworld_vac",
             "--cfg",
             "etc/cfg/run/june_data.yml",
             "--scale",

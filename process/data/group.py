@@ -28,6 +28,9 @@ def write_leisiure_def(workdir: str):
     for proc_file_key in ["cinema", "grocery", "gym", "pub"]:
         output_path = join(workdir, "group", "leisure", "cfg", f"{proc_file_key}.yaml")
 
+        if not exists(dirname(output_path)):
+            makedirs(dirname(output_path))
+
         with open(output_path, "w") as fid:
             yaml_dump(
                 FIXED_DATA["group"]["leisure"][proc_file_key],

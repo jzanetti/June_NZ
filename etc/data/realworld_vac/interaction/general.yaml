@@ -1,0 +1,15 @@
+alpha_physical: 2.0
+betas:
+  cinema: 0.157461
+  city_transport: 0.107969
+  company: 0.371
+  grocery: 0.04137
+  gym: 0.42941
+  hospital: 0.1168
+  household: 0.208
+  inter_city_transport: 0.383
+  pub: 0.42941
+  school: 0.07
+susceptibilities:
+  0-13: 0.5
+  13-100: 1.0
