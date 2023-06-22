@@ -59,7 +59,7 @@ def setup_parser():
         # ["--workdir", "/tmp/june_realworld_2023_0615_6", "--cfg", "etc/cfg/run/june_nz2.yml"]
         [
             "--workdir",
-            "/tmp/june_singleobs_v2.0_vaccine",
+            "/tmp/june_singleobs_vac_quan",
             "--cfg",
             "etc/cfg/run/june_singleobs_v2.0.yml",
         ]

@@ -1,5 +1,7 @@
-from june.policy import Policies
 from os.path import join
+
+from june.policy import Policies
+
 
 def create_policy_wrapper(base_dir: str, policy_cfg: dict):
     """Creating a policy
@@ -11,8 +13,4 @@ def create_policy_wrapper(base_dir: str, policy_cfg: dict):
     Returns:
         _type_: _description_
     """
-    return Policies.from_file(
-        config_file=join(
-            base_dir,
-            policy_cfg
-        ))
+    return Policies.from_file(config_file=join(base_dir, policy_cfg))

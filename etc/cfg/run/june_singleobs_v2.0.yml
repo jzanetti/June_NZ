@@ -104,5 +104,5 @@ data:
       intensity: diesease/virus_intensity.yaml
     vaccine: vaccine/vaccine1.yaml
 
-  policy: policy/policy.yaml
+  policy: policy/policy_with_quarantine.yaml
     

@@ -40,10 +40,10 @@ quarantine:
     1:
         n_days: 7 # for the symptomatic person
         n_days_household: 14 # for the housemates
-        compliance: 0.5 
-        household_compliance: 0.2
-        start_time: 9999-03-16 
-        end_time: 9999-03-24 
+        compliance: 1.0
+        household_compliance: 1.0
+        start_time: 2020-03-01 
+        end_time: 2020-03-30
     2:
         n_days: 7 # for the symptomatic person
         n_days_household: 14 # for the housemates
