@@ -1,0 +1,48 @@
+
+
+Vac1:
+  campaign:
+    start_time: 2020-02-25
+    end_time: 2020-03-02
+    group_by: age
+    group_type: 0-100
+    group_coverage: 0.9
+    total_doeses: 2
+    days_to_next_dose:
+      - 0
+      - 60
+  vaccine:
+      name: Pfizer
+      waning_factor: 0.8
+      days_administered_to_effective: 
+        - 3
+        - 4
+      days_effective_to_waning: 
+        - 3
+        - 5
+      days_waning: 
+        - 5
+        - 10
+      efficacies:
+        0-10:
+          sterilisation_efficacies: 
+            - Covid19: 0.9
+              Omicron: 0.3
+            - Covid19: 0.9
+              Omicron: 0.3
+          symptomatic_efficacies: 
+            - Covid19: 0.75
+              Omicron: 0.0
+            - Covid19: 0.8
+              Omicron: 0.1
+        11-100:
+          sterilisation_efficacies: 
+            - Covid19: 0.9
+              Omicron: 0.3
+            - Covid19: 0.9
+              Omicron: 0.3
+          symptomatic_efficacies: 
+            - Covid19: 0.75
+              Omicron: 0.0
+            - Covid19: 0.8
+              Omicron: 0.1

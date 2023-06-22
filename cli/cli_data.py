@@ -49,6 +49,7 @@ from process.data.interaction import write_interaction
 from process.data.policy import copy_policy_file
 from process.data.simulation import copy_simulation_file
 from process.data.utils import housekeeping, postproc
+from process.data.vaccine import copy_vaccine_file
 from process.utils import read_cfg, setup_logging
 
 
@@ -105,6 +106,13 @@ def setup_parser():
         default=None,
     )
 
+    parser.add_argument(
+        "--vaccine_cfg_path",
+        type=str or None,
+        help="Vaccine configuration",
+        default=None,
+    )
+
     return parser.parse_args(
         [
             "--workdir",
@@ -122,6 +130,8 @@ def setup_parser():
             "etc/cfg/policy/policy1.yaml",
             "--simulation_cfg_path",
             "etc/cfg/simulation/simulation_cfg.yml",
+            "--vaccine_cfg_path",
+            "etc/cfg/disease/vaccine/vaccine1.yaml",
         ]
     )
 
@@ -285,6 +295,13 @@ def main():
     if args.simulation_cfg_path is not None:
         logger.info("Processing simulation configuration file ...")
         copy_simulation_file(args.workdir, args.simulation_cfg_path)
+
+    # =============================
+    # Get vaccine data
+    # =============================
+    if args.vaccine_cfg_path is not None:
+        logger.info("Processing vaccine configuration file ...")
+        copy_vaccine_file(args.workdir, args.vaccine_cfg_path)
 
     # -----------------------------
     # Housekeep

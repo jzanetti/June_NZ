@@ -14,6 +14,11 @@ from june.epidemiology.infection.health_index.data_to_rates import (
     read_comorbidity_csv,
 )
 from june.epidemiology.infection_seed import InfectionSeed, InfectionSeeds
+from june.epidemiology.vaccines.vaccination_campaign import (
+    VaccinationCampaign,
+    VaccinationCampaigns,
+)
+from june.epidemiology.vaccines.vaccines import Vaccine
 from june.world import World as World_class
 from yaml import safe_load as yaml_safe_load
 
@@ -68,6 +73,81 @@ def create_virus_info(base_dir: str, virus_cfg: dict) -> dict:
     return {"virus_intensity": virus_intensity_output}
 
 
+def get_vaccine_info(vaccine_cfg_path: str):
+    """Get vaccine information
+
+    Args:
+        vaccine_cfg_path (str): Vaccine configuration path
+    """
+
+    with open(vaccine_cfg_path, "r") as fid:
+        vaccine_cfg = yaml_safe_load(fid)
+
+    vc = []
+    for vaccine_campaign_name in vaccine_cfg:
+        vaccine_features = {
+            "days_administered_to_effective": [],
+            "days_effective_to_waning": [],
+            "days_waning": [],
+            "sterilisation_efficacies": [],
+            "symptomatic_efficacies": [],
+        }
+
+        proc_vaccine_cfg = vaccine_cfg[vaccine_campaign_name]["vaccine"]
+        proc_campaign_cfg = vaccine_cfg[vaccine_campaign_name]["campaign"]
+        total_doeses = proc_campaign_cfg["total_doeses"]
+        for proc_vaccine_feature in vaccine_features:
+            if proc_vaccine_feature in ["sterilisation_efficacies", "symptomatic_efficacies"]:
+                for i in range(total_doeses):
+                    feature_values = {}
+                    for age_group in proc_vaccine_cfg["efficacies"]:
+                        proc_features = proc_vaccine_cfg["efficacies"][age_group][
+                            proc_vaccine_feature
+                        ][i]
+                        for proc_features_key in proc_features:
+                            if proc_features_key not in feature_values:
+                                feature_values[proc_features_key] = {}
+                            feature_values[proc_features_key][age_group] = proc_features[
+                                proc_features_key
+                            ]
+
+                    vaccine_features[proc_vaccine_feature].append(feature_values)
+
+            else:
+                for i in range(total_doeses):
+                    vaccine_features[proc_vaccine_feature].append(
+                        proc_vaccine_cfg[proc_vaccine_feature][i]
+                    )
+
+        vaccine = Vaccine(
+            proc_vaccine_cfg["name"],
+            days_administered_to_effective=vaccine_features["days_administered_to_effective"],
+            days_effective_to_waning=vaccine_features["days_effective_to_waning"],
+            days_waning=vaccine_features["days_waning"],
+            sterilisation_efficacies=vaccine_features["sterilisation_efficacies"],
+            symptomatic_efficacies=vaccine_features["sterilisation_efficacies"],
+            waning_factor=proc_vaccine_cfg["waning_factor"],
+        )
+
+        days_to_next_dose = proc_campaign_cfg["days_to_next_dose"]  # [0, 59]
+        dose_numbers = list(range(total_doeses))  # [0, 1]
+
+        vc.append(
+            VaccinationCampaign(
+                vaccine=vaccine,
+                days_to_next_dose=[days_to_next_dose[dose_number] for dose_number in dose_numbers],
+                dose_numbers=dose_numbers,
+                start_time=proc_campaign_cfg["start_time"],  # "2020-03-01 9:00"
+                end_time=proc_campaign_cfg["end_time"],
+                group_by=proc_campaign_cfg["group_by"],
+                group_type=proc_campaign_cfg["group_type"],
+                group_coverage=proc_campaign_cfg["group_coverage"],
+            )
+        )
+
+    return VaccinationCampaigns(vc)
+
+
 def create_disease_wrapper(
     world: World_class,
     base_dir: str,
@@ -114,17 +194,13 @@ def create_disease_wrapper(
 
     vaccination_campaigns = None
     if apply_vaccine:
-        from june.epidemiology.vaccines.vaccination_campaign import (
-            VaccinationCampaign,
-            VaccinationCampaigns,
-        )
-        from june.epidemiology.vaccines.vaccines import Vaccine
+        vaccination_campaigns = get_vaccine_info(join(base_dir, disease_cfg["vaccine"]))
 
         # effectiveness = [
         #    {"Delta": {"0-100": 0.3}, "Omicron": {"0-100": 0.3}},
         #    {"Delta": {"0-100": 0.9}, "Omicron": {"0-100": 0.9}},
         # ]
-
+        """
         effectiveness = [{"Covid19": {"0-100": 0.9}}]
 
         vaccine = Vaccine(
@@ -153,7 +229,7 @@ def create_disease_wrapper(
         )
 
         vaccination_campaigns = VaccinationCampaigns([vc])
-
+        """
     epidemiology = Epidemiology(
         infection_selectors=selectors,
         infection_seeds=infection_seeds,

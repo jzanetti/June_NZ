@@ -25,6 +25,23 @@ The command options are explained as below:
 - ``--policy_cfg_path``: Policy file. For example, ``--policy_cfg_path etc/cfg/policy/policy1.yaml``.
 - ``--simulation_cfg_path``: Simulation file. For example, ``--simulation_cfg_path etc/cfg/simulation/simulation_cfg.yml``.
 
+.. note::
+
+    Most input data are created from raw dataset in `June_NZ_data <https://github.com/jzanetti/JUNE_NZ_data>`_, 
+    while some configurations are defined:
+
+        - in a fixed variable ``FIXED_DATA`` (``process/__init__.py``).
+
+        - from external configuration files:
+
+            - Disease configuration (the directory contains all the information about the population disease, and the target virus we want to investigate), e.g., ``etc/cfg/disease/covid-19`` 
+
+            - Policy configuration, e.g., ``etc/cfg/policy/policy1.yaml``
+
+            - Simulation control configuration, e.g., ``etc/cfg/simulation/simulation_cfg.yml``
+
+            - Vaccination configuration, e.g., ``etc/cfg/disease/vaccine/vaccine1.yaml``
+
 The following contents show different types of inputs for **JUNE_NZ**.
 
 **********
@@ -565,4 +582,16 @@ An example for ``COVID-19`` transmission is set up as:
                 type: lognormal
                 s: 0.5 
                 loc: 0.0
-                scale: 1. 
+                scale: 1.
+
+
+**********
+7. Vaccination data
+**********
+
+The vaccine data must be specified if we want to simulate the effect of vaccination campaign in the model.
+
+.. image:: data/data_vaccine.png
+   :scale: 100%
+   :alt: Lognormal profile
+   :align: center
