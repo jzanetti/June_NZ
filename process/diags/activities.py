@@ -11,6 +11,7 @@ from matplotlib.pyplot import (
     tight_layout,
     title,
     xlabel,
+    xticks,
     ylabel,
 )
 from pandas import DataFrame, DateOffset
@@ -48,7 +49,9 @@ def plot_activities(workdir: str, df_people: DataFrame, max_plot_days: int = 7):
     activity_percentages = activity_counts.apply(lambda x: x / x.sum(), axis=1) * 100.0
 
     ax = activity_percentages.plot(kind="bar", stacked=True, figsize=(10, 6))
-    ax.xaxis.set_major_locator(AutoDateLocator(interval_multiples=1))
+    # ax.xaxis.set_major_locator(AutoDateLocator(interval_multiples=1))
+    ax.xaxis.set_major_formatter(DateFormatter("%m%dT%H"))
+    xticks(rotation=45)
     xlabel("Time")
     ylabel("Percentage")
     title("Percentage of Activities at Different Times")

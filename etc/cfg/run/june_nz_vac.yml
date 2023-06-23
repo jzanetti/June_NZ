@@ -101,6 +101,7 @@ data:
       intensity: disease/comorbidity_intensity.yaml
     virus:
       intensity: disease/virus_intensity.yaml
+    vaccine: vaccine/vaccine.yaml
 
   policy: policy/policy.yaml
     

@@ -2,18 +2,18 @@
 
 geo_table: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/geographic-areas-table-2023.csv
 
-activity: false
+activity: true
 
 demography:
-  super_area: true
+  super_area: false
   area: false
 
 equity:
-  super_area: true
-  area: true
+  super_area: false
+  area: false
 
 infection:
-  add_no_infected: true
+  add_no_infected: false
   timeseries:
     super_area: true
     area: false

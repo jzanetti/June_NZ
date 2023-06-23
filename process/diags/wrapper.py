@@ -28,7 +28,7 @@ def diags_wrapper(workdir: str, df_people: DataFrame, diags_cfg: dict):
     min_time = min(df_people["time"])
 
     if diags_cfg["activity"]:
-        plot_activities(workdir, df_people)
+        plot_activities(workdir, df_people, max_plot_days=3)
 
     for area_type in ["super_area", "area"]:
         if area_type == "area":
