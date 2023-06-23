@@ -14,6 +14,7 @@ The script ``cli_data.py`` is provided to create all the required inputs for **J
              --disease_cfg_dir <Disease configuration directory>
              --policy_cfg_path <Policy configuration path>
              [--exclude_super_areas A1, A2]
+             [--use_sa3_as_super_area]
 
 The command options are explained as below:
 
@@ -24,6 +25,10 @@ The command options are explained as below:
 - ``--disease_cfg_dir``: Disease configuration directory. For example, ``--disease_cfg_dir etc/cfg/disease/covid-19``.
 - ``--policy_cfg_path``: Policy file. For example, ``--policy_cfg_path etc/cfg/policy/policy1.yaml``.
 - ``--simulation_cfg_path``: Simulation file. For example, ``--simulation_cfg_path etc/cfg/simulation/simulation_cfg.yml``.
+- ``--use_sa3_as_super_area``: If use SA3 as super area level, otherwise we will use regional council as super area level.
+    Note that ``SA3`` is not a standard statistical level, therefore many information are aggregated from ``SA2``, including ``super_area_location``
+
+
 
 .. note::
 

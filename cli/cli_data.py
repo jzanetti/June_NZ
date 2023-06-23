@@ -118,7 +118,7 @@ def setup_parser():
     return parser.parse_args(
         [
             "--workdir",
-            "etc/data/realworld_vac",
+            "etc/data/realworld_test2",
             "--use_sa3_as_super_area",
             "--cfg",
             "etc/cfg/run/june_data.yml",
@@ -167,7 +167,10 @@ def main():
 
     logger.info("Processing super area location ...")
     super_area_location = write_super_area_location(
-        args.workdir, cfg["geography"]["super_area_location"]
+        args.workdir,
+        args.use_sa3_as_super_area,
+        cfg["geography"],
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
     )
 
     logger.info("Processing area location ... ")
@@ -175,9 +178,15 @@ def main():
 
     logger.info("Processing area socialeconomic index")
     area_socialeconomic_index = write_area_socialeconomic_index(
-        args.workdir, cfg["geography"]["area_socialeconomic_index"]
+        args.workdir,
+        cfg["geography"]["area_socialeconomic_index"],
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
     )
-    super_area_name = write_super_area_name(args.workdir)
+    super_area_name = write_super_area_name(
+        args.workdir,
+        args.use_sa3_as_super_area,
+        geography_hierarchy_definition_cfg=cfg["geography"]["geography_hierarchy_definition"],
+    )
 
     # =============================
     # Get demography data
