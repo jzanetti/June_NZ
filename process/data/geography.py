@@ -112,16 +112,17 @@ def write_super_area_location(workdir: str, super_area_location_cfg: dict):
 
 
 def write_geography_hierarchy_definition(
-    workdir: str, geography_hierarchy_definition_cfg: dict
+    workdir: str, use_sa3_as_super_area: bool, geography_hierarchy_definition_cfg: dict
 ) -> dict:
     """Write geography_hierarchy_definition
 
     Args:
         workdir (str): Working directory
+        use_sa3_as_super_area (bool): Use SA3 as super area, otherwise we will use regions
         geography_hierarchy_definition_cfg (dict): geography_hierarchy_definition configuration
     """
 
-    def map_codes(code: str) -> list:
+    def _map_codes1(code: str) -> list:
         """Create a mapping function
 
         Args:
@@ -133,6 +134,20 @@ def write_geography_hierarchy_definition(
         for key, values in REGION_CODES.items():
             if code in values:
                 return key
+        return None
+
+    def _map_codes2(code: str) -> list:
+        """Create a mapping function
+
+        Args:
+            code (str): Regional code to be mapped
+
+        Returns:
+            list: The list contains north and south island
+        """
+        for key, values in REGION_NAMES_CONVERSIONS.items():
+            if code == key:
+                return values
         return None
 
     data_path = get_raw_data(
@@ -148,15 +163,33 @@ def write_geography_hierarchy_definition(
 
     data = read_csv(data_path["raw"])
 
-    data = data[["REGC2023_code", "SA22018_code"]]
+    if use_sa3_as_super_area:
+        data = data[["REGC2023_code", "SA32023_code", "SA32023_name", "SA22023_code"]]
 
-    data = data[~data["REGC2023_code"].isin(REGION_CODES["Others"])]
+        data = data[~data["REGC2023_code"].isin(REGION_CODES["Others"])]
 
-    data["region"] = data["REGC2023_code"].map(map_codes)
+        data["REGC2023_name"] = data["REGC2023_code"].map(_map_codes2)
 
-    data = data.rename(
-        columns={"REGC2023_code": "super_area", "SA22018_code": "area"}
-    ).drop_duplicates()
+        data = data.rename(
+            columns={
+                "REGC2023_name": "region",
+                "SA32023_code": "super_area",
+                "SA22023_code": "area",
+            }
+        ).drop_duplicates()
+
+        data = data[["region", "super_area", "area"]]
+
+    else:
+        data = data[["REGC2023_code", "SA22018_code"]]
+
+        data = data[~data["REGC2023_code"].isin(REGION_CODES["Others"])]
+
+        data["region"] = data["REGC2023_code"].map(_map_codes1)
+
+        data = data.rename(
+            columns={"REGC2023_code": "super_area", "SA22018_code": "area"}
+        ).drop_duplicates()
 
     data.to_csv(data_path["output"], index=False)
 

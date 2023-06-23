@@ -113,10 +113,13 @@ def setup_parser():
         default=None,
     )
 
+    parser.add_argument("--use_sa3_as_super_area", action="store_true")
+
     return parser.parse_args(
         [
             "--workdir",
             "etc/data/realworld_vac",
+            "--use_sa3_as_super_area",
             "--cfg",
             "etc/cfg/run/june_data.yml",
             "--scale",
@@ -157,7 +160,9 @@ def main():
     # =============================
     logger.info("Processing geography_hierarchy_definition ...")
     geography_hierarchy_definition = write_geography_hierarchy_definition(
-        args.workdir, cfg["geography"]["geography_hierarchy_definition"]
+        args.workdir,
+        args.use_sa3_as_super_area,
+        cfg["geography"]["geography_hierarchy_definition"],
     )
 
     logger.info("Processing super area location ...")
