@@ -1,5 +1,6 @@
 from copy import deepcopy
 from logging import getLogger
+from math import ceil
 from os import makedirs
 from os.path import dirname, exists, join
 from re import findall as re_findall
@@ -780,13 +781,70 @@ def write_company_closure(workdir: str):
         yaml_dump(FIXED_DATA["group"]["company"]["company_closure"], fid, default_flow_style=False)
 
 
-def write_employers_by_sector(workdir: str, employers_by_sector_cfg: dict):
+def write_employers_by_sector(
+    workdir: str,
+    employers_by_sector_cfg: dict,
+    pop: DataFrame or None,
+    geography_hierarchy_definition: DataFrame or None,
+    use_sa3_as_super_area: bool = False,
+    employers_by_firm_size_data: DataFrame or None = None,
+):
     """Write number of employers by sectors for super area
 
     Args:
         workdir (str): _description_
         sectors_by_super_area_cfg (dict): Configuration
+        pop (DataFrame): Population object
+        use_sa3_as_super_area (bool): Use SA3 as super area, otherwise using Regions
+        employers_by_firm_size_data (DataFrame or None): Number of employers by firm size data
     """
+
+    def _scale_employers_by_sector_with_employers_by_firm_size_data(
+        employers_by_firm_size_data: DataFrame, scale_employers_by_sector: DataFrame
+    ) -> DataFrame:
+        """Scaling number of employers_by_sector by the number of employers by firm size
+
+        * Usually "number of employers by firm size" < "number of employers_by_sector", since
+            "number of employers by firm size" does not include the employers with 0 employees
+
+        Args:
+            employers_by_firm_size_data (DataFrame): number of employers by firm size
+            scale_employers_by_sector (DataFrame): number of employers_by_sector
+
+        Returns:
+            DataFrame: Updated number of employers_by_sector
+        """
+        employers_by_firm_size_data["total"] = employers_by_firm_size_data[
+            [item for item in employers_by_firm_size_data if item != "MSOA"]
+        ].sum(axis=1)
+        scale_employers_by_sector["total"] = scale_employers_by_sector[
+            [item for item in scale_employers_by_sector if item != "MSOA"]
+        ].sum(axis=1)
+        merged_df = merge(employers_by_firm_size_data, scale_employers_by_sector, on="MSOA")
+        merged_df["factor"] = merged_df["total_x"] / merged_df["total_y"]
+
+        # Create a new dataframe with columns "X" and "division"
+        merged_df = merged_df[["MSOA", "factor"]]
+        scale_employers_by_sector = scale_employers_by_sector[
+            [item for item in scale_employers_by_sector if item != "total"]
+        ]
+
+        scale_employers_by_sector = merge(scale_employers_by_sector, merged_df, on="MSOA")
+
+        columns_to_multiply = [
+            item for item in scale_employers_by_sector if item not in ["MSOA", "factor"]
+        ]
+        scale_employers_by_sector.loc[:, columns_to_multiply] = scale_employers_by_sector.loc[
+            :, columns_to_multiply
+        ].multiply(scale_employers_by_sector.loc[:, "factor"], axis="index")
+        scale_employers_by_sector = scale_employers_by_sector.fillna(0.0)
+        scale_employers_by_sector[columns_to_multiply] = scale_employers_by_sector[
+            columns_to_multiply
+        ].applymap(lambda x: ceil(x))
+        scale_employers_by_sector = scale_employers_by_sector.drop("factor", axis=1)
+
+        return scale_employers_by_sector
+
     data_path = get_raw_data(
         workdir,
         employers_by_sector_cfg,
@@ -795,30 +853,98 @@ def write_employers_by_sector(workdir: str, employers_by_sector_cfg: dict):
         force=True,
     )
 
+    if use_sa3_as_super_area:
+        pop_ratio_sa3 = get_population_ratio_between_region_and_sa3(
+            pop, geography_hierarchy_definition
+        )
+
     data = read_csv(data_path["raw"])[["Area", "ANZSIC06", "Value"]]
 
     data["Area"] = data["Area"].str.replace(" Region", "")
     data["Area"] = data["Area"].replace("Manawatu-Wanganui", "Manawatu-Whanganui")
-    data["Area"] = data["Area"].map({v: k for k, v in REGION_NAMES_CONVERSIONS.items()})
-
     data["ANZSIC06"] = data["ANZSIC06"].str[0]
+
+    if use_sa3_as_super_area:
+        df = data.rename(columns={"Area": "region"}).merge(
+            pop_ratio_sa3[["region", "super_area", "population_ratio"]], on="region", how="left"
+        )
+        df["Value2"] = df["Value"] * df["population_ratio"]
+        df = df.dropna()
+        df["Value2"] = df["Value2"].round().astype(int)
+        data = df[["super_area", "ANZSIC06", "Value2"]]
+        data = data.rename(columns={"super_area": "Area", "Value2": "Value"})
+        data["Area"] = data["Area"].astype(int)
+        data = data[["Area", "ANZSIC06", "Value"]]
+    else:
+        data["Area"] = data["Area"].map({v: k for k, v in REGION_NAMES_CONVERSIONS.items()})
 
     df_pivot = (
         pivot_table(data, values="Value", index="Area", columns="ANZSIC06").dropna().astype(int)
     ).reset_index()
 
     df_pivot = df_pivot.rename(columns={"Area": "MSOA"})
+
+    logger.info(
+        f"The total number of employers_by_sector: {df_pivot.drop('MSOA', axis=1).sum(axis=1).sum()}"
+    )
+
+    if employers_by_firm_size_data is not None:
+        df_pivot = _scale_employers_by_sector_with_employers_by_firm_size_data(
+            employers_by_firm_size_data, df_pivot
+        )
+        logger.info(
+            f"The total number of employers_by_sector (scaled): {df_pivot.drop('MSOA', axis=1).sum(axis=1).sum()}"
+        )
+
     df_pivot.to_csv(data_path["output"], index=False)
 
     return {"data": df_pivot, "output": data_path["output"]}
 
 
-def write_employers_by_firm_size(workdir: str, employers_by_firm_size_cfg: dict):
+def get_population_ratio_between_region_and_sa3(
+    pop: DataFrame, geography_hierarchy_definition: DataFrame
+) -> DataFrame:
+    """Get population ratio between region and SA3
+
+    Args:
+        pop (DataFrame): Population object
+        geography_hierarchy_definition (DataFrame): Geography hirarchy defination data
+
+    Returns:
+        DataFrame: Population ratio between region and SA3
+    """
+    df = pop.merge(
+        geography_hierarchy_definition[["area", "super_area", "region"]], on="area", how="left"
+    ).dropna()
+    df["super_area"] = df["super_area"].astype(int)
+    df = df[["region", "super_area", "population"]]
+    df["population"] = df.groupby("super_area")["population"].transform("sum")
+    df = df[["region", "super_area", "population"]]
+    df.drop_duplicates(inplace=True)
+    df["population_ratio"] = df.groupby("super_area")["population"].transform("sum")
+
+    df["population_ratio"] = df.groupby(["region"])["population"].transform(
+        lambda x: (x / x.sum())
+    )
+    df = df[["region", "super_area", "population_ratio"]]
+
+    return df
+
+
+def write_employers_by_firm_size(
+    workdir: str,
+    employers_by_firm_size_cfg: dict,
+    pop: DataFrame or None,
+    geography_hierarchy_definition: DataFrame or None,
+    use_sa3_as_super_area: bool = False,
+):
     """Write number of employers by firm size
 
     Args:
         workdir (str): _description_
         employees_by_super_area_cfg (dict): _description_
+        pop (DataFrame): Population object
+        use_sa3_as_super_area (bool): Use SA3 as super area, otherwise using Regions
     """
     data_path = get_raw_data(
         workdir,
@@ -827,6 +953,10 @@ def write_employers_by_firm_size(workdir: str, employers_by_firm_size_cfg: dict)
         "group/company",
         force=True,
     )
+    if use_sa3_as_super_area:
+        pop_ratio_sa3 = get_population_ratio_between_region_and_sa3(
+            pop, geography_hierarchy_definition
+        )
 
     data = read_csv(data_path["raw"])[
         ["Area", "Measure", "Enterprise employee count size group", "Value"]
@@ -840,7 +970,8 @@ def write_employers_by_firm_size(workdir: str, employers_by_firm_size_cfg: dict)
 
     data["Area"] = data["Area"].replace("Manawatu-Wanganui", "Manawatu-Whanganui")
 
-    data["Area"] = data["Area"].map({v: k for k, v in REGION_NAMES_CONVERSIONS.items()})
+    # if not use_sa3_as_super_area:
+    #    data["Area"] = data["Area"].map({v: k for k, v in REGION_NAMES_CONVERSIONS.items()})
 
     data["Enterprise employee count size group"] = (
         data["Enterprise employee count size group"]
@@ -849,12 +980,32 @@ def write_employers_by_firm_size(workdir: str, employers_by_firm_size_cfg: dict)
         .replace("50+", "50-xxx")
     )
 
+    if use_sa3_as_super_area:
+        df = data.rename(columns={"Area": "region"}).merge(
+            pop_ratio_sa3[["region", "super_area", "population_ratio"]], on="region", how="left"
+        )
+        df["Value2"] = df["Value"] * df["population_ratio"]
+        df = df.dropna()
+        df["Value2"] = df["Value2"].round().astype(int)
+        df = df[["super_area", "Enterprise employee count size group", "Value2"]]
+        data = df.rename(columns={"super_area": "Area", "Value2": "Value"})
+        data["Area"] = data["Area"].astype(int)
+    else:
+        data["Area"] = data["Area"].map({v: k for k, v in REGION_NAMES_CONVERSIONS.items()})
+
     df_pivot = pivot_table(
         data, values="Value", index="Area", columns="Enterprise employee count size group"
     ).reset_index()
     df_pivot = df_pivot[["Area", "1-19", "20-49", "50-xxx"]]
 
+    for df_key in ["Area", "1-19", "20-49", "50-xxx"]:
+        df_pivot[df_key] = df_pivot[df_key].astype(int)
+
     df_pivot = df_pivot.rename(columns={"Area": "MSOA"})
+
+    logger.info(
+        f"The total number of employers_by_firm_size: {df_pivot.drop('MSOA', axis=1).sum(axis=1).sum()}"
+    )
 
     df_pivot.to_csv(data_path["output"], index=False)
 
@@ -867,6 +1018,7 @@ def write_employees(workdir: str, employees_cfg: dict, pop: DataFrame or None = 
     Args:
         workdir (str): Working directory
         employees_cfg (dict): Configuration
+        use_sa3_as_super_area (bool): If apply SA3 as super area, otherwise using regions
     """
 
     def _rename_column(column_name):
@@ -910,6 +1062,10 @@ def write_employees(workdir: str, employees_cfg: dict, pop: DataFrame or None = 
     # Read geography hierarchy
     geography_hierarchy_definition = read_csv(data_path["deps"]["geography_hierarchy_definition"])
 
+    #data_sa2 = data_sa2.merge(
+    #    geography_hierarchy_definition[["area", "super_area", "region"]], on="area", how="left"
+    #)
+
     data_sa2 = data_sa2.merge(
         geography_hierarchy_definition[["area", "super_area"]], on="area", how="left"
     )
@@ -925,6 +1081,9 @@ def write_employees(workdir: str, employees_cfg: dict, pop: DataFrame or None = 
     )
 
     data_sa2 = data_sa2.merge(data_leed_rate, on="super_area", how="left")
+
+    #data_leed_rate = data_leed_rate.rename(columns={"Area": "region"})
+    #data_sa2 = data_sa2.merge(data_leed_rate, on="region", how="left")
 
     industrial_codes = []
     industrial_codes_with_genders = []

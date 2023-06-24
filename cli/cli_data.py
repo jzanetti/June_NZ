@@ -119,7 +119,7 @@ def setup_parser():
         [
             "--workdir",
             "etc/data/realworld_test2",
-            "--use_sa3_as_super_area",
+            # "--use_sa3_as_super_area",
             "--cfg",
             "etc/cfg/run/june_data.yml",
             "--scale",
@@ -217,12 +217,21 @@ def main():
 
     logger.info("Processing employers_by_firm_size")
     employers_by_firm_size = write_employers_by_firm_size(
-        args.workdir, cfg["group"]["company"]["employers_by_firm_size"]
+        args.workdir,
+        cfg["group"]["company"]["employers_by_firm_size"],
+        pop=pop,
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
     )  # employees_by_super_area
 
     logger.info("Processing employers_by_sector")
     employers_by_sector = write_employers_by_sector(
-        args.workdir, cfg["group"]["company"]["employers_by_sector"]
+        args.workdir,
+        cfg["group"]["company"]["employers_by_sector"],
+        pop=pop,
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
+        employers_by_firm_size_data=employers_by_firm_size["data"],
     )  # sectors_by_super_area
 
     logger.info("Processing company_closure")

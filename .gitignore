@@ -3,6 +3,7 @@ lib
 results
 etc/data/realworld
 etc/data/realworld_test
+etc/data/realworld_test2
 lib/JUNE_v*
 lib/JUNE_v1.2.0/*
 log
