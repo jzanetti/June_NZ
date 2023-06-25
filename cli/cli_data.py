@@ -119,7 +119,7 @@ def setup_parser():
         [
             "--workdir",
             "etc/data/realworld_test2",
-            # "--use_sa3_as_super_area",
+            "--use_sa3_as_super_area",
             "--cfg",
             "etc/cfg/run/june_data.yml",
             "--scale",
@@ -212,7 +212,10 @@ def main():
     # ----------------
     logger.info("Processing employees")
     employees = write_employees(
-        args.workdir, cfg["group"]["company"]["employees"], pop=pop
+        args.workdir,
+        cfg["group"]["company"]["employees"],
+        pop=pop,
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
     )  # sectors_employee_genders
 
     logger.info("Processing employers_by_firm_size")
@@ -244,11 +247,23 @@ def main():
     # Get commute data
     # -----------------------------
     write_transport_def(args.workdir)
-    write_passage_seats_ratio(args.workdir)
-    write_number_of_inter_city_stations(args.workdir)
+    write_passage_seats_ratio(
+        args.workdir,
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
+    )
+    write_number_of_inter_city_stations(
+        args.workdir,
+        pop=pop,
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
+    )
     transport_mode = write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
     workplace_and_home = write_workplace_and_home(
-        args.workdir, cfg["group"]["commute"]["workplace_and_home"]
+        args.workdir,
+        cfg["group"]["commute"]["workplace_and_home"],
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
     )
 
     # ----------------

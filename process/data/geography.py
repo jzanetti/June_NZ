@@ -208,10 +208,11 @@ def write_geography_hierarchy_definition(
                 "REGC2023_name": "region",
                 "SA32023_code": "super_area",
                 "SA22023_code": "area",
+                "SA32023_name": "super_area_name",
             }
         ).drop_duplicates()
 
-        data = data[["region", "super_area", "area"]]
+        data = data[["region", "super_area", "area", "super_area_name"]]
 
     else:
         data = data[["REGC2023_code", "SA22018_code"]]
