@@ -113,10 +113,13 @@ def setup_parser():
         default=None,
     )
 
+    parser.add_argument("--use_sa3_as_super_area", action="store_true")
+
     return parser.parse_args(
         [
             "--workdir",
-            "etc/data/realworld_vac",
+            "etc/data/realworld_test2",
+            "--use_sa3_as_super_area",
             "--cfg",
             "etc/cfg/run/june_data.yml",
             "--scale",
@@ -157,12 +160,17 @@ def main():
     # =============================
     logger.info("Processing geography_hierarchy_definition ...")
     geography_hierarchy_definition = write_geography_hierarchy_definition(
-        args.workdir, cfg["geography"]["geography_hierarchy_definition"]
+        args.workdir,
+        args.use_sa3_as_super_area,
+        cfg["geography"]["geography_hierarchy_definition"],
     )
 
     logger.info("Processing super area location ...")
     super_area_location = write_super_area_location(
-        args.workdir, cfg["geography"]["super_area_location"]
+        args.workdir,
+        args.use_sa3_as_super_area,
+        cfg["geography"],
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
     )
 
     logger.info("Processing area location ... ")
@@ -170,9 +178,15 @@ def main():
 
     logger.info("Processing area socialeconomic index")
     area_socialeconomic_index = write_area_socialeconomic_index(
-        args.workdir, cfg["geography"]["area_socialeconomic_index"]
+        args.workdir,
+        cfg["geography"]["area_socialeconomic_index"],
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
     )
-    super_area_name = write_super_area_name(args.workdir)
+    super_area_name = write_super_area_name(
+        args.workdir,
+        args.use_sa3_as_super_area,
+        geography_hierarchy_definition_cfg=cfg["geography"]["geography_hierarchy_definition"],
+    )
 
     # =============================
     # Get demography data
@@ -198,17 +212,29 @@ def main():
     # ----------------
     logger.info("Processing employees")
     employees = write_employees(
-        args.workdir, cfg["group"]["company"]["employees"], pop=pop
+        args.workdir,
+        cfg["group"]["company"]["employees"],
+        pop=pop,
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
     )  # sectors_employee_genders
 
     logger.info("Processing employers_by_firm_size")
     employers_by_firm_size = write_employers_by_firm_size(
-        args.workdir, cfg["group"]["company"]["employers_by_firm_size"]
+        args.workdir,
+        cfg["group"]["company"]["employers_by_firm_size"],
+        pop=pop,
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
     )  # employees_by_super_area
 
     logger.info("Processing employers_by_sector")
     employers_by_sector = write_employers_by_sector(
-        args.workdir, cfg["group"]["company"]["employers_by_sector"]
+        args.workdir,
+        cfg["group"]["company"]["employers_by_sector"],
+        pop=pop,
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
+        employers_by_firm_size_data_input=employers_by_firm_size["data"],
     )  # sectors_by_super_area
 
     logger.info("Processing company_closure")
@@ -221,11 +247,23 @@ def main():
     # Get commute data
     # -----------------------------
     write_transport_def(args.workdir)
-    write_passage_seats_ratio(args.workdir)
-    write_number_of_inter_city_stations(args.workdir)
+    write_passage_seats_ratio(
+        args.workdir,
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
+    )
+    write_number_of_inter_city_stations(
+        args.workdir,
+        pop=pop,
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
+    )
     transport_mode = write_transport_mode(args.workdir, cfg["group"]["commute"]["transport_mode"])
     workplace_and_home = write_workplace_and_home(
-        args.workdir, cfg["group"]["commute"]["workplace_and_home"]
+        args.workdir,
+        cfg["group"]["commute"]["workplace_and_home"],
+        geography_hierarchy_definition=geography_hierarchy_definition["data"],
+        use_sa3_as_super_area=args.use_sa3_as_super_area,
     )
 
     # ----------------

@@ -594,7 +594,10 @@ FIXED_DATA = {
 EXCLUDED_AREAS = [258000, 258100]
 
 AREAS_CONSISTENCY_CHECK = {
+    # "geography_hierarchy_definition": None,
+    # "super_area_location": None,
     "geography_hierarchy_definition": {"super_area": "super_area", "area": "area"},
+    # "geography_hierarchy_definition": None,
     "super_area_location": {"super_area": "super_area"},
     "area_location": {"area": "area"},
     "area_socialeconomic_index": {"area": "area"},
@@ -610,7 +613,7 @@ AREAS_CONSISTENCY_CHECK = {
     "transport_mode": {"area": "geography"},
     "super_area_name": {"super_area": "super_area"},
     "household_number": {"area": "output_area"},
-    "workplace_and_home": None,
+    "workplace_and_home": {"super_area": ["Area of residence", "Area of workplace"]},
     "household_communal": {"area": "output_area"},
     "household_student": {"area": "area"},
 }

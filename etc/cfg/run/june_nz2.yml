@@ -1,9 +1,9 @@
 
 
-exp_name: realworld
+exp_name: realworld_test2
 
 
-simulation_cfg: etc/data/realworld_test/simulation/simulation_cfg.yaml
+simulation_cfg: etc/data/realworld_test2/simulation/simulation_cfg.yaml
 
 save:
   geography: false
@@ -17,7 +17,7 @@ output:
 
 
 data:
-  base_dir: etc/data/realworld_test
+  base_dir: etc/data/realworld_test2
   geography:
     geography_hierarchy: geography/geography_hierarchy_definition.csv
     super_area_location: geography/super_area_location.csv
@@ -101,6 +101,7 @@ data:
       intensity: disease/comorbidity_intensity.yaml
     virus:
       intensity: disease/virus_intensity.yaml
+    vaccine: vaccine/vaccine.yaml
 
   policy: policy/policy.yaml
     

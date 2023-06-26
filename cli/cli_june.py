@@ -55,7 +55,7 @@ def setup_parser():
     )
 
     return parser.parse_args(
-        ["--workdir", "/tmp/june_realworld_vac", "--cfg", "etc/cfg/run/june_nz_vac.yml"]
+        ["--workdir", "/tmp/june_realworld_test2", "--cfg", "etc/cfg/run/june_nz2.yml"]
         # ["--workdir", "/tmp/june_realworld_2023_0615_6", "--cfg", "etc/cfg/run/june_nz2.yml"]
         # [
         #    "--workdir",

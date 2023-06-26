@@ -14,6 +14,7 @@ The script ``cli_data.py`` is provided to create all the required inputs for **J
              --disease_cfg_dir <Disease configuration directory>
              --policy_cfg_path <Policy configuration path>
              [--exclude_super_areas A1, A2]
+             [--use_sa3_as_super_area]
 
 The command options are explained as below:
 
@@ -24,6 +25,9 @@ The command options are explained as below:
 - ``--disease_cfg_dir``: Disease configuration directory. For example, ``--disease_cfg_dir etc/cfg/disease/covid-19``.
 - ``--policy_cfg_path``: Policy file. For example, ``--policy_cfg_path etc/cfg/policy/policy1.yaml``.
 - ``--simulation_cfg_path``: Simulation file. For example, ``--simulation_cfg_path etc/cfg/simulation/simulation_cfg.yml``.
+- ``--use_sa3_as_super_area``: If use ``SA3`` as super area level, otherwise we will use regional council as super area level. Note that ``SA3`` is not a standard statistical level, therefore many information are aggregated from ``SA2`` (e.g., ``super_area_location``).
+
+
 
 .. note::
 
@@ -333,6 +337,11 @@ Note that ``transport_def.yaml`` is defined in the variable ``FIXED_DATA``, e.g.
             },
         ...
 
+Note that when we use ``SA3`` as ``super_area``, ``Number of inter-state stations`` is dependant on the population in each ``SA3`` ~ there will be one more station when the
+population increases 5000. However, when we use New Zealand regions as ``super_area``, the number of stations is defined in ``FIXED_DATA``.
+
+
+
 
 **********
 5. Interaction
@@ -591,7 +600,7 @@ An example for ``COVID-19`` transmission is set up as:
 
 The vaccine data must be specified if we want to simulate the effect of vaccination campaign in the model.
 
-.. image:: data/data_vaccine.png
+.. image:: data/data_vaccine.csv
    :scale: 100%
    :alt: Lognormal profile
    :align: center

@@ -124,18 +124,14 @@ def postproc(data_list: list, scale: float = 1.0, exclude_super_areas: list = []
         if AREAS_CONSISTENCY_CHECK[data_name] is None:
             continue
 
-        print(data_name)
         proc_data = data_list[data_name]["data"]
 
         for area_key in all_geo:
             if area_key in AREAS_CONSISTENCY_CHECK[data_name]:
+                data_key = AREAS_CONSISTENCY_CHECK[data_name][area_key]
+
                 all_geo[area_key].append(
-                    [
-                        int(item)
-                        for item in list(
-                            unique(proc_data[AREAS_CONSISTENCY_CHECK[data_name][area_key]].values)
-                        )
-                    ]
+                    [int(item) for item in list(unique(proc_data[data_key].values))]
                 )
 
     for area_key in all_geo:
@@ -152,13 +148,20 @@ def postproc(data_list: list, scale: float = 1.0, exclude_super_areas: list = []
 
         for area_key in ["super_area", "area"]:
             if area_key in AREAS_CONSISTENCY_CHECK[data_name]:
-                proc_data[AREAS_CONSISTENCY_CHECK[data_name][area_key]] = proc_data[
-                    AREAS_CONSISTENCY_CHECK[data_name][area_key]
-                ].astype(int)
+                data_key = AREAS_CONSISTENCY_CHECK[data_name][area_key]
 
-                proc_data = proc_data[
-                    proc_data[AREAS_CONSISTENCY_CHECK[data_name][area_key]].isin(all_geo[area_key])
-                ]
+                proc_data[data_key] = proc_data[data_key].astype(int)
+
+                if isinstance(data_key, str):
+                    proc_data = proc_data[proc_data[data_key].isin(all_geo[area_key])]
+                elif isinstance(data_key, list):
+                    if len(data_key) == 2:
+                        proc_data = proc_data[
+                            proc_data[data_key[0]].isin(all_geo[area_key])
+                            & proc_data[data_key[1]].isin(all_geo[area_key])
+                        ]
+                    else:
+                        raise Exception("does not support data_key > 2 at the moment")
 
         data_list[data_name]["data"] = proc_data
 
