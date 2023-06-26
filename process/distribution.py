@@ -75,6 +75,8 @@ def work_and_home_distribution(
         areas_map_path=join(base_dir, geography_cfg["geography_hierarchy"]),
     )
 
+    worker_distr.non_geographical_work_location = []
+
     worker_distr.distribute(
         areas=world.areas, super_areas=world.super_areas, population=world.people
     )

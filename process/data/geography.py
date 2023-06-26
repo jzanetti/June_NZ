@@ -96,7 +96,7 @@ def write_super_area_location(
     """
     if use_sa3_as_super_area:
         data_path = get_raw_data(
-            workdir, geograph_cfg["area_location"], "area_location", "geography", force=True
+            workdir, geograph_cfg["area_location"], "super_area_location", "geography", force=True
         )
     else:
         data_path = get_raw_data(

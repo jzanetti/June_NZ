@@ -234,7 +234,7 @@ def main():
         pop=pop,
         geography_hierarchy_definition=geography_hierarchy_definition["data"],
         use_sa3_as_super_area=args.use_sa3_as_super_area,
-        employers_by_firm_size_data=employers_by_firm_size["data"],
+        employers_by_firm_size_data_input=employers_by_firm_size["data"],
     )  # sectors_by_super_area
 
     logger.info("Processing company_closure")

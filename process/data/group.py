@@ -1,4 +1,4 @@
-from copy import deepcopy
+from copy import copy, deepcopy
 from logging import getLogger
 from math import ceil
 from os import makedirs
@@ -857,7 +857,7 @@ def write_employers_by_sector(
     pop: DataFrame or None,
     geography_hierarchy_definition: DataFrame or None,
     use_sa3_as_super_area: bool = False,
-    employers_by_firm_size_data: DataFrame or None = None,
+    employers_by_firm_size_data_input: DataFrame or None = None,
 ):
     """Write number of employers by sectors for super area
 
@@ -914,6 +914,8 @@ def write_employers_by_sector(
         scale_employers_by_sector = scale_employers_by_sector.drop("factor", axis=1)
 
         return scale_employers_by_sector
+
+    employers_by_firm_size_data = copy(employers_by_firm_size_data_input)
 
     data_path = get_raw_data(
         workdir,
