@@ -600,7 +600,8 @@ An example for ``COVID-19`` transmission is set up as:
 
 The vaccine data must be specified if we want to simulate the effect of vaccination campaign in the model.
 
-.. image:: data/data_vaccine.csv
-   :scale: 100%
-   :alt: Lognormal profile
-   :align: center
+.. csv-table:: Disease/Disease data
+   :file: data/data_vaccine.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1
