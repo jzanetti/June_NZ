@@ -59,6 +59,9 @@ def create_group_locations(
 
         elif group_name == "leisure":
             for leisure_key in group_and_interaction_cfg["leisure"]:
+                if leisure_key == "household_visits":
+                    continue
+
                 setattr(
                     geography,
                     leisure_key,

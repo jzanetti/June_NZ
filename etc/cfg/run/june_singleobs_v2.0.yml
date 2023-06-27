@@ -53,6 +53,9 @@ data:
           location: group/leisure/data/pub.csv
           configs: group/leisure/cfg/pub.yaml
         interaction: interaction/pub.yaml
+      household_visits:
+        defination:
+          configs: group/leisure/cfg/visits.yaml
     school:
       defination:
         location: group/school/schools.csv

@@ -37,12 +37,13 @@ def leisure_distribution(
         grocery_config_filename=join(
             base_dir, group_and_interaction_cfg["groceries"]["defination"]["configs"]
         ),
+        household_vists_config_filename=join(
+            base_dir, group_and_interaction_cfg["household_visits"]["defination"]["configs"]
+        ),
     )
     world.leisure.distribute_social_venues_to_areas(
         areas=world.areas, super_areas=world.super_areas
     )
-
-    x = 3
 
 
 def work_and_home_distribution(

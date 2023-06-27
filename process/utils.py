@@ -6,6 +6,22 @@ from subprocess import PIPE, Popen
 from yaml import safe_load as yaml_load
 
 
+def move_item_to_end(item: str, my_list: list) -> list:
+    """Move an item to the end of list, e.g.,
+        it is useful when we need to move "leisure" behind "household" when we
+        process interaction, since "leisure" contains "household visit"
+
+    Args:
+        item (str): item to be moved
+        my_list (list): original list
+    """
+    if item in my_list:
+        my_list.remove(item)  # Remove the item from its current position
+        my_list.append(item)  # Append the item to the end
+
+    return my_list
+
+
 def download_file(url: str, workdir: str = "/tmp") -> str:
     """Download a file from URL to local
 

@@ -16,6 +16,7 @@ from process.distribution import (
     work_and_home_distribution,
 )
 from process.groups import create_group_locations
+from process.utils import move_item_to_end
 
 logger = getLogger()
 
@@ -68,7 +69,12 @@ def create_world_wrapper(
     # -----------------------------
     # 3. Assign people to fixed interaction objects
     # -----------------------------
-    for interaction_obj in group_and_interaction_cfg:
+
+    group_and_interaction_cfg_keys = move_item_to_end(
+        "leisure", list(group_and_interaction_cfg.keys())
+    )
+
+    for interaction_obj in group_and_interaction_cfg_keys:
         if interaction_obj in ["others", "commute"]:
             continue
 

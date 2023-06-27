@@ -46,6 +46,9 @@ def combine_interaction_cfg(workdir: str, base_dir: str, interaction_cfg: dict) 
 
         if proc_group == "leisure":
             for proc_subgroup in interaction_cfg[proc_group]:
+                if proc_subgroup == "household_visits":
+                    continue
+
                 proc_cfg = join(
                     base_dir, interaction_cfg[proc_group][proc_subgroup]["interaction"]
                 )
@@ -119,6 +122,9 @@ def initiate_interaction(base_dir: str, group_and_interaction: dict):
             )
         elif group_name == "leisure":
             for leisure_key in group_and_interaction["leisure"]:
+                if leisure_key == "household_visits":
+                    continue
+
                 LEISURE_OBJS[leisure_key].get_interaction(
                     join(base_dir, group_and_interaction["leisure"][leisure_key]["interaction"])
                 )

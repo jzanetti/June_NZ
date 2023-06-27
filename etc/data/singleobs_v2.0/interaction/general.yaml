@@ -9,6 +9,7 @@ betas:
  school: 0.070
  company: 0.371
  household: 0.208
+ household_visits: 0.208
  city_transport: 0.107969 
  inter_city_transport: 0.3830
  pub: 0.42941

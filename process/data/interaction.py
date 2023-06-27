@@ -16,6 +16,7 @@ def write_interaction(
         "gym",
         "hospital",
         "household",
+        "household_visit",
         "pub",
         "school",
     ],
@@ -34,6 +35,9 @@ def write_interaction(
         makedirs(output_dir)
 
     for proc_file_key in leisure_types:
+        if proc_file_key == "household_visit":
+            continue
+
         output_path = join(output_dir, f"{proc_file_key}.yaml")
 
         with open(output_path, "w") as fid:

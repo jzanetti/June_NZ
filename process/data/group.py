@@ -26,7 +26,7 @@ def write_leisiure_def(workdir: str):
     Args:
         workdir (str): Working directory
     """
-    for proc_file_key in ["cinema", "grocery", "gym", "pub"]:
+    for proc_file_key in ["cinema", "grocery", "gym", "pub", "household_visits"]:
         output_path = join(workdir, "group", "leisure", "cfg", f"{proc_file_key}.yaml")
 
         if not exists(dirname(output_path)):

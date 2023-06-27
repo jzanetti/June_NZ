@@ -3,7 +3,8 @@ title: Covid configuration example
 activity_to_super_groups:
   medical_facility: ["hospitals"] # ["hospitals"]
   primary_activity: ["schools", "companies"] # ["schools", "companies"]
-  leisure: ['pubs', 'cinemas', 'groceries']  # ['pubs', 'cinemas', 'groceries', 'gyms'] 
+  # leisure: ['pubs', 'cinemas', 'groceries', "household_visits"]  # ['pubs', 'cinemas', 'groceries', 'gyms', "household_visits"]
+  leisure: ["household_visits"]
   residence: ["households"]
   commute: ['city_transports', 'inter_city_transports']
 
@@ -28,13 +29,15 @@ time:
           3: 12 
   step_activities:
       weekday:
-          0: ['medical_facility', 'residence', 'commute'] 
+          # 0: ['medical_facility', 'residence', 'commute'] 
+          0: ['residence', 'leisure']
           1: ['medical_facility', 'primary_activity', 'leisure', 'residence', 'commute'] 
           2: ['medical_facility', 'residence', 'commute'] 
           3: ['medical_facility', 'leisure', 'residence', 'commute']
           4: ['medical_facility', 'residence']
       weekend:
-          0: ['medical_facility', 'leisure', 'residence', 'commute']
+          0: ['residence', 'leisure']
+          # 0: ['medical_facility', 'leisure', 'residence', 'commute']
           1: ['medical_facility', 'leisure', 'residence', 'commute']
           2: ['medical_facility', 'leisure', 'residence', 'commute']
           3: ['medical_facility', 'residence']
