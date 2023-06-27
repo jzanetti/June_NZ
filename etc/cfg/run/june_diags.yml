@@ -1,8 +1,16 @@
 
 
 geo_table: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geography/geographic-areas-table-2023.csv
+sa3_shp: https://github.com/jzanetti/JUNE_NZ_data/raw/main/geography/statsnzstatistical-area-3-2023-generalised-SHP.zip
 
-activity: true
+domains:
+  region:
+    - Auckland
+  super_area:
+    - 51150
+  area: null
+
+activity: false
 
 demography:
   super_area: false
@@ -15,5 +23,8 @@ equity:
 infection:
   add_no_infected: false
   timeseries:
-    super_area: true
+    super_area: false
     area: false
+
+map:
+  infected: true
