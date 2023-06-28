@@ -319,10 +319,8 @@ Note that ``transport_def.yaml`` is defined in the variable ``FIXED_DATA``, e.g.
             },
         ...
 
-Note that when we use ``SA3`` as ``super_area``, ``Number of inter-state stations`` is dependant on the population in each ``SA3`` ~ there will be one more station when the
-population increases 5000. However, when we use New Zealand regions as ``super_area``, the number of stations is defined in ``FIXED_DATA``.
-
-
+Note that when we use ``SA3`` as the ``super_area``, the ``Number of inter-state stations`` is dependant on the population in each ``SA3`` ~ there will be one additional station 
+when the population increases by 5000. However, when we use New Zealand regions as the ``super_area``, the number of stations is defined in ``FIXED_DATA``.
 
 
 **********
@@ -339,14 +337,15 @@ It defines the interaction intensity matrix for all the group members (e.g., sch
    :class: longtable
    :widths: 1 1 1
 
-The above data are defined through ``FIXED_DATA``.
+The above data are defined through ``FIXED_DATA``. 
+(It is worthwhile to note that when the activity is ``household_visit``, the contact matrix is borrowed from ``household`` therefore we don't need a seperate ``household_visit`` contact matrix)
 
 
 **********
 6. Disease data
 **********
 
-Defines virus properties:
+Defines disease properties (population comorbidities, probability of infection, infection outcome, symtom trajectory, and virus intensity):
 
 .. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
 

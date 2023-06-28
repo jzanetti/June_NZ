@@ -119,6 +119,7 @@ def postproc(data_list: list, scale: float = 1.0, domains_cfg: dict or None = No
 
     data_list["age_profile"]["data"] = age_profile.drop(["sum", "sum18"], axis=1)
 
+    """
     # remove region, super_area or area as required
     if domains_cfg is not None:
         # domains_cfg = {"region": ["Auckland"], "super_area": None, "area": None}
@@ -137,6 +138,7 @@ def postproc(data_list: list, scale: float = 1.0, domains_cfg: dict or None = No
         ]
 
     data_list["age_profile"]["data"] = age_profile
+    """
 
     # get all super_areas/areas:
     all_geo = {"super_area": [], "area": []}
@@ -156,6 +158,25 @@ def postproc(data_list: list, scale: float = 1.0, domains_cfg: dict or None = No
 
     for area_key in all_geo:
         all_geo[area_key] = _find_common_values(all_geo[area_key])
+
+    # remove region, super_area or area as required
+    if domains_cfg is not None:
+        # domains_cfg = {"region": ["Auckland"], "super_area": None, "area": None}
+        geography_hierarchy_definition = shallow_copy(
+            data_list["geography_hierarchy_definition"]["data"]
+        )
+        for domain_key in ["region", "super_area", "area"]:
+            proc_domains = domains_cfg[domain_key]
+
+            if proc_domains is not None:
+                geography_hierarchy_definition = geography_hierarchy_definition[
+                    geography_hierarchy_definition[domain_key].isin(proc_domains)
+                ]
+
+            for area_key in all_geo:
+                all_geo[area_key] = all_geo[area_key].intersection(
+                    list(geography_hierarchy_definition[area_key].unique())
+                )
 
     # all_geo = remove_super_area(exclude_super_areas, data_list, all_geo)
 
