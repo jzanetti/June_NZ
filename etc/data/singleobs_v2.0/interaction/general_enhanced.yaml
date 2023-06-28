@@ -1,0 +1,18 @@
+susceptibilities:
+  0-13 : 0.5
+  13-100: 1.0
+
+alpha_physical: 2.
+
+betas:
+ hospital: 1.1168
+ school: 1.070
+ company: 1.371
+ household: 1.208
+ household_visits: 1.208
+ city_transport: 1.107969 
+ inter_city_transport: 1.3830
+ pub: 1.42941
+ gym: 1.42941 
+ grocery: 1.04137
+ cinema: 1.157461

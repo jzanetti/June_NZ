@@ -9,7 +9,7 @@ activity_to_super_groups:
   commute: ['city_transports', 'inter_city_transports']
 
 seed:
-    cases_per_capita: 0.5
+    cases_per_capita: 0.1
     seed_super_area: null
 
 time:

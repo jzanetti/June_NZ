@@ -523,6 +523,7 @@ An example of the symptom trajectory is:
                 type: constant
                 value: 0.
 
+Note that the profile can be plotted using ``etc/test/plot_<profile>.py``, where ``<profile>`` is the function name (e.g., ``beta``, ``norm`` or ``lognorm``).
 
 6.4 Transmission profile
 ============
