@@ -1,9 +1,9 @@
 
 
-exp_name: realworld_test2
+exp_name: realworld_test3
 
 
-simulation_cfg: etc/data/realworld_test2/simulation/simulation_cfg.yaml
+simulation_cfg: etc/data/realworld_test3/simulation/simulation_cfg.yaml
 
 save:
   geography: false
@@ -17,7 +17,7 @@ output:
 
 
 data:
-  base_dir: etc/data/realworld_test2
+  base_dir: etc/data/realworld_test3
   geography:
     geography_hierarchy: geography/geography_hierarchy_definition.csv
     super_area_location: geography/super_area_location.csv

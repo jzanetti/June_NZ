@@ -10,7 +10,7 @@ domains:
     - 51150
   area: null
 
-activity: false
+activity: true
 
 demography:
   super_area: false
@@ -27,4 +27,4 @@ infection:
     area: false
 
 map:
-  infected: true
+  infected: false

@@ -11,7 +11,7 @@ from process.june_model import (
     create_pseudo_data_folder,
 )
 
-check_availability_for_june_model(checkout_repo=True)
+check_availability_for_june_model(checkout_repo=False)
 create_pseudo_data_folder()
 
 import argparse
@@ -55,7 +55,7 @@ def setup_parser():
     )
 
     return parser.parse_args(
-        # ["--workdir", "/tmp/june_realworld_test2", "--cfg", "etc/cfg/run/june_nz2.yml"]
+        # ["--workdir", "/tmp/june_realworld_test3", "--cfg", "etc/cfg/run/june_nz2.yml"]
         # ["--workdir", "/tmp/june_realworld_2023_0615_6", "--cfg", "etc/cfg/run/june_nz2.yml"]
         [
             "--workdir",

@@ -31,7 +31,24 @@ def get_data_from_osm(
         list: the queried results from OSM
     """
     geolocator = Nominatim(user_agent="{name}_extraction")
-    location = geolocator.geocode(f"{geo_name}, New Zealand")
+
+    retry = 0
+
+    location = None
+    while retry < 5:
+        try:
+            location = geolocator.geocode(f"{geo_name}, New Zealand", timeout=15)
+            break
+        except:
+            logger.error(
+                f" --- Not able to get geolocator, trying it again (already tried: {retry}) ..."
+            )
+            sleep(15 * (retry + 1))
+            retry += 1
+
+    if location is None:
+        raise Exception(f"Not able to get geolocator with retries = {retry} ...")
+
     lat = location.latitude
     lon = location.longitude
 
