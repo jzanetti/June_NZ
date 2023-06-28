@@ -1,3 +1,9 @@
+domains:
+  region:
+    - Auckland
+  super_area: null
+  area: null
+
 
 total_population: https://github.com/jzanetti/JUNE_NZ_data/raw/main/demography/total_population.xlsx
 

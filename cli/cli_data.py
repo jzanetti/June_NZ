@@ -77,13 +77,6 @@ def setup_parser():
         help="The scale of population [default = 1.0]",
         type=str,
     )
-    parser.add_argument(
-        "--exclude_super_areas",
-        nargs="+",
-        help="Super areas to be excluded",
-        required=False,
-        default=[],
-    )
 
     parser.add_argument(
         "--disease_cfg_dir",
@@ -124,9 +117,6 @@ def setup_parser():
             "etc/cfg/run/june_data.yml",
             "--scale",
             "0.1",
-            # "--exclude_super_areas",
-            # "Tasman",
-            # "Marlborough",
             "--disease_cfg_dir",
             "etc/cfg/disease/covid-19",
             "--policy_cfg_path",
@@ -367,7 +357,7 @@ def main():
             "household_communal": household_communal,
         },
         scale=float(args.scale),
-        exclude_super_areas=args.exclude_super_areas,
+        domains_cfg=cfg["domains"],
     )
 
     logger.info("Processing house keeping ...")

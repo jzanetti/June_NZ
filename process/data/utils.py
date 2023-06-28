@@ -1,3 +1,4 @@
+from copy import copy as shallow_copy
 from logging import getLogger
 from math import ceil as math_ceil
 from os import listdir, makedirs, remove
@@ -78,7 +79,7 @@ def remove_super_area(super_area_to_exclude: list, data_list: dict, all_geo: dic
     return all_geo
 
 
-def postproc(data_list: list, scale: float = 1.0, exclude_super_areas: list = []):
+def postproc(data_list: list, scale: float = 1.0, domains_cfg: dict or None = None):
     """Postprocessing the dataset, e.g., match the number of SA2 etc.
 
     Args:
@@ -117,6 +118,25 @@ def postproc(data_list: list, scale: float = 1.0, exclude_super_areas: list = []
     age_profile = age_profile[age_profile["sum18"] != 0]
 
     data_list["age_profile"]["data"] = age_profile.drop(["sum", "sum18"], axis=1)
+
+    # remove region, super_area or area as required
+    if domains_cfg is not None:
+        # domains_cfg = {"region": ["Auckland"], "super_area": None, "area": None}
+        geography_hierarchy_definition = shallow_copy(
+            data_list["geography_hierarchy_definition"]["data"]
+        )
+        for domain_key in ["region", "super_area", "area"]:
+            proc_domains = domains_cfg[domain_key]
+
+            if proc_domains is not None:
+                geography_hierarchy_definition = geography_hierarchy_definition[
+                    geography_hierarchy_definition[domain_key].isin(proc_domains)
+                ]
+        age_profile = age_profile[
+            age_profile["output_area"].isin(geography_hierarchy_definition["area"])
+        ]
+
+    data_list["age_profile"]["data"] = age_profile
 
     # get all super_areas/areas:
     all_geo = {"super_area": [], "area": []}

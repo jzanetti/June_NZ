@@ -9,7 +9,6 @@ save:
   geography: true
   world: true
 
-
 output:
   demography: true
   timeseries:

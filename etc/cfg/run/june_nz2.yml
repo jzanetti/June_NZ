@@ -2,7 +2,6 @@
 
 exp_name: realworld_test3
 
-
 simulation_cfg: etc/data/realworld_test3/simulation/simulation_cfg.yaml
 
 save:

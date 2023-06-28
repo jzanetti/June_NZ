@@ -31,14 +31,14 @@ The command options are explained as below:
 
 .. note::
 
-    Most input data are created from raw dataset in `June_NZ_data <https://github.com/jzanetti/JUNE_NZ_data>`_, 
-    while some configurations are defined:
+    Most input data are created from raw dataset stored in `June_NZ_data <https://github.com/jzanetti/JUNE_NZ_data>`_ (most of them are obtained from `NZ.Stat <https://nzdotstat.stats.govt.nz/wbos/index.aspx>`_), 
+    while some inputs are defined via:
 
-        - in a fixed variable ``FIXED_DATA`` (``process/__init__.py``).
+        - the fixed variable ``FIXED_DATA`` (``process/__init__.py``), or
 
         - from external configuration files:
 
-            - Disease configuration (the directory contains all the information about the population disease, and the target virus we want to investigate), e.g., ``etc/cfg/disease/covid-19`` 
+            - Disease configuration (the directory contains all the information about the population disease, including the viruses we want to investigate), e.g., ``etc/cfg/disease/covid-19`` 
 
             - Policy configuration, e.g., ``etc/cfg/policy/policy1.yaml``
 
@@ -64,7 +64,7 @@ It defines the population (agents) to be used in the model.
 
 .. note::
 
-   ``The number of people (grouped by age)`` will determine the number of total people to be used in the model.
+   ``The number of people (grouped by age)`` determines the number of total people to be used in the model.
 
 **********
 2. Geography data
@@ -84,7 +84,7 @@ It defines the geography (grid) to be used in the model.
 3. Group (activities) data
 **********
 
-Group data contains different types of activities that an individual might do every day.
+Group data contains different types of activities (e.g., company, household, hospital, school and leisure) that an individual might do every day.
 
 3.1 Company
 ===============
@@ -99,7 +99,7 @@ It defines the companies used in the model
    :widths: 1 1 1
 
 In the above data, ``Number of employers by firm size``, ``Number of employers by sector type`` and ``Number of employees``
-are obtained from external dataset, while the ``company clousre`` and ``sub-sector configuration`` are defined in the variable ``FIXED_DATA``. For example,
+are obtained from NZ.Stat, while ``company clousre`` and ``sub-sector configuration`` are defined in the variable ``FIXED_DATA``. For example,
 
 
 .. code-block:: python
@@ -112,8 +112,6 @@ are obtained from external dataset, while the ``company clousre`` and ``sub-sect
                         "A": {"key_worker": 1.0, "furlough": 0.0, "random": 0.0},
                         "P": {"key_worker": 0.0, "furlough": 0.0833, "random": 0.9167},
                         ...
-                        "O": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
-                        "R": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
                         "S": {"key_worker": 0.0, "furlough": 0.0, "random": 1.0},
                     }
                 }
@@ -141,7 +139,7 @@ are obtained from external dataset, while the ``company clousre`` and ``sub-sect
 .. note::
 
         The ``Number of employees`` from NZStats somehome is smaller than the expected value compared to the NZ population. Therefore, in ``FIXED_DATA``
-        we have a variable called ``employment_rate``, which is a factor makes the total ``number of employees`` matches to the assumed ``employment rate``.
+        we have a variable called ``employment_rate``, which is a factor makes ``number of employees`` matches to the assumed number of people in employment.
 
 
 3.2 Household
@@ -183,11 +181,14 @@ For example,
                         },
                     ...
 
-    where the above defines the assumed age differences.
+    where the above defines the assumed age differences for both couples and parents-children.
 
-- The ``number of household`` are obtained from NZStats, note that since there is a lack of detailed information, the only household type ``=0 >=0 >=0 >=0 >=0`` is used.
 
-- We also set the number of commnual and student househodls to zero, since the lack of detailed dataset.
+.. note::
+
+    - The ``number of household`` are obtained from NZ.Stat. However there is a lack of detailed information, thus the only household type ``=0 >=0 >=0 >=0 >=0`` is used in the model.
+
+    - We also set the number of commnual and student househodls to zero, since the lack of detailed dataset.
 
 3.3 Hospital
 ===============
@@ -201,8 +202,8 @@ It defines the hospital information used in the model
    :class: longtable
    :widths: 1 1 1
 
-The information would include the hospital address (latitude and longitude), number of beds and number of ICU beds. Also some meta data around it,
-such as the the minimum age working in this sector, and how many hospitals that an indiviual could visit.
+The information above include the hospital address (latitude and longitude), number of beds and number of ICU beds. Also some affiliated data for hospital,
+such as the the minimum age working in this sector, and the number of hospitals that an indiviual agent could visit.
 
 
 3.4 School
@@ -246,43 +247,24 @@ Note that all the location information are obtained from the Open Street Map, wh
                         "male": {
                             "0-9": 0.032,
                             "9-15": 0.106,
-                            "15-19": 0.126,
-                            "19-31": 0.738,
-                            "31-51": 0.421,
-                            "51-66": 0.533,
-                            "66-86": 0.15,
+                            ...
                             "86-100": 0.033,
                         },
                         "female": {
                             "0-9": 0.135,
-                            "9-15": 0.147,
-                            "15-19": 0.358,
-                            "19-31": 0.544,
-                            "31-51": 0.4,
-                            "51-66": 0.409,
-                            "66-86": 0.101,
+                            ...,
                             "86-100": 0.02,
                         },
                     },
                     "weekend": {
                         "male": {
                             "0-9": 0.038,
-                            "9-15": 0.101,
-                            "15-19": 0.106,
-                            "19-31": 0.321,
-                            "31-51": 0.262,
-                            "51-66": 0.304,
-                            "66-86": 0.176,
+                            ...
                             "86-100": 0.063,
                         },
                         "female": {
                             "0-9": 0.043,
-                            "9-15": 0.081,
-                            "15-19": 0.141,
-                            "19-31": 0.251,
-                            "31-51": 0.231,
-                            "51-66": 0.18,
-                            "66-86": 0.146,
+                            ...
                             "86-100": 0.06,
                         },
                     },
@@ -300,7 +282,7 @@ Note that all the location information are obtained from the Open Street Map, wh
             },
             
 The above shows how frequent a person might visit a ``cinema`` (over weekdays and weekends), how many different cinemas he/she might consider, and how long
-he/she might travel to go to a cinema.
+he/she might travel (``neighbours_to_consider``, ``maximum_distance``)to go to a cinema.
 
 
 **********
