@@ -19,7 +19,7 @@ The wrapper for creating the input dataset is ``cli/cli_data.py``, which can be 
 .. code-block:: python
 
     python cli_data.py --workdir <WORKING DIRECTORY>
-                       --cfg etc/cfg/run/june_singleobs_v2.0.yml
+                       --cfg <DATA CREATION CONFIGURATION>
                        [--scale <POPULATION PERCENTAGE>]
                        [--disease_cfg_dir <DISEASE CONFIGURATION DIRECTORY>]
                        [--policy_cfg_path <POLICY CONFIGURATION FILE>]
@@ -43,3 +43,53 @@ For example, the input data can be created by:
 .. code-block:: python
 
     python cli_data.py --workdir etc/data/realworld_auckland --cfg etc/cfg/run/june_data.yml --scale 0.1 --disease_cfg_dir etc/cfg/disease/covid-19 --policy_cfg_path etc/cfg/policy/policy1.yaml --vaccine_cfg_path etc/cfg/disease/vaccine/vaccine1.yaml --simulation_cfg_path etc/cfg/simulation/simulation_cfg.yml --use_sa3_as_super_area
+
+
+**********
+Step 2. Running the model
+**********
+The model can be run using ``cli/cli_june.py``, which can be triggered as:
+
+.. code-block:: python
+
+    python cli_june.py --workdir <WORKING DIRECTORY>
+                       --cfg <MODEL CONFIGURATION>
+
+
+where:
+
+    - ``--workdir``: Working directory.
+    - ``--cfg``: Model running configuration.
+
+For example, the model diagnosis can be created by:
+
+.. code-block:: python
+
+    python cli_june.py --workdir /tmp/june_realworld_auckland_base --cfg etc/cfg/run/june_nz2.yml
+
+
+**********
+Step 3. Generating the model diagnosis
+**********
+
+The wrapper for creating the model output diagnosis is ``cli/cli_diags.py``, which can be triggered as:
+
+.. code-block:: python
+
+    python cli_diags.py --workdir <WORKING DIRECTORY>
+                        --cfg <JUNE MODEL DIAGNOSIS CONFIGURATION PATH>
+                        --june_data_dir <JUNE MODEL OUTPUT DIRECTORY>
+
+
+where:
+
+    - ``--workdir``: Working directory.
+    - ``--cfg``: Model diagnosis configuration.
+    - ``--june_data_dir``: June model output directory
+
+
+For example, the model diagnosis can be created by
+
+.. code-block:: python
+
+    python cli_diags.py --workdir etc/data/june_realworld_auckland_base_diag --cfg etc/cfg/run/june_diags.yml --june_data_dir /tmp/june_realworld_auckland_base/output

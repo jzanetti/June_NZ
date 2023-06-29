@@ -4,8 +4,11 @@ geo_table: https://raw.githubusercontent.com/jzanetti/JUNE_NZ_data/main/geograph
 sa3_shp: https://github.com/jzanetti/JUNE_NZ_data/raw/main/geography/statsnzstatistical-area-3-2023-generalised-SHP.zip
 
 domains:
-  region: null
-  super_area: null
+  region: null # only used for map
+  super_area:
+    - 51150
+    - 51440
+    - 52180
   area: null
 
 activity: false
