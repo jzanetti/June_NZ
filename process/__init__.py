@@ -635,7 +635,7 @@ FIXED_DATA = {
                 "hospital": 0.1168,
                 "company": 0.371,
                 "household": 0.208,
-                "household_visit": 0.208,
+                "household_visits": 0.208,
                 "city_transport": 0.107969,
                 "inter_city_transport": 0.383,
                 "school": 0.07,
