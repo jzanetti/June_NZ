@@ -2,7 +2,7 @@
 
 exp_name: realworld_auckland
 
-simulation_cfg: etc/data/realworld_test3/simulation/simulation_cfg.yaml
+simulation_cfg: etc/data/realworld_auckland/simulation/simulation_cfg.yaml
 
 save:
   geography: false
