@@ -1,6 +1,6 @@
 
 
-exp_name: realworld_test3
+exp_name: realworld_auckland
 
 simulation_cfg: etc/data/realworld_test3/simulation/simulation_cfg.yaml
 
@@ -16,7 +16,7 @@ output:
 
 
 data:
-  base_dir: etc/data/realworld_test3
+  base_dir: etc/data/realworld_auckland
   geography:
     geography_hierarchy: geography/geography_hierarchy_definition.csv
     super_area_location: geography/super_area_location.csv

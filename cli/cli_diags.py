@@ -38,9 +38,9 @@ def setup_parser():
     return parser.parse_args(
         [
             "--workdir",
-            "/tmp/june_singleobs_test_diags2",
+            "/tmp/june_realworld_auckland_base_diag",
             "--june_data_dir",
-            "/tmp/june_singleobs_test/output",
+            "/tmp/june_realworld_auckland_base/output",
             "--cfg",
             "etc/cfg/run/june_diags.yml",
         ]

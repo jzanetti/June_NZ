@@ -25,4 +25,4 @@ infection:
     area: false
 
 map:
-  infected: false
+  infected: true

@@ -22,4 +22,5 @@ Contents
    Installation
    Data
    Toy
+   Workflow
    Useful_links

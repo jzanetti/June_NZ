@@ -111,7 +111,7 @@ def setup_parser():
     return parser.parse_args(
         [
             "--workdir",
-            "etc/data/realworld_test3",
+            "etc/data/realworld_auckland",
             "--use_sa3_as_super_area",
             "--cfg",
             "etc/cfg/run/june_data.yml",
