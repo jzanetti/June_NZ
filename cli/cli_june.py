@@ -67,7 +67,7 @@ def setup_parser():
             "--workdir",
             "/tmp/june_realworld_auckland_exp1",
             "--cfg",
-            "etc/cfg/run/june_nz2.yml",
+            "etc/cfg/run/june_auckland_exp1.yml",
             "--tuning_cfg",
             "etc/cfg/tuning/tuning.yml",
         ]
