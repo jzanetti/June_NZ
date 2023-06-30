@@ -221,7 +221,7 @@ It defines the school information used in the model
 The information would include the school address (latitude and longitude), and the student profile (e.g., min and max age)
 
 
-3.5 Leisure (cinema, grocery, pub and gym)
+3.5 Leisure (cinema, grocery, pub, gym and household visit)
 ===============
 It defines the leisure information used in the model
 

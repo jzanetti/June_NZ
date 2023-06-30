@@ -20,7 +20,8 @@ Contents
 .. toctree::
 
    Installation
-   Data
    Toy
    Workflow
+   Tuning
+   Data
    Useful_links

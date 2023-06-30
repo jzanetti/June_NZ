@@ -51,12 +51,14 @@ The model can be run using ``cli/cli_june.py``, which can be triggered as:
 
     python cli_june.py --workdir <WORKING DIRECTORY>
                        --cfg <MODEL CONFIGURATION>
+                       [--tuning_cfg <TUNING CONFIGURATION>]
 
 
 where:
 
     - ``--workdir``: Working directory.
     - ``--cfg``: Model running configuration.
+    - ``--tuning_cfg``: Model tuning configuration [Default: None]. If not set then no tuning will be done from the input data.
 
 For example, the model diagnosis can be created by: ``python cli_june.py --workdir /tmp/june_realworld_auckland_base --cfg etc/cfg/run/june_nz2.yml``.
 

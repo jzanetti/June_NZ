@@ -26,6 +26,7 @@ from process.interaction import create_interaction_wrapper, initiate_interaction
 from process.policy import create_policy_wrapper
 from process.simulation import start_simulation
 from process.tracker import create_tracker_wrapper
+from process.tuning import tuning_wrapper
 from process.utils import check_data_availability, read_cfg, setup_logging
 from process.world import create_world_wrapper
 
@@ -54,17 +55,26 @@ def setup_parser():
         "--cfg", required=True, help="Configuration path for the model, e.g., june.cfg"
     )
 
+    parser.add_argument(
+        "--tuning_cfg",
+        required=False,
+        default=None,
+        help="Model tuning configuration, e.g., june_tune.cfg",
+    )
+
     return parser.parse_args(
-        ["--workdir", "/tmp/june_realworld_auckland_base", "--cfg", "etc/cfg/run/june_nz2.yml"]
+        # ["--workdir", "/tmp/june_realworld_auckland_base", "--cfg", "etc/cfg/run/june_nz2.yml"]
         # [
         #    "--workdir", "/tmp/june_realworld_2023_0615_6", "--cfg", "etc/cfg/run/june_nz2.yml"
         # ]
-        # [
-        #    "--workdir",
-        #    "/tmp/june_singleobs_test",
-        #    "--cfg",
-        #    "etc/cfg/run/june_singleobs_v2.0.yml",
-        # ]
+        [
+            "--workdir",
+            "/tmp/june_singleobs_tuning_test",
+            "--cfg",
+            "etc/cfg/run/june_singleobs_v2.0_tuning.yml",
+            "--tuning_cfg",
+            "etc/cfg/tuning/tuning.yml",
+        ]
     )
 
 
@@ -82,6 +92,9 @@ def main():
 
     logger.info("Checking data availability ...")
     check_data_availability(cfg["data"])
+
+    logger.info("Tuning the model ...")
+    tuning_wrapper(cfg["data"], args.tuning_cfg)
 
     logger.info("Creating geography object ...")
     geography_object = create_geography_wrapper(
@@ -121,7 +134,7 @@ def main():
         cfg["data"]["base_dir"],
         cfg["data"]["disease"],
         cfg["simulation_cfg"],
-        apply_vaccine=True,
+        apply_vaccine=False,
     )
 
     logger.info("Creating interaction object ...")

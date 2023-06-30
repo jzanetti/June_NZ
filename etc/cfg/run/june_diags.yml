@@ -22,10 +22,22 @@ equity:
   area: false
 
 infection:
-  add_no_infected: false
+  features:
+    "Recovered/Not infected": false
+    exposed: false
+    asymptomatic: false
+    mild: false
+    hospitalised: true
+    intensive_care: true
+    severe: false
+    dead: true
+
+
+
+
   timeseries:
     super_area: true
     area: false
 
 map:
-  infected: true
+  infected: false

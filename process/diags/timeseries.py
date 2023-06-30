@@ -11,15 +11,15 @@ from process.diags.utils import get_area_name
 logger = getLogger()
 
 
-
 def plot_timeseries(
     workdir: str,
     df_people: DataFrame,
     min_time: datetime,
     areas_or_super_areas: list,
     area_type: str,  # super_area or area
+    ts_features: dict,
     geotable: DataFrame or None = None,
-    add_no_infected: bool = True,
+    if_plot_log: bool = False,
 ):
     fig_dir = join(workdir, "infection", area_type)
 
@@ -51,10 +51,18 @@ def plot_timeseries(
 
         area_name = get_area_name(area_type, proc_area, geotable=geotable)
 
-        _, axes = subplots(nrows=2, ncols=1, figsize=(12, 12))
+        if if_plot_log:
+            _, axes = subplots(nrows=2, ncols=1, figsize=(12, 12))
+        else:
+            _, axe = subplots(nrows=1, ncols=1, figsize=(12, 10))
+            axes = [axe]
 
-        if not add_no_infected:
-            probabilities = probabilities.drop("Recovered/Not infected", axis=1)
+        for feature_key in ts_features:
+            if not ts_features[feature_key]:
+                probabilities = probabilities.drop(feature_key, axis=1)
+
+        # if not add_no_infected:
+        #    probabilities = probabilities.drop("Recovered/Not infected", axis=1)
 
         try:
             ax = probabilities.plot(
@@ -67,17 +75,19 @@ def plot_timeseries(
                 xlabel="Simulation time",
                 logy=False,
             )
-            ax.set_ylim(0, 100.0)
-            probabilities.plot(
-                ax=axes[1],
-                kind="line",
-                # figsize=(14, 7),
-                title=False,
-                # title=f"Area: {proc_area} ({area_name}) \n {total_people} individuals",
-                ylabel="Probability of symptom stages (log)",
-                xlabel="Simulation time",
-                logy=True,
-            )
+            ax.set_ylim(0, probabilities.values.max() * 1.5)
+
+            if if_plot_log:
+                probabilities.plot(
+                    ax=axes[1],
+                    kind="line",
+                    # figsize=(14, 7),
+                    title=False,
+                    # title=f"Area: {proc_area} ({area_name}) \n {total_people} individuals",
+                    ylabel="Probability of symptom stages (log)",
+                    xlabel="Simulation time",
+                    logy=True,
+                )
         except TypeError:
             logger.info("No infection at all for this area")
 
