@@ -55,22 +55,24 @@ def update_infection_outcome(infection_outcome_cfg: dict, infection_outcome_path
         if (
             df[f"{proc_pop_key}_hospital_{proc_sex_key}"]
             < df[f"{proc_pop_key}_icu_{proc_sex_key}"]
-        ):
+        ).values[0]:
             raise Exception(
                 f"Hospital ratio < ICU ratio for {proc_age_key} ({proc_pop_key}, {proc_sex_key})"
             )
 
         if (
             df[f"{proc_pop_key}_hospital_{proc_sex_key}"]
-            > df[f"{proc_pop_key}_hospital_ifr_{proc_sex_key}"]
-        ):
+            < df[f"{proc_pop_key}_hospital_ifr_{proc_sex_key}"]
+        ).values[0]:
             raise Exception(
-                f"Hospital ratio > Hospital IFR ratio for {proc_age_key} ({proc_pop_key}, {proc_sex_key})"
+                f"Hospital ratio < Hospital IFR ratio for {proc_age_key} ({proc_pop_key}, {proc_sex_key})"
             )
 
-        if df[f"{proc_pop_key}_icu_{proc_sex_key}"] > df[f"{proc_pop_key}_icu_ifr_{proc_sex_key}"]:
+        if (
+            df[f"{proc_pop_key}_icu_{proc_sex_key}"] < df[f"{proc_pop_key}_icu_ifr_{proc_sex_key}"]
+        ).values[0]:
             raise Exception(
-                f"ICU ratio > ICU IFR ratio for {proc_age_key} ({proc_pop_key}, {proc_sex_key})"
+                f"ICU ratio < ICU IFR ratio for {proc_age_key} ({proc_pop_key}, {proc_sex_key})"
             )
 
     data = pandas_read_csv(infection_outcome_path)
@@ -104,7 +106,7 @@ def update_infection_outcome(infection_outcome_cfg: dict, infection_outcome_path
 
                     updated_df = proc_df / proc_df.sum().sum()
 
-                    _check_infection_outcome(updated_df, proc_age_key, proc_pop_key, proc_sex_key)
+                    _check_infection_outcome(updated_df, age_range, proc_pop_key, proc_sex_key)
 
                     data.loc[data.iloc[:, 0] == age_range, list(updated_df.columns)] = updated_df
 
