@@ -1,6 +1,7 @@
 from os import rename
 from os.path import join
 
+from pandas import DataFrame
 from pandas import read_csv as pandas_read_csv
 from yaml import safe_load
 
@@ -33,6 +34,45 @@ def update_infection_outcome(infection_outcome_cfg: dict, infection_outcome_path
         infection_outcome_cfg (dict): Infection outcome tuning configuration
         infection_outcome_path (str): Infection outcome data path
     """
+
+    def _check_infection_outcome(
+        df: DataFrame, proc_age_key: str, proc_pop_key: str, proc_sex_key: str
+    ):
+        """Check infection outcome:
+            - Hospital ratio > ICU ratio
+            - Hospital ratio > Hospital IFR ratio
+            - ICU ratio > ICU IFR ratio
+
+        Args:
+            df (DataFrame): Dataframe to be checked
+            proc_age_key (str): Age key, e.g, 30-50
+            proc_pop_key (str): Population key, e.g., gp
+            proc_sex_key (str): Sex key, e.g., female and male
+
+        Raises:
+            Exception: Failure message
+        """
+        if (
+            df[f"{proc_pop_key}_hospital_{proc_sex_key}"]
+            < df[f"{proc_pop_key}_icu_{proc_sex_key}"]
+        ):
+            raise Exception(
+                f"Hospital ratio < ICU ratio for {proc_age_key} ({proc_pop_key}, {proc_sex_key})"
+            )
+
+        if (
+            df[f"{proc_pop_key}_hospital_{proc_sex_key}"]
+            > df[f"{proc_pop_key}_hospital_ifr_{proc_sex_key}"]
+        ):
+            raise Exception(
+                f"Hospital ratio > Hospital IFR ratio for {proc_age_key} ({proc_pop_key}, {proc_sex_key})"
+            )
+
+        if df[f"{proc_pop_key}_icu_{proc_sex_key}"] > df[f"{proc_pop_key}_icu_ifr_{proc_sex_key}"]:
+            raise Exception(
+                f"ICU ratio > ICU IFR ratio for {proc_age_key} ({proc_pop_key}, {proc_sex_key})"
+            )
+
     data = pandas_read_csv(infection_outcome_path)
 
     for age_range in list(data.iloc[:, 0]):
@@ -63,6 +103,8 @@ def update_infection_outcome(infection_outcome_cfg: dict, infection_outcome_path
                     proc_df = df.filter(regex=rf"^{proc_pop_key}.*_{proc_sex_key}$")
 
                     updated_df = proc_df / proc_df.sum().sum()
+
+                    _check_infection_outcome(updated_df, proc_age_key, proc_pop_key, proc_sex_key)
 
                     data.loc[data.iloc[:, 0] == age_range, list(updated_df.columns)] = updated_df
 

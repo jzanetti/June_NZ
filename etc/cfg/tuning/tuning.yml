@@ -2,13 +2,13 @@
 
 infection_outcome:
   adjust_factor:
-    "0-150": # age range
+    "18-65": # age range
       gp: # population type
         male: # sex
           asymptomatic: 1.0
           mild: 1.0
-          hospital: 1.5
-          icu: 1.0
-          home_ifr: 1.0
-          hospital_ifr: 1.0
-          icu_ifr: 1.0
+          hospital: 3.0
+          icu: 3.0
+          home_ifr: 3.0
+          hospital_ifr: 3.0
+          icu_ifr: 3.0

@@ -13,7 +13,7 @@ The experiments used to demostrate the tuning of model are described below:
 
 .. tabularcolumns:: |p{5cm}|p{7cm}|p{4cm}|
 
-.. csv-table:: School data
+.. csv-table:: Tuning information
    :file: data/tuning_exp.csv
    :header-rows: 1
    :class: longtable

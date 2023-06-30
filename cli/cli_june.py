@@ -63,18 +63,25 @@ def setup_parser():
     )
 
     return parser.parse_args(
-        # ["--workdir", "/tmp/june_realworld_auckland_base", "--cfg", "etc/cfg/run/june_nz2.yml"]
-        # [
-        #    "--workdir", "/tmp/june_realworld_2023_0615_6", "--cfg", "etc/cfg/run/june_nz2.yml"
-        # ]
         [
             "--workdir",
-            "/tmp/june_singleobs_tuning_test",
+            "/tmp/june_realworld_auckland_exp1",
             "--cfg",
-            "etc/cfg/run/june_singleobs_v2.0_tuning.yml",
+            "etc/cfg/run/june_nz2.yml",
             "--tuning_cfg",
             "etc/cfg/tuning/tuning.yml",
         ]
+        # [
+        #    "--workdir", "/tmp/june_realworld_2023_0615_6", "--cfg", "etc/cfg/run/june_nz2.yml"
+        # ]
+        # [
+        #    "--workdir",
+        #    "/tmp/june_singleobs_tuning_test",
+        #    "--cfg",
+        #    "etc/cfg/run/june_singleobs_v2.0_tuning.yml",
+        #    "--tuning_cfg",
+        #    "etc/cfg/tuning/tuning.yml",
+        # ]
     )
 
 
