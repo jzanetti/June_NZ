@@ -1,5 +1,5 @@
 from os import rename
-from os.path import join
+from os.path import exists, join
 
 from pandas import DataFrame
 from pandas import read_csv as pandas_read_csv
@@ -75,7 +75,12 @@ def update_infection_outcome(infection_outcome_cfg: dict, infection_outcome_path
                 f"ICU ratio < ICU IFR ratio for {proc_age_key} ({proc_pop_key}, {proc_sex_key})"
             )
 
-    data = pandas_read_csv(infection_outcome_path)
+    if exists(infection_outcome_path + ".backup"):
+        data = pandas_read_csv(infection_outcome_path)
+        read_from_backup = True
+    else:
+        data = pandas_read_csv(infection_outcome_path)
+        read_from_backup = False
 
     for age_range in list(data.iloc[:, 0]):
         df = data[data.iloc[:, 0] == age_range]
@@ -110,6 +115,7 @@ def update_infection_outcome(infection_outcome_cfg: dict, infection_outcome_path
 
                     data.loc[data.iloc[:, 0] == age_range, list(updated_df.columns)] = updated_df
 
-    rename(infection_outcome_path, infection_outcome_path + ".backup")
+    if not read_from_backup:
+        rename(infection_outcome_path, infection_outcome_path + ".backup")
 
     data.to_csv(infection_outcome_path, index=False)

@@ -7,8 +7,16 @@ infection_outcome:
         male: # sex
           asymptomatic: 1.0
           mild: 1.0
-          hospital: 3.0
-          icu: 3.0
-          home_ifr: 3.0
-          hospital_ifr: 3.0
-          icu_ifr: 3.0
+          hospital: 10.0
+          icu: 10.0
+          home_ifr: 10.0
+          hospital_ifr: 10.0
+          icu_ifr: 10.0
+        female: # sex
+          asymptomatic: 1.0
+          mild: 1.0
+          hospital: 10.0
+          icu: 10.0
+          home_ifr: 10.0
+          hospital_ifr: 10.0
+          icu_ifr: 10.0
