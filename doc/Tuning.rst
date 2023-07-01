@@ -32,15 +32,15 @@ The following figures are the model outputs for the Area of 51150 and 51440, sho
 |pic3| |pic4|
 
 .. |pic1| image:: data/tuning/base/51150_infection_1.png
-   :width: 50%
+   :width: 45%
 
 .. |pic2| image:: data/tuning/base/51150_infection_2.png
-   :width: 50%
+   :width: 45%
 
 .. |pic3| image:: data/tuning/base/51440_infection_1.png
-   :width: 50%
+   :width: 45%
 
 .. |pic4| image:: data/tuning/base/51440_infection_2.png
-   :width: 50%
+   :width: 45%
 
 
