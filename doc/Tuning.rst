@@ -27,9 +27,9 @@ Base example
 The base example is used to show the model outputs without any tuning. 
 The following figures are the model outputs for the Area of 51150 and 51440, showing the percentages of population who died, were hospitalized, and placed into ICU.
 
-|pic1||pic2|
+|pic1| |pic2|
 
-|pic3||pic4|
+|pic3| |pic4|
 
 .. |pic1| image:: data/tuning/base/51150_infection_1.png
    :width: 50%
