@@ -23,13 +23,13 @@ equity:
 
 infection:
   features:
-    "Recovered/Not infected": true
-    exposed: true
-    asymptomatic: true
-    mild: true
+    "Recovered/Not infected": false
+    exposed: false
+    asymptomatic: false
+    mild: false
     hospitalised: true
     intensive_care: true
-    severe: true
+    severe: false
     dead: true
 
 
