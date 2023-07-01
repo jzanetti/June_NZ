@@ -24,27 +24,22 @@ The experiments used to demostrate the tuning of model are described below:
 **********
 Base example
 **********
-The base example is used to show the model outputs without any tuning. The following figures are the model outputs for the Area of 51150, showing the percentages of population who died, were hospitalized, and placed into ICU.
+The base example is used to show the model outputs without any tuning. 
+The following figures are the model outputs for the Area of 51150 and 51440, showing the percentages of population who died, were hospitalized, and placed into ICU.
 
-
-.. image:: data/tuning/base/51150_infection.png
-   :scale: 100%
+.. figure:: data/tuning/base/51150_infection.png
+   :scale: 50%
    :alt: 51150_infection (base)
    :align: center
 
-.. figure:: data/tuning/base/51150_infection.png
-   :scale: 100%
-   :alt: 51150_infection (base)
+   Figure 1: Infection for 51150
+
+.. figure:: data/tuning/base/51440_infection.png
+   :scale: 50%
+   :alt: 51440_infection (base)
    :align: center
 
-   Figure 1: Description of the first figure
-
-.. figure:: data/tuning/base/51150_infection.png
-   :scale: 100%
-   :alt: Another figure
-   :align: center
-
-   Figure 2: Description of the second figure
+   Figure 2: Infection for 51440
 
 
 
