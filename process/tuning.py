@@ -3,6 +3,7 @@ from os.path import exists, join
 
 from pandas import DataFrame
 from pandas import read_csv as pandas_read_csv
+from yaml import dump as yaml_dump
 from yaml import safe_load
 
 
@@ -63,7 +64,8 @@ def update_contact_frequency_beta(
     if not read_from_backup:
         rename(contact_frequency_beta_path, contact_frequency_beta_path + ".backup")
 
-    data.to_csv(contact_frequency_beta_path, index=False)
+    with open(contact_frequency_beta_path, "w") as fid:
+        yaml_dump(data, fid, default_flow_style=False)
 
 
 def update_infection_outcome(infection_outcome_cfg: dict, infection_outcome_path: str):
