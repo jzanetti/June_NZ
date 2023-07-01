@@ -43,8 +43,10 @@ The following figures are the model outputs for the Area of 51150 and 51440.
 .. |pic4| image:: data/tuning/base/51440_infection_2.png
    :width: 45%
 
+
 For 51150, we observe that the hospitalization rate was below 0.4%, indicating a relatively low proportion of individuals requiring hospital care. Conversely, the mortality rate stood at approximately 0.1%, suggesting a comparatively smaller percentage of individuals succumbing to the condition.
 It takes a while (e.g., 15 days) until we see the first hospital case in the Area 51440.
+
 
 **********
 Increase the people is hospitalized and died
