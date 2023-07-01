@@ -28,14 +28,14 @@ The base example is used to show the model outputs without any tuning.
 The following figures are the model outputs for the Area of 51150 and 51440, showing the percentages of population who died, were hospitalized, and placed into ICU.
 
 .. figure:: data/tuning/base/51150_infection.png
-   :scale: 50%
+   :scale: 30%
    :alt: 51150_infection (base)
    :align: center
 
    Figure 1: Infection for 51150
 
 .. figure:: data/tuning/base/51440_infection.png
-   :scale: 50%
+   :scale: 30%
    :alt: 51440_infection (base)
    :align: center
 
