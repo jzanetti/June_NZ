@@ -97,3 +97,13 @@ The number of people who died, were hospitalized, and placed into ICU can be inc
 In the case of 51150, there has been a significant increase in hospitalizations, 
 rising from 0.4% to 8.0%. Similarly, the proportion of individuals requiring intensive care unit (ICU) treatment has increased 
 from approximately 0.1% to 1-2%. Unfortunately, the mortality rate has also seen a rise, escalating from 0.1% to 1-2%.
+
+
+**********
+Make people to be infected quicker
+**********
+
+Increase contact frequency
+----------------------
+
+The first apporach is that we can increase the contact frequency (:math:`beta`) in ``etc/data/realworld_auckland/interaction/general.yaml``

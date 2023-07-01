@@ -1,6 +1,7 @@
 
 
 infection_outcome:
+  enable: false
   adjust_factor:
     "18-65": # age range
       gp: # population type
@@ -20,3 +21,18 @@ infection_outcome:
           home_ifr: 10.0
           hospital_ifr: 10.0
           icu_ifr: 10.0
+
+contact_frequency_beta:
+  enable: true
+  adjust_factor:
+    cinema: 10.0
+    city_transport: 10.0
+    company: 10.0
+    grocery: 10.0
+    gym: 10.0
+    hospital: 10.0
+    household: 10.0
+    household_visits: 10.0
+    inter_city_transport: 10.0
+    pub: 10.0
+    school: 10.0

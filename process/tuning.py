@@ -20,11 +20,50 @@ def tuning_wrapper(data_cfg: dict, tuning_cfg_path: str or None):
     with open(tuning_cfg_path, "r") as fid:
         tuning_cfg = safe_load(fid)
 
-    if "infection_outcome" in tuning_cfg:
+    if tuning_cfg["infection_outcome"]["enable"]:
         update_infection_outcome(
             tuning_cfg["infection_outcome"],
             join(data_cfg["base_dir"], data_cfg["disease"]["infection_outcome"]),
         )
+
+    if tuning_cfg["contact_frequency_beta"]["enable"]:
+        update_contact_frequency_beta(
+            tuning_cfg["contact_frequency_beta"],
+            join(
+                data_cfg["base_dir"],
+                data_cfg["group_and_interaction"]["others"]["general_interaction"],
+            ),
+        )
+
+
+def update_contact_frequency_beta(
+    contact_frequency_beta_cfg: dict, contact_frequency_beta_path: str
+):
+    """Update contact frequency beta
+
+    Args:
+        contact_frequency_beta_cfg (dict): Tuning configuration
+        contact_frequency_beta_path (str): Original freuqncy beta path
+    """
+    if exists(contact_frequency_beta_path + ".backup"):
+        with open(contact_frequency_beta_path + ".backup", "r") as fid:
+            data = safe_load(fid)
+        read_from_backup = True
+    else:
+        with open(contact_frequency_beta_path, "r") as fid:
+            data = safe_load(fid)
+        read_from_backup = False
+
+    for group in data["betas"]:
+        if group in contact_frequency_beta_cfg["adjust_factor"]:
+            proc_factor = contact_frequency_beta_cfg["adjust_factor"][group]
+
+        data["betas"][group] *= proc_factor
+
+    if not read_from_backup:
+        rename(contact_frequency_beta_path, contact_frequency_beta_path + ".backup")
+
+    data.to_csv(contact_frequency_beta_path, index=False)
 
 
 def update_infection_outcome(infection_outcome_cfg: dict, infection_outcome_path: str):
@@ -76,7 +115,7 @@ def update_infection_outcome(infection_outcome_cfg: dict, infection_outcome_path
             )
 
     if exists(infection_outcome_path + ".backup"):
-        data = pandas_read_csv(infection_outcome_path)
+        data = pandas_read_csv(infection_outcome_path + ".backup")
         read_from_backup = True
     else:
         data = pandas_read_csv(infection_outcome_path)
