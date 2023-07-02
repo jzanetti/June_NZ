@@ -169,9 +169,45 @@ The probability of infection is determined by a ``Gamma`` function, which has th
 .. |pic16| image:: data/tuning/exp3/gamma_scale2.png
    :width: 45%
 
-The ``shift`` parameter determines the starting time of infection. Prior to the specified shift, the probability of infection is 0.0%.
-On the other hand, the ``shape`` parameter defines the shape of the ``Gamma`` function, which influences the rate at which infectiousness reaches its peak. A higher value for ``shape`` leads to a slower increase in infectiousness and a smoother probability curve over time.
-As for the ``scale`` parameter, increasing its value results in a smoother probability curve of infection over time.
+The probability of infection is considered from the moment a person is infected.
+
+- The ``shift`` parameter determines the starting time of infection. Prior to the specified shift, the probability of infection is 0.0%.
+
+- On the other hand, the ``shape`` parameter defines the shape of the ``Gamma`` function, which influences the rate at which infectiousness reaches its peak. A higher value for ``shape`` leads to a slower increase in infectiousness and a smoother probability curve over time.
+
+- As for the ``scale`` parameter, increasing its value results in a smoother probability curve of infection over time.
+
+It is challenging to adjust the probability of infection directly by modifying the ``Gamma`` function, for example, by merely increasing or decreasing the probability.
+
+Moreover, we can adjust value of the infectiousness at its peak ~ ``max_infectiousness``, 
+which is usually represented by a ``lognormal`` function. The ``lognormal`` is determined by three factors, ``shift``, ``loc`` and ``scale``:
+
+|pic17| |pic18|
+
+.. |pic17| image:: data/tuning/exp3/lognorm_scale.png
+   :width: 45%
+
+.. |pic18| image:: data/tuning/exp3/lognorm_shape.png
+   :width: 45%
+
+The final infection probability is calculated by ``max_infectiousness(t) * Gamma(t)``. In order to make the tuning simpler, we can use constant to represent ``max_infectiousness`` as well.
+
+.. code-block:: python
+
+   pobability_of_infection:
+   enable: true
+   adjust_factor:
+      max_infectiousness:
+        type: constant
+        value: 10.0
+
+
+
+
+
+
+
+
 
 
 

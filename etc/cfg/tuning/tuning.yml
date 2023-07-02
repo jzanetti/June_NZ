@@ -23,7 +23,7 @@ infection_outcome:
           icu_ifr: 10.0
 
 contact_frequency_beta:
-  enable: true
+  enable: false
   adjust_factor:
     cinema: 10.0
     city_transport: 10.0
@@ -36,3 +36,16 @@ contact_frequency_beta:
     inter_city_transport: 10.0
     pub: 10.0
     school: 10.0
+
+pobability_of_infection:
+  enable: true
+  adjust_factor:
+    max_infectiousness:
+      type: constant
+      value: 10.0
+    asymptomatic_infectious_factor:
+      type: constant
+      value: 3.0
+    mild_infectious_factor:
+      type: constant
+      value: 3.0

@@ -36,6 +36,40 @@ def tuning_wrapper(data_cfg: dict, tuning_cfg_path: str or None):
             ),
         )
 
+    if tuning_cfg["pobability_of_infection"]["enable"]:
+        update_pobability_of_infection(
+            tuning_cfg["pobability_of_infection"],
+            join(data_cfg["base_dir"], data_cfg["disease"]["transmission_profile"]),
+        )
+
+
+def update_pobability_of_infection(
+    pobability_of_infection_cfg: dict, pobability_of_infection_path: str
+):
+    """Update probability of infection
+
+    Args:
+        pobability_of_infection_cfg (dict): Tuning configuration
+        pobability_of_infection_path (str): Original pobability_of_infection path
+    """
+    if exists(pobability_of_infection_path + ".backup"):
+        with open(pobability_of_infection_path + ".backup", "r") as fid:
+            data = safe_load(fid)
+        read_from_backup = True
+    else:
+        with open(pobability_of_infection_path, "r") as fid:
+            data = safe_load(fid)
+        read_from_backup = False
+
+    for proc_factor in pobability_of_infection_cfg["adjust_factor"]:
+        data[proc_factor] = pobability_of_infection_cfg["adjust_factor"][proc_factor]
+
+    if not read_from_backup:
+        rename(pobability_of_infection_path, pobability_of_infection_path + ".backup")
+
+    with open(pobability_of_infection_path, "w") as fid:
+        yaml_dump(data, fid, default_flow_style=False)
+
 
 def update_contact_frequency_beta(
     contact_frequency_beta_cfg: dict, contact_frequency_beta_path: str
