@@ -202,6 +202,25 @@ The final infection probability is calculated by ``max_infectiousness(t) * Gamma
         value: 10.0
 
 
+|pic19| |pic20|
+
+|pic21| |pic22|
+
+.. |pic19| image:: data/tuning/exp3/51150_infection_1.png
+   :width: 45%
+
+.. |pic20| image:: data/tuning/exp3/51150_infection_2.png
+   :width: 45%
+
+.. |pic21| image:: data/tuning/exp3/51440_infection_1.png
+   :width: 45%
+
+.. |pic22| image:: data/tuning/exp3/51440_infection_2.png
+   :width: 45%
+
+In simpler terms, when we increased the frequency of interactions among individuals (represented by the contact matrix), we didn't observe significant changes in terms of hospitalization and mortality rates. This is because the outcomes of the infection were not modified.
+
+However, it's important to note that in this experiment, the rate of exposure to the infection during the first 1-2 weeks was much higher compared to the baseline experiment.
 
 
 
