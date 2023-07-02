@@ -65,9 +65,9 @@ def setup_parser():
     return parser.parse_args(
         [
             "--workdir",
-            "/tmp/june_realworld_auckland_exp3",
+            "/tmp/june_realworld_auckland_exp4",
             "--cfg",
-            "etc/cfg/run/june_auckland_exp3.yml",
+            "etc/cfg/run/june_auckland_exp4.yml",
             "--tuning_cfg",
             "etc/cfg/tuning/tuning.yml",
         ]

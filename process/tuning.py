@@ -42,6 +42,100 @@ def tuning_wrapper(data_cfg: dict, tuning_cfg_path: str or None):
             join(data_cfg["base_dir"], data_cfg["disease"]["transmission_profile"]),
         )
 
+    if tuning_cfg["symptom_trajectory"]["enable"]:
+        update_symptom_trajectory(
+            tuning_cfg["symptom_trajectory"],
+            join(data_cfg["base_dir"], data_cfg["disease"]["sympton_trajectories"]),
+        )
+
+
+def update_symptom_trajectory(symptom_trajectory_cfg, symptom_trajectory_path: str):
+    """Updatesymptom trajectory
+
+    Args:
+        symptom_trajectory_cfg (_type_): Tuning configuration
+        symptom_trajectory_path (str): Origina lsymptom_trajectory path
+    """
+
+    def _get_symptom_info(symptom_trajectory_cfg: dict) -> dict:
+        """Get symptom information
+
+        Args:
+            symptom_trajectory_cfg (dict): Symptom trajectory information
+
+        Returns:
+            dict: Tuning information
+        """
+        output = {}
+        for proc_traj in symptom_trajectory_cfg["adjust_factor"]:
+            if proc_traj == "general":
+                continue
+
+            proc_traj_name = sorted(
+                [
+                    elem.replace(" ", "")
+                    for elem in symptom_trajectory_cfg["adjust_factor"][proc_traj]["name"].split(
+                        "=>"
+                    )
+                ]
+            )
+
+            proc_traj_cfg = symptom_trajectory_cfg["adjust_factor"][proc_traj]["paras"]
+
+            output[",".join(proc_traj_name)] = proc_traj_cfg
+
+        return output
+
+    if exists(symptom_trajectory_path + ".backup"):
+        with open(symptom_trajectory_path + ".backup", "r") as fid:
+            data = safe_load(fid)
+        read_from_backup = True
+    else:
+        with open(symptom_trajectory_path, "r") as fid:
+            data = safe_load(fid)
+        read_from_backup = False
+
+    # Update general:
+    for i, proc_traj in enumerate(data["trajectories"]):
+        for j, proc_stage in enumerate(proc_traj["stages"]):
+            proc_func = proc_stage["completion_time"]
+            proc_func_type = proc_func["type"]
+
+            if proc_func_type in symptom_trajectory_cfg["adjust_factor"]["general"]:
+                if symptom_trajectory_cfg["adjust_factor"]["general"][proc_func_type]["enable"]:
+                    for ele in symptom_trajectory_cfg["adjust_factor"]["general"][proc_func_type]:
+                        if ele == "enable":
+                            continue
+                        data["trajectories"][i]["stages"][j]["completion_time"][
+                            ele
+                        ] *= symptom_trajectory_cfg["adjust_factor"]["general"][proc_func_type][
+                            ele
+                        ]
+
+    # Update a specific trajectory
+    symptom_to_tune_info = _get_symptom_info(symptom_trajectory_cfg)
+    for i, proc_traj in enumerate(data["trajectories"]):
+        all_symptoms = []
+        for j, proc_stage in enumerate(proc_traj["stages"]):
+            all_symptoms.append(proc_traj["stages"][j]["symptom_tag"])
+        all_symptoms = ",".join(sorted(all_symptoms))
+        # dict_keys(['exposed,intensive_care,mild,recovered'])
+        if all_symptoms in symptom_to_tune_info:
+            for proc_info in symptom_to_tune_info[all_symptoms]:
+                proc_tag = proc_info["symptom_tag"]
+
+                for j, proc_stage in enumerate(proc_traj["stages"]):
+                    if proc_tag == proc_traj["stages"][j]["symptom_tag"]:
+                        data["trajectories"][i]["stages"][j]["completion_time"] = proc_info[
+                            "completion_time"
+                        ]
+
+    if not read_from_backup:
+        rename(symptom_trajectory_path, symptom_trajectory_path + ".backup")
+
+    with open(symptom_trajectory_path, "w") as fid:
+        yaml_dump(data, fid, default_flow_style=False)
+
 
 def update_pobability_of_infection(
     pobability_of_infection_cfg: dict, pobability_of_infection_path: str

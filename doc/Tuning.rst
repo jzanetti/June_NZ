@@ -300,7 +300,16 @@ Now let's check individual probability functions:
    .. |pic30| image:: data/tuning/exp4/exponweib_scale.png
       :width: 45%
 
+In order to tune the symptom trajectory, we can adjust the probability function in general, or target at a sepcfic trajectory.
 
+.. code-block:: python
+
+   pobability_of_infection:
+   enable: true
+   adjust_factor:
+      max_infectiousness:
+        type: constant
+        value: 10.0
 
 
 

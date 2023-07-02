@@ -2,3 +2,5 @@ Experiment name,Description,"Location (only applicable at ESR)"
 Base,"Base configuration with COVID-19",``/tmp/june_realworld_auckland_base``
 Exp1,"The multiplication factor for hospital/icu/home_ifr/hospital_ifr/icu_ifr = 10.0",``/tmp/june_realworld_auckland_exp1``
 Exp2,"The multiplication factor for contact frequency beta for all groups = 10.0",``/tmp/june_realworld_auckland_exp2``
+Exp3,"Increase maximum infectiousness 10.0 times more",``/tmp/june_realworld_auckland_exp3``
+Exp4,"Reduce the symptom cycle",``/tmp/june_realworld_auckland_exp4``

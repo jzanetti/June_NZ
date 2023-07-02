@@ -38,7 +38,7 @@ contact_frequency_beta:
     school: 10.0
 
 pobability_of_infection:
-  enable: true
+  enable: false
   adjust_factor:
     max_infectiousness:
       type: constant
@@ -49,3 +49,36 @@ pobability_of_infection:
     mild_infectious_factor:
       type: constant
       value: 3.0
+
+
+symptom_trajectory:
+  enable: true
+  adjust_factor:
+    general:
+      beta:
+        enable: true
+        a: 1.0
+        b: 1.0
+        loc: 1.0
+        scale: 0.3
+      lognormal:
+        enable: true
+        s: 1.0
+        loc: 1.0
+        scale: 0.3
+      exponweib:
+        enable: true
+        a: 1.0
+        c: 1.0
+        loc: 1.0
+        scale: 0.3
+    traj1:
+      name: exposed => mild => severe => dead_home
+      paras:
+        - symptom_tag: exposed
+          completion_time:
+            type: beta
+            a: 2.29
+            b: 19.05
+            loc: 0.39
+            scale: 39.8
