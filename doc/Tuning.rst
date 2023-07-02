@@ -223,8 +223,47 @@ In simpler terms, when we increased the frequency of interactions among individu
 However, it's important to note that in this experiment, the rate of exposure to the infection during the first 1-2 weeks was much higher compared to the baseline experiment.
 
 
+Reduce the symptom cycle
+----------------------
 
+The period of people expericing a symptom is determined by the ``symptom_trajectory``. 
 
+We usually have the following trajectories:
+
+- exposed => asymptomatic => recovered
+- exposed => mild => recovered 
+- exposed => mild => severe => recovered
+- exposed => mild => hospitalised => recovered
+- exposed => mild => intensive_care => recovered
+- exposed => mild => severe => dead
+- exposed => mild => hospitalised => dead
+- exposed => mild => hospitalised => intensive_care => dead
+
+each stage of the symptom can be represented by different types of functions:
+
+- ``beta`` (parameters: ``a``, ``b``, ``loc``, ``scale``)
+- ``lognormal``
+- ``exponweib``
+- ``constant``
+
+For ``beta`` (as below):
+
+- when we increase ``a``, the timing will increase
+- when we increase ``b``, the timing will decrease
+- when we increase ``scale``, the timing will increase
+
+|pic23| |pic24|
+
+|pic25|
+
+.. |pic23| image:: data/tuning/exp4/beta_alpha.png
+   :width: 45%
+
+.. |pic24| image:: data/tuning/exp4/beta_beta.png
+   :width: 45%
+
+.. |pic25| image:: data/tuning/exp4/beta_scale.png
+   :width: 45%
 
 
 
