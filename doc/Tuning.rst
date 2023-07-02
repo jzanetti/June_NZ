@@ -242,28 +242,42 @@ We usually have the following trajectories:
 each stage of the symptom can be represented by different types of functions:
 
 - ``beta`` (parameters: ``a``, ``b``, ``loc``, ``scale``)
-- ``lognormal``
+- ``lognormal`` (parameters: ``shape``, ``loc``, ``scale``)
 - ``exponweib``
 - ``constant``
 
-For ``beta`` (as below):
+- For ``beta`` (as below):
 
-- when we increase ``a``, the timing will increase
-- when we increase ``b``, the timing will decrease
-- when we increase ``scale``, the timing will increase
+   - when we increase ``a``, the timing will increase
+   - when we increase ``b``, the timing will decrease
+   - when we increase ``scale``, the timing will increase
 
-|pic23| |pic24|
+   |pic23| |pic24|
 
-|pic25|
+   |pic25|
 
-.. |pic23| image:: data/tuning/exp4/beta_alpha.png
-   :width: 45%
+   .. |pic23| image:: data/tuning/exp4/beta_alpha.png
+      :width: 45%
 
-.. |pic24| image:: data/tuning/exp4/beta_beta.png
-   :width: 45%
+   .. |pic24| image:: data/tuning/exp4/beta_beta.png
+      :width: 45%
 
-.. |pic25| image:: data/tuning/exp4/beta_scale.png
-   :width: 45%
+   .. |pic25| image:: data/tuning/exp4/beta_scale.png
+      :width: 45%
+
+
+- For ``lognormal`` (as below):
+
+   - when we increase ``shape``, the timing will decrease
+   - when we increase ``scale``, the timing will increase
+
+   |pic26| |pic27|
+
+   .. |pic26| image:: data/tuning/exp4/lognorm_shape.png
+      :width: 45%
+
+   .. |pic27| image:: data/tuning/exp4/lognorm_scale.png
+      :width: 45%
 
 
 

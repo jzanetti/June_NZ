@@ -3,9 +3,9 @@ import numpy as np
 from scipy.stats import lognorm
 
 # Parameters for the normal distribution
-shapes = [0.1, 0.5, 1.0]
+shapes = [0.5, 0.5, 0.5]
 locs = [0.0, 0.0, 0.0]
-scales = [1.0, 1.0, 1.0]
+scales = [1.0, 3.0, 5.0]
 
 
 for i in range(len(locs)):
