@@ -56,6 +56,7 @@ The number of people who died, were hospitalized, and placed into ICU can be inc
 .. code-block:: python
 
    infection_outcome:
+   enable: true
    adjust_factor:
       "18-65": # age range
          gp: # population type
@@ -106,4 +107,43 @@ Make people to be infected quicker
 Increase contact frequency
 ----------------------
 
-The first apporach is that we can increase the contact frequency (:math:`beta`) in ``etc/data/realworld_auckland/interaction/general.yaml``
+The first apporach is that we can increase the contact frequency (:math:`beta`) in ``etc/data/realworld_auckland/interaction/general.yaml``:
+
+.. code-block:: python
+
+   contact_frequency_beta:
+   enable: true
+   adjust_factor:
+      cinema: 10.0
+      city_transport: 10.0
+      company: 10.0
+      grocery: 10.0
+      gym: 10.0
+      hospital: 10.0
+      household: 10.0
+      household_visits: 10.0
+      inter_city_transport: 10.0
+      pub: 10.0
+      school: 10.0
+
+As above, we increased the base contact frequency intensity by 10 times.
+
+|pic9| |pic10|
+
+|pic11| |pic12|
+
+.. |pic9| image:: data/tuning/exp2/51150_infection_1.png
+   :width: 45%
+
+.. |pic10| image:: data/tuning/exp2/51150_infection_2.png
+   :width: 45%
+
+.. |pic11| image:: data/tuning/exp2/51440_infection_1.png
+   :width: 45%
+
+.. |pic12| image:: data/tuning/exp2/51440_infection_2.png
+   :width: 45%
+
+In comparison to the baseline experiment, a notable observation in Area 51150 is a higher rate of infection within the initial week. However, there haven't been significant alterations in terms of hospitalization and mortality rates since the infection outcomes configurations were not modified.
+
+On the other hand, the impact of the experiment is particularly pronounced in Area 51440. Here, the rate of infection has significantly accelerated when compared to the baseline experiment.
