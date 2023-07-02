@@ -243,8 +243,10 @@ each stage of the symptom can be represented by different types of functions:
 
 - ``beta`` (parameters: ``a``, ``b``, ``loc``, ``scale``)
 - ``lognormal`` (parameters: ``shape``, ``loc``, ``scale``)
-- ``exponweib``
+- ``exponweib`` (parameters: ``a``, ``c``, ``loc``, ``scale``)
 - ``constant``
+
+Now let's check individual probability functions:
 
 - For ``beta`` (as below):
 
@@ -277,6 +279,25 @@ each stage of the symptom can be represented by different types of functions:
       :width: 45%
 
    .. |pic27| image:: data/tuning/exp4/lognorm_scale.png
+      :width: 45%
+
+- For ``exponweib`` (as below):
+
+   - when we increase ``a``, the timing will decrease
+   - when we increase ``c``, the timing will increase
+   - when we increase ``scale``, the timing will increase
+
+   |pic28| |pic29|
+
+   |pic30|
+
+   .. |pic28| image:: data/tuning/exp4/exponweib_a.png
+      :width: 45%
+
+   .. |pic29| image:: data/tuning/exp4/exponweib_c.png
+      :width: 45%
+
+   .. |pic30| image:: data/tuning/exp4/exponweib_scale.png
       :width: 45%
 
 
