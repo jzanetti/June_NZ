@@ -147,3 +147,31 @@ As above, we increased the base contact frequency intensity by 10 times.
 In comparison to the baseline experiment, a notable observation in Area 51150 is a higher rate of infection within the initial week. However, there haven't been significant alterations in terms of hospitalization and mortality rates since the infection outcomes configurations were not modified.
 
 On the other hand, the impact of the experiment is particularly pronounced in Area 51440. Here, the rate of infection has significantly accelerated when compared to the baseline experiment.
+
+Change probability of infection
+----------------------
+
+The probability of infection is determined by a ``Gamma`` function, which has three parameters: ``shape``, ``scale`` and ``shift``:
+
+|pic13| |pic14|
+
+|pic15| |pic16|
+
+.. |pic13| image:: data/tuning/exp3/gamma_shift.png
+   :width: 45%
+
+.. |pic14| image:: data/tuning/exp3/gamma_shape.png
+   :width: 45%
+
+.. |pic15| image:: data/tuning/exp3/gamma_scale1.png
+   :width: 45%
+
+.. |pic16| image:: data/tuning/exp3/gamma_scale2.png
+   :width: 45%
+
+The ``shift`` parameter determines the starting time of infection. Prior to the specified shift, the probability of infection is 0.0%.
+On the other hand, the ``shape`` parameter defines the shape of the ``Gamma`` function, which influences the rate at which infectiousness reaches its peak. A higher value for ``shape`` leads to a slower increase in infectiousness and a smoother probability curve over time.
+As for the ``scale`` parameter, increasing its value results in a smoother probability curve of infection over time.
+
+
+

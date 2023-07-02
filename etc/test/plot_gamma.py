@@ -8,6 +8,10 @@ scales = [1.0, 1.5, 1.0]
 shifts = [6.785695005231625, 6.785695005231625, 6.785695005231625]
 
 
+shapes = [2.0, 2.0, 2.0]
+scales = [1.0, 2.0, 3.0]
+shifts = [0.0, 0.0, 0.0]
+
 for i in range(len(shapes)):
     shape = shapes[i]
     scale = scales[i]
@@ -27,11 +31,11 @@ for i in range(len(shapes)):
     plt.plot(x, y, label=legend_str)
 
 # Add labels and title
-plt.xlabel("X")
+plt.xlabel("days")
 plt.ylabel("Probability Density")
 plt.title("Gamma Distribution")
 plt.legend()
 
 # Display the plot
-plt.savefig("test.png")
+plt.savefig("test.png", bbox_inches="tight")
 plt.close()
