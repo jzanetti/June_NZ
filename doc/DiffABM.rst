@@ -41,9 +41,9 @@ Certain assumptions that are commonly followed by epidemiologists.
 One important idea we use in this project is called GradABM, which uses a special type of calculation called differentiable sparse-tensor computation and 
 takes into account the way the disease is transmitted.
 
-Here are some real numbers to help explain the assumptions they make:
+We note that:
 
-- It takes several days for an infection to develop after a person gets exposed to the disease.
+- Clinical data shows that it takes several days for an infection to develop after a person gets exposed to the disease.
 - The decisions made by organizations like the CDC are based on forecasting and analysis done four weeks in advance.
 
 Based on these assumptions, they make the following standard assumptions for their simulation:
@@ -58,31 +58,13 @@ The above assumptions combined mean that the order of interactions within a day 
 This allows them to treat the interactions as interchangeable and makes the transmission model differentiable, 
 which means it can be easily used in mathematical calculations.
 
+In order to use GradABM for real-world applications, we need to be able to calibrate:
 
-.. note::
+- infection (or transmission) function, and
+- progression (or symptom) function.
 
-    Let's say we want to simulate the spread of a contagious disease within a small community of people. We can represent their social connections as a small-world graph, where each person is a node, and the connections between them are represented as edges.
+and make the predicted results (such as cumulative deaths) match the observed values from real-world data. The differentiability of GradABM enables
+the possiblitiy of using gradient-based learning to calibrate the simulator by integrating with deep neural networks:
 
-    Imagine we have a community of 10 people, and they are connected in the following way:
+    - Step 1: candidate parameters for infection/progression functions are produced by a clibration neural network (CalibNN).
 
-    Person A is friends with B, C, and D.
-    Person B is friends with A, C, and E.
-    Person C is friends with A, B, D, and F.
-    ...
-    Person H is friends with E, I, and J.
-    Person I is friends with G, H, and J.
-    Person J is friends with H and I.
-
-    This graph represents the social connections within the community. Now, let's say person A gets infected with the contagious disease. According to the assumptions made, the disease takes a few days to incubate before it becomes infectious.
-
-    - On the first day, person A is exposed to the disease. They are not yet infectious, so they cannot transmit it to others.
-    - On the second day, person A becomes infectious. They can now transmit the disease to their friends B, C, and D because they are connected in the small-world graph.
-    - On the third day, person A has infected their friends B, C, and D. Now, B, C, and D become infectious and can potentially transmit the disease to their friends.
-
-    This process continues for each infected person, spreading the disease through their social connections. 
-    The simulation tracks the spread of the disease over time, based on the assumptions and the connections between individuals.
-
-    Using sparse tensors as a mathematical representation helps with processing the large network of social connections efficiently. 
-    It allows the simulation to handle a larger population, such as thousands or millions of people, 
-    without becoming computationally expensive. 
-    This improves the performance of the simulation and makes it easier to analyze the spread of the disease in realistic scenarios.
