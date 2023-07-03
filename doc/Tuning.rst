@@ -338,20 +338,20 @@ In order to tune the symptom trajectory, we can adjust the probability function 
 
 
 
-|pic19| |pic20|
+|pic31| |pic32|
 
-|pic21| |pic22|
+|pic33| |pic34|
 
-.. |pic19| image:: data/tuning/exp4/51150_infection_1.png
+.. |pic31| image:: data/tuning/exp4/51150_infection_1.png
    :width: 45%
 
-.. |pic20| image:: data/tuning/exp4/51150_infection_2.png
+.. |pic32| image:: data/tuning/exp4/51150_infection_2.png
    :width: 45%
 
-.. |pic21| image:: data/tuning/exp4/51440_infection_1.png
+.. |pic33| image:: data/tuning/exp4/51440_infection_1.png
    :width: 45%
 
-.. |pic22| image:: data/tuning/exp4/51440_infection_2.png
+.. |pic34| image:: data/tuning/exp4/51440_infection_2.png
    :width: 45%
 
 
