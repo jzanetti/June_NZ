@@ -75,7 +75,7 @@ def plot_timeseries(
                 xlabel="Simulation time",
                 logy=False,
             )
-            ax.set_ylim(0, probabilities.values.max() * 1.5)
+            ax.set_ylim(0, min([probabilities.values.max() * 1.5, 100.0]))
 
             if if_plot_log:
                 probabilities.plot(

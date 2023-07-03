@@ -304,12 +304,55 @@ In order to tune the symptom trajectory, we can adjust the probability function 
 
 .. code-block:: python
 
-   pobability_of_infection:
+   symptom_trajectory:
    enable: true
    adjust_factor:
-      max_infectiousness:
-        type: constant
-        value: 10.0
+      general:
+         beta:
+         enable: true
+         a: 1.0
+         b: 1.0
+         loc: 1.0
+         scale: 0.3
+         lognormal:
+         enable: true
+         s: 1.0
+         loc: 1.0
+         scale: 0.3
+         exponweib:
+         enable: true
+         a: 1.0
+         c: 1.0
+         loc: 1.0
+         scale: 0.3
+      traj1:
+         name: exposed => mild => severe => dead_home
+         paras:
+         - symptom_tag: exposed
+            completion_time:
+               type: beta
+               a: 2.29
+               b: 19.05
+               loc: 0.39
+               scale: 39.8
 
 
 
+|pic19| |pic20|
+
+|pic21| |pic22|
+
+.. |pic19| image:: data/tuning/exp4/51150_infection_1.png
+   :width: 45%
+
+.. |pic20| image:: data/tuning/exp4/51150_infection_2.png
+   :width: 45%
+
+.. |pic21| image:: data/tuning/exp4/51440_infection_1.png
+   :width: 45%
+
+.. |pic22| image:: data/tuning/exp4/51440_infection_2.png
+   :width: 45%
+
+
+We can see that by reducing ``scale`` in the symptom trajectory, we can increase the symptom cycle easily.
