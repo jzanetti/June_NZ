@@ -43,7 +43,7 @@ which has a population of 125,000, and the death rate of COVID-19 in May and Jun
 
 .. tabularcolumns:: |p{5cm}|p{8cm}|p{5cm}|p{5cm}|
 
-.. csv-table:: Experiment data
+.. csv-table:: Experiment configuration (70 days simulation)
    :file: data/DeepABM_exp.csv
    :header-rows: 1
    :class: longtable
@@ -65,7 +65,7 @@ Experiment 1
       :width: 45%
 
 
-Experiment 1
+Experiment 2
 ===============
 
    |pic6| |pic7|
@@ -79,6 +79,22 @@ Experiment 1
 
    .. |pic8| image:: data/agents_exp2.png
       :width: 45%
+
+Experiment 3
+===============
+
+   |pic9| |pic10|
+   |pic11|
+
+   .. |pic9| image:: data/prediction_vs_truth_exp3.png
+      :width: 45%
+
+   .. |pic10| image:: data/loss_exp3.png
+      :width: 45%
+
+   .. |pic11| image:: data/agents_exp3.png
+      :width: 45%
+
 
 
 
