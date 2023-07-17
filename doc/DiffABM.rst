@@ -95,6 +95,18 @@ Experiment 3
    .. |pic11| image:: data/agents_exp3.png
       :width: 45%
 
+Experiment 4
+===============
+
+   |pic12| |pic13|
+   |pic11|
+
+   .. |pic12| image:: data/prediction_vs_truth_exp4.png
+      :width: 45%
+
+   .. |pic13| image:: data/agents_exp4.png
+      :width: 45%
+
 
 
 
