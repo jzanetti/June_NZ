@@ -1,5 +1,5 @@
 ##############
-Combinining ABM and deep learning
+Combinining ABM and Neural Network
 ##############
 
 The tradional ABM is a prowerful tool that invovlves the social simulation of each individual in the model and addresses a series of "what-if"
@@ -9,9 +9,7 @@ However, the real-world implementation of ABM can suffer from slow simulations d
 very time-consuming due to the large number of parameters. To overcome these issues, `Ayush et al. (2023) <https://arxiv.org/pdf/2207.09714.pdf>`_
 introduced a novel differentiable ABM framework called GradABM, which integrates the Gated Reccurrent Unit (GRU) with a tensorized ABM.). 
 
-The GradABM framework offers significant advanatgaes over traditional ABM. 
-
-There are significant advanatgaes for GradABM over a traditional ABM (see below):
+The GradABM framework offers significant advanatgaes over traditional ABM:
 
    |pic1|
 
@@ -19,6 +17,21 @@ There are significant advanatgaes for GradABM over a traditional ABM (see below)
       :width: 100%
 
 In June-NZ, we propose adopting the approach outlined in `Ayush et al. (2023) <https://arxiv.org/pdf/2207.09714.pdf>`_, and apply it in New Zealand's context.
+
+Thw following equation summarizes the process of combinining a temporal based neural network (e.g., RNN, GRU or LSTM) with a tensorized ABM.
+
+
+   |pic2|
+
+   .. |pic1| image:: data/equation1.PNG
+      :width: 100%
+
+In contrast to the original paper, in JUNE_NZ:
+
+- We have incorporated an additional uncertainty tensor in the neural network to account for agents that may not be adequately represented by the input graph representations.
+- Instead of using GRU, an LSTM is used to generate the condensed representations of temporal evolution of disease characteristics
+- The number of learnable parmaters are increased from 3 to 8 (covering the parameters from ``mortality rate``, ``exposed to infected time`` to a bunch of infection related  _Gamma_ function paramters.).
+
 
 
 
