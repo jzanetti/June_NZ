@@ -30,7 +30,33 @@ In contrast to the original paper, in JUNE_NZ:
 
 - We have incorporated an additional uncertainty tensor in the neural network to account for agents that may not be adequately represented by the input graph representations.
 - Instead of using GRU, an LSTM is used to generate the condensed representations of temporal evolution of disease characteristics
-- The number of learnable parmaters are increased from 3 to 8 (covering the parameters from ``mortality rate``, ``exposed to infected time`` to a bunch of infection related  _Gamma_ function paramters.).
+- The number of learnable parmaters are increased from 3 to 8 (covering the parameters from ``mortality rate``, ``exposed to infected time`` to a bunch of infection related  __Gamma__ function paramters.).
+
+
+**********
+Results comparisons
+**********
+
+The following figures show the outputs from different experiments:
+
+.. tabularcolumns:: |p{5cm}|p{8cm}|p{5cm}|p{5cm}|
+
+.. csv-table:: Experiment data
+   :file: data/DeepABM_exp.csv
+   :header-rows: 1
+   :class: longtable
+   :widths: 1 1 1 1
+
+Experiment 1
+===============
+
+   |pic3| |pic4|
+
+   .. |pic3| image:: data/prediction_vs_truth_exp1.png
+      :width: 45%
+
+   .. |pic4| image:: data/loss_exp1.png
+      :width: 45%
 
 
 

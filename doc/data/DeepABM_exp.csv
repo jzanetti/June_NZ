@@ -1,0 +1,5 @@
+Experiment,"Tensorized ABM","Coupling LSTM","Uncertainty"
+``exp1``,Yes,Yes,Yes
+``exp2``,Yes,Yes,No
+``exp3``,Yes,No,No
+``exp4``,"No (random parameters within reasonable ranges)", No, No
