@@ -23,8 +23,8 @@ Thw following equation summarizes the process of combinining a temporal based ne
 
    |pic2|
 
-   .. |pic1| image:: data/equation1.PNG
-      :width: 100%
+   .. |pic2| image:: data/equation1.PNG
+      :width: 70%
 
 In contrast to the original paper, in JUNE_NZ:
 
