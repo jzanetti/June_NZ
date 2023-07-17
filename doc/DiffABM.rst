@@ -37,7 +37,9 @@ In contrast to the original paper, in JUNE_NZ:
 Results comparisons
 **********
 
-The following figures show the outputs from different experiments:
+The following figures show the outputs from various experiments. 
+The model (if a neural network is applied) is trained using a sample dataset from West Virginia, 
+which has a population of 125,000, and the death rate of COVID-19 in May and June 2021.
 
 .. tabularcolumns:: |p{5cm}|p{8cm}|p{5cm}|p{5cm}|
 
@@ -51,11 +53,31 @@ Experiment 1
 ===============
 
    |pic3| |pic4|
+   |pic5|
 
    .. |pic3| image:: data/prediction_vs_truth_exp1.png
       :width: 45%
 
    .. |pic4| image:: data/loss_exp1.png
+      :width: 45%
+
+   .. |pic5| image:: data/agents_exp1.png
+      :width: 45%
+
+
+Experiment 1
+===============
+
+   |pic6| |pic7|
+   |pic8|
+
+   .. |pic6| image:: data/prediction_vs_truth_exp2.png
+      :width: 45%
+
+   .. |pic7| image:: data/loss_exp2.png
+      :width: 45%
+
+   .. |pic8| image:: data/agents_exp2.png
       :width: 45%
 
 
