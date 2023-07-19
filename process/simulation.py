@@ -23,6 +23,7 @@ def start_simulation(
     base_dir: str = None,
     workdir: str = None,
     save_debug: bool = False,
+    save_interaction: bool = False,
 ):
     """Start running the simulation
 
@@ -37,6 +38,7 @@ def start_simulation(
         disease_cfg (dict, optional): Disease configuration. Defaults to None.
         base_dir (str): Base directory
         workdir (str, optional): Working directory. Defaults to None.
+        save_interaction (bool): Save interaction information (e.g., for GradABM etc.)
     """
     simulator = Simulator.from_file(
         world=world,
@@ -54,4 +56,4 @@ def start_simulation(
         tracker=tracker_obj,
     )
 
-    simulator.run(workdir, save_debug=save_debug)
+    simulator.run(workdir, save_debug=save_debug, save_interaction=save_interaction)

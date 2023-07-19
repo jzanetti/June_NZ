@@ -11,7 +11,7 @@ from process.june_model import (
     create_pseudo_data_folder,
 )
 
-check_availability_for_june_model(checkout_repo=False)
+check_availability_for_june_model(checkout_repo=True)
 create_pseudo_data_folder()
 
 import argparse
@@ -55,6 +55,8 @@ def setup_parser():
         "--cfg", required=True, help="Configuration path for the model, e.g., june.cfg"
     )
 
+    parser.add_argument("--save_interaction", action="store_true")
+
     parser.add_argument(
         "--tuning_cfg",
         required=False,
@@ -70,6 +72,7 @@ def setup_parser():
             "etc/cfg/run/june_auckland_exp4.yml",
             "--tuning_cfg",
             "etc/cfg/tuning/tuning.yml",
+            "--save_interaction",
         ]
         # [
         #    "--workdir", "/tmp/june_realworld_2023_0615_6", "--cfg", "etc/cfg/run/june_nz2.yml"
@@ -174,6 +177,7 @@ def main():
         base_dir=cfg["data"]["base_dir"],
         workdir=args.workdir,
         save_debug=True,
+        save_interaction=args.save_interaction,
     )
 
     logger.info("Job done ...")
