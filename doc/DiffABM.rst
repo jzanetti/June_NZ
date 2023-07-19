@@ -49,6 +49,41 @@ which has a population of 100,000, and the death rate of COVID-19 in May and Jun
    :class: longtable
    :widths: 1 1 1 1
 
+The edges for the graph network for different types of interaction groups can be seen below (the x-axis represents different ``venues``, while the y-axis shows the number of people in that particular ``venue``):
+
+   |pic12| |pic13|
+   |pic14| |pic15|
+   |pic16| |pic17|
+   |pic18| |pic19|
+   |pic20|
+
+   .. |pic12| image:: data/gradabm/interaction_diags_cinema.png
+      :width: 45%
+
+   .. |pic13| image:: data/gradabm/interaction_diags_grocery.png
+      :width: 45%
+
+   .. |pic14| image:: data/gradabm/interaction_diags_gym.png
+      :width: 45%
+
+   .. |pic15| image:: data/gradabm/interaction_diags_pub.png
+      :width: 45%
+
+   .. |pic16| image:: data/gradabm/interaction_diags_city_transport.png
+      :width: 45%
+
+   .. |pic17| image:: data/gradabm/interaction_diags_inter_city_transport.png
+      :width: 45%
+
+   .. |pic18| image:: data/gradabm/interaction_diags_company.png
+      :width: 45%
+
+   .. |pic19| image:: data/gradabm/interaction_diags_school.png
+      :width: 45%
+
+   .. |pic20| image:: data/gradabm/interaction_diags_household.png
+      :width: 45%
+
 Experiment 1
 ===============
 
