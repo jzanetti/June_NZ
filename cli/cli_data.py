@@ -116,7 +116,7 @@ def setup_parser():
             "--cfg",
             "etc/cfg/run/june_data.yml",
             "--scale",
-            "0.1",
+            "1.0",
             "--disease_cfg_dir",
             "etc/cfg/disease/covid-19",
             "--policy_cfg_path",
